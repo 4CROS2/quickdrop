@@ -1,0 +1,59 @@
+name: Code metrics
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on pull request events but only for the master branch
+  pull_request:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  check-unused-files:
+    name: "Check for unused files"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.2
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2.6.2
+
+      - name: Cache dependencies
+        uses: actions/cache@v3.0.8
+        with:
+          path: |
+            $PUB_CACHE
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Check for unused files
+        run: dart run dart_code_metrics:metrics check-unused-files lib
+
+  check-unused-code:
+    name: "Check for unused code"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.2
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2.6.2
+
+      - name: Cache dependencies
+        uses: actions/cache@v3.0.8
+        with:
+          path: |
+            $PUB_CACHE
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Check for unused code
+        run: dart run dart_code_metrics:metrics check-unused-code lib

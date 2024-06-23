@@ -1,0 +1,22 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "quickdrop-ebc08",
+                    "appId": "1:241432358313:android:28faa79592439d232328b8",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "quickdrop-ebc08",
+                    "configurations": {
+                        "android": "1:241432358313:android:28faa79592439d232328b8",
+                        "ios": "1:241432358313:ios:d6497d358e22e04f2328b8"
+                    }
+                }
+            }
+        }
+    }
+}

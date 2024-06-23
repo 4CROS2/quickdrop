@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "241432358313",
+    "project_id": "quickdrop-ebc08",
+    "storage_bucket": "quickdrop-ebc08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241432358313:android:28faa79592439d232328b8",
+        "android_client_info": {
+          "package_name": "com.quickdropltda.quickdrop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDFeISPW47NK0Mw1C-iFjiXQFOcfhEI98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
