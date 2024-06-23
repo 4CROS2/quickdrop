@@ -1,4 +1,9 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic",
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "vscord.enabled": true,
+    "java.compile.nullAnalysis.mode": "automatic"
 }

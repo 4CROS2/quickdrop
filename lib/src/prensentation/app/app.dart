@@ -14,8 +14,8 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
-      create: (context) => AppCubit(),
-      child: MaterialApp(
+      create: (BuildContext context) => AppCubit(),
+      child: const MaterialApp(
         home: Login(),
       ),
     );
