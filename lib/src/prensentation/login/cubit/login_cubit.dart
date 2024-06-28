@@ -22,7 +22,6 @@ class LoginCubit extends Cubit<LoginState> {
         LoginSuccess(user: user),
       );
     } catch (e) {
-      print(e);
       emit(const LoginError(message: 'failed to login'));
     }
   }

@@ -13,12 +13,13 @@ class UserModel extends UserEntity {
       email: crendential.user!.email!,
     );
   }
-   Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
       'email': email,
     };
   }
+
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'] as String,

@@ -20,6 +20,6 @@ class LoginSuccess extends LoginState {
 class LoginError extends LoginState {
   const LoginError({required this.message});
   final String message;
-    @override
+  @override
   List<Object> get props => <Object>[message];
 }

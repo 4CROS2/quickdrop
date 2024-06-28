@@ -1,11 +1,11 @@
 name: quickdrop
-description: "A new Flutter project."
+description: "Tesis project"
 
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.1 <4.0.0'
+  sdk: ">=3.4.1 <4.0.0"
 
 dependencies:
   flutter:
@@ -26,3 +26,17 @@ dev_dependencies:
   dart_code_metrics: null
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: Questrial
+      fonts:
+        - asset: assets/fonts/questrial.ttf
+    - family: Redhat
+      fonts:
+        - asset: assets/fonts/redhat_bold.ttf
+          weight: 700
+        - asset: assets/fonts/redhat_semi.ttf
+          weight: 500
+        - asset: assets/fonts/redhat_regular.ttf
+

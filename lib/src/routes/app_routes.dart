@@ -16,7 +16,6 @@ class AppRoutes {
         return MaterialPageRoute<Home>(
           builder: (BuildContext context) => const Home(),
         );
-      
     }
   }
 }

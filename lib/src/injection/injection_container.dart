@@ -33,7 +33,11 @@ Future<void> init() async {
     ),
   );
   //cubits
-  sl.registerFactory(() => AppCubit(firebaseAuth:sl<FirebaseAuth>(),),);
+  sl.registerFactory(
+    () => AppCubit(
+      firebaseAuth: sl<FirebaseAuth>(),
+    ),
+  );
   sl.registerFactory(
     () => LoginCubit(
       useCase: sl<LoginUseCase>(),

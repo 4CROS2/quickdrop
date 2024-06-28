@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/injection/injection_container.dart' as di;
 import 'package:quickdrop/src/prensentation/login/cubit/login_cubit.dart';
+import 'package:quickdrop/src/prensentation/login/widgets/auth_btn.dart';
+import 'package:quickdrop/src/prensentation/login/widgets/inputs.dart';
+import 'package:quickdrop/src/prensentation/login/widgets/title.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -49,27 +53,59 @@ class _LoginState extends State<Login> {
         },
         builder: (BuildContext context, LoginState state) {
           return Scaffold(
-            body: ListView(
-              controller: _scrollController,
-              children: <Widget>[
-                TextFormField(
-                  controller: _emailController,
+            body: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  stops: const <double>[.34, 1],
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Constants.primaryColor,
+                    Colors.white,
+                  ],
                 ),
-                TextFormField(
-                  controller: _passwordController,
+              ),
+              child: SafeArea(
+                child: ListView(
+                  controller: _scrollController,
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  children: <Widget>[
+                    const AuthTitle(),
+                    const SizedBox(
+                      height: 90,
+                    ),
+                    AuthInput(
+                      isEnabled: true,
+                      controller: _emailController,
+                      label: 'Email',
+                    ),
+                    AuthInput(
+                      isEnabled: true,
+                      controller: _passwordController,
+                      label: 'Password',
+                      isObscure: true,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '¿Olvidaste la contraseña?',
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(.80),
+                          fontFamily: 'RedHat',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: AuthBtn(
+                        onTap: () {},
+                      ),
+                    ),
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    final String email = _emailController.text;
-                    final String password = _passwordController.text;
-                    BlocProvider.of<LoginCubit>(context).login(
-                      email: email,
-                      password: password,
-                    );
-                  },
-                  child: const Text('login'),
-                ),
-              ],
+              ),
             ),
           );
         },
