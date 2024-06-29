@@ -7,8 +7,10 @@ class FirebaseLoginDatasource {
     required FirebaseAuth firebaseAuth,
   }) : _firebaseAuth = firebaseAuth;
 
-  Future<UserModel> loginWithEmail(
-      {required String email, required String password}) async {
+  Future<UserModel> loginWithEmail({
+    required String email,
+    required String password,
+  }) async {
     try {
       final UserCredential userCredential =
           await _firebaseAuth.signInWithEmailAndPassword(

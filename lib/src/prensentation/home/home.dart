@@ -13,6 +13,16 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final LoginRepository data = di.sl<LoginRepository>();
   final FirebaseAuth user = di.sl<FirebaseAuth>();
+  String? keyl = '';
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  void getUser() async {
+    keyl = await user.currentUser!.getIdToken();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +30,8 @@ class _HomeState extends State<Home> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Center(
-            child: Text('logued'),
+          Center(
+            child: Text(keyl!),
           ),
           ElevatedButton(
             onPressed: () => data.logout(),
