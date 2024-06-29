@@ -60,130 +60,123 @@ class _LoginState extends State<Login> {
         },
         builder: (BuildContext context, LoginState state) {
           return Scaffold(
-            body: Stack(
-              children: <Widget>[
-                // Background gradient
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: <Color>[
-                        Constants.primaryColor,
-                        Colors.white,
-                      ],
-                      stops: const <double>[.54, 1],
-                    ),
-                  ),
+            body: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  stops: const <double>[.54, 1],
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Constants.primaryColor,
+                    Colors.white,
+                  ],
                 ),
-                // Content
-                SafeArea(
-                  child: SingleChildScrollView(
-                    controller: _scrollController,
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Column(
+              ),
+              child: SafeArea(
+                child: ListView(
+                  controller: _scrollController,
+                  physics: const BouncingScrollPhysics(),
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  children: <Widget>[
+                    const AuthTitle(),
+                    const SizedBox(
+                      height: 90,
+                    ),
+                    AuthInput(
+                      isEnabled: state is! LoginLoading,
+                      controller: _emailController,
+                      label: 'Email',
+                    ),
+                    AuthInput(
+                      isEnabled: true,
+                      controller: _passwordController,
+                      label: 'Password',
+                      isObscure: true,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '¿Olvidaste la contraseña?',
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(.80),
+                          fontFamily: 'RedHat',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: AuthBtn(
+                        onTap: () {
+                          BlocProvider.of<LoginCubit>(context).login(
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                          );
+                        },
+                        label: 'iniciar sesion',
+                      ),
+                    ),
+                    Column(
                       children: <Widget>[
-                        const AuthTitle(),
-                        const SizedBox(
-                          height: 90,
+                        const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 30.0),
+                          child: AuthDivider(),
                         ),
-                        AuthInput(
-                          isEnabled: state is! LoginLoading,
-                          controller: _emailController,
-                          label: 'Email',
-                        ),
-                        AuthInput(
-                          isEnabled: true,
-                          controller: _passwordController,
-                          label: 'Password',
-                          isObscure: true,
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            '¿Olvidaste la contraseña?',
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(.80),
-                              fontFamily: 'RedHat',
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 50),
-                          child: AuthBtn(
-                            onTap: () {
-                              BlocProvider.of<LoginCubit>(context).login(
-                                email: _emailController.text,
-                                password: _passwordController.text,
-                              );
-                            },
-                            label: 'iniciar sesion',
-                          ),
-                        ),
-                        Column(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 30.0),
-                              child: AuthDivider(),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Expanded(
-                                  child: OtherLoginBtn(
-                                    onTap: () {},
-                                    image: 'assets/images/svg/google.svg',
-                                    label: 'google'.capitalize(),
-                                  ),
-                                ),
-                                if (Platform.isIOS)
-                                  Flexible(
-                                    child: Row(
-                                      children: <Widget>[
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Flexible(
-                                          child: OtherLoginBtn(
-                                            onTap: () {},
-                                            image:
-                                                'assets/images/svg/apple.svg',
-                                            label: 'iCloud',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: InkWell(
-                              onTap: () => pushNavigator(
-                                  context: context, page: const SignUp()),
-                              child: Text(
-                                'Aun no tienes cuenta?',
-                                style: TextStyle(
-                                  fontFamily: 'RedHat',
-                                  color: Constants.primaryColor,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            Expanded(
+                              child: OtherLoginBtn(
+                                onTap: () {},
+                                image: 'assets/images/svg/google.svg',
+                                label: 'google'.capitalize(),
                               ),
                             ),
-                          ),
+                            if (Platform.isIOS)
+                              Flexible(
+                                child: Row(
+                                  children: <Widget>[
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Flexible(
+                                      child: OtherLoginBtn(
+                                        onTap: () {},
+                                        image: 'assets/images/svg/apple.svg',
+                                        label: 'iCloud',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                          ],
                         ),
                       ],
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: InkWell(
+                          onTap: () => pushNavigator(
+                              context: context, page: const SignUp()),
+                          child: Text(
+                            'Aun no tienes cuenta?',
+                            style: TextStyle(
+                              fontFamily: 'RedHat',
+                              color: Constants.primaryColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           );
         },
