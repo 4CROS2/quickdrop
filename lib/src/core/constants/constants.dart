@@ -9,6 +9,9 @@ class Constants {
     borderRadius: Constants.mainBorderRadius,
   );
 
+  static TextStyle inputsTextStyle = const TextStyle(
+      color: Colors.black, fontWeight: FontWeight.w600, fontFamily: 'RedHat');
+
   static Color primaryColor = const Color(
     0xFF7C96F4,
   );

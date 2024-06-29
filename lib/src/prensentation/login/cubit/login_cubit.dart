@@ -22,7 +22,7 @@ class LoginCubit extends Cubit<LoginState> {
         LoginSuccess(user: user),
       );
     } catch (e) {
-      emit(const LoginError(message: 'failed to login'));
+      emit(const LoginError(message: 'Credenciales invalidas'));
     }
   }
 }
