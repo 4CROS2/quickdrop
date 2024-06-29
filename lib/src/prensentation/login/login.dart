@@ -174,13 +174,16 @@ class _LoginState extends State<Login> {
                           child: InkWell(
                             onTap: () => pushNavigator(
                                 context: context, page: const SignUp()),
-                            child: Text(
-                              'Aun no tienes cuenta?',
-                              style: TextStyle(
-                                fontFamily: 'RedHat',
-                                color: Constants.primaryColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                'Aun no tienes cuenta?',
+                                style: TextStyle(
+                                  fontFamily: 'RedHat',
+                                  color: Constants.primaryColor,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),

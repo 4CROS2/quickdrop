@@ -11,7 +11,10 @@ class LoginCubit extends Cubit<LoginState> {
         super(const LoginState());
   final LoginUseCase _useCase;
 
-  Future<void> login({required String email, required String password}) async {
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
     try {
       emit(LoginLoading());
       final UserEntity user = await _useCase.login(
@@ -22,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
         LoginSuccess(user: user),
       );
     } catch (e) {
-      emit(const LoginError(message: 'Credenciales invalidas'));
+      emit(LoginError(message: e as String));
     }
   }
 }
