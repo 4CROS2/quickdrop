@@ -1,7 +1,7 @@
 import 'package:quickdrop/src/core/extensions/capitalize.dart';
 
 String? emailvalidator(String? value) {
- if (value == null || value.isEmpty) {
+  if (value == null || value.isEmpty) {
     return 'Correo invalido*'.capitalize();
   }
 
@@ -16,6 +16,7 @@ String? emailvalidator(String? value) {
 
   return null;
 }
+
 String? passwordValidator(String? value) {
   if (value!.isEmpty) {
     return 'campo requerido*'.capitalize();
