@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/domain/repository/login_repository.dart';
+import 'package:quickdrop/src/domain/repository/auth_repository.dart';
 import 'package:quickdrop/src/injection/injection_container.dart' as di;
 
 class Home extends StatefulWidget {
@@ -8,10 +8,14 @@ class Home extends StatefulWidget {
 
   @override
   State<Home> createState() => _HomeState();
+
+  static Page<Home> page() => const MaterialPage<Home>(
+        child: Home(),
+      );
 }
 
 class _HomeState extends State<Home> {
-  final LoginRepository data = di.sl<LoginRepository>();
+  final AuthRepository data = di.sl<AuthRepository>();
   final FirebaseAuth user = di.sl<FirebaseAuth>();
   String? keyl = '';
   @override

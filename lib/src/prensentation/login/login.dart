@@ -20,6 +20,10 @@ class Login extends StatefulWidget {
 
   @override
   State<Login> createState() => _LoginState();
+
+  static Page<Login> page() => const MaterialPage<Login>(
+        child: Login(),
+      );
 }
 
 class _LoginState extends State<Login> {
@@ -51,9 +55,7 @@ class _LoginState extends State<Login> {
       create: (BuildContext context) => di.sl<LoginCubit>(),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (BuildContext context, LoginState state) {
-          if (state is LoginSuccess) {
-            Navigator.pushReplacementNamed(context, '/home');
-          } else if (state is LoginError) {
+          if (state is LoginError) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(

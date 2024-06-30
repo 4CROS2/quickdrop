@@ -1,8 +1,42 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quickdrop/src/domain/entity/user_entity.dart';
+import 'package:quickdrop/src/domain/usecase/login_usecase.dart';
 
 part 'signup_state.dart';
 
 class SignupCubit extends Cubit<SignupState> {
-  SignupCubit() : super(SignupInitial());
+  SignupCubit({
+    required AuthUseCase useCase,
+  })  : _useCase = useCase,
+        super(const SignupState());
+  final AuthUseCase _useCase;
+
+  Future<void> signUp({
+    required String email,
+    required String password,
+    required String name,
+    required String lastName,
+    required String phone,
+  }) async {
+    try {
+      emit(SignupLoading());
+      final UserEntity response = await _useCase.signUp(
+        email: email,
+        password: password,
+        name: name,
+        lastName: lastName,
+        phone: phone,
+      );
+      emit(
+        SignupSuccess(user: response),
+      );
+    } catch (e) {
+      emit(
+        SignupFailure(
+          message: e.toString(),
+        ),
+      );
+    }
+  }
 }

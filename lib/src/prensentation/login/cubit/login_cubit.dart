@@ -6,10 +6,10 @@ import 'package:quickdrop/src/domain/usecase/login_usecase.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit({required LoginUseCase useCase})
+  LoginCubit({required AuthUseCase useCase})
       : _useCase = useCase,
         super(const LoginState());
-  final LoginUseCase _useCase;
+  final AuthUseCase _useCase;
 
   Future<void> login({
     required String email,
