@@ -19,14 +19,19 @@ class _AppState extends State<App> {
       create: (BuildContext context) => di.sl<AppCubit>(),
       child: BlocBuilder<AppCubit, AppState>(
         builder: (BuildContext context, AppState state) {
-          return MaterialApp(
-            title: 'Quickdrop',
-            home: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 400),
-              child: FlowBuilder<AppStatus>(
-                key: Key(state.appStatus.name),
-                state: state.appStatus,
-                onGeneratePages: AppRoutes.generateRoute,
+          return MediaQuery(
+            data: MediaQueryData.fromView(View.of(context)).copyWith(
+              textScaler: const TextScaler.linear(1.0),
+            ),
+            child: MaterialApp(
+              title: 'Quickdrop',
+              home: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 400),
+                child: FlowBuilder<AppStatus>(
+                  key: Key(state.appStatus.name),
+                  state: state.appStatus,
+                  onGeneratePages: AppRoutes.generateRoute,
+                ),
               ),
             ),
           );
