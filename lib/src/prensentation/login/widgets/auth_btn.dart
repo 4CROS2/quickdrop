@@ -39,27 +39,28 @@ class AuthBtn extends StatelessWidget {
               width: double.infinity,
               height: 60,
               child: Center(
-                  child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 100),
-                transitionBuilder:
-                    (Widget child, Animation<double> animation) =>
-                        FadeTransition(
-                  opacity: animation,
-                  child: child,
-                ),
-                child: switch (_disabled) {
-                  true => const CupertinoActivityIndicator(),
-                  false => Text(
-                      _label.capitalize(),
-                      style: TextStyle(
-                        color: Constants.primaryColor,
-                        fontFamily: 'RedHat',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 100),
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) =>
+                          FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  ),
+                  child: switch (_disabled) {
+                    true => const CupertinoActivityIndicator(),
+                    false => Text(
+                        _label.capitalize(),
+                        style: TextStyle(
+                          color: Constants.primaryColor,
+                          fontFamily: 'RedHat',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                },
-              )),
+                  },
+                ),
+              ),
             ),
           ),
         ),

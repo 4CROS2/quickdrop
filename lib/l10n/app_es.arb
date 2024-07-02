@@ -1,0 +1,48 @@
+{
+    "@@locale": "es",
+    "@@author": "Yefeson Yair Tejada Rivas",
+    "slogan": "encuentra, compra, recibe",
+    "@slogan": {
+        "description": "Eslogan de la aplicación."
+    },
+    "emailLabel": "correo",
+    "@emailLabel": {
+        "description": "Etiqueta para el campo de correo electrónico."
+    },
+    "passwordLabel": "contraseña",
+    "@passwordLabel": {
+        "description": "Etiqueta para el campo de contraseña."
+    },
+    "passwordRecovery": "¿olvidaste la contraseña?",
+    "@passwordRecovery": {
+        "description": "Etiqueta para la opción de recuperación de contraseña."
+    },
+    "nameLabel": "nombre",
+    "@nameLabel": {
+        "description": "Etiqueta para el campo de nombre."
+    },
+    "lastNameLabel": "apellido",
+    "@lastNameLabel": {
+        "description": "Etiqueta para el campo de apellido."
+    },
+    "phoneLabel": "telefono",
+    "@phoneLabel": {
+        "description": "Etiqueta para el campo de teléfono."
+    },
+    "loginButton": "iniciar sesion",
+    "@loginButton": {
+        "description": "Etiqueta para el botón de iniciar sesión."
+    },
+    "signInButton": "registrarse",
+    "@signInButton": {
+        "description": "Etiqueta para el botón de registrarse."
+    },
+    "newUser": "aun no tienes cuenta?",
+    "@newUser": {
+        "description": "Etiqueta para preguntar si el usuario no tiene cuenta."
+    },
+    "haveAccount": "ya tienes una cuenta",
+    "@haveAccount": {
+        "description": "Etiqueta para preguntar si el usuario ya tiene cuenta."
+    }
+}

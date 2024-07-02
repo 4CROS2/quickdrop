@@ -10,7 +10,11 @@ class Constants {
   );
 
   static TextStyle inputsTextStyle = const TextStyle(
-      color: Colors.black, fontWeight: FontWeight.w600, fontFamily: 'RedHat');
+    color: Colors.black,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'RedHat',
+    fontSize: 14,
+  );
 
   static Color primaryColor = const Color(
     0xFF7C96F4,

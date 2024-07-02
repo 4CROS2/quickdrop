@@ -11,6 +11,7 @@ import 'package:quickdrop/src/prensentation/login/widgets/divider.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/inputs.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/other_login_btn.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/title.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quickdrop/src/prensentation/signup/cubit/signup_cubit.dart';
 
 class SignUp extends StatefulWidget {
@@ -92,7 +93,9 @@ class _SignUpState extends State<SignUp> {
                             child: AuthInput(
                               controller: _nameController,
                               isEnabled: state is! SignupLoading,
-                              label: 'Nombre',
+                              label: AppLocalizations.of(context)!
+                                  .nameLabel
+                                  .capitalize(),
                               bottomPadding: spacing,
                             ),
                           ),
@@ -103,7 +106,9 @@ class _SignUpState extends State<SignUp> {
                             child: AuthInput(
                               controller: _lastNameController,
                               isEnabled: state is! SignupLoading,
-                              label: 'Apellido',
+                              label: AppLocalizations.of(context)!
+                                  .lastNameLabel
+                                  .capitalize(),
                               bottomPadding: spacing,
                             ),
                           )
@@ -113,20 +118,24 @@ class _SignUpState extends State<SignUp> {
                     AuthInput(
                       controller: _phoneController,
                       isEnabled: state is! SignupLoading,
-                      label: 'Telefono',
+                      label:
+                          AppLocalizations.of(context)!.phoneLabel.capitalize(),
                       bottomPadding: spacing,
                     ),
                     AuthInput(
                       controller: _emailController,
                       isEnabled: state is! SignupLoading,
-                      label: 'Correo',
+                      label:
+                          AppLocalizations.of(context)!.emailLabel.capitalize(),
                       bottomPadding: spacing,
                     ),
                     AuthInput(
                       controller: _passwordController,
                       isEnabled: state is! SignupLoading,
                       isObscure: true,
-                      label: 'Constraseña',
+                      label: AppLocalizations.of(context)!
+                          .passwordLabel
+                          .capitalize(),
                       bottomPadding: spacing,
                     ),
                     Padding(
@@ -144,13 +153,13 @@ class _SignUpState extends State<SignUp> {
                           }
                         },
                         disabled: state is SignupLoading,
-                        label: 'registrarse',
+                        label: AppLocalizations.of(context)!.signInButton,
                       ),
                     ),
                     Column(
                       children: <Widget>[
                         const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 30.0),
+                          padding: EdgeInsets.symmetric(vertical: 15.0),
                           child: AuthDivider(),
                         ),
                         Row(
@@ -191,11 +200,13 @@ class _SignUpState extends State<SignUp> {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Text(
-                                  'Ya tienes una cuenta?',
+                                  AppLocalizations.of(context)!
+                                      .haveAccount
+                                      .capitalize(),
                                   style: TextStyle(
                                     fontFamily: 'RedHat',
                                     color: Constants.primaryColor,
-                                    fontSize: 20,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
