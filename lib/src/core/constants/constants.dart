@@ -15,13 +15,10 @@ class Constants {
     fontFamily: 'RedHat',
     fontSize: 14,
   );
-  static TextStyle errorTextStyle = const TextStyle(
-    color: Colors.black,
+  static TextStyle errorTextStyle = inputsTextStyle.copyWith(
     fontWeight: FontWeight.w300,
-    fontFamily: 'RedHat',
     fontSize: 12,
   );
-
   static Color primaryColor = const Color(
     0xFF7C96F4,
   );

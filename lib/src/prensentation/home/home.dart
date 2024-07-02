@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/domain/repository/auth_repository.dart';
+import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/domain/usecase/login_usecase.dart';
 import 'package:quickdrop/src/injection/injection_container.dart' as di;
+import 'package:quickdrop/src/prensentation/home/widgets/promotions.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,37 +12,66 @@ class Home extends StatefulWidget {
 
   static Page<Home> page() => const MaterialPage<Home>(
         child: Home(),
+        name: 'home',
+        maintainState: true,
+        allowSnapshotting: true,
       );
 }
 
 class _HomeState extends State<Home> {
-  final AuthRepository data = di.sl<AuthRepository>();
-  final FirebaseAuth user = di.sl<FirebaseAuth>();
-  String? keyl = '';
-  @override
-  void initState() {
-    super.initState();
-    getUser();
-  }
-
-  void getUser() async {
-    keyl = await user.currentUser!.getIdToken();
-  }
-
+  final AuthUseCase fire = di.sl<AuthUseCase>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: Text(keyl!),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          stops: const <double>[0, .2],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: <Color>[
+            Constants.primaryColor,
+            Colors.white,
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: const Text(
+            'location',
+            style: TextStyle(fontFamily: 'RedHat'),
           ),
-          ElevatedButton(
-            onPressed: () => data.logout(),
-            child: const Text('Logout'),
-          )
-        ],
+          centerTitle: true,
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: InkWell(
+                onTap: () {},
+                enableFeedback: true,
+                splashColor: Colors.white.withOpacity(.5),
+                borderRadius: Constants.mainBorderRadius * 2,
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(Icons.shopping_cart_outlined),
+                ),
+              ),
+            )
+          ],
+        ),
+        drawer: const Drawer(),
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
+            const PromotionsAndDiscounts(),
+            ElevatedButton(
+                onPressed: () {
+                  fire.logout();
+                },
+                child: const Text('exit'))
+          ],
+        ),
       ),
     );
   }

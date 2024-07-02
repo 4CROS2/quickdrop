@@ -37,12 +37,20 @@ class _AppState extends State<App> {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-              home: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 400),
-                child: FlowBuilder<AppStatus>(
-                  key: Key(state.appStatus.name),
-                  state: state.appStatus,
-                  onGeneratePages: AppRoutes.generateRoute,
+              home: Scaffold(
+                body: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 400),
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) =>
+                          FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  ),
+                  child: FlowBuilder<AppStatus>(
+                    key: Key(state.appStatus.name),
+                    state: state.appStatus,
+                    onGeneratePages: AppRoutes.generateRoute,
+                  ),
                 ),
               ),
             ),
