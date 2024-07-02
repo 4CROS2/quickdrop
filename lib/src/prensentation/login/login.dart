@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/capitalize.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
@@ -20,6 +21,10 @@ class Login extends StatefulWidget {
 
   @override
   State<Login> createState() => _LoginState();
+
+  static Page<Login> page() => const MaterialPage<Login>(
+        child: Login(),
+      );
 }
 
 class _LoginState extends State<Login> {
@@ -51,9 +56,7 @@ class _LoginState extends State<Login> {
       create: (BuildContext context) => di.sl<LoginCubit>(),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (BuildContext context, LoginState state) {
-          if (state is LoginSuccess) {
-            Navigator.pushReplacementNamed(context, '/home');
-          } else if (state is LoginError) {
+          if (state is LoginError) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
@@ -94,20 +97,26 @@ class _LoginState extends State<Login> {
                       AuthInput(
                         isEnabled: state is! LoginLoading,
                         controller: _emailController,
-                        label: 'Email',
+                        label: AppLocalizations.of(context)!
+                            .emailLabel
+                            .capitalize(),
                         validator: emailvalidator,
                       ),
                       AuthInput(
                         isEnabled: state is! LoginLoading,
                         controller: _passwordController,
-                        label: 'Password',
+                        label: AppLocalizations.of(context)!
+                            .passwordLabel
+                            .capitalize(),
                         isObscure: true,
                         validator: passwordValidator,
                       ),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          '¿Olvidaste la contraseña?',
+                          AppLocalizations.of(context)!
+                              .passwordRecovery
+                              .capitalize(),
                           style: TextStyle(
                             color: Colors.white.withOpacity(.80),
                             fontFamily: 'RedHat',
@@ -116,7 +125,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 50),
+                        padding: const EdgeInsets.only(top: 25),
                         child: AuthBtn(
                           onTap: () {
                             if (_formKey.currentState!.validate()) {
@@ -127,13 +136,13 @@ class _LoginState extends State<Login> {
                             }
                           },
                           disabled: state is LoginLoading,
-                          label: 'iniciar sesion',
+                          label: AppLocalizations.of(context)!.loginButton,
                         ),
                       ),
                       Column(
                         children: <Widget>[
                           const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 30.0),
+                            padding: EdgeInsets.symmetric(vertical: 15.0),
                             child: AuthDivider(),
                           ),
                           Row(
@@ -174,13 +183,18 @@ class _LoginState extends State<Login> {
                           child: InkWell(
                             onTap: () => pushNavigator(
                                 context: context, page: const SignUp()),
-                            child: Text(
-                              'Aun no tienes cuenta?',
-                              style: TextStyle(
-                                fontFamily: 'RedHat',
-                                color: Constants.primaryColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                AppLocalizations.of(context)!
+                                    .newUser
+                                    .capitalize(),
+                                style: TextStyle(
+                                  fontFamily: 'RedHat',
+                                  color: Constants.primaryColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),

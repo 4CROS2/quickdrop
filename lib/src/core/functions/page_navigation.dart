@@ -8,3 +8,9 @@ dynamic pushNavigator({required BuildContext context, required Widget page}) {
     ),
   );
 }
+
+dynamic popNavigator({
+  required BuildContext context,
+}) {
+  Navigator.pop(context);
+}

@@ -1,0 +1,47 @@
+{
+    "@@locale": "de",
+    "slogan": "finden, kaufen, empfangen",
+    "@slogan": {
+        "description": "App-Slogan."
+    },
+    "emailLabel": "E-Mail",
+    "@emailLabel": {
+        "description": "Etikett für das E-Mail-Feld."
+    },
+    "passwordLabel": "Passwort",
+    "@passwordLabel": {
+        "description": "Etikett für das Passwortfeld."
+    },
+    "passwordRecovery": "Passwort vergessen?",
+    "@passwordRecovery": {
+        "description": "Etikett für die Passwort-Wiederherstellungsoption."
+    },
+    "nameLabel": "Name",
+    "@nameLabel": {
+        "description": "Etikett für das Namensfeld."
+    },
+    "lastNameLabel": "Nachname",
+    "@lastNameLabel": {
+        "description": "Etikett für das Nachnamenfeld."
+    },
+    "phoneLabel": "Telefon",
+    "@phoneLabel": {
+        "description": "Etikett für das Telefonfeld."
+    },
+    "loginButton": "Anmelden",
+    "@loginButton": {
+        "description": "Etikett für die Anmeldeschaltfläche."
+    },
+    "signInButton": "Registrieren",
+    "@signInButton": {
+        "description": "Etikett für die Registrierschaltfläche."
+    },
+    "newUser": "noch keinen Account?",
+    "@newUser": {
+        "description": "Etikett zur Frage, ob der Benutzer noch keinen Account hat."
+    },
+    "haveAccount": "haben Sie bereits einen Account",
+    "@haveAccount": {
+        "description": "Etikett zur Frage, ob der Benutzer bereits einen Account hat."
+    }
+}

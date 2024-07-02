@@ -6,12 +6,14 @@ class AuthInput extends StatefulWidget {
     required TextEditingController controller,
     required bool isEnabled,
     required String label,
+    double bottomPadding = 25.0,
     Icon? prefixIcon,
     String? Function(String?)? validator,
     bool isObscure = false,
     super.key,
   })  : _controller = controller,
         _label = label,
+        _bottomPadding = bottomPadding,
         _validator = validator,
         _isObscure = isObscure,
         _isEnabled = isEnabled,
@@ -22,6 +24,7 @@ class AuthInput extends StatefulWidget {
   final bool _isEnabled;
   final String? Function(String?)? _validator;
   final Icon? _prefixIcon;
+  final double _bottomPadding;
 
   @override
   State<AuthInput> createState() => _AuthInputState();
@@ -39,7 +42,7 @@ class _AuthInputState extends State<AuthInput> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 25.0),
+      padding: EdgeInsets.only(bottom: widget._bottomPadding),
       child: TextFormField(
         controller: widget._controller,
         obscureText: widget._isObscure && obscure,
@@ -71,7 +74,7 @@ class _AuthInputState extends State<AuthInput> {
           focusedErrorBorder: Constants.authBorder,
           disabledBorder: Constants.authBorder,
           errorBorder: Constants.authBorder,
-          errorStyle: Constants.inputsTextStyle,
+          errorStyle: Constants.errorTextStyle,
           enabled: widget._isEnabled,
           fillColor: const Color(0xFFFCFCFC).withOpacity(.54),
           filled: true,

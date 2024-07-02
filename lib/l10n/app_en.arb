@@ -1,0 +1,47 @@
+{
+    "@@locale": "en",
+    "slogan": "find, buy, receive",
+    "@slogan": {
+        "description": "App slogan."
+    },
+    "emailLabel": "email",
+    "@emailLabel": {
+        "description": "Label for the email field."
+    },
+    "passwordLabel": "password",
+    "@passwordLabel": {
+        "description": "Label for the password field."
+    },
+    "passwordRecovery": "forgot your password?",
+    "@passwordRecovery": {
+        "description": "Label for the password recovery option."
+    },
+    "nameLabel": "name",
+    "@nameLabel": {
+        "description": "Label for the name field."
+    },
+    "lastNameLabel": "last name",
+    "@lastNameLabel": {
+        "description": "Label for the last name field."
+    },
+    "phoneLabel": "phone",
+    "@phoneLabel": {
+        "description": "Label for the phone field."
+    },
+    "loginButton": "log in",
+    "@loginButton": {
+        "description": "Label for the log in button."
+    },
+    "signInButton": "sign up",
+    "@signInButton": {
+        "description": "Label for the sign-up button."
+    },
+    "newUser": "dont have an account?",
+    "@newUser": {
+        "description": "Label to ask if the user doesn't have an account."
+    },
+    "haveAccount": "already have an account",
+    "@haveAccount": {
+        "description": "Label to ask if the user already has an account."
+    }
+}
