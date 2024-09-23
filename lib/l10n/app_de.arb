@@ -43,5 +43,11 @@
     "haveAccount": "haben Sie bereits einen Account",
     "@haveAccount": {
         "description": "Etikett zur Frage, ob der Benutzer bereits einen Account hat."
-    }
+    },
+    "invalidCredential": "Ungültige Anmeldeinformationen.",
+    "invalidEmail": "Die E-Mail-Adresse ist ungültig.",
+    "userDisabled": "Der Benutzer wurde deaktiviert.",
+    "userNotFound": "Kein Benutzer mit dieser E-Mail-Adresse gefunden.",
+    "wrongPassword": "Das Passwort ist falsch.",
+    "unknownError": "Ein unbekannter Fehler ist aufgetreten."
 }

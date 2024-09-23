@@ -3,8 +3,8 @@ import 'package:quickdrop/src/data/model/user_model.dart';
 import 'package:quickdrop/src/domain/entity/user_entity.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
 
-class ILoginRepository implements AuthRepository {
-  ILoginRepository({
+class IAuthRepository implements AuthRepository {
+  IAuthRepository({
     required FirebaseLoginDatasource datasource,
   }) : _datasource = datasource;
 
