@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/domain/entity/user_entity.dart';
-import 'package:quickdrop/src/domain/usecase/login_usecase.dart';
+import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 
 part 'signup_state.dart';
 

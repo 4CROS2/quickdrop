@@ -24,18 +24,27 @@ class FirebaseLoginDatasource {
       );
       return UserModel.fromFireBase(crendential: userCredential);
     } on FirebaseAuthException catch (exception) {
+      String errorCode;
       switch (exception.code) {
+        case 'invalid-credential':
+          errorCode = '500';
+          break;
         case 'invalid-email':
-          throw 'el correo ingresado es invalido';
+          errorCode = '501';
+          break;
         case 'user-disabled':
-          throw 'el usuario ha sido desabilitado';
+          errorCode = '502';
+          break;
         case 'user-not-found':
-          throw 'usuario no encontrado';
+          errorCode = '503';
+          break;
         case 'wrong-password':
-          throw 'contraseña incorrecta';
+          errorCode = '504';
+          break;
         default:
-          throw 'error desconocido';
+          errorCode = '505';
       }
+      throw errorCode;
     } catch (e) {
       throw e.toString();
     }
@@ -69,18 +78,24 @@ class FirebaseLoginDatasource {
         crendential: userCredential,
       );
     } on FirebaseAuthException catch (exception) {
+      String errorMessage;
       switch (exception.code) {
         case 'email-already-in-use':
-          throw 'El correo electrónico ya está en uso';
+          errorMessage = 'El correo electrónico ya está en uso.';
+          break;
         case 'invalid-email':
-          throw 'El correo electrónico es inválido';
+          errorMessage = 'El correo electrónico no es válido.';
+          break;
         case 'operation-not-allowed':
-          throw 'La operación no está permitida';
+          errorMessage = 'Operación no permitida.';
+          break;
         case 'weak-password':
-          throw 'La contraseña es demasiado débil';
+          errorMessage = 'La contraseña es demasiado débil.';
+          break;
         default:
-          throw 'Error desconocido';
+          errorMessage = 'Ocurrió un error desconocido.';
       }
+      throw errorMessage;
     } catch (e) {
       throw e.toString();
     }

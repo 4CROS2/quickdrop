@@ -43,5 +43,11 @@
     "haveAccount": "hai già un account",
     "@haveAccount": {
         "description": "Etichetta per chiedere se l'utente ha già un account."
-    }
+    },
+"invalidCredential": "Credenziali non valide.",
+"invalidEmail": "L'indirizzo email non è valido.",
+"userDisabled": "L'utente è stato disabilitato.",
+"userNotFound": "Nessun utente trovato con questo indirizzo email.",
+"wrongPassword": "La password è errata.",
+"unknownError":"Si è verificato un errore sconosciuto."
 }

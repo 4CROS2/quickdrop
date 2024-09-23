@@ -43,5 +43,11 @@
     "haveAccount": "already have an account",
     "@haveAccount": {
         "description": "Label to ask if the user already has an account."
-    }
+    },
+    "invalidCredential": "Invalid credentials.",
+    "invalidEmail": "The email address is invalid.",
+    "userDisabled": "The user has been disabled.",
+    "userNotFound": "No user found with this email address.",
+    "wrongPassword": "The password is incorrect.",
+    "unknownError": "An unknown error occurred."
 }

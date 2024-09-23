@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/capitalize.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
@@ -11,7 +12,6 @@ import 'package:quickdrop/src/prensentation/login/widgets/divider.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/inputs.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/other_login_btn.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/title.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quickdrop/src/prensentation/signup/cubit/signup_cubit.dart';
 
 class SignUp extends StatefulWidget {
@@ -196,7 +196,7 @@ class _SignUpState extends State<SignUp> {
                           child: Align(
                             alignment: Alignment.center,
                             child: InkWell(
-                              onTap: () => popNavigator(context: context),
+                              onTap: () => PageNavigation.popNavigator(context),
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Text(

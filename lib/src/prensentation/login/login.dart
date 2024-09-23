@@ -7,7 +7,7 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/capitalize.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/validators.dart';
-import 'package:quickdrop/src/injection/injection_container.dart' as di;
+import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/prensentation/login/cubit/login_cubit.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/auth_btn.dart';
 import 'package:quickdrop/src/prensentation/login/widgets/divider.dart';
@@ -32,6 +32,7 @@ class _LoginState extends State<Login> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
+  late AppLocalizations _localizations;
 
   @override
   void initState() {
@@ -43,6 +44,12 @@ class _LoginState extends State<Login> {
   }
 
   @override
+  void didChangeDependencies() {
+    _localizations = AppLocalizations.of(context)!;
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     _scrollController.dispose();
     _emailController.dispose();
@@ -50,10 +57,27 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
+  String _localizationResponse({required String code}) {
+    switch (code) {
+      case '500':
+        return _localizations.invalidCredential;
+      case '501':
+        return _localizations.invalidEmail;
+      case '502':
+        return _localizations.userDisabled;
+      case '503':
+        return _localizations.userNotFound;
+      case '504':
+        return _localizations.wrongPassword;
+      default:
+        return _localizations.unknownError;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginCubit>(
-      create: (BuildContext context) => di.sl<LoginCubit>(),
+      create: (BuildContext context) => sl<LoginCubit>(),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (BuildContext context, LoginState state) {
           if (state is LoginError) {
@@ -61,7 +85,9 @@ class _LoginState extends State<Login> {
               ..hideCurrentSnackBar()
               ..showSnackBar(
                 SnackBar(
-                  content: Text(state.message),
+                  content: Text(
+                    _localizationResponse(code: state.message),
+                  ),
                 ),
               );
           }
@@ -181,8 +207,8 @@ class _LoginState extends State<Login> {
                         child: Align(
                           alignment: Alignment.center,
                           child: InkWell(
-                            onTap: () => pushNavigator(
-                                context: context, page: const SignUp()),
+                            onTap: () => PageNavigation.pushNavigator(context,
+                                page: const SignUp()),
                             child: Padding(
                               padding: const EdgeInsets.all(10),
                               child: Text(
