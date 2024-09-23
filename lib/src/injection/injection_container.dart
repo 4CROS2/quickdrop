@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:quickdrop/src/data/datasource/backend.dart';
 import 'package:quickdrop/src/data/datasource/firebase_login_datasource.dart';
 import 'package:quickdrop/src/data/repository/login_repository_impl.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
-import 'package:quickdrop/src/domain/usecase/login_usecase.dart';
+import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/prensentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/prensentation/app/cubit/app_observer.dart';
 import 'package:quickdrop/src/prensentation/login/cubit/login_cubit.dart';
@@ -25,12 +26,17 @@ Future<void> init() async {
       firestore: sl<FirebaseFirestore>(),
     ),
   );
+  sl.registerLazySingleton<Backend>(
+    () => Backend(
+      firebaseAuth: sl<FirebaseAuth>(),
+    ),
+  );
   sl.registerLazySingleton<AppObserver>(
     () => AppObserver(),
   );
   // Repositories
   sl.registerLazySingleton<AuthRepository>(
-    () => ILoginRepository(
+    () => IAuthRepository(
       datasource: sl<FirebaseLoginDatasource>(),
     ),
   );

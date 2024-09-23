@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/domain/repository/auth_repository.dart';
-import 'package:quickdrop/src/injection/injection_container.dart' as di;
+import 'package:quickdrop/src/prensentation/home/widgets/drawer/drawer.dart';
+import 'package:quickdrop/src/prensentation/home/widgets/header/header.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,35 +10,29 @@ class Home extends StatefulWidget {
 
   static Page<Home> page() => const MaterialPage<Home>(
         child: Home(),
+        name: 'home',
+        maintainState: true,
+        allowSnapshotting: true,
       );
 }
 
 class _HomeState extends State<Home> {
-  final AuthRepository data = di.sl<AuthRepository>();
-  final FirebaseAuth user = di.sl<FirebaseAuth>();
-  String? keyl = '';
-  @override
-  void initState() {
-    super.initState();
-    getUser();
-  }
-
-  void getUser() async {
-    keyl = await user.currentUser!.getIdToken();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: Text(keyl!),
+      drawer: const HomeDrawer(),
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: <Widget>[
+          SliverPersistentHeader(
+            delegate: HomeHeader(),
+            pinned: true,
           ),
-          ElevatedButton(
-            onPressed: () => data.logout(),
-            child: const Text('Logout'),
+          ...List<SliverToBoxAdapter>.generate(
+            300,
+            (int index) => SliverToBoxAdapter(
+              child: Text(index.toString()),
+            ),
           )
         ],
       ),

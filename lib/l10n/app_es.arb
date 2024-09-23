@@ -44,5 +44,11 @@
     "haveAccount": "ya tienes una cuenta",
     "@haveAccount": {
         "description": "Etiqueta para preguntar si el usuario ya tiene cuenta."
-    }
+    },
+    "invalidCredential": "Las credenciales son inválidas.",
+    "invalidEmail": "El correo electrónico no es válido.",
+    "userDisabled": "El usuario ha sido deshabilitado.",
+    "userNotFound": "No se encontró ningún usuario con ese correo electrónico.",
+    "wrongPassword": "La contraseña es incorrecta.",
+    "unknownError": "Ocurrió un error desconocido."
 }
