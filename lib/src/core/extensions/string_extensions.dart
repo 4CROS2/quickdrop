@@ -8,7 +8,7 @@ extension StringExtensions on String {
     }).join(' ');
   }
 
- String capitalize() {
+  String capitalize() {
     if (isEmpty) {
       return '';
     }

@@ -1,5 +1,3 @@
-
-
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 
 String? emailvalidator(String? value) {

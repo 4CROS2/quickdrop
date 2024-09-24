@@ -19,7 +19,7 @@ class _LocationHeaderState extends State<LocationHeader> {
       opacity: widget._opacity,
       child: Material(
         color: Colors.black12,
-        borderRadius: Constants.mainBorderRadius*2,
+        borderRadius: Constants.mainBorderRadius * 2,
         child: Padding(
           padding: Constants.mainPadding,
           child: Row(

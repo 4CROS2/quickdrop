@@ -52,14 +52,16 @@ class ProductTile extends StatelessWidget {
                       'asahdjkahfjfkafhdh'.capitalize(),
                       softWrap: true,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14
-                      ),
+                          fontWeight: FontWeight.w600, fontSize: 14),
                     ),
                     //product price
-                    Text(formatPrice(13220),
-                    
-                    style: TextStyle(fontWeight: FontWeight.w900,fontSize: 16),)
+                    Text(
+                      formatPrice(13220),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 16,
+                      ),
+                    )
                   ],
                 ),
               ),
