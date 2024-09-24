@@ -1,14 +1,18 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
+import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
+import 'package:quickdrop/src/prensentation/product/product.dart';
+import 'package:quickdrop/src/prensentation/widgets/clipper_radius_images.dart';
+import 'package:quickdrop/src/prensentation/widgets/image_loader.dart';
 
 class ProductTile extends StatelessWidget {
   const ProductTile({
+    required int index,
     super.key,
-  });
+  }) : _index = index;
+  final int _index;
 
   @override
   Widget build(BuildContext context) {
@@ -21,29 +25,32 @@ class ProductTile extends StatelessWidget {
         borderRadius: Constants.mainBorderRadius,
         child: InkWell(
           onTap: () {
-            // Acción al hacer tap
+            PageNavigation.pushNavigator(
+              context,
+              page: Product(
+                index: _index.toString(),
+                productImg: 'https://i.redd.it/g4crddfnmt9a1.jpg',
+              ),
+            );
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              CachedNetworkImage(
-                imageUrl: 'https://i.redd.it/g4crddfnmt9a1.jpg',
-                progressIndicatorBuilder: (BuildContext context, String url,
-                        DownloadProgress progress) =>
-                    const CupertinoActivityIndicator(),
-                errorWidget: (BuildContext context, String url, Object error) =>
-                    const Center(
-                  child: Icon(
-                    Icons.error_outline,
-                  ),
+              Hero(
+                transitionOnUserGestures: true,
+                tag: _index.toString(),
+                child: const ClipperRadiusImages(
+                  child: ImageLoader(
+                      imageUrl: 'https://i.redd.it/g4crddfnmt9a1.jpg'),
                 ),
-                width: double.infinity,
-                fit: BoxFit.cover,
               ),
               // product informations
               Padding(
-                padding: Constants.mainPadding.copyWith(top: 5, bottom: 5),
+                padding: Constants.mainPadding.copyWith(
+                  top: 5,
+                  bottom: 5,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -52,7 +59,9 @@ class ProductTile extends StatelessWidget {
                       'asahdjkahfjfkafhdh'.capitalize(),
                       softWrap: true,
                       style: const TextStyle(
-                          fontWeight: FontWeight.w600, fontSize: 14),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                      ),
                     ),
                     //product price
                     Text(

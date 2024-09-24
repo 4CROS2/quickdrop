@@ -30,8 +30,9 @@ class _AppState extends State<App> {
             child: MaterialApp(
               title: 'Quickdrop',
               theme: ThemeData(
-                  colorSchemeSeed: Constants.primaryColor,
-                  fontFamily: 'RedHat'),
+                colorSchemeSeed: Constants.primaryColor,
+                fontFamily: 'RedHat',
+              ),
               darkTheme: ThemeData.dark(),
               themeMode: ThemeMode.light,
               locale: Locale(

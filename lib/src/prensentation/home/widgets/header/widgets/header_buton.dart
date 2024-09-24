@@ -1,30 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 
-class HeaderButtons extends StatefulWidget {
+class HeaderButtons extends StatelessWidget {
   const HeaderButtons({
     required IconData icon,
     VoidCallback? onTap,
+    Color backgroundColor = Colors.black12,
+    Color? iconColor,
     super.key,
   })  : _iconData = icon,
-        _onTap = onTap;
+        _iconColor = iconColor,
+        _onTap = onTap,
+        _backgroundColor = backgroundColor;
   final IconData _iconData;
   final VoidCallback? _onTap;
-  @override
-  State<HeaderButtons> createState() => _HeaderButtonsState();
-}
+  final Color _backgroundColor;
+  final Color? _iconColor;
 
-class _HeaderButtonsState extends State<HeaderButtons> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget._onTap,
-      child: Material(
-        borderRadius: Constants.mainBorderRadius,
-        color: Colors.black12,
+    return Material(
+      borderRadius: Constants.mainBorderRadius,
+      color: _backgroundColor,
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        onTap: _onTap,
         child: Padding(
           padding: Constants.buttonPadding,
-          child: Icon(widget._iconData),
+          child: Icon(
+            _iconData,
+            color: _iconColor,
+          ),
         ),
       ),
     );
