@@ -40,17 +40,6 @@
 
 You can find the source code for the QuickDrop client app on GitHub: [QuickDrop Client App](https://github.com/4CROS2/quickdrop)
 
-## Screenshots
-
-### Home Page
-![Home Page](link-to-screenshot)
-
-### Promotions Section
-![Promotions Section](link-to-screenshot)
-
-### Products Section
-![Products Section](link-to-screenshot)
-
 ## Conclusion
 
 QuickDrop aims to provide a seamless and efficient shopping experience for clients, with robust backend support and a user-friendly interface. This app is a crucial component of a larger system designed to streamline the process of ordering, delivering, and managing products.
