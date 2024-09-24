@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/prensentation/product/widgets/product_header.dart';
+import 'package:quickdrop/src/prensentation/product/widgets/productHeader/product_header.dart';
 
 class Product extends StatefulWidget {
   const Product({

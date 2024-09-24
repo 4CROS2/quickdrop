@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/header/widgets/header_buton.dart';
-import 'package:quickdrop/src/prensentation/product/widgets/title_header.dart';
+import 'package:quickdrop/src/prensentation/product/widgets/productHeader/widgets/title_header.dart';
 import 'package:quickdrop/src/prensentation/widgets/clipper_radius_images.dart';
 import 'package:quickdrop/src/prensentation/widgets/image_loader.dart';
 
