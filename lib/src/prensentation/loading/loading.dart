@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/core/extensions/capitalize.dart';
+import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({super.key});

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/drawer/drawer.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/header/header.dart';
+import 'package:quickdrop/src/prensentation/home/widgets/products/products.dart';
+import 'package:quickdrop/src/prensentation/home/widgets/promotions/promotions.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -28,12 +30,10 @@ class _HomeState extends State<Home> {
             delegate: HomeHeader(),
             pinned: true,
           ),
-          ...List<SliverToBoxAdapter>.generate(
-            300,
-            (int index) => SliverToBoxAdapter(
-              child: Text(index.toString()),
-            ),
-          )
+          const SliverToBoxAdapter(
+            child: PromotionsAndDiscounts(),
+          ),
+          const Products()
         ],
       ),
     );

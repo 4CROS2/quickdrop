@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/capitalize.dart';
+import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 
 class AuthBtn extends StatelessWidget {
   const AuthBtn({

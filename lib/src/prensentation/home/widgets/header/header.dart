@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/header/widgets/header_buton.dart';
+import 'package:quickdrop/src/prensentation/home/widgets/header/widgets/location_header.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/header/widgets/search_input.dart';
 import 'package:quickdrop/src/prensentation/search/search.dart';
 
@@ -19,8 +20,11 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
             .clamp(0.0, 1.0));
     final double originalSize = MediaQuery.sizeOf(context).width * .16;
     return Material(
-      color: Color.lerp(Constants.primaryColor.withOpacity(.5),
-          Constants.primaryColor, percent),
+      color: Color.lerp(
+        Theme.of(context).scaffoldBackgroundColor,
+        Constants.primaryColor,
+        percent,
+      ),
       child: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -33,7 +37,7 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
             child: Stack(
               children: <Widget>[
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     HeaderButtons(
@@ -42,12 +46,14 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                       },
                       icon: Icons.menu_rounded,
                     ),
+                    LocationHeader(
+                      opacity: 1 - percent,
+                    ),
                     const HeaderButtons(
                       icon: Icons.shopping_cart_outlined,
                     )
                   ],
                 ),
-                // Movimiento hacia el centro más rápido
                 Positioned(
                   bottom: 0,
                   left: 0 + (originalSize * percent),
