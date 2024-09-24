@@ -12,10 +12,16 @@ class PromotionsAndDiscounts extends StatefulWidget {
 
 class _PromotionsAndDiscountsState extends State<PromotionsAndDiscounts> {
   late final PageController _controller;
+  final int _realItemCount = 5;
+  final int _infiniteScrollMultiplier = 1000;
+
   @override
   void initState() {
     super.initState();
-    _controller = PageController(viewportFraction: .9);
+    _controller = PageController(
+      initialPage: _realItemCount * _infiniteScrollMultiplier ~/ 2,
+      viewportFraction: .9,
+    );
   }
 
   @override
@@ -27,25 +33,38 @@ class _PromotionsAndDiscountsState extends State<PromotionsAndDiscounts> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.only(top: 10.0),
       child: SizedBox(
         height: 200,
         width: MediaQuery.of(context).size.width,
         child: PageView.builder(
-          itemCount: 5,
+          itemCount: _realItemCount * _infiniteScrollMultiplier,
           controller: _controller,
           pageSnapping: true,
+          onPageChanged: (int index) {
+            if (index == 0) {
+              _controller
+                  .jumpToPage(_realItemCount * _infiniteScrollMultiplier ~/ 2);
+            } else if (index ==
+                _realItemCount * _infiniteScrollMultiplier - 1) {
+              _controller
+                  .jumpToPage(_realItemCount * _infiniteScrollMultiplier ~/ 2);
+            }
+          },
           itemBuilder: (BuildContext context, int index) {
+            final int realIndex = index % _realItemCount;
             return Container(
               width: MediaQuery.of(context).size.width * .8,
               height: double.infinity,
-              margin: const EdgeInsets.symmetric(horizontal: 5),
+              margin: const EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
               decoration: BoxDecoration(
-                color: Colors.amber,
+                color: Constants.primaryColor,
                 borderRadius: Constants.mainBorderRadius,
               ),
               child: Center(
-                child: Text('Page $index'),
+                child: Text('Page $realIndex'),
               ),
             );
           },

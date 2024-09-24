@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/core/extensions/capitalize.dart';
+import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 
 String? emailvalidator(String? value) {
   if (value == null || value.isEmpty) {
