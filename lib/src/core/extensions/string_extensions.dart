@@ -14,6 +14,7 @@ extension StringExtensions on String {
     }
     return this[0].toUpperCase() + substring(1).toLowerCase();
   }
+
   String capitalizeSentences() {
     if (isEmpty) {
       return '';

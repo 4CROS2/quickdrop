@@ -20,7 +20,6 @@ class _QuantityButtonState extends State<QuantityButton> {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-
       child: Material(
         color: Constants.primaryColor,
         child: InkWell(

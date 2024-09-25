@@ -28,5 +28,4 @@ class Constants {
 
   static EdgeInsets mainPadding = const EdgeInsets.all(12);
   static EdgeInsets buttonPadding = const EdgeInsets.all(15);
-
 }
