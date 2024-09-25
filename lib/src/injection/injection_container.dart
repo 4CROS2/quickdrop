@@ -9,6 +9,8 @@ import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/prensentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/prensentation/app/cubit/app_observer.dart';
 import 'package:quickdrop/src/prensentation/login/cubit/login_cubit.dart';
+import 'package:quickdrop/src/prensentation/product/productCubit/product_cubit.dart';
+import 'package:quickdrop/src/prensentation/product/purchaseCubit/purchase_cubit.dart';
 import 'package:quickdrop/src/prensentation/signup/cubit/signup_cubit.dart';
 
 final GetIt sl = GetIt.instance;
@@ -47,19 +49,25 @@ Future<void> init() async {
     ),
   );
   //cubits
-  sl.registerFactory(
+  sl.registerFactory<AppCubit>(
     () => AppCubit(
       firebaseAuth: sl<FirebaseAuth>(),
     ),
   );
-  sl.registerFactory(
+  sl.registerFactory<LoginCubit>(
     () => LoginCubit(
       useCase: sl<AuthUseCase>(),
     ),
   );
-  sl.registerFactory(
+  sl.registerFactory<SignupCubit>(
     () => SignupCubit(
       useCase: sl<AuthUseCase>(),
     ),
+  );
+  sl.registerFactory<ProductCubit>(
+    () => ProductCubit(),
+  );
+  sl.registerFactory<PurchaseCubit>(
+    () => PurchaseCubit(),
   );
 }

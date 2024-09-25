@@ -24,7 +24,9 @@ class Constants {
   static Color primaryColor = const Color(
     0xFF7C96F4,
   );
+  static Color secondaryColor = Colors.black12;
 
   static EdgeInsets mainPadding = const EdgeInsets.all(12);
   static EdgeInsets buttonPadding = const EdgeInsets.all(15);
+
 }

@@ -14,4 +14,17 @@ extension StringExtensions on String {
     }
     return this[0].toUpperCase() + substring(1).toLowerCase();
   }
+  String capitalizeSentences() {
+    if (isEmpty) {
+      return '';
+    }
+    List<String> sentences = split('. ');
+    for (int i = 0; i < sentences.length; i++) {
+      if (sentences[i].isNotEmpty) {
+        sentences[i] = sentences[i][0].toUpperCase() +
+            sentences[i].substring(1).toLowerCase();
+      }
+    }
+    return sentences.join('. ');
+  }
 }
