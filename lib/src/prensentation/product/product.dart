@@ -168,15 +168,27 @@ class ProductBody extends StatelessWidget {
           const BuyButtons(),
           //vendor data
           const Vendor(),
+          //
+
           //other products
           ...List<Text>.generate(
             100,
             (int index) => Text(
               index.toString(),
             ),
-          )
+          ),
         ],
       ),
     );
+  }
+}
+
+class OtherProducts extends StatelessWidget {
+  const OtherProducts({required this.title, super.key});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
