@@ -26,7 +26,9 @@ class _ProductsState extends State<Products> {
           crossAxisCount: 2,
         ),
         itemBuilder: (BuildContext context, int index) {
-          return const ProductTile();
+          return ProductTile(
+            index: index,
+          );
         },
       ),
     );
