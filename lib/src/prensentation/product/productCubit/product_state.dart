@@ -7,8 +7,8 @@ class ProductState extends Equatable {
   List<Object> get props => <Object>[];
 }
 
-class LoadingProducts extends ProductState{}
+class LoadingProducts extends ProductState {}
 
-class ErrorLoadingProducts extends ProductState{}
+class ErrorLoadingProducts extends ProductState {}
 
-class SuccessLoadingProducts extends ProductState{}
+class SuccessLoadingProducts extends ProductState {}
