@@ -3,16 +3,17 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
+import 'package:quickdrop/src/domain/entity/home_products.dart';
 import 'package:quickdrop/src/prensentation/product/product.dart';
 import 'package:quickdrop/src/prensentation/widgets/clipper_radius_images.dart';
 import 'package:quickdrop/src/prensentation/widgets/image_loader.dart';
 
 class ProductTile extends StatelessWidget {
   const ProductTile({
-    required int index,
+    required HomeProductsEntity product,
     super.key,
-  }) : _index = index;
-  final int _index;
+  }) : _product = product;
+  final HomeProductsEntity _product;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class ProductTile extends StatelessWidget {
             PageNavigation.pushNavigator(
               context,
               page: Product(
-                index: _index.toString(),
+                index: '2',
                 productImg: 'https://i.redd.it/g4crddfnmt9a1.jpg',
               ),
             );
@@ -39,7 +40,7 @@ class ProductTile extends StatelessWidget {
             children: <Widget>[
               Hero(
                 transitionOnUserGestures: true,
-                tag: _index.toString(),
+                tag: '2',
                 child: const ClipperRadiusImages(
                   child: ImageLoader(
                       imageUrl: 'https://i.redd.it/g4crddfnmt9a1.jpg'),
@@ -56,7 +57,7 @@ class ProductTile extends StatelessWidget {
                   children: <Widget>[
                     //product name
                     Text(
-                      'asahdjkahfjfkafhdh'.capitalize(),
+                      _product.name.capitalize(),
                       softWrap: true,
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
@@ -65,7 +66,7 @@ class ProductTile extends StatelessWidget {
                     ),
                     //product price
                     Text(
-                      formatPrice(13220),
+                      formatPrice(_product.price),
                       style: const TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 16,
