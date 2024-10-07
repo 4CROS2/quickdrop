@@ -14,9 +14,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
 
-  firebase_core: ^3.5.0
+  firebase_core: ^3.6.0
   firebase_auth: ^5.3.0
-  cloud_firestore: ^5.4.2
+  cloud_firestore: ^5.4.3
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   hydrated_bloc: ^9.1.5
@@ -31,7 +31,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   dart_code_metrics: null
 flutter:
   generate: true
