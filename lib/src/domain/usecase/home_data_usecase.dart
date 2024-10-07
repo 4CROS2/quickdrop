@@ -7,9 +7,6 @@ class HomeDataUsecase {
   }) : _repository = repository;
   final HomeDataRepository _repository;
 
-  Future<List<HomeProductsEntity>> products(
-          ) async =>
-      await _repository.getHomeData(
-       
-      );
+  Future<List<HomeProductsEntity>> products() async =>
+      await _repository.getHomeData();
 }
