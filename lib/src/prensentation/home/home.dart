@@ -21,34 +21,54 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
       create: (BuildContext context) => sl<HomeCubit>()..getHomeData(),
-      child: BlocBuilder<HomeCubit, HomeState>(
-        builder: (BuildContext context, HomeState state) => Scaffold(
-          drawer: const HomeDrawer(),
-          body: AnimatedSwitcher(
-            duration: Constants.animationTransition,
-            child: switch (state) {
-              SuccessHomeData _ => CustomScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  slivers: <Widget>[
-                    SliverPersistentHeader(
-                      delegate: HomeHeader(),
-                      pinned: true,
+      child: Scaffold(
+        drawer: const HomeDrawer(),
+        body: BlocBuilder<HomeCubit, HomeState>(
+          builder: (BuildContext context, HomeState state) {
+            return RefreshIndicator(
+              onRefresh: () async {
+                await context.read<HomeCubit>().getHomeData();
+              },
+              child: CustomScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                slivers: <Widget>[
+                  SliverPersistentHeader(
+                    delegate: HomeHeader(),
+                    pinned: true,
+                  ),
+                  SliverToBoxAdapter(
+                    child: AnimatedSwitcher(
+                      duration: Constants.animationTransition,
+                      transitionBuilder: (
+                        Widget child,
+                        Animation<double> animation,
+                      ) =>
+                          FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      ),
+                      child: switch (state) {
+                        SuccessHomeData _ => Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              PromotionsAndDiscounts(),
+                              Products(
+                                products: state.products,
+                              ),
+                            ],
+                          ),
+                        ErrorGettingHomeData _ => Center(
+                            child: Text(state.message),
+                          ),
+                        LoadingHomeData _ => const LoadingStatus(),
+                        _ => const SizedBox.shrink()
+                      },
                     ),
-                    const SliverToBoxAdapter(
-                      child: PromotionsAndDiscounts(),
-                    ),
-                    Products(
-                      products: state.products,
-                    )
-                  ],
-                ),
-              ErrorGettingHomeData _ => Center(
-                  child: Text(state.message),
-                ),
-              LoadingHomeData _ => LoadingStatus(),
-              _ => SizedBox.shrink()
-            },
-          ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

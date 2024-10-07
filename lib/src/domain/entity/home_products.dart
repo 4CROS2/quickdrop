@@ -6,7 +6,7 @@ class HomeProductsEntity {
     required this.price,
     required this.sellerId,
   });
-  final int id;
+  final String id;
   final String name;
   final String description;
   final int price;

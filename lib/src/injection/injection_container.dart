@@ -40,7 +40,9 @@ Future<void> init() async {
     ),
   );
   sl.registerLazySingleton<HomeDatasource>(
-    () => HomeDatasource(),
+    () => HomeDatasource(
+      firestore: sl<FirebaseFirestore>(),
+    ),
   );
   // Repositories
   sl.registerLazySingleton<AuthRepository>(

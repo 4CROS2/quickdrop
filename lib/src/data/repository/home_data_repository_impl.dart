@@ -8,10 +8,8 @@ class IHomeDataRepository extends HomeDataRepository {
   }) : _datasource = datasource;
   final HomeDatasource _datasource;
   @override
-  Future<List<HomeProductsModel>> getHomeData(
-      {required String userToken}) async {
-    final Map<String, dynamic> response =
-        await _datasource.getHomeData(token: userToken);
+  Future<List<HomeProductsModel>> getHomeData() async {
+    final Map<String, dynamic> response = await _datasource.getHomeData();
     final List<dynamic> jsonData = response['products'];
     return jsonData
         .map(

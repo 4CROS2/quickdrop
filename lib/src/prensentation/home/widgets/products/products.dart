@@ -18,21 +18,19 @@ class Products extends StatefulWidget {
 class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: MasonryGridView.builder(
-        padding: Constants.mainPadding / 2,
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: widget._products.length,
-        gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return ProductTile(
-            product: widget._products[index],
-          );
-        },
+    return MasonryGridView.builder(
+      padding: Constants.mainPadding / 2,
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: widget._products.length,
+      gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
       ),
+      itemBuilder: (BuildContext context, int index) {
+        return ProductTile(
+          product: widget._products[index],
+        );
+      },
     );
   }
 }
