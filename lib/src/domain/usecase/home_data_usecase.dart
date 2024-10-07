@@ -7,7 +7,8 @@ class HomeDataUsecase {
   }) : _repository = repository;
   final HomeDataRepository _repository;
 
-  Future<List<HomeProductsEntity>> products({required String userToken}) async =>
+  Future<List<HomeProductsEntity>> products(
+          {required String userToken}) async =>
       await _repository.getHomeData(
         userToken: userToken,
       );
