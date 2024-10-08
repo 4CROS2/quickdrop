@@ -8,6 +8,7 @@ class HomeProductsModel extends HomeProductsEntity {
     required super.description,
     required super.price,
     required super.sellerId,
+    required super.images,
   });
 
   static HomeProductsModel fromJson({required Map<String, dynamic> json}) {
@@ -19,13 +20,23 @@ class HomeProductsModel extends HomeProductsEntity {
     } else {
       sellerId = json['seller_id'] ?? '';
     }
-
+    List<dynamic> jsonImages = json['images'];
+    List<String> images = <String>[];
+    if (json['images'] != null && json['images'] is List) {
+      images = List<String>.from(
+        jsonImages.map(
+          // ignore: always_specify_types
+          (image) => image.toString(),
+        ),
+      );
+    }
     return HomeProductsModel(
       id: json['id'] ?? '',
       name: json['name'] ?? 'Unknown',
       description: json['description'] ?? '',
       price: json['price'] ?? 0,
       sellerId: sellerId,
+      images: images,
     );
   }
 }

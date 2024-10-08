@@ -11,9 +11,13 @@ class ProductCubit extends Cubit<ProductState> {
   Future<void> tester() async {
     await Future<void>.delayed(
       Duration(milliseconds: 1500),
-      () => emit(
-        SuccessLoadingProducts(),
-      ),
+      () {
+        if (!isClosed) {
+          emit(
+            SuccessLoadingProducts(),
+          );
+        }
+      },
     );
   }
 }
