@@ -3,11 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:quickdrop/src/data/datasource/backend.dart';
 import 'package:quickdrop/src/data/datasource/firebase_login_datasource.dart';
+import 'package:quickdrop/src/data/datasource/home_datasource.dart';
+import 'package:quickdrop/src/data/repository/home_data_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/login_repository_impl.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
+import 'package:quickdrop/src/domain/repository/home_data_repository.dart';
 import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
+import 'package:quickdrop/src/domain/usecase/home_data_usecase.dart';
 import 'package:quickdrop/src/prensentation/app/cubit/app_cubit.dart';
-import 'package:quickdrop/src/prensentation/app/cubit/app_observer.dart';
+import 'package:quickdrop/src/prensentation/home/cubit/home_cubit.dart';
 import 'package:quickdrop/src/prensentation/login/cubit/login_cubit.dart';
 import 'package:quickdrop/src/prensentation/product/productCubit/product_cubit.dart';
 import 'package:quickdrop/src/prensentation/product/purchaseCubit/purchase_cubit.dart';
@@ -20,7 +24,9 @@ Future<void> init() async {
   sl.registerLazySingleton<FirebaseAuth>(
     () => FirebaseAuth.instance,
   );
-  sl.registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance);
+  sl.registerLazySingleton<FirebaseFirestore>(
+    () => FirebaseFirestore.instance,
+  );
   // Data sources
   sl.registerLazySingleton<FirebaseLoginDatasource>(
     () => FirebaseLoginDatasource(
@@ -33,8 +39,10 @@ Future<void> init() async {
       firebaseAuth: sl<FirebaseAuth>(),
     ),
   );
-  sl.registerLazySingleton<AppObserver>(
-    () => AppObserver(),
+  sl.registerLazySingleton<HomeDatasource>(
+    () => HomeDatasource(
+      firestore: sl<FirebaseFirestore>(),
+    ),
   );
   // Repositories
   sl.registerLazySingleton<AuthRepository>(
@@ -42,10 +50,20 @@ Future<void> init() async {
       datasource: sl<FirebaseLoginDatasource>(),
     ),
   );
+  sl.registerLazySingleton<HomeDataRepository>(
+    () => IHomeDataRepository(
+      datasource: sl<HomeDatasource>(),
+    ),
+  );
   //use case
   sl.registerLazySingleton<AuthUseCase>(
     () => AuthUseCase(
       repository: sl<AuthRepository>(),
+    ),
+  );
+  sl.registerLazySingleton<HomeDataUsecase>(
+    () => HomeDataUsecase(
+      repository: sl<HomeDataRepository>(),
     ),
   );
   //cubits
@@ -62,6 +80,11 @@ Future<void> init() async {
   sl.registerFactory<SignupCubit>(
     () => SignupCubit(
       useCase: sl<AuthUseCase>(),
+    ),
+  );
+  sl.registerFactory<HomeCubit>(
+    () => HomeCubit(
+      usecase: sl<HomeDataUsecase>(),
     ),
   );
   sl.registerFactory<ProductCubit>(

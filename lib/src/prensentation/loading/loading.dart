@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
+import 'package:quickdrop/src/prensentation/widgets/loading_status.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({super.key});
@@ -11,22 +10,7 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const CupertinoActivityIndicator(),
-            Text(
-              'loading...'.capitalize(),
-              style: const TextStyle(
-                  fontFamily: 'RedHat',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16),
-            ),
-          ],
-        ),
-      ),
+      body: LoadingStatus(),
     );
   }
 }
