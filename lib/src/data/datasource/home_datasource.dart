@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:quickdrop/src/core/extensions/querysnapshot_to_json_extension.dart';
 
 class HomeDatasource {
   HomeDatasource({
@@ -8,21 +9,66 @@ class HomeDatasource {
   final FirebaseFirestore _firestore;
 
   Future<Map<String, dynamic>> getHomeData() async {
-    CollectionReference<Object?> collection = _firestore.collection('products');
-    QuerySnapshot<Object?> querySnapshot = await collection.get();
+    try {
+      CollectionReference<Object?> sellersCollection =
+          _firestore.collection('sellers');
 
-    List<Map<String, dynamic>> products = <Map<String, dynamic>>[];
+      final DateTime now = DateTime.now();
+      final String currentDay = getDayString(now.weekday);
+      final String currentTime = getFormattedTime(now);
+      try {
+        // Consulta para obtener los vendedores disponibles con base en el horario de hoy
+        QuerySnapshot<Object?> sellersSnapshot = await sellersCollection
+            .where('schedule.$currentDay.open_hour',
+                isLessThanOrEqualTo: currentTime)
+            .where('schedule.$currentDay.close_hour',
+                isGreaterThanOrEqualTo: currentTime)
+            .get();
 
-    // Iterar sobre los documentos y agregar el id del documento
-    for (QueryDocumentSnapshot<Object?> doc in querySnapshot.docs) {
-      Map<String, dynamic> productData = doc.data() as Map<String, dynamic>;
+        List<String> availableSellerIds = sellersSnapshot.toListString();
+        if (availableSellerIds.isNotEmpty) {
+          QuerySnapshot<Object?> productsQuery = await _firestore
+              .collection('products')
+              .where('seller_id', whereIn: availableSellerIds)
+              .get();
 
-      // Agregar el 'id' del documento a los datos del producto
-      productData['id'] = doc.id;
-
-      products.add(productData);
+          List<Map<String, dynamic>> products = productsQuery.toListMapJson();
+          return <String, dynamic>{'products': products};
+        } else {
+          return <String, dynamic>{'products': <dynamic>[]};
+        }
+      } catch (e) {
+        return <String, dynamic>{'products': <dynamic>[]};
+      }
+    } catch (e) {
+      throw Exception(e);
     }
-    // Devolver un Map que contenga la lista de productos
-    return <String, dynamic>{'products': products};
+  }
+
+  // Función para obtener el día de la semana como string
+  String getDayString(int weekday) {
+    switch (weekday) {
+      case DateTime.monday:
+        return 'monday';
+      case DateTime.tuesday:
+        return 'tuesday';
+      case DateTime.wednesday:
+        return 'wednesday';
+      case DateTime.thursday:
+        return 'thursday';
+      case DateTime.friday:
+        return 'friday';
+      case DateTime.saturday:
+        return 'saturday';
+      case DateTime.sunday:
+        return 'sunday';
+      default:
+        return '';
+    }
+  }
+
+  // Función para formatear la hora
+  String getFormattedTime(DateTime time) {
+    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
   }
 }

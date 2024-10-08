@@ -29,8 +29,8 @@ class ProductTile extends StatelessWidget {
             PageNavigation.pushNavigator(
               context,
               page: Product(
-                index: '2',
-                productImg: 'https://i.redd.it/g4crddfnmt9a1.jpg',
+                index: _product.id,
+                productImg: _product.images[0],
               ),
             );
           },
@@ -40,10 +40,11 @@ class ProductTile extends StatelessWidget {
             children: <Widget>[
               Hero(
                 transitionOnUserGestures: true,
-                tag: '2',
-                child: const ClipperRadiusImages(
+                tag: _product.id,
+                child: ClipperRadiusImages(
                   child: ImageLoader(
-                      imageUrl: 'https://i.redd.it/g4crddfnmt9a1.jpg'),
+                    imageUrl: _product.images[0],
+                  ),
                 ),
               ),
               // product informations
