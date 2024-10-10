@@ -30,7 +30,7 @@ class ProductTile extends StatelessWidget {
               context,
               page: Product(
                 index: _product.id,
-                productImg: _product.images[0],
+                productImg: _product.baseImages[0],
               ),
             );
           },
@@ -43,7 +43,7 @@ class ProductTile extends StatelessWidget {
                 tag: _product.id,
                 child: ClipperRadiusImages(
                   child: ImageLoader(
-                    imageUrl: _product.images[0],
+                    imageUrl: _product.baseImages[0],
                   ),
                 ),
               ),
@@ -67,7 +67,7 @@ class ProductTile extends StatelessWidget {
                     ),
                     //product price
                     Text(
-                      formatPrice(_product.price),
+                      formatPrice(_product.basePrice),
                       style: const TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 16,
