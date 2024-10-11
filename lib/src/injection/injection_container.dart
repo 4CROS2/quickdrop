@@ -1,20 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
-import 'package:quickdrop/src/data/datasource/add_to_favorite_datasource.dart';
 import 'package:quickdrop/src/data/datasource/backend.dart';
+import 'package:quickdrop/src/data/datasource/favorite_datasource.dart';
 import 'package:quickdrop/src/data/datasource/firebase_login_datasource.dart';
 import 'package:quickdrop/src/data/datasource/home_datasource.dart';
-import 'package:quickdrop/src/data/repository/add_to_favorite_repository_impl.dart';
+import 'package:quickdrop/src/data/repository/favorite_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/home_data_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/login_repository_impl.dart';
 import 'package:quickdrop/src/domain/repository/add_to_favorite_repository.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
 import 'package:quickdrop/src/domain/repository/home_data_repository.dart';
-import 'package:quickdrop/src/domain/usecase/add_to_favorite_usecase.dart';
+import 'package:quickdrop/src/domain/usecase/favorite_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/home_data_usecase.dart';
 import 'package:quickdrop/src/prensentation/app/cubit/app_cubit.dart';
+import 'package:quickdrop/src/prensentation/favorites/cubit/favorites_cubit.dart';
 import 'package:quickdrop/src/prensentation/home/cubit/home_cubit.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
 import 'package:quickdrop/src/prensentation/login/cubit/login_cubit.dart';
@@ -64,8 +65,8 @@ Future<void> init() async {
       datasource: sl<HomeDatasource>(),
     ),
   );
-  sl.registerLazySingleton<AddToFavoriteRepository>(
-    () => IAddToFavoriteRepository(datasource: sl<AddToFavoriteDatasource>()),
+  sl.registerLazySingleton<FavoriteRepository>(
+    () => IFavoriteRepository(datasource: sl<AddToFavoriteDatasource>()),
   );
   //use case
   sl.registerLazySingleton<AuthUseCase>(
@@ -80,7 +81,7 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<AddToFavoriteUsecase>(
     () => AddToFavoriteUsecase(
-      repository: sl<AddToFavoriteRepository>(),
+      repository: sl<FavoriteRepository>(),
     ),
   );
   //cubits
@@ -112,5 +113,8 @@ Future<void> init() async {
   );
   sl.registerFactory<AddToFavoriteCubit>(
     () => AddToFavoriteCubit(usecase: sl<AddToFavoriteUsecase>()),
+  );
+  sl.registerFactory<FavoritesCubit>(
+    () => FavoritesCubit(),
   );
 }

@@ -1,7 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Constants {
   static double borderValue = 14.0;
+  static double minHeight = 100.0;
 
   ///main border radius
   static BorderRadius mainBorderRadius = BorderRadius.circular(borderValue);
@@ -24,10 +27,15 @@ class Constants {
   static Color primaryColor = const Color(
     0xFF7C96F4,
   );
-  static Color secondaryColor = Colors.black12;
+  static const Color secondaryColor = Colors.black45;
 
   static EdgeInsets mainPadding = const EdgeInsets.all(12);
   static EdgeInsets buttonPadding = const EdgeInsets.all(15);
 
   static Duration animationTransition = const Duration(milliseconds: 400);
+
+  static ImageFilter iamgeFilterBlur = ImageFilter.blur(
+    sigmaX: 20,
+    sigmaY: 20,
+  );
 }

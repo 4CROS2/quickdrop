@@ -1,14 +1,14 @@
-import 'package:quickdrop/src/domain/entity/add_favorite_entity.dart';
+import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
 
-abstract class AddToFavoriteRepository {
-  Future<AddFavoriteEntity> checkFavorite({
+abstract class FavoriteRepository {
+  Future<FavoriteEntity> checkFavorite({
     required String productId,
   });
-  Future<AddFavoriteEntity> addToFavorite({
+  Future<FavoriteEntity> addToFavorite({
     required String productId,
   });
 
-  Future<AddFavoriteEntity> removeFavorite({
+  Future<FavoriteEntity> removeFavorite({
     required String productId,
   });
 }

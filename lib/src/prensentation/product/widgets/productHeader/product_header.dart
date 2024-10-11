@@ -1,11 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
-import 'package:quickdrop/src/prensentation/home/widgets/header/widgets/header_buton.dart';
 import 'package:quickdrop/src/prensentation/product/widgets/productHeader/widgets/title_header.dart';
 import 'package:quickdrop/src/prensentation/widgets/clipper_radius_images.dart';
+import 'package:quickdrop/src/prensentation/widgets/header_buton.dart';
 import 'package:quickdrop/src/prensentation/widgets/image_loader.dart';
 
 class ProductHeader extends SliverPersistentHeaderDelegate {
@@ -51,13 +49,10 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                 height: minExtent,
                 child: ClipRRect(
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                      sigmaX: 2,
-                      sigmaY: 2,
-                    ),
-                    child: const DecoratedBox(
+                    filter: Constants.iamgeFilterBlur,
+                    child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Colors.black45,
+                        color: Constants.secondaryColor,
                       ),
                     ),
                   ),
@@ -110,7 +105,7 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
   @override
   final double maxExtent = 340;
   @override
-  double minExtent = 100;
+  double minExtent = Constants.minHeight;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>

@@ -1,18 +1,18 @@
-import 'package:quickdrop/src/domain/entity/add_favorite_entity.dart';
+import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
 
-class AddFavoriteModel extends AddFavoriteEntity {
-  AddFavoriteModel({
+class FavoriteModel extends FavoriteEntity {
+  FavoriteModel({
     required super.message,
     required super.favoriteState,
   });
-  static AddFavoriteModel fromJson({required Map<String, dynamic> json}) {
+  static FavoriteModel fromJson({required Map<String, dynamic> json}) {
     Favorite favorite = Favorite.removed;
     if (json['state'] == true) {
       favorite = Favorite.added;
     } else {
       favorite = Favorite.removed;
     }
-    return AddFavoriteModel(
+    return FavoriteModel(
       message: json['message'],
       favoriteState: favorite,
     );

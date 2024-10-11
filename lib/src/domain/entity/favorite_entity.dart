@@ -1,7 +1,7 @@
 enum Favorite { added, removed }
 
-class AddFavoriteEntity {
-  AddFavoriteEntity({
+class FavoriteEntity {
+  FavoriteEntity({
     required this.message,
     required this.favoriteState,
   });
