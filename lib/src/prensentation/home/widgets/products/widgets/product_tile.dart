@@ -4,6 +4,7 @@ import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/domain/entity/home_products.dart';
+import 'package:quickdrop/src/prensentation/home/widgets/products/widgets/favorite/add_favorite.dart';
 import 'package:quickdrop/src/prensentation/product/product.dart';
 import 'package:quickdrop/src/prensentation/widgets/clipper_radius_images.dart';
 import 'package:quickdrop/src/prensentation/widgets/image_loader.dart';
@@ -20,7 +21,7 @@ class ProductTile extends StatelessWidget {
     return Padding(
       padding: Constants.mainPadding / 2,
       child: Material(
-        elevation: 5,
+        elevation: 2,
         borderOnForeground: true,
         clipBehavior: Clip.hardEdge,
         borderRadius: Constants.mainBorderRadius,
@@ -30,7 +31,7 @@ class ProductTile extends StatelessWidget {
               context,
               page: Product(
                 index: _product.id,
-                productImg: _product.images[0],
+                productImg: _product.baseImages[0],
               ),
             );
           },
@@ -38,14 +39,25 @@ class ProductTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Hero(
-                transitionOnUserGestures: true,
-                tag: _product.id,
-                child: ClipperRadiusImages(
-                  child: ImageLoader(
-                    imageUrl: _product.images[0],
+              Stack(
+                children: <Widget>[
+                  Hero(
+                    transitionOnUserGestures: true,
+                    tag: _product.id,
+                    child: ClipperRadiusImages(
+                      child: ImageLoader(
+                        imageUrl: _product.baseImages[0],
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    top: Constants.buttonPadding.top / 2,
+                    right: Constants.buttonPadding.right / 2,
+                    child: AddToFavoriteButton(
+                      productId: _product.id,
+                    ),
+                  )
+                ],
               ),
               // product informations
               Padding(
@@ -67,7 +79,7 @@ class ProductTile extends StatelessWidget {
                     ),
                     //product price
                     Text(
-                      formatPrice(_product.price),
+                      formatPrice(_product.basePrice),
                       style: const TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 16,
