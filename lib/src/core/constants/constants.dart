@@ -9,6 +9,11 @@ class Constants {
   ///main border radius
   static BorderRadius mainBorderRadius = BorderRadius.circular(borderValue);
 
+  static const AlwaysScrollableScrollPhysics bouncingScrollPhysics =
+      AlwaysScrollableScrollPhysics(
+    parent: BouncingScrollPhysics(),
+  );
+
   static OutlineInputBorder authBorder = OutlineInputBorder(
     borderSide: BorderSide.none,
     borderRadius: Constants.mainBorderRadius,

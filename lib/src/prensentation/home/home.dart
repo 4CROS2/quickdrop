@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
                 await context.read<HomeCubit>().getHomeData();
               },
               child: CustomScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: Constants.bouncingScrollPhysics,
                 slivers: <Widget>[
                   SliverPersistentHeader(
                     delegate: HomeHeader(),

@@ -1,5 +1,5 @@
-class HomeProductsEntity {
-  const HomeProductsEntity({
+class ProductsEntity {
+  const ProductsEntity({
     required this.id,
     required this.name,
     required this.description,

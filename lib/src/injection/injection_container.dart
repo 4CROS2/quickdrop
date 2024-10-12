@@ -8,11 +8,11 @@ import 'package:quickdrop/src/data/datasource/home_datasource.dart';
 import 'package:quickdrop/src/data/repository/favorite_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/home_data_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/login_repository_impl.dart';
-import 'package:quickdrop/src/domain/repository/add_to_favorite_repository.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
+import 'package:quickdrop/src/domain/repository/favorite_repository.dart';
 import 'package:quickdrop/src/domain/repository/home_data_repository.dart';
-import 'package:quickdrop/src/domain/usecase/favorite_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
+import 'package:quickdrop/src/domain/usecase/favorite_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/home_data_usecase.dart';
 import 'package:quickdrop/src/prensentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/prensentation/favorites/cubit/favorites_cubit.dart';
@@ -79,8 +79,8 @@ Future<void> init() async {
       repository: sl<HomeDataRepository>(),
     ),
   );
-  sl.registerLazySingleton<AddToFavoriteUsecase>(
-    () => AddToFavoriteUsecase(
+  sl.registerLazySingleton<FavoritesUsecase>(
+    () => FavoritesUsecase(
       repository: sl<FavoriteRepository>(),
     ),
   );
@@ -112,9 +112,11 @@ Future<void> init() async {
     () => PurchaseCubit(),
   );
   sl.registerFactory<AddToFavoriteCubit>(
-    () => AddToFavoriteCubit(usecase: sl<AddToFavoriteUsecase>()),
+    () => AddToFavoriteCubit(usecase: sl<FavoritesUsecase>()),
   );
   sl.registerFactory<FavoritesCubit>(
-    () => FavoritesCubit(),
+    () => FavoritesCubit(
+      usecase: sl<FavoritesUsecase>(),
+    ),
   );
 }

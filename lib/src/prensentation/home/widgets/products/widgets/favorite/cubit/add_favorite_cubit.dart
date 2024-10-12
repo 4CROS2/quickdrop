@@ -7,11 +7,11 @@ part 'add_favorite_state.dart';
 
 class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
   AddToFavoriteCubit({
-    required AddToFavoriteUsecase usecase,
+    required FavoritesUsecase usecase,
   })  : _usecase = usecase,
         super(AddFavoriteState());
 
-  final AddToFavoriteUsecase _usecase;
+  final FavoritesUsecase _usecase;
 
   void checkFavorite({required String productId}) async {
     try {

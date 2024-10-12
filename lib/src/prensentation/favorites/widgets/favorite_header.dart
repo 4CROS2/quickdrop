@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/prensentation/widgets/header_buton.dart';
 
@@ -32,12 +33,24 @@ class FavoriteHeader extends SliverPersistentHeaderDelegate {
                 horizontal: Constants.mainPadding.left,
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   HeaderButtons(
                     onTap: () => PageNavigation.popNavigator(context),
                     icon: Icons.arrow_back_ios_rounded,
                     iconColor: Colors.white,
                   ),
+                  Text(
+                    'tus favoritos'.capitalize(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 50,
+                  )
                 ],
               ),
             ),

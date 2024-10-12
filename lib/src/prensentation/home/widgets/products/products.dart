@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/domain/entity/home_products.dart';
+import 'package:quickdrop/src/domain/entity/products_entity.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/products/widgets/product_tile.dart';
 
 class Products extends StatefulWidget {
   const Products({
-    required List<HomeProductsEntity> products,
+    required List<ProductsEntity> products,
     super.key,
   }) : _products = products;
-  final List<HomeProductsEntity> _products;
+  final List<ProductsEntity> _products;
   @override
   State<Products> createState() => _ProductsState();
 }
