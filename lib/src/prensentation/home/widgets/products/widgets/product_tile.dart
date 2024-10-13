@@ -30,8 +30,7 @@ class ProductTile extends StatelessWidget {
             PageNavigation.pushNavigator(
               context,
               page: Product(
-                index: _product.id,
-                productImg: _product.baseImages[0],
+                productId: _product.id,
               ),
             );
           },

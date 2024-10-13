@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
+import 'package:quickdrop/src/core/functions/custom_snack_bar.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
@@ -48,30 +49,19 @@ class AddToFavoriteButton extends StatelessWidget {
             BlocConsumer<AddToFavoriteCubit, AddFavoriteState>(
               listener: (BuildContext context, AddFavoriteState state) {
                 if (state.message != '') {
-                  ScaffoldMessenger.of(context)
-                    ..removeCurrentSnackBar()
-                    ..showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          state.message.capitalize(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        elevation: 0,
-                        backgroundColor: Constants.primaryColor,
-                        actionOverflowThreshold: 0.75,
-                        action: SnackBarAction(
-                          onPressed: () => PageNavigation.pushNavigator(
-                            context,
-                            page: Favorites(),
-                          ),
-                          label: 'favoritos'.capitalize(),
-                          textColor: Constants.primaryColor,
-                          backgroundColor: Colors.white,
-                        ),
+                  showCustomSnackbar(
+                    context,
+                    message: state.message,
+                    snackBarAction: SnackBarAction(
+                      onPressed: () => PageNavigation.pushNavigator(
+                        context,
+                        page: Favorites(),
                       ),
-                    );
+                      label: 'favoritos'.capitalize(),
+                      textColor: Constants.primaryColor,
+                      backgroundColor: Colors.white,
+                    ),
+                  );
                 }
               },
               builder: (BuildContext context, AddFavoriteState state) {

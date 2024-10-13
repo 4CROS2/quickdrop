@@ -11,13 +11,11 @@ import 'package:quickdrop/src/prensentation/product/widgets/vendor/vendor.dart';
 
 class Product extends StatefulWidget {
   const Product({
-    required String index,
-    required String productImg,
+    required String productId,
     super.key,
-  })  : _index = index,
-        _productImg = productImg;
-  final String _index;
-  final String _productImg;
+  }) : _productId = productId;
+
+  final String _productId;
   @override
   State<Product> createState() => _ProductState();
 }
@@ -57,8 +55,8 @@ class _ProductState extends State<Product> {
                 pinned: true,
                 delegate: ProductHeader(
                   title: title,
-                  heroTag: widget._index,
-                  productImg: widget._productImg,
+                  heroTag: widget._productId,
+                  productImg: widget._productId,
                 ),
               ),
               BlocBuilder<ProductCubit, ProductState>(

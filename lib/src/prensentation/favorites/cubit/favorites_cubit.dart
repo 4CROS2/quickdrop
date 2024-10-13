@@ -27,7 +27,9 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     } catch (e) {
       emit(
         state.copyWith(
-            message: e.toString(), favoriteStatus: FavoriteStatus.error),
+          message: e.toString(),
+          favoriteStatus: FavoriteStatus.error,
+        ),
       );
     }
   }
@@ -36,23 +38,28 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     try {
       final FavoriteEntity response =
           await _usecase.removeFavorite(productId: productId);
-      emit(
-        state.copyWith(
-          favorites: state.favorites
-              .where((ProductsEntity product) => product.id != productId)
-              .toList(),
-          message: response.message,
-          favoriteStatus: FavoriteStatus.success,
-        ),
-      );
-      emit(
-        state.copyWith(message: ''),
-      );
+      if (response.favoriteState == Favorite.removed) {
+        emit(
+          state.copyWith(
+            favorites: state.favorites
+                .where((ProductsEntity product) => product.id != productId)
+                .toList(),
+            message: response.message,
+            favoriteStatus: FavoriteStatus.success,
+          ),
+        );
+        emit(
+          state.copyWith(message: ''),
+        );
+      } else {
+        emit(
+          state.copyWith(message: response.message),
+        );
+      }
     } catch (e) {
       emit(
         state.copyWith(
           message: e.toString(),
-          favoriteStatus: FavoriteStatus.error,
         ),
       );
     }

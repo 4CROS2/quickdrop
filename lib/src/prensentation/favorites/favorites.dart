@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/core/functions/custom_snack_bar.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/prensentation/favorites/cubit/favorites_cubit.dart';
 import 'package:quickdrop/src/prensentation/favorites/widgets/favorite_body.dart';
@@ -25,13 +26,10 @@ class _FavoritesState extends State<Favorites> {
         body: BlocConsumer<FavoritesCubit, FavoritesState>(
           listener: (BuildContext context, FavoritesState state) {
             if (state.message != '') {
-              ScaffoldMessenger.of(context)
-                ..removeCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    content: Text(state.message),
-                  ),
-                );
+              showCustomSnackbar(
+                context,
+                message: state.message,
+              );
             }
           },
           builder: (BuildContext context, FavoritesState state) {
