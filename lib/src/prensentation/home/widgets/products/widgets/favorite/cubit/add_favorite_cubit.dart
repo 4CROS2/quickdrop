@@ -1,21 +1,21 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/add_favorite_entity.dart';
-import 'package:quickdrop/src/domain/usecase/add_to_favorite_usecase.dart';
+import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
+import 'package:quickdrop/src/domain/usecase/favorite_usecase.dart';
 
 part 'add_favorite_state.dart';
 
 class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
   AddToFavoriteCubit({
-    required AddToFavoriteUsecase usecase,
+    required FavoritesUsecase usecase,
   })  : _usecase = usecase,
         super(AddFavoriteState());
 
-  final AddToFavoriteUsecase _usecase;
+  final FavoritesUsecase _usecase;
 
   void checkFavorite({required String productId}) async {
     try {
-      final AddFavoriteEntity response =
+      final FavoriteEntity response =
           await _usecase.checkFavorite(productId: productId);
 
       if (!isClosed) {
@@ -36,7 +36,7 @@ class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
   void addOrRemoveToFavorite({required String productId}) async {
     try {
       if (state.favorite == Favorite.removed) {
-        final AddFavoriteEntity response =
+        final FavoriteEntity response =
             await _usecase.addTofavorite(productId: productId);
 
         if (!isClosed) {
@@ -46,7 +46,7 @@ class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
           ));
         }
       } else {
-        final AddFavoriteEntity response =
+        final FavoriteEntity response =
             await _usecase.removeFavorite(productId: productId);
 
         if (!isClosed) {

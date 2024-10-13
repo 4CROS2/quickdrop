@@ -20,5 +20,5 @@ class SuccessHomeData extends HomeState {
   const SuccessHomeData({
     required this.products,
   });
-  final List<HomeProductsEntity> products;
+  final List<ProductsEntity> products;
 }

@@ -1,5 +1,5 @@
-import 'package:quickdrop/src/domain/entity/home_products.dart';
+import 'package:quickdrop/src/domain/entity/products_entity.dart';
 
 abstract class HomeDataRepository {
-  Future<List<HomeProductsEntity>> getHomeData();
+  Future<List<ProductsEntity>> getHomeData();
 }

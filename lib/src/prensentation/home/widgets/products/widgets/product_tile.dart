@@ -3,7 +3,7 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
-import 'package:quickdrop/src/domain/entity/home_products.dart';
+import 'package:quickdrop/src/domain/entity/products_entity.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/products/widgets/favorite/add_favorite.dart';
 import 'package:quickdrop/src/prensentation/product/product.dart';
 import 'package:quickdrop/src/prensentation/widgets/clipper_radius_images.dart';
@@ -11,10 +11,10 @@ import 'package:quickdrop/src/prensentation/widgets/image_loader.dart';
 
 class ProductTile extends StatelessWidget {
   const ProductTile({
-    required HomeProductsEntity product,
+    required ProductsEntity product,
     super.key,
   }) : _product = product;
-  final HomeProductsEntity _product;
+  final ProductsEntity _product;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,7 @@ class ProductTile extends StatelessWidget {
             PageNavigation.pushNavigator(
               context,
               page: Product(
-                index: _product.id,
-                productImg: _product.baseImages[0],
+                productId: _product.id,
               ),
             );
           },
