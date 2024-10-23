@@ -11,4 +11,12 @@ class UserEntity {
   final String phone;
   final String name;
   final String lastname;
+
+  static const UserEntity empty = UserEntity(
+    id: '',
+    email: '',
+    phone: '',
+    name: '',
+    lastname: '',
+  );
 }

@@ -10,7 +10,9 @@ class UserModel extends UserEntity {
     required super.lastname,
   });
 
-  factory UserModel.fromFireBase({required UserCredential crendential}) {
+  factory UserModel.fromFireBase({
+    required UserCredential crendential,
+  }) {
     return UserModel(
       id: crendential.user!.uid,
       email: crendential.user!.email!,
@@ -19,6 +21,17 @@ class UserModel extends UserEntity {
       name: '',
     );
   }
+
+  static UserModel fromJson({required Map<String, dynamic> json}) {
+    return UserModel(
+      id: json['id'] ?? '',
+      email: json['email'] ?? '',
+      phone: json['phone'] ?? '',
+      lastname: json['lastName'] ?? '',
+      name: json['name'] ?? '',
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,

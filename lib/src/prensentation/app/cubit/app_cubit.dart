@@ -1,50 +1,69 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/domain/entity/user_entity.dart';
+import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit({
-    required FirebaseAuth firebaseAuth,
-  })  : _firebaseAuth = firebaseAuth,
+    required AuthUseCase authUseCase,
+  })  : _authUseCase = authUseCase,
         super(const AppState()) {
-    _firebaseAuth.userChanges().listen(
-      (User? user) {
-        userState(user: user);
-      },
+    _authSubscription();
+  }
+  final AuthUseCase _authUseCase;
+  StreamSubscription<UserEntity>? _subscription;
+  void _authSubscription() {
+    _emitLoadingState();
+    _subscription = _authUseCase.userStatus().listen(
+          (UserEntity deliveryAgent) => _onDeliveryAgentUpdated(
+            user: deliveryAgent,
+          ),
+          onError: _onError,
+        );
+  }
+
+  void _emitLoadingState() {
+    emit(state.copyWith(appStatus: AppStatus.loading));
+  }
+
+  void _emitAuthenticatedState({required UserEntity user}) {
+    emit(
+      state.copyWith(
+        user: user,
+        appStatus: AppStatus.authenticated,
+      ),
     );
   }
-  final FirebaseAuth _firebaseAuth;
 
-  void userState({required User? user}) {
-    if (user == null) {
-      emit(
-        state.copyWith(
-          appStatus: AppStatus.unauthenticated,
-          user: const UserEntity(
-            id: '',
-            email: '',
-            lastname: '',
-            name: '',
-            phone: '',
-          ),
-        ),
-      );
+  void _emitUnauthenticatedState() {
+    emit(
+      state.copyWith(
+        user: UserEntity.empty,
+        appStatus: AppStatus.unauthenticated,
+      ),
+    );
+  }
+
+  void _onDeliveryAgentUpdated({required UserEntity user}) {
+    if (user.id.isNotEmpty) {
+      _emitAuthenticatedState(user: user);
     } else {
-      emit(
-        state.copyWith(
-          appStatus: AppStatus.authenticated,
-          user: UserEntity(
-            id: user.uid,
-            email: user.email ?? '',
-            lastname: '',
-            name: '',
-            phone: '',
-          ),
-        ),
-      );
+      _emitUnauthenticatedState();
     }
+  }
+
+  // ignore: always_specify_types
+  void _onError(error) {
+    _emitUnauthenticatedState();
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    return super.close();
   }
 }

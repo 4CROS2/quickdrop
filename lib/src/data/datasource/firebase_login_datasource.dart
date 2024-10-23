@@ -1,16 +1,38 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:quickdrop/src/core/extensions/document_snapshot_stream_extension.dart';
 import 'package:quickdrop/src/data/model/user_model.dart';
+import 'package:rxdart/rxdart.dart';
 
 class FirebaseLoginDatasource {
   FirebaseLoginDatasource({
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firestore,
+    required GoogleSignIn googleSigin,
   })  : _firebaseAuth = firebaseAuth,
-        _firestore = firestore;
+        _firestore = firestore /* _googleSignIn = googleSigin */;
 
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
+
+  //final GoogleSignIn _googleSignIn;
+  Stream<Map<String, dynamic>?> deliveryStatus() {
+    return _firebaseAuth.userChanges().switchMap((User? user) {
+      if (user != null) {
+        return _firestore
+            .collection('users')
+            .doc(user.uid)
+            .snapshots()
+            .toMapJsonStream();
+      } else {
+        // Si no hay usuario autenticado, devuelve null
+        return Stream<Map<String, dynamic>?>.value(
+          <String, dynamic>{},
+        );
+      }
+    });
+  }
 
   Future<UserModel> loginWithEmail({
     required String email,
