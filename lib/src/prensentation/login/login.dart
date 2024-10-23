@@ -176,7 +176,8 @@ class _LoginState extends State<Login> {
                             children: <Widget>[
                               Expanded(
                                 child: OtherLoginBtn(
-                                  onTap: () {},
+                                  onTap: BlocProvider.of<LoginCubit>(context)
+                                      .loginWithGoogle,
                                   image: 'assets/images/svg/google.svg',
                                   label: 'google'.capitalize(),
                                 ),

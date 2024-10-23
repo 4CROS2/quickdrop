@@ -9,14 +9,7 @@ class SignupState extends Equatable {
 
 class SignupLoading extends SignupState {}
 
-class SignupSuccess extends SignupState {
-  final UserEntity user;
-
-  const SignupSuccess({required this.user});
-
-  @override
-  List<Object> get props => <Object>[user];
-}
+class SignupSuccess extends SignupState {}
 
 class SignupFailure extends SignupState {
   final String message;
