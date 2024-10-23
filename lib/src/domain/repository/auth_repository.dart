@@ -1,6 +1,8 @@
 import 'package:quickdrop/src/domain/entity/user_entity.dart';
 
 abstract class AuthRepository {
+  Stream<UserEntity> userStatus();
+
   Future<UserEntity> login({
     required String email,
     required String password,

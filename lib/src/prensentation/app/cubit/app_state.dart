@@ -5,13 +5,7 @@ enum AppStatus { authenticated, unauthenticated, loading }
 class AppState extends Equatable {
   const AppState({
     this.appStatus = AppStatus.loading,
-    this.user = const UserEntity(
-      email: '',
-      id: '',
-      lastname: '',
-      name: '',
-      phone: '',
-    ),
+    this.user = UserEntity.empty,
   });
   final UserEntity user;
   final AppStatus appStatus;

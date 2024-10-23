@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:quickdrop/src/data/datasource/backend.dart';
 import 'package:quickdrop/src/data/datasource/favorite_datasource.dart';
 import 'package:quickdrop/src/data/datasource/firebase_login_datasource.dart';
@@ -33,11 +34,20 @@ Future<void> init() async {
   sl.registerLazySingleton<FirebaseFirestore>(
     () => FirebaseFirestore.instance,
   );
+  sl.registerLazySingleton<GoogleSignIn>(
+    () => GoogleSignIn(
+      scopes: <String>[
+        'email',
+        'https://www.googleapis.com/auth/userinfo.profile',
+      ],
+    ),
+  );
   // Data sources
   sl.registerLazySingleton<FirebaseLoginDatasource>(
     () => FirebaseLoginDatasource(
       firebaseAuth: sl<FirebaseAuth>(),
       firestore: sl<FirebaseFirestore>(),
+      googleSigin: sl<GoogleSignIn>(),
     ),
   );
   sl.registerLazySingleton<Backend>(
@@ -87,7 +97,7 @@ Future<void> init() async {
   //cubits
   sl.registerFactory<AppCubit>(
     () => AppCubit(
-      firebaseAuth: sl<FirebaseAuth>(),
+      authUseCase: sl<AuthUseCase>(),
     ),
   );
   sl.registerFactory<LoginCubit>(

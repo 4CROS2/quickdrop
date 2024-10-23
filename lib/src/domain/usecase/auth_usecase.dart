@@ -7,6 +7,11 @@ class AuthUseCase {
   }) : _repository = repository;
   final AuthRepository _repository;
 
+  Stream<UserEntity> userStatus() {
+    final Stream<UserEntity> data = _repository.userStatus();
+    return data;
+  }
+
   Future<UserEntity> login(
       {required String email, required String password}) async {
     return await _repository.login(
