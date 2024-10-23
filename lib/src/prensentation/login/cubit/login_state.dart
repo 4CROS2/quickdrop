@@ -9,13 +9,7 @@ class LoginState extends Equatable {
 
 class LoginLoading extends LoginState {}
 
-class LoginSuccess extends LoginState {
-  const LoginSuccess({required this.user});
-
-  final UserEntity user;
-  @override
-  List<Object> get props => <Object>[user];
-}
+class LoginSuccess extends LoginState {}
 
 class LoginError extends LoginState {
   const LoginError({required this.message});

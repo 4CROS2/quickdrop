@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/user_entity.dart';
 import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 
 part 'signup_state.dart';
@@ -21,7 +20,7 @@ class SignupCubit extends Cubit<SignupState> {
   }) async {
     try {
       emit(SignupLoading());
-      final UserEntity response = await _useCase.signUp(
+      await _useCase.signUp(
         email: email,
         password: password,
         name: name,
@@ -29,7 +28,7 @@ class SignupCubit extends Cubit<SignupState> {
         phone: phone,
       );
       emit(
-        SignupSuccess(user: response),
+        SignupSuccess(),
       );
     } catch (e) {
       emit(
