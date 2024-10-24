@@ -9,6 +9,7 @@ class AuthTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'title',
+      transitionOnUserGestures: true,
       child: Material(
         color: Colors.transparent,
         child: Padding(

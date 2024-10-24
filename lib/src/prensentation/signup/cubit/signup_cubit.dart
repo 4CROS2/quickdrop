@@ -38,4 +38,20 @@ class SignupCubit extends Cubit<SignupState> {
       );
     }
   }
+
+  Future<void> registerWithGoogle() async {
+    try {
+      emit(SignupLoading());
+      await _useCase.registerWithGoogle();
+      if (!isClosed) {
+        emit(SignupSuccess());
+      }
+    } catch (e) {
+      emit(
+        SignupFailure(
+          message: e.toString(),
+        ),
+      );
+    }
+  }
 }

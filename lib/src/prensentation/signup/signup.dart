@@ -76,6 +76,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                   );
               }
+              if (state is SignupSuccess) {
+                PageNavigation.popNavigator(context);
+              }
             },
             builder: (BuildContext context, SignupState state) => SafeArea(
               child: Form(
@@ -167,7 +170,8 @@ class _SignUpState extends State<SignUp> {
                           children: <Widget>[
                             Expanded(
                               child: OtherLoginBtn(
-                                onTap: () {},
+                                onTap: BlocProvider.of<SignupCubit>(context)
+                                    .registerWithGoogle,
                                 image: 'assets/images/svg/google.svg',
                                 label: 'google'.capitalize(),
                               ),

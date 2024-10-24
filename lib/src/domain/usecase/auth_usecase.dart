@@ -42,6 +42,10 @@ class AuthUseCase {
     await _repository.googleSignin();
   }
 
+  Future<void> registerWithGoogle() async {
+    await _repository.registerWithGoogle();
+  }
+
   Future<void> logout() async {
     return await _repository.logout();
   }

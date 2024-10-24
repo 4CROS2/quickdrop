@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:quickdrop/src/data/datasource/firebase_login_datasource.dart';
+import 'package:quickdrop/src/data/datasource/firebase_auth_datasource.dart';
 import 'package:quickdrop/src/data/model/user_model.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
 
@@ -12,7 +12,7 @@ class IAuthRepository implements AuthRepository {
 
   @override
   Stream<UserModel> userStatus() {
-    final Stream<Map<String, dynamic>?> response = _datasource.deliveryStatus();
+    final Stream<Map<String, dynamic>?> response = _datasource.userStatus();
 
     final Stream<UserModel> deliveryAgentStream =
         response.where((Map<String, dynamic>? data) => data != null).map(
@@ -60,5 +60,10 @@ class IAuthRepository implements AuthRepository {
   @override
   Future<void> googleSignin() async {
     await _datasource.signInWithGoogle();
+  }
+
+  @override
+  Future<void> registerWithGoogle() async {
+    await _datasource.registerWithGoogle();
   }
 }
