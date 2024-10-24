@@ -17,7 +17,7 @@ class FirebaseLoginDatasource {
   final FirebaseFirestore _firestore;
   final GoogleSignIn _googleSignIn;
 
-  Stream<Map<String, dynamic>?> deliveryStatus() {
+  Stream<Map<String, dynamic>?> userStatus() {
     return _firebaseAuth.userChanges().switchMap((User? user) {
       if (user != null) {
         return _firestore
@@ -70,6 +70,7 @@ class FirebaseLoginDatasource {
           'lastName': lastName,
           'phone': phone,
           'email': email,
+          'photo': ''
         },
       );
     } on FirebaseAuthException catch (exception) {
@@ -82,9 +83,45 @@ class FirebaseLoginDatasource {
 
   Future<void> signInWithGoogle() async {
     try {
+      // Iniciar el flujo de autenticación con Google
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        throw '505';
+        throw '505'; // Error al intentar iniciar sesión con Google
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Consultar en Firestore si existe un usuario con el mismo email
+      final QuerySnapshot<Map<String, dynamic>> userQuery = await _firestore
+          .collection('users')
+          .where('email', isEqualTo: googleUser.email)
+          .limit(1) // Solo necesitamos verificar si existe
+          .get();
+
+      // Verificar si hay algún usuario con ese email
+      if (userQuery.docs.isEmpty) {
+        await logout();
+        throw '503';
+      }
+
+      // Si existe, proceder con la autenticación en Firebase
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      await _firebaseAuth.signInWithCredential(credential);
+    } catch (e) {
+      rethrow; // Re-lanzamos el error para manejarlo externamente
+    }
+  }
+
+  Future<void> registerWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        throw '505'; // Error al intentar iniciar sesión con Google
       }
 
       final GoogleSignInAuthentication googleAuth =
@@ -95,30 +132,30 @@ class FirebaseLoginDatasource {
         idToken: googleAuth.idToken,
       );
 
-      final DocumentSnapshot<Map<String, dynamic>> userDoc = await _firestore
-          .collection('deliveryAgents')
-          .doc(googleUser.id)
-          .get();
-
-      if (!userDoc.exists) {
-        await logout();
-        throw '505';
-      }
-
       final UserCredential userCredential =
           await _firebaseAuth.signInWithCredential(credential);
 
-      await _firestore.collection('users').doc(userCredential.user?.uid).set(
-        <String, dynamic>{
-          'name': googleUser.displayName,
-          'email': googleUser.email,
-          'photoUrl': googleUser.photoUrl,
-          'phone': '',
-        },
-        SetOptions(merge: true),
-      );
+      final DocumentSnapshot<Map<String, dynamic>> userDoc = await _firestore
+          .collection('users')
+          .doc(userCredential.user?.uid)
+          .get();
+
+      // Si el usuario no existe, crear un nuevo documento en la colección 'users'
+      if (!userDoc.exists) {
+        await _firestore.collection('users').doc(userCredential.user?.uid).set(
+          <String, dynamic>{
+            'name': googleUser.displayName,
+            'email': googleUser.email,
+            'photoUrl': googleUser.photoUrl ?? '',
+            'phone': '', // Puedes solicitar el teléfono después
+          },
+          SetOptions(
+            merge: true,
+          ), // Usamos merge para evitar sobrescribir otros datos
+        );
+      }
     } catch (e) {
-      rethrow;
+      rethrow; // Re-lanzamos el error para que sea manejado externamente
     }
   }
 

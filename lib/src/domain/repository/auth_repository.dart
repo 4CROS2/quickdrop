@@ -16,6 +16,7 @@ abstract class AuthRepository {
   });
 
   Future<void> googleSignin();
+  Future<void> registerWithGoogle();
 
   Future<void> logout();
 }
