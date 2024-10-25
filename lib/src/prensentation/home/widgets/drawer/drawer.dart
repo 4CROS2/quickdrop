@@ -50,7 +50,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
               },
               child: const Text('exit'),
             ),
-            
           ],
         ),
       ),
