@@ -6,6 +6,7 @@ class UserEntity {
     required this.name,
     required this.lastname,
     required this.photo,
+    required this.credits,
   });
   final String id;
   final String email;
@@ -13,6 +14,7 @@ class UserEntity {
   final String name;
   final String lastname;
   final String photo;
+  final int credits;
 
   static const UserEntity empty = UserEntity(
     id: '',
@@ -21,5 +23,6 @@ class UserEntity {
     name: '',
     lastname: '',
     photo: '',
+    credits: 0,
   );
 }

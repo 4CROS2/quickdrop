@@ -8,6 +8,7 @@ class UserModel extends UserEntity {
     required super.name,
     required super.lastname,
     required super.photo,
+    required super.credits,
   });
 
   static UserModel fromJson({required Map<String, dynamic> json}) {
@@ -17,7 +18,8 @@ class UserModel extends UserEntity {
       phone: json['phone'] ?? '',
       lastname: json['lastName'] ?? '',
       name: json['name'] ?? '',
-      photo: json['photoUrl']??'',
+      photo: json['photoUrl'] ?? '',
+      credits: json['credits'] ?? 0,
     );
   }
 }
