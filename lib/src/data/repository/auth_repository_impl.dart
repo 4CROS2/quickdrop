@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quickdrop/src/data/datasource/firebase_auth_datasource.dart';
 import 'package:quickdrop/src/data/model/user_model.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
@@ -24,14 +23,13 @@ class IAuthRepository implements AuthRepository {
   }
 
   @override
-  Future<UserModel> login(
-      {required String email, required String password}) async {
-    final UserCredential userCredential = await _datasource.loginWithEmail(
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
+    await _datasource.loginWithEmail(
       email: email,
       password: password,
-    );
-    return UserModel.fromFireBase(
-      crendential: userCredential,
     );
   }
 

@@ -99,7 +99,7 @@ class FirebaseLoginDatasource {
           .limit(1) // Solo necesitamos verificar si existe
           .get();
 
-      // Verificar si hay algún usuario con ese email
+      // Verificar si no hay algún usuario con ese email
       if (userQuery.docs.isEmpty) {
         await logout();
         throw '503';
@@ -113,7 +113,7 @@ class FirebaseLoginDatasource {
 
       await _firebaseAuth.signInWithCredential(credential);
     } catch (e) {
-      rethrow; // Re-lanzamos el error para manejarlo externamente
+      rethrow;
     }
   }
 
@@ -121,7 +121,8 @@ class FirebaseLoginDatasource {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        throw '505'; // Error al intentar iniciar sesión con Google
+        // Error al intentar iniciar sesión con Google
+        throw '505';
       }
 
       final GoogleSignInAuthentication googleAuth =
@@ -142,20 +143,25 @@ class FirebaseLoginDatasource {
 
       // Si el usuario no existe, crear un nuevo documento en la colección 'users'
       if (!userDoc.exists) {
+        String? photoUrl = googleUser.photoUrl;
+        if (photoUrl != null && photoUrl.contains('=s')) {
+          photoUrl = photoUrl.replaceAll(RegExp(r'=s\d+'), '=s400');
+        }
+
         await _firestore.collection('users').doc(userCredential.user?.uid).set(
           <String, dynamic>{
             'name': googleUser.displayName,
             'email': googleUser.email,
-            'photoUrl': googleUser.photoUrl ?? '',
-            'phone': '', // Puedes solicitar el teléfono después
+            'photoUrl': photoUrl ?? '',
+            'phone': '',
           },
           SetOptions(
             merge: true,
-          ), // Usamos merge para evitar sobrescribir otros datos
+          ),
         );
       }
     } catch (e) {
-      rethrow; // Re-lanzamos el error para que sea manejado externamente
+      rethrow;
     }
   }
 
