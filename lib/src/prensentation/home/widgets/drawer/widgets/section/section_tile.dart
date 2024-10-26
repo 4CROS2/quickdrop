@@ -44,8 +44,7 @@ class SectionTile extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
+                Row(
                   children: <Widget>[
                     Icon(
                       _iconData,

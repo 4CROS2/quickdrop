@@ -95,7 +95,7 @@ Future<void> init() async {
     ),
   );
   //cubits
-  sl.registerFactory<AppCubit>(
+  sl.registerLazySingleton<AppCubit>(
     () => AppCubit(
       authUseCase: sl<AuthUseCase>(),
     ),

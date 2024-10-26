@@ -5,9 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/injection/injection_container.dart' as di;
 import 'package:quickdrop/src/prensentation/app/cubit/app_cubit.dart';
-import 'package:quickdrop/src/prensentation/home/home.dart';
-import 'package:quickdrop/src/prensentation/loading/loading.dart';
-import 'package:quickdrop/src/prensentation/login/login.dart';
+import 'package:quickdrop/src/router/app_router.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -17,6 +15,13 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  late final AppRouter _appRouter;
+  @override
+  void initState() {
+    super.initState();
+    _appRouter = AppRouter();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
@@ -27,7 +32,7 @@ class _AppState extends State<App> {
             data: MediaQueryData.fromView(View.of(context)).copyWith(
               textScaler: const TextScaler.linear(1.0),
             ),
-            child: MaterialApp(
+            child: MaterialApp.router(
               title: 'Quickdrop',
               theme: ThemeData(
                 colorSchemeSeed: Constants.primaryColor,
@@ -45,25 +50,7 @@ class _AppState extends State<App> {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-              home: Scaffold(
-                body: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 600),
-                  transitionBuilder: (
-                    Widget child,
-                    Animation<double> animation,
-                  ) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                  child: switch (state.appStatus) {
-                    AppStatus.authenticated => const Home(),
-                    AppStatus.unauthenticated => const Login(),
-                    AppStatus.loading => const LoadingPage()
-                  },
-                ),
-              ),
+              routerConfig: _appRouter.router,
             ),
           );
         },
