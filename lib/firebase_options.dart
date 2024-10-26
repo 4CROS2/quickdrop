@@ -63,9 +63,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '241432358313',
     projectId: 'quickdrop-ebc08',
     storageBucket: 'quickdrop-ebc08.appspot.com',
-    androidClientId: '241432358313-f7o81qop900o2ks8cdc4nnkcbu7p266p.apps.googleusercontent.com',
-    iosClientId: '241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com',
+    androidClientId:
+        '241432358313-f7o81qop900o2ks8cdc4nnkcbu7p266p.apps.googleusercontent.com',
+    iosClientId:
+        '241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com',
     iosBundleId: 'com.quickdropltda.quickdrop',
   );
-
 }
