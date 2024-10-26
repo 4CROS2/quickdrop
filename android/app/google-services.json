@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:241432358313:android:28faa79592439d232328b8",
+        "mobilesdk_app_id": "1:241432358313:android:386b6a71f5260adb2328b8",
         "android_client_info": {
-          "package_name": "com.quickdropltda.quickdrop"
+          "package_name": "com.example.quickdrop"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCDFeISPW47NK0Mw1C-iFjiXQFOcfhEI98"
@@ -20,7 +25,107 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.quickdropltda.quickdrop"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241432358313:android:28faa79592439d232328b8",
+        "android_client_info": {
+          "package_name": "com.quickdropltda.quickdrop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241432358313-tk06ii33chdnucjiob4k1cahhirj4sus.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quickdropltda.quickdrop",
+            "certificate_hash": "ef824834e57d359790043fdfb085a05d3e5a67a1"
+          }
+        },
+        {
+          "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDFeISPW47NK0Mw1C-iFjiXQFOcfhEI98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.quickdropltda.quickdrop"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241432358313:android:d8fde9de7b332d802328b8",
+        "android_client_info": {
+          "package_name": "com.quickdropltda.quickdrop_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241432358313-f7o81qop900o2ks8cdc4nnkcbu7p266p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quickdropltda.quickdrop_delivery",
+            "certificate_hash": "ef824834e57d359790043fdfb085a05d3e5a67a1"
+          }
+        },
+        {
+          "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDFeISPW47NK0Mw1C-iFjiXQFOcfhEI98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.quickdropltda.quickdrop"
+              }
+            }
+          ]
         }
       }
     }
