@@ -50,6 +50,7 @@ class _AppState extends State<App> {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
+             
               routerConfig: _appRouter.router,
             ),
           );

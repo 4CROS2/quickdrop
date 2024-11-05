@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
-import 'package:quickdrop/src/core/functions/page_navigation.dart';
 
 class SectionTile extends StatelessWidget {
   const SectionTile({
     required IconData icon,
     required String label,
-    Widget? page,
+    String? page,
     super.key,
   })  : _iconData = icon,
         _label = label,
@@ -15,7 +15,7 @@ class SectionTile extends StatelessWidget {
 
   final IconData _iconData;
   final String _label;
-  final Widget? _page;
+  final String? _page;
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +31,9 @@ class SectionTile extends StatelessWidget {
         elevation: 5,
         child: InkWell(
           onTap: () {
-            PageNavigation.popNavigator(context);
+           context.pop();
             if (_page != null) {
-              PageNavigation.pushNavigator(
-                context,
-                page: _page,
-              );
+              context.push(_page);
             }
           },
           child: Padding(
@@ -44,27 +41,30 @@ class SectionTile extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Icon(
-                      _iconData,
-                      size: 25,
-                      color: Constants.primaryColor,
-                    ),
-                    Flexible(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          left: Constants.mainPadding.left,
-                        ),
-                        child: Text(
-                          _label.toTitleCase(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
+                Flexible(
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        _iconData,
+                        size: 25,
+                        color: Constants.primaryColor,
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: Constants.mainPadding.left,
+                          ),
+                          child: Text(
+                            _label.toTitleCase(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      Icon(Icons.arrow_forward_ios_rounded)
+                    ],
+                  ),
                 )
               ],
             ),
