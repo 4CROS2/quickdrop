@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
-import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/prensentation/widgets/header_buton.dart';
 
 class FavoriteHeader extends SliverPersistentHeaderDelegate {
@@ -36,7 +36,7 @@ class FavoriteHeader extends SliverPersistentHeaderDelegate {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   HeaderButtons(
-                    onTap: () => PageNavigation.popNavigator(context),
+                    onTap: () => context.pop(),
                     icon: Icons.arrow_back_ios_rounded,
                     iconColor: Colors.white,
                   ),

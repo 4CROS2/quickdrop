@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/prensentation/favorites/favorites.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/drawer/widgets/custom_drawer_header/custom_drawer_header.dart';
 import 'package:quickdrop/src/prensentation/home/widgets/drawer/widgets/section/section_tile.dart';
 
@@ -18,7 +17,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
   @override
   void initState() {
     super.initState();
-
     _authUseCase = sl<AuthUseCase>();
   }
 
@@ -32,7 +30,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           children: <Widget>[
             CustomDrawerHeader(),
             SectionTile(
-              page: Favorites(),
+              page: '/favorites',
               icon: Icons.favorite_outline_rounded,
               label: 'mis favoritos',
             ),
