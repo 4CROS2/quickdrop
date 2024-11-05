@@ -31,7 +31,7 @@ class SectionTile extends StatelessWidget {
         elevation: 5,
         child: InkWell(
           onTap: () {
-           context.pop();
+            context.pop();
             if (_page != null) {
               context.push(_page);
             }
