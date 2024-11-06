@@ -57,23 +57,6 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  String _localizationResponse({required String code}) {
-    switch (code) {
-      case '500':
-        return _localizations.invalidCredential;
-      case '501':
-        return _localizations.invalidEmail;
-      case '502':
-        return _localizations.userDisabled;
-      case '503':
-        return _localizations.userNotFound;
-      case '504':
-        return _localizations.wrongPassword;
-      default:
-        return _localizations.unknownError;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginCubit>(
@@ -86,7 +69,10 @@ class _LoginState extends State<Login> {
               ..showSnackBar(
                 SnackBar(
                   content: Text(
-                    _localizationResponse(code: state.message),
+                    context.read<LoginCubit>().localizationResponse(
+                          localizations: _localizations,
+                          code: state.message,
+                        ),
                   ),
                 ),
               );

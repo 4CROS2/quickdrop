@@ -1,14 +1,24 @@
 part of 'product_cubit.dart';
 
-class ProductState extends Equatable {
-  const ProductState();
+class ProductDetailState extends Equatable {
+  const ProductDetailState();
 
   @override
   List<Object> get props => <Object>[];
 }
 
-class LoadingProducts extends ProductState {}
+class LoadingProduct extends ProductDetailState {}
 
-class ErrorLoadingProducts extends ProductState {}
+class ErrorLoadingProduct extends ProductDetailState {
+  const ErrorLoadingProduct({
+    required this.message,
+  });
+  final String message;
+}
 
-class SuccessLoadingProducts extends ProductState {}
+class SuccessLoadingProduct extends ProductDetailState {
+  const SuccessLoadingProduct({
+    required this.product,
+  });
+  final ProductsEntity product;
+}

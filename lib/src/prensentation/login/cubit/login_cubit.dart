@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 
 part 'login_state.dart';
@@ -40,6 +41,26 @@ class LoginCubit extends Cubit<LoginState> {
           ),
         );
       }
+    }
+  }
+
+  String localizationResponse({
+    required AppLocalizations localizations,
+    required String code,
+  }) {
+    switch (code) {
+      case '500':
+        return localizations.invalidCredential;
+      case '501':
+        return localizations.invalidEmail;
+      case '502':
+        return localizations.userDisabled;
+      case '503':
+        return localizations.userNotFound;
+      case '504':
+        return localizations.wrongPassword;
+      default:
+        return localizations.unknownError;
     }
   }
 }

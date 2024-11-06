@@ -83,17 +83,18 @@ class AppRouter {
             );
           }),
       GoRoute(
-        path: '/product/:productId',
-        name: 'product',
-        pageBuilder: (BuildContext context, GoRouterState state) =>
-            CustomTransitionPage<Home>(
-          child: Product(
-            productId: state.pathParameters['productId']!,
-          ),
-          transitionsBuilder: fadeTransitionBuilder,
-          transitionDuration: Constants.animationTransition,
-        ),
-      )
+          path: '/product/:productId',
+          name: 'product',
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            return CustomTransitionPage<Home>(
+              child: Product(
+                productId: state.pathParameters['productId']!,
+                previewImage: state.uri.queryParameters['previewImage'] ?? '',
+              ),
+              transitionsBuilder: slideTransitionBuilder,
+              transitionDuration: Constants.animationTransition,
+            );
+          }),
     ],
   );
 }
