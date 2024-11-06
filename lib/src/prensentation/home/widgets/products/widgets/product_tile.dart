@@ -49,7 +49,7 @@ class ProductTile extends StatelessWidget {
                 children: <Widget>[
                   Hero(
                     transitionOnUserGestures: true,
-                    tag: _product.id,
+                    tag: _product.baseImages.first,
                     child: ClipperRadiusImages(
                       child: ImageLoader(
                         imageUrl: _product.baseImages[0],
