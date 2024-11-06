@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
-import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/domain/entity/products_entity.dart';
-import 'package:quickdrop/src/prensentation/product/product.dart';
 
 class FavoriteProductTile extends StatelessWidget {
   const FavoriteProductTile({
@@ -41,23 +40,28 @@ class FavoriteProductTile extends StatelessWidget {
               elevation: 6,
               borderRadius: Constants.mainBorderRadius,
               child: InkWell(
-                onTap: () => PageNavigation.pushNavigator(
-                  context,
-                  page: Product(
-                    productId: _favorite.id,
-                  ),
+                onTap: () => context.push(
+                  Uri(
+                    path: '/product/${_favorite.id}',
+                    queryParameters: <String, dynamic>{
+                      'previewImage': _favorite.baseImages.first
+                    },
+                  ).toString(),
                 ),
                 child: Padding(
                   padding: Constants.mainPadding / 2,
                   child: Row(
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: Constants.mainBorderRadius / 2,
-                        child: CachedNetworkImage(
-                          imageUrl: _favorite.baseImages[0],
-                          fit: BoxFit.cover,
-                          width: 80,
-                          height: 80,
+                      Hero(
+                        tag: _favorite.baseImages.first,
+                        child: ClipRRect(
+                          borderRadius: Constants.mainBorderRadius / 2,
+                          child: CachedNetworkImage(
+                            imageUrl: _favorite.baseImages[0],
+                            fit: BoxFit.cover,
+                            width: 80,
+                            height: 80,
+                          ),
                         ),
                       ),
                       Flexible(
