@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/prensentation/product/productCubit/product_cubit.dart';
+import 'package:quickdrop/src/prensentation/product/widgets/productHeader/widgets/carrousell.dart';
 import 'package:quickdrop/src/prensentation/product/widgets/productHeader/widgets/title_header.dart';
 import 'package:quickdrop/src/prensentation/widgets/clipper_radius_images.dart';
 import 'package:quickdrop/src/prensentation/widgets/header_buton.dart';
@@ -28,15 +29,20 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              Hero(
-                transitionOnUserGestures: true,
-                tag: _previewImage,
-                child: ClipperRadiusImages(
-                  child: ImageLoader(
-                    imageUrl: _previewImage,
+              if (state is! SuccessLoadingProduct)
+                Hero(
+                  transitionOnUserGestures: true,
+                  tag: _previewImage,
+                  child: ClipperRadiusImages(
+                    child: ImageLoader(
+                      imageUrl: _previewImage,
+                    ),
                   ),
                 ),
-              ),
+              if (state is SuccessLoadingProduct)
+                Carousel(
+                  images: state.product.baseImages,
+                ),
               Positioned(
                 top: 0,
                 left: 0,
