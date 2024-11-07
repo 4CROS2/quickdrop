@@ -19,14 +19,14 @@ import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/favorite_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/home_data_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/produc_detail_usecase.dart';
-import 'package:quickdrop/src/prensentation/app/cubit/app_cubit.dart';
-import 'package:quickdrop/src/prensentation/favorites/cubit/favorites_cubit.dart';
-import 'package:quickdrop/src/prensentation/home/cubit/home_cubit.dart';
-import 'package:quickdrop/src/prensentation/home/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
-import 'package:quickdrop/src/prensentation/login/cubit/login_cubit.dart';
-import 'package:quickdrop/src/prensentation/product/productCubit/product_cubit.dart';
-import 'package:quickdrop/src/prensentation/product/purchaseCubit/purchase_cubit.dart';
-import 'package:quickdrop/src/prensentation/signup/cubit/signup_cubit.dart';
+import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
+import 'package:quickdrop/src/presentation/favorites/cubit/favorites_cubit.dart';
+import 'package:quickdrop/src/presentation/home/cubit/home_cubit.dart';
+import 'package:quickdrop/src/presentation/home/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
+import 'package:quickdrop/src/presentation/login/cubit/login_cubit.dart';
+import 'package:quickdrop/src/presentation/product/productCubit/product_cubit.dart';
+import 'package:quickdrop/src/presentation/product/purchaseCubit/purchase_cubit.dart';
+import 'package:quickdrop/src/presentation/signup/cubit/signup_cubit.dart';
 
 final GetIt sl = GetIt.instance;
 
