@@ -8,6 +8,7 @@ import 'package:quickdrop/src/prensentation/home/home.dart';
 import 'package:quickdrop/src/prensentation/loading/loading.dart';
 import 'package:quickdrop/src/prensentation/login/login.dart';
 import 'package:quickdrop/src/prensentation/product/product.dart';
+import 'package:quickdrop/src/prensentation/product/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/router/fade_transition_builder.dart';
 import 'package:quickdrop/src/router/go_router_refresh_stream.dart';
 import 'package:quickdrop/src/router/slide_transition_router.dart';
@@ -22,7 +23,6 @@ class AppRouter {
     ),
     redirect: (BuildContext context, GoRouterState state) {
       final AppStatus appStatus = _appCubit.state.appStatus;
-
       if (appStatus == AppStatus.authenticated &&
           state.matchedLocation == '/') {
         return '/home';
@@ -54,7 +54,6 @@ class AppRouter {
       ),
       GoRoute(
         path: '/login',
-        name: 'login',
         pageBuilder: (BuildContext context, GoRouterState state) =>
             CustomTransitionPage<Login>(
           child: Login(),
@@ -83,18 +82,42 @@ class AppRouter {
             );
           }),
       GoRoute(
-          path: '/product/:productId',
-          name: 'product',
-          pageBuilder: (BuildContext context, GoRouterState state) {
-            return CustomTransitionPage<Home>(
-              child: Product(
-                productId: state.pathParameters['productId']!,
-                previewImage: state.uri.queryParameters['previewImage'] ?? '',
-              ),
-              transitionsBuilder: slideTransitionBuilder,
-              transitionDuration: Constants.animationTransition,
-            );
-          }),
+        path: '/product/:productId',
+        name: 'product',
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CustomTransitionPage<Home>(
+            child: Product(
+              productId: state.pathParameters['productId']!,
+              previewImage: state.uri.queryParameters['previewImage'] ?? '',
+            ),
+            transitionsBuilder: slideTransitionBuilder,
+            transitionDuration: Constants.animationTransition,
+          );
+        },
+      ),
+      GoRoute(
+        path: '/fullScrenImage',
+        name: 'fullScrenImage',
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          final Map<String, dynamic> extra =
+              state.extra as Map<String, dynamic>;
+
+          final List<String> images =
+              extra['images'] as List<String>? ?? <String>[];
+          final int currentPage = extra['currentPage'] as int? ?? 0;
+          return CustomTransitionPage<void>(
+            fullscreenDialog: true,
+            opaque: false,
+            barrierDismissible: true,
+            child: FullScreenImage(
+              images: images,
+              currentPage: currentPage,
+            ),
+            transitionsBuilder: fadeTransitionBuilder,
+            transitionDuration: Constants.animationTransition,
+          );
+        },
+      )
     ],
   );
 }
