@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/prensentation/product/widgets/productHeader/widgets/carrousell_indicator.dart';
-import 'package:quickdrop/src/prensentation/widgets/image_loader.dart';
+import 'package:quickdrop/src/prensentation/product/widgets/productHeader/widgets/carrousell_tile.dart';
 
 class Carousel extends StatefulWidget {
   const Carousel({
@@ -18,7 +18,6 @@ class Carousel extends StatefulWidget {
 class _CarouselState extends State<Carousel> {
   late final PageController _controller;
   int currentPage = 0;
-  int previousPage = 0;
   @override
   void initState() {
     super.initState();
@@ -26,7 +25,6 @@ class _CarouselState extends State<Carousel> {
   }
 
   void onPageChanged({required int page}) {
-    // Solo actualizamos el estado si la página ha cambiado
     if (page != currentPage) {
       setState(() {
         currentPage = page;
@@ -51,11 +49,10 @@ class _CarouselState extends State<Carousel> {
           physics: Constants.bouncingScrollPhysics,
           itemCount: widget._images.length,
           scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) => Hero(
-            tag: widget._images[index],
-            child: ImageLoader(
-              imageUrl: widget._images[index],
-            ),
+          itemBuilder: (BuildContext context, int index) => CarrousellTile(
+            index: index,
+            currentPage: currentPage,
+            images: widget._images,
           ),
         ),
         Positioned(

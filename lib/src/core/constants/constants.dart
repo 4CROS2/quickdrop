@@ -29,7 +29,7 @@ class Constants {
     fontWeight: FontWeight.w300,
     fontSize: 12,
   );
-  static Color primaryColor = const Color(
+  static const Color primaryColor = Color(
     0xFF7C96F4,
   );
   static const Color secondaryColor =

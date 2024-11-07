@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quickdrop/src/core/constants/constants.dart';
 
 class ImageLoader extends StatefulWidget {
   const ImageLoader({required String imageUrl, super.key})
@@ -23,7 +24,10 @@ class _ImageLoaderState extends State<ImageLoader>
         String url,
         DownloadProgress progress,
       ) =>
-          const CupertinoActivityIndicator(),
+          const CupertinoActivityIndicator(
+        color: Constants.primaryColor,
+        animating: true,
+      ),
       errorWidget: (BuildContext context, String url, Object error) =>
           const Center(
         child: Icon(
