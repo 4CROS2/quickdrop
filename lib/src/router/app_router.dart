@@ -95,7 +95,6 @@ class AppRouter {
           final int currentPage = extra['currentPage'] as int? ?? 0;
           return MaterialPage<FullScreenImage>(
             fullscreenDialog: true,
-            
             child: FullScreenImage(
               images: images,
               currentPage: currentPage,
