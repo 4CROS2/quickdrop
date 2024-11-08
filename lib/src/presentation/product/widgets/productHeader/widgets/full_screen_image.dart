@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
 import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
 
 class FullScreenImage extends StatefulWidget {
@@ -98,24 +99,14 @@ class _FullScreenImageState extends State<FullScreenImage> {
         Positioned(
           top: MediaQuery.of(context).padding.top + 8,
           left: 12,
-          child: Material(
-            color: Colors.black45,
-            borderRadius: Constants.mainBorderRadius,
-            clipBehavior: Clip.hardEdge,
-            child: InkWell(
-              onTap: () {
-                context.pop(true);
-              },
-              child: Padding(
-                padding: Constants.buttonPadding,
-                child: Icon(
-                  Icons.close_rounded,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+          child: HeaderButtons(
+            onTap: () {
+              context.pop();
+            },
+            icon: Icons.close,
+            iconColor: Colors.white,
           ),
-        ),
+        )
       ],
     );
   }

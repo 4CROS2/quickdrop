@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/favorites/favorites.dart';
@@ -9,9 +9,7 @@ import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/product/product.dart';
 import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/full_screen_image.dart';
-import 'package:quickdrop/src/router/fade_transition_builder.dart';
 import 'package:quickdrop/src/router/go_router_refresh_stream.dart';
-import 'package:quickdrop/src/router/slide_transition_router.dart';
 
 class AppRouter {
   final AppCubit _appCubit = sl<AppCubit>();
@@ -46,52 +44,42 @@ class AppRouter {
       GoRoute(
         path: '/',
         pageBuilder: (BuildContext context, GoRouterState state) =>
-            CustomTransitionPage<LoadingPage>(
+            MaterialPage<LoadingPage>(
           child: LoadingPage(),
-          transitionsBuilder: fadeTransitionBuilder,
-          transitionDuration: Constants.animationTransition,
         ),
       ),
       GoRoute(
         path: '/login',
         pageBuilder: (BuildContext context, GoRouterState state) =>
-            CustomTransitionPage<Login>(
+            MaterialPage<Login>(
           child: Login(),
-          transitionsBuilder: fadeTransitionBuilder,
-          transitionDuration: Constants.animationTransition,
         ),
       ),
       GoRoute(
         path: '/home',
         name: 'home',
         pageBuilder: (BuildContext context, GoRouterState state) =>
-            CustomTransitionPage<Home>(
+            MaterialPage<Home>(
           child: Home(),
-          transitionsBuilder: fadeTransitionBuilder,
-          transitionDuration: Constants.animationTransition,
         ),
       ),
       GoRoute(
           path: '/favorites',
           name: 'favorites',
           pageBuilder: (BuildContext context, GoRouterState state) {
-            return CustomTransitionPage<Home>(
+            return CupertinoPage<Favorites>(
               child: Favorites(),
-              transitionsBuilder: slideTransitionBuilder,
-              transitionDuration: Constants.animationTransition,
             );
           }),
       GoRoute(
         path: '/product/:productId',
         name: 'product',
         pageBuilder: (BuildContext context, GoRouterState state) {
-          return CustomTransitionPage<Home>(
+          return CupertinoPage<Product>(
             child: Product(
               productId: state.pathParameters['productId']!,
               previewImage: state.uri.queryParameters['previewImage'] ?? '',
             ),
-            transitionsBuilder: slideTransitionBuilder,
-            transitionDuration: Constants.animationTransition,
           );
         },
       ),
@@ -105,16 +93,12 @@ class AppRouter {
           final List<String> images =
               extra['images'] as List<String>? ?? <String>[];
           final int currentPage = extra['currentPage'] as int? ?? 0;
-          return CustomTransitionPage<void>(
+          return MaterialPage<FullScreenImage>(
             fullscreenDialog: true,
-            opaque: false,
-            barrierDismissible: true,
             child: FullScreenImage(
               images: images,
               currentPage: currentPage,
             ),
-            transitionsBuilder: fadeTransitionBuilder,
-            transitionDuration: Constants.animationTransition,
           );
         },
       )
