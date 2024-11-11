@@ -80,7 +80,7 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             HeaderButtons(
-                              onTap: () => context.pop(),
+                              onTap: () => context.go('/home'),
                               icon: Icons.arrow_back_ios_new_rounded,
                               backgroundColor: Colors.black45,
                               iconColor: Colors.white,
