@@ -13,9 +13,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.6
-
+  firebase_auth: ^5.3.2
   firebase_core: ^3.7.0
-  firebase_auth: ^5.3.1
   cloud_firestore: ^5.4.5
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
