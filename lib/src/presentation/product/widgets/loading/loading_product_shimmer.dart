@@ -106,7 +106,7 @@ class _LoadingProductShimmerState extends State<LoadingProductShimmer> {
                 ),
               ),
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Material(
                 borderRadius: Constants.mainBorderRadius,
