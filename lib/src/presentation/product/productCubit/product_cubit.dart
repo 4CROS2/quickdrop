@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
 import 'package:quickdrop/src/domain/usecase/produc_detail_usecase.dart';
 
 part 'product_state.dart';
@@ -18,7 +18,7 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
       Future<void>.delayed(
         Duration(milliseconds: 300),
         () async {
-          ProductsEntity response = await _usecase.getProductDetail(
+          final ProductDetailEntity response = await _usecase.getProductDetail(
             productId: productId,
           );
           emit(

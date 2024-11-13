@@ -80,14 +80,14 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         HeaderButtons(
-                          onTap: () => context.go('/home'),
+                          onTap: () => context.pop(),
                           icon: Icons.arrow_back_ios_new_rounded,
                           backgroundColor: Colors.black45,
                           iconColor: Colors.white,
                         ),
                         TitleHeader(
                           title: _state is SuccessLoadingProduct
-                              ? (_state).product.name
+                              ? (_state).product.productName
                               : '',
                           showText: percent >= 1.1,
                         ),

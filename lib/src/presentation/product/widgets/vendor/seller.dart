@@ -2,10 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
+import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
 import 'package:quickdrop/src/presentation/product/widgets/vendor/widgets/vendor_sheet.dart';
 
-class Vendor extends StatelessWidget {
-  const Vendor({super.key});
+class Seller extends StatelessWidget {
+  const Seller({required SellerData sellerData, super.key})
+      : _sellerData = sellerData;
+  final SellerData _sellerData;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class Vendor extends StatelessWidget {
         top: Constants.mainPadding.top,
       ),
       child: Material(
-        color: Constants.secondaryColor,
+        color: Colors.black12,
         borderRadius: Constants.mainBorderRadius,
         clipBehavior: Clip.hardEdge,
         child: InkWell(
@@ -31,7 +34,6 @@ class Vendor extends StatelessWidget {
           child: Padding(
             padding: Constants.mainPadding,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
                   width: 50,
@@ -39,8 +41,7 @@ class Vendor extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: Constants.mainBorderRadius / 2,
                     child: CachedNetworkImage(
-                      imageUrl:
-                          'https://www.brandemia.org/wp-content/uploads/2012/04/logo_principal_carulla2.jpg',
+                      imageUrl: _sellerData.brand,
                       fit: BoxFit.cover,
                       errorWidget: (
                         BuildContext context,
@@ -67,6 +68,7 @@ class Vendor extends StatelessWidget {
                       ) =>
                           CircularProgressIndicator(
                         value: progress.downloaded.toDouble(),
+                        color: Constants.primaryColor,
                       ),
                     ),
                   ),
@@ -77,8 +79,7 @@ class Vendor extends StatelessWidget {
                       left: Constants.mainPadding.left,
                     ),
                     child: Text(
-                      'dasdasdnasjkdjakshjkahfhfhdjhsjkhsjhfashfjsfjshajfkahsdfhhsfjhlshdjhsdlchjkhljkcsha'
-                          .capitalize(),
+                      _sellerData.companyName.capitalize(),
                       style: const TextStyle(
                         fontWeight: FontWeight.w800,
                       ),

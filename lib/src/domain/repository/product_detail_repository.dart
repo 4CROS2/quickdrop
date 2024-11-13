@@ -1,7 +1,7 @@
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
 
 abstract class ProductDetailRepository {
-  Future<ProductsEntity> getProductData({
+  Future<ProductDetailEntity> getProductData({
     required String productId,
   });
 }

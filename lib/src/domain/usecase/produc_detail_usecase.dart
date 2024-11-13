@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
 import 'package:quickdrop/src/domain/repository/product_detail_repository.dart';
 
 class ProducDetailUsecase {
@@ -7,7 +7,7 @@ class ProducDetailUsecase {
   }) : _repository = repository;
   final ProductDetailRepository _repository;
 
-  Future<ProductsEntity> getProductDetail({required String productId}) =>
+  Future<ProductDetailEntity> getProductDetail({required String productId}) =>
       _repository.getProductData(
         productId: productId,
       );

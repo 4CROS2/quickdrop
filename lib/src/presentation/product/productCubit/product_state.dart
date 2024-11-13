@@ -20,5 +20,5 @@ class SuccessLoadingProduct extends ProductDetailState {
   const SuccessLoadingProduct({
     required this.product,
   });
-  final ProductsEntity product;
+  final ProductDetailEntity product;
 }
