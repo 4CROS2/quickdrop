@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
 import 'package:quickdrop/src/presentation/product/widgets/buttons/buy_buttons.dart';
-import 'package:quickdrop/src/presentation/product/widgets/vendor/vendor.dart';
+import 'package:quickdrop/src/presentation/product/widgets/relatedProducts/related_product.dart';
+import 'package:quickdrop/src/presentation/product/widgets/tags/tags.dart';
+import 'package:quickdrop/src/presentation/product/widgets/vendor/seller.dart';
 
 class ProductBody extends StatelessWidget {
   const ProductBody({
-    required ProductsEntity product,
+    required ProductDetailEntity product,
     super.key,
   }) : _product = product;
 
-  final ProductsEntity _product;
+  final ProductDetailEntity _product;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class ProductBody extends StatelessWidget {
               //product name
               Flexible(
                 child: Text(
-                  _product.name.capitalize(),
+                  _product.productName.capitalize(),
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -55,6 +57,7 @@ class ProductBody extends StatelessWidget {
               ),
             ],
           ),
+
           Padding(
             padding: EdgeInsets.only(top: Constants.mainPadding.top),
             child: DecoratedBox(
@@ -85,18 +88,26 @@ class ProductBody extends StatelessWidget {
               ),
             ),
           ),
+          //tags
+          Tags(tags: _product.tags),
+
           const BuyButtons(),
           //vendor data
-          const Vendor(),
-          //
-
+          Seller(
+            sellerData: _product.sellerData,
+          ),
+          //related products
+          if (_product.relatedProducts.isNotEmpty)
+            RelatedProducts(
+              relatedProduct: _product.relatedProducts,
+            ),
           //other products
-          ...List<Text>.generate(
+          /* ...List<Text>.generate(
             100,
             (int index) => Text(
               index.toString(),
             ),
-          ),
+          ), */
         ],
       ),
     );

@@ -40,6 +40,10 @@ class Constants {
 
   static Duration animationTransition = const Duration(milliseconds: 400);
 
+  static EdgeInsets paddingTop = EdgeInsets.only(
+    top: Constants.mainPadding.top,
+  );
+
   static ImageFilter iamgeFilterBlur = ImageFilter.blur(
     sigmaX: 20,
     sigmaY: 20,

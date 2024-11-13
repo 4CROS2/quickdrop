@@ -1,5 +1,5 @@
 import 'package:quickdrop/src/data/datasource/produt_datasource.dart';
-import 'package:quickdrop/src/data/model/products_model.dart';
+import 'package:quickdrop/src/data/model/product_details_model.dart';
 import 'package:quickdrop/src/domain/repository/product_detail_repository.dart';
 
 class IProductDetailRepository implements ProductDetailRepository {
@@ -10,12 +10,11 @@ class IProductDetailRepository implements ProductDetailRepository {
   final ProductDetailDatasource _datasource;
 
   @override
-  Future<ProductsModel> getProductData({required String productId}) async {
+  Future<ProductDetailsModel> getProductData(
+      {required String productId}) async {
     final Map<String, dynamic> response = await _datasource.getProductData(
       productId: productId,
     );
-    return ProductsModel.fromJson(
-      json: response,
-    );
+    return ProductDetailsModel.fromJson(json: response);
   }
 }
