@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:quickdrop/src/core/extensions/document_snapshot_extension.dart';
+import 'package:extensions/extensions.dart';
 
 class ProductDetailDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

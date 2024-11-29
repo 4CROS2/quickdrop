@@ -21,11 +21,13 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
           final ProductDetailEntity response = await _usecase.getProductDetail(
             productId: productId,
           );
-          emit(
-            SuccessLoadingProduct(
-              product: response,
-            ),
-          );
+          if (!isClosed) {
+            emit(
+              SuccessLoadingProduct(
+                product: response,
+              ),
+            );
+          }
         },
       );
     } catch (e) {

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:quickdrop/src/core/extensions/querysnapshot_to_json_extension.dart';
+import 'package:extensions/extensions.dart';
 
 class HomeDatasource {
   HomeDatasource({
@@ -72,3 +72,11 @@ class HomeDatasource {
     return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
   }
 }
+//DateFormat.jm().format(yourTime)
+
+//Record with named fields
+//({String name, String lastName}) getName() => (name: 'John', lastName: 'Doe');
+//final data = getName();
+//
+//  print(data.name);
+//  print(data.lastName);

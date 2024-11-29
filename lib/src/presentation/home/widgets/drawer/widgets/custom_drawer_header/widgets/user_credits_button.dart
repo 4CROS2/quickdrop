@@ -1,7 +1,7 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
 

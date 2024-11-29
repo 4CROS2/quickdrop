@@ -1,6 +1,6 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
 import 'package:quickdrop/src/presentation/product/widgets/buttons/buy_buttons.dart';
