@@ -29,7 +29,7 @@ dependencies:
   rxdart: ^0.27.7
   firebase_storage: ^12.3.7
   http: ^1.2.2
-  go_router: ^14.6.2
+  go_router: ^14.6.3
   shimmer: ^3.0.0
 
 dev_dependencies:
