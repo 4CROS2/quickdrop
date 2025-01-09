@@ -29,7 +29,7 @@ class _AppState extends State<App> {
       child: BlocBuilder<AppCubit, AppState>(
         builder: (BuildContext context, AppState state) {
           return MediaQuery(
-            data: MediaQueryData.fromView(View.of(context)).copyWith(
+           data: MediaQuery.of(context).copyWith(
               textScaler: const TextScaler.linear(1.0),
             ),
             child: MaterialApp.router(
