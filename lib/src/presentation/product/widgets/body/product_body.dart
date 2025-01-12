@@ -59,10 +59,12 @@ class ProductBody extends StatelessWidget {
           ),
 
           Padding(
-            padding: EdgeInsets.only(top: Constants.mainPadding.top),
+            padding: EdgeInsets.only(
+              top: Constants.mainPadding.top,
+            ),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(.12),
+                color: Colors.black.withValues(alpha: .12),
                 borderRadius: Constants.mainBorderRadius,
               ),
               child: Padding(
@@ -91,7 +93,7 @@ class ProductBody extends StatelessWidget {
           //tags
           Tags(tags: _product.tags),
 
-          const BuyButtons(),
+          BuyButtons(),
           //vendor data
           Seller(
             sellerData: _product.sellerData,

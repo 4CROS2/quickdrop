@@ -2,11 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extensions/extensions.dart';
 
 class HomeDatasource {
-  HomeDatasource({
-    required FirebaseFirestore firestore,
-  }) : _firestore = firestore;
+  HomeDatasource();
 
-  final FirebaseFirestore _firestore;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<Map<String, dynamic>> getHomeData() async {
     try {
@@ -19,13 +17,18 @@ class HomeDatasource {
       try {
         // Consulta para obtener los vendedores disponibles con base en el horario de hoy
         QuerySnapshot<Object?> sellersSnapshot = await sellersCollection
-            .where('schedule.$currentDay.open_hour',
-                isLessThanOrEqualTo: currentTime)
-            .where('schedule.$currentDay.close_hour',
-                isGreaterThanOrEqualTo: currentTime)
+            .where(
+              'schedule.$currentDay.open_hour',
+              isLessThanOrEqualTo: currentTime,
+            )
+            .where(
+              'schedule.$currentDay.close_hour',
+              isGreaterThanOrEqualTo: currentTime,
+            )
             .get();
 
         List<String> availableSellerIds = sellersSnapshot.toListString();
+
         if (availableSellerIds.isNotEmpty) {
           QuerySnapshot<Object?> productsQuery = await _firestore
               .collection('products')

@@ -9,6 +9,7 @@ import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/product/product.dart';
 import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/full_screen_image.dart';
+import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
 import 'package:quickdrop/src/router/go_router_refresh_stream.dart';
 
 class AppRouter {
@@ -82,6 +83,17 @@ class AppRouter {
             ),
           );
         },
+        routes: <RouteBase>[
+          GoRoute(
+            path: 'purchase',
+            name: 'purchase',
+            pageBuilder: (BuildContext context, GoRouterState state) {
+              return CupertinoPage<Purchase>(
+                child: Purchase(),
+              );
+            },
+          ),
+        ],
       ),
       GoRoute(
         path: '/fullScrenImage',

@@ -3,17 +3,13 @@ import 'package:extensions/extensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AddToFavoriteDatasource {
-  AddToFavoriteDatasource({
-    required FirebaseFirestore firestore,
-    required FirebaseAuth auth,
-  })  : _firestore = firestore,
-        _auth = auth {
+  AddToFavoriteDatasource() {
     if (_auth.currentUser == null) {
       throw Exception('Usuario no autenticado');
     }
   }
-  final FirebaseFirestore _firestore;
-  final FirebaseAuth _auth;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   /// Método privado para obtener la referencia al documento de favoritos
   DocumentReference<Map<String, dynamic>> _favoriteDocRef(String productId) {

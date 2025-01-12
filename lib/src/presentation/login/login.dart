@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
                               .passwordRecovery
                               .capitalize(),
                           style: TextStyle(
-                            color: Colors.white.withOpacity(.80),
+                            color: Colors.white.withValues(alpha: .80),
                             fontFamily: 'RedHat',
                             fontWeight: FontWeight.w700,
                           ),

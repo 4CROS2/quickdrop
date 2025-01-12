@@ -28,23 +28,22 @@ class ProductDetailDatasource {
       Map<String, dynamic> sellerData = sellerSnapshot.toJson();
       productData['seller_data'] = sellerData;
 
-      // 3. Buscar productos del mismo vendedor con tags coincidentes
       Query<Object?> productsQuery = _firestore
           .collection('products')
           .where('seller_id', isEqualTo: sellerId)
           .where('tags', arrayContainsAny: tags)
           .limit(20);
-      // Limitar el número de resultados para evitar muchas coincidencias
 
       QuerySnapshot<Object?> relatedProductsSnapshot =
           await productsQuery.get();
       List<Map<String, dynamic>> relatedProducts = relatedProductsSnapshot.docs
-          .where((QueryDocumentSnapshot<Object?> doc) =>
-              doc.id != productId) // Excluir el producto principal
-          .map((QueryDocumentSnapshot<Object?> doc) => doc.toJson())
+          .where(
+            (QueryDocumentSnapshot<Object?> doc) => doc.id != productId,
+          )
+          .map(
+            (QueryDocumentSnapshot<Object?> doc) => doc.toJson(),
+          )
           .toList();
-
-      // 4. Agregar los productos relacionados al resultado final
       productData['related_products'] = relatedProducts;
 
       return productData;

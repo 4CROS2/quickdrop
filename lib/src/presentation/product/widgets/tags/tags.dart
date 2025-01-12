@@ -19,7 +19,7 @@ class Tags extends StatelessWidget {
         children: _tags
             .map(
               (String tag) => Material(
-                color: Constants.primaryColor.withOpacity(.15),
+                color: Constants.primaryColor.withValues(alpha: .15),
                 borderRadius: Constants.mainBorderRadius,
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(

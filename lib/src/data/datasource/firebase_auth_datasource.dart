@@ -6,15 +6,11 @@ import 'package:rxdart/rxdart.dart';
 
 class FirebaseLoginDatasource {
   FirebaseLoginDatasource({
-    required FirebaseAuth firebaseAuth,
-    required FirebaseFirestore firestore,
     required GoogleSignIn googleSigin,
-  })  : _firebaseAuth = firebaseAuth,
-        _firestore = firestore,
-        _googleSignIn = googleSigin;
+  }) : _googleSignIn = googleSigin;
 
-  final FirebaseAuth _firebaseAuth;
-  final FirebaseFirestore _firestore;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn;
 
   Stream<Map<String, dynamic>?> userStatus() {

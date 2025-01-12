@@ -29,14 +29,14 @@ class _AppState extends State<App> {
       child: BlocBuilder<AppCubit, AppState>(
         builder: (BuildContext context, AppState state) {
           return MediaQuery(
-           data: MediaQuery.of(context).copyWith(
+            data: MediaQuery.of(context).copyWith(
               textScaler: const TextScaler.linear(1.0),
             ),
             child: MaterialApp.router(
               title: 'Quickdrop',
               theme: ThemeData(
                 colorSchemeSeed: Constants.primaryColor,
-                fontFamily: 'RedHat',
+                fontFamily: 'Questrial',
               ),
               darkTheme: ThemeData.dark(),
               themeMode: ThemeMode.light,

@@ -87,7 +87,7 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                         ),
                         TitleHeader(
                           title: _state is SuccessLoadingProduct
-                              ? (_state).product.productName
+                              ? _state.product.productName
                               : '',
                           showText: percent >= 1.1,
                         ),
