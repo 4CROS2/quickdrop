@@ -50,11 +50,10 @@ class _BuyButtonsState extends State<BuyButtons> {
     return BlocProvider<PurchaseCubit>(
       create: (BuildContext context) => sl<PurchaseCubit>()
         ..setProductData(
-          buyerId: _appState.user.id,
-          sellerId: _state.product.sellerData.sellerId,
-          productId: _state.product.productId,
-          currentPrice: _state.product.basePrice
-        ),
+            buyerId: _appState.user.id,
+            sellerId: _state.product.sellerData.sellerId,
+            productId: _state.product.productId,
+            currentPrice: _state.product.basePrice),
       child: BlocBuilder<PurchaseCubit, PurchaseState>(
         builder: (BuildContext context, PurchaseState state) {
           return Padding(
@@ -78,11 +77,10 @@ class _BuyButtonsState extends State<BuyButtons> {
                         flex: 2,
                         child: BuyButtonTile(
                           onTap: () => context.push(
-                            '/product/${state.product.productId}/purchase',
-                            extra: <String,dynamic >{
-                              'product_name':_state.product.productName
-                            }
-                          ),
+                              '/product/${state.product.productId}/purchase',
+                              extra: <String, dynamic>{
+                                'product_name': _state.product.productName
+                              }),
                           prefixIcon: Icons.shopping_cart_checkout_rounded,
                           label: 'comprar ahora',
                           backgroundColor: Constants.primaryColor,

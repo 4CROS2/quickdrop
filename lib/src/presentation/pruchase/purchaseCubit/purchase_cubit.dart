@@ -20,11 +20,10 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     emit(
       state.copyWith(
         product: state.product.copyWith(
-          buyerId: buyerId,
-          sellerId: sellerId,
-          productId: productId,
-          currentPrice: currentPrice
-        ),
+            buyerId: buyerId,
+            sellerId: sellerId,
+            productId: productId,
+            currentPrice: currentPrice),
       ),
     );
   }

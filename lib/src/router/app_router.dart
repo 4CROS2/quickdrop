@@ -91,7 +91,9 @@ class AppRouter {
               final Map<String, dynamic> data =
                   state.extra as Map<String, dynamic>;
               return CupertinoPage<Purchase>(
-                child: Purchase(productName: data['product_name'],),
+                child: Purchase(
+                  productName: data['product_name'],
+                ),
               );
             },
           ),
