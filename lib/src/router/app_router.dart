@@ -88,8 +88,10 @@ class AppRouter {
             path: 'purchase',
             name: 'purchase',
             pageBuilder: (BuildContext context, GoRouterState state) {
+              final Map<String, dynamic> data =
+                  state.extra as Map<String, dynamic>;
               return CupertinoPage<Purchase>(
-                child: Purchase(),
+                child: Purchase(productName: data['product_name'],),
               );
             },
           ),

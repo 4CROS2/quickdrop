@@ -15,6 +15,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     required String sellerId,
     required String productId,
     required String buyerId,
+    required int currentPrice,
   }) {
     emit(
       state.copyWith(
@@ -22,6 +23,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
           buyerId: buyerId,
           sellerId: sellerId,
           productId: productId,
+          currentPrice: currentPrice
         ),
       ),
     );
