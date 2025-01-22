@@ -1,6 +1,6 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 
 class Tags extends StatelessWidget {
   Tags({
@@ -19,7 +19,7 @@ class Tags extends StatelessWidget {
         children: _tags
             .map(
               (String tag) => Material(
-                color: Constants.primaryColor.withOpacity(.15),
+                color: Constants.primaryColor.withValues(alpha: .15),
                 borderRadius: Constants.mainBorderRadius,
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(

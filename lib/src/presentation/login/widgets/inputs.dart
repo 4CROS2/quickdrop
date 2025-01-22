@@ -76,7 +76,7 @@ class _AuthInputState extends State<AuthInput> {
           errorBorder: Constants.authBorder,
           errorStyle: Constants.errorTextStyle,
           enabled: widget._isEnabled,
-          fillColor: const Color(0xFFFCFCFC).withOpacity(.54),
+          fillColor: const Color(0xFFFCFCFC).withValues(alpha: .54),
           filled: true,
         ),
         cursorOpacityAnimates: true,

@@ -1,7 +1,7 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 
 class AuthBtn extends StatelessWidget {
   const AuthBtn({
@@ -24,7 +24,7 @@ class AuthBtn extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: Colors.black.withOpacity(.12),
+              color: Colors.black.withValues(alpha: .12),
               blurRadius: 12.1,
               offset: const Offset(5, 5),
             )

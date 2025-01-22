@@ -4,11 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/favorites/favorites.dart';
+import 'package:quickdrop/src/presentation/financial_information/financial_information.dart';
 import 'package:quickdrop/src/presentation/home/home.dart';
 import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/product/product.dart';
 import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/full_screen_image.dart';
+import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
 import 'package:quickdrop/src/router/go_router_refresh_stream.dart';
 
 class AppRouter {
@@ -82,6 +84,27 @@ class AppRouter {
             ),
           );
         },
+        routes: <RouteBase>[
+          GoRoute(
+            path: 'financialInformation',
+            pageBuilder: (BuildContext context, GoRouterState state) {
+              return CupertinoPage<FinancialInformation>(
+                child: FinancialInformation(
+                  productId: state.pathParameters['productId']!,
+                ),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'purchase',
+            name: 'purchase',
+            pageBuilder: (BuildContext context, GoRouterState state) {
+              return CupertinoPage<Purchase>(
+                child: Purchase(),
+              );
+            },
+          ),
+        ],
       ),
       GoRoute(
         path: '/fullScrenImage',

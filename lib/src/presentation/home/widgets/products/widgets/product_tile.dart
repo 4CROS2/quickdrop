@@ -1,7 +1,7 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/domain/entity/products_entity.dart';
 import 'package:quickdrop/src/presentation/home/widgets/products/widgets/favorite/add_favorite.dart';
@@ -21,17 +21,10 @@ class ProductTile extends StatelessWidget {
       padding: Constants.mainPadding / 2,
       child: Material(
         elevation: 2,
-        borderOnForeground: true,
         clipBehavior: Clip.hardEdge,
         borderRadius: Constants.mainBorderRadius,
         child: InkWell(
           onTap: () {
-            /* PageNavigation.pushNavigator(
-              context,
-              page: Product(
-                productId: _product.id,
-              ),
-            ); */
             context.push(
               Uri(
                 path: '/product/${_product.id}',
@@ -41,37 +34,35 @@ class ProductTile extends StatelessWidget {
               ).toString(),
             );
           },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Hero(
-                    transitionOnUserGestures: true,
-                    tag: _product.baseImages.first,
-                    child: ClipperRadiusImages(
-                      child: ImageLoader(
-                        imageUrl: _product.baseImages[0],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Stack(
+                  children: <Widget>[
+                    Hero(
+                      transitionOnUserGestures: true,
+                      tag: _product.baseImages.first,
+                      child: ClipperRadiusImages(
+                        borderRadius: Constants.mainBorderRadius / 2,
+                        child: ImageLoader(
+                          imageUrl: _product.baseImages[0],
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: Constants.buttonPadding.top / 2,
-                    right: Constants.buttonPadding.right / 2,
-                    child: AddToFavoriteButton(
-                      productId: _product.id,
-                    ),
-                  )
-                ],
-              ),
-              // product informations
-              Padding(
-                padding: Constants.mainPadding.copyWith(
-                  top: 5,
-                  bottom: 5,
+                    Positioned(
+                      top: Constants.buttonPadding.top / 2,
+                      right: Constants.buttonPadding.right / 2,
+                      child: AddToFavoriteButton(
+                        productId: _product.id,
+                      ),
+                    )
+                  ],
                 ),
-                child: Column(
+                // product informations
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     //product name
@@ -93,8 +84,8 @@ class ProductTile extends StatelessWidget {
                     )
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

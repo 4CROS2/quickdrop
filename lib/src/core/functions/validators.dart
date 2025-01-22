@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
+import 'package:extensions/extensions.dart';
 
 String? emailvalidator(String? value) {
   if (value == null || value.isEmpty) {

@@ -11,15 +11,10 @@ class ProductsModel extends ProductsEntity {
   });
 
   static ProductsModel fromJson({required Map<String, dynamic> json}) {
-    // Verificar si 'seller_id' es un DocumentReference y convertirlo a String
-
-    List<dynamic> jsonImages = json['base_images'];
-    List<String> images = <String>[];
-
-    images = List<String>.from(
+    List<String> jsonImages = List<String>.from(json['base_images']);
+    List<String> images = List<String>.from(
       jsonImages.map(
-        // ignore: always_specify_types
-        (image) => image.toString(),
+        (String image) => image.toString(),
       ),
     );
 
