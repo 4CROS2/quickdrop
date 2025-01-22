@@ -12,20 +12,27 @@ class PurchaseCubit extends Cubit<PurchaseState> {
   final PurchaseUsecase _usecase;
 
   void setProductData({
+    required String productName,
     required String sellerId,
     required String productId,
     required String buyerId,
     required int currentPrice,
-  }) {
+    required String imagePath,
+  }) async {
     emit(
       state.copyWith(
         product: state.product.copyWith(
-            buyerId: buyerId,
-            sellerId: sellerId,
-            productId: productId,
-            currentPrice: currentPrice),
+          productName: productName,
+          buyerId: buyerId,
+          sellerId: sellerId,
+          productId: productId,
+          currentPrice: currentPrice,
+          imagePath: imagePath,
+        ),
       ),
     );
+
+    await buyProduct();
   }
 
   void addQuantity() {
@@ -81,7 +88,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     );
   }
 
-  void buyProduct() async {
+  Future<void> buyProduct() async {
     await _usecase.purchaseProduct(
       product: state.product,
     );

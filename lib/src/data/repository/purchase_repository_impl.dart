@@ -13,10 +13,14 @@ class IPurchaseRepository implements PurchaseRepository {
   Future<void> purchaseProduct({
     required PurchaseEntity product,
   }) async {
-    await _datasource.saveOrder(
-      purchase: PurchaseModel.fromEntity(
-        entity: product,
-      ),
-    );
+    try {
+      await _datasource.saveOrder(
+        purchase: PurchaseModel.fromEntity(
+          entity: product,
+        ),
+      );
+    } catch (e) {
+      rethrow;
+    }
   }
 }

@@ -21,7 +21,9 @@ class ProductDetailsModel extends ProductDetailEntity {
     final List<String> jsonTags =
         List<String>.from(json['tags'] ?? <dynamic>[]);
     final List<Map<String, dynamic>> jsonProducts =
-        List<Map<String, dynamic>>.from(json['related_products']);
+        List<Map<String, dynamic>>.from(
+      json['related_products'] ?? <dynamic>[],
+    );
 
     final List<String> images = List<String>.from(jsonImages);
     final List<String> tags = List<String>.from(jsonTags);

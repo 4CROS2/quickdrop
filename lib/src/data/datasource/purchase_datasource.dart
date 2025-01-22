@@ -16,7 +16,6 @@ class PurchaseDatasource {
 
       // Datos del pedido a guardar.
       final Map<String, dynamic> orderData = purchase.toJson();
-      orderData['order_time'] = purchase.orderTime;
 
       // Guardar el pedido en Firestore.
       await sellerRef.set(orderData);

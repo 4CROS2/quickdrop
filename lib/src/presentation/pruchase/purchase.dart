@@ -9,10 +9,11 @@ import 'package:quickdrop/src/presentation/pruchase/widgets/purchase_header.dart
 
 class Purchase extends StatefulWidget {
   const Purchase({
-    required String productName,
     super.key,
-  }) : _productName = productName;
-  final String _productName;
+  });
+
+  int get dos => 2;
+
   @override
   State<Purchase> createState() => _PurchaseState();
 }
@@ -24,6 +25,8 @@ class _PurchaseState extends State<Purchase> {
       value: sl<PurchaseCubit>(),
       child: BlocBuilder<PurchaseCubit, PurchaseState>(
         builder: (BuildContext context, PurchaseState state) {
+          final int quantity = state.product.quantity;
+          final int price = state.product.currentPrice;
           return Scaffold(
             appBar: PruchaseAppBar(),
             body: SingleChildScrollView(
@@ -34,14 +37,22 @@ class _PurchaseState extends State<Purchase> {
                 spacing: Constants.mainPaddingValue,
                 children: <Widget>[
                   _productInformation(
-                    label: 'nombre de producto',
-                    data: widget._productName,
+                    label: 'producto',
+                    data: state.product.productName,
                   ),
                   _productInformation(
                     label: 'precio',
                     data: formatPrice(
                       state.product.currentPrice,
                     ),
+                  ),
+                  _productInformation(
+                    label: 'cantidad',
+                    data: state.product.quantity.toString(),
+                  ),
+                  _productInformation(
+                    label: 'total a pagar',
+                    data: (quantity * price).toString(),
                   )
                 ],
               ),

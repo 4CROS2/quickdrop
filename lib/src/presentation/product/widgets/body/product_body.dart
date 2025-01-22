@@ -8,7 +8,7 @@ import 'package:quickdrop/src/presentation/product/widgets/relatedProducts/relat
 import 'package:quickdrop/src/presentation/product/widgets/tags/tags.dart';
 import 'package:quickdrop/src/presentation/product/widgets/vendor/seller.dart';
 
-class ProductBody extends StatelessWidget {
+class ProductBody extends StatefulWidget {
   const ProductBody({
     required ProductDetailEntity product,
     super.key,
@@ -16,6 +16,12 @@ class ProductBody extends StatelessWidget {
 
   final ProductDetailEntity _product;
 
+  @override
+  State<ProductBody> createState() => _ProductBodyState();
+}
+
+class _ProductBodyState extends State<ProductBody> {
+  int quantity = 1;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +36,7 @@ class ProductBody extends StatelessWidget {
               //product name
               Flexible(
                 child: Text(
-                  _product.productName.capitalize(),
+                  widget._product.productName.capitalize(),
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -46,7 +52,7 @@ class ProductBody extends StatelessWidget {
                 child: Padding(
                   padding: Constants.mainPadding,
                   child: Text(
-                    formatPrice(_product.basePrice),
+                    formatPrice(widget._product.basePrice),
                     style: const TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -78,10 +84,12 @@ class ProductBody extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'descripción'.capitalize(),
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Text(
-                        _product.description.capitalizeSentences(),
+                        widget._product.description.capitalizeSentences(),
                         softWrap: true,
                       ),
                     ],
@@ -91,17 +99,19 @@ class ProductBody extends StatelessWidget {
             ),
           ),
           //tags
-          Tags(tags: _product.tags),
+          Tags(tags: widget._product.tags),
 
-          BuyButtons(),
+          BuyButtons(
+            productId: widget._product.productId,
+          ),
           //vendor data
           Seller(
-            sellerData: _product.sellerData,
+            sellerData: widget._product.sellerData,
           ),
           //related products
-          if (_product.relatedProducts.isNotEmpty)
+          if (widget._product.relatedProducts.isNotEmpty)
             RelatedProducts(
-              relatedProduct: _product.relatedProducts,
+              relatedProduct: widget._product.relatedProducts,
             ),
           //other products
           /* ...List<Text>.generate(

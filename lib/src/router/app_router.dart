@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/favorites/favorites.dart';
+import 'package:quickdrop/src/presentation/financial_information/financial_information.dart';
 import 'package:quickdrop/src/presentation/home/home.dart';
 import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/presentation/login/login.dart';
@@ -85,15 +86,21 @@ class AppRouter {
         },
         routes: <RouteBase>[
           GoRoute(
+            path: 'financialInformation',
+            pageBuilder: (BuildContext context, GoRouterState state) {
+              return CupertinoPage<FinancialInformation>(
+                child: FinancialInformation(
+                  productId: state.pathParameters['productId']!,
+                ),
+              );
+            },
+          ),
+          GoRoute(
             path: 'purchase',
             name: 'purchase',
             pageBuilder: (BuildContext context, GoRouterState state) {
-              final Map<String, dynamic> data =
-                  state.extra as Map<String, dynamic>;
               return CupertinoPage<Purchase>(
-                child: Purchase(
-                  productName: data['product_name'],
-                ),
+                child: Purchase(),
               );
             },
           ),

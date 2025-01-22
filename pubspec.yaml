@@ -35,6 +35,8 @@ dependencies:
     git: 
       url: https://github.com/4CROS2/string_extensions.git 
       ref: main
+  toastification: ^2.3.0
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:

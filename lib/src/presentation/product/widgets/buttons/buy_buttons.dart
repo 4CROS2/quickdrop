@@ -4,30 +4,26 @@ import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/domain/usecase/purshase_usecase.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
-import 'package:quickdrop/src/presentation/product/productCubit/product_cubit.dart';
 import 'package:quickdrop/src/presentation/product/widgets/buttons/buy_buttons_tile.dart.dart';
 import 'package:quickdrop/src/presentation/product/widgets/quantity/quantity.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
 
 class BuyButtons extends StatefulWidget {
   const BuyButtons({
+    required String productId,
     super.key,
-  });
+  }) : _productId = productId;
+
+  final String _productId;
 
   @override
   State<BuyButtons> createState() => _BuyButtonsState();
 }
 
 class _BuyButtonsState extends State<BuyButtons> {
-  late final SuccessLoadingProduct _state;
-  late final AppState _appState;
-
   @override
   void initState() {
     super.initState();
-    _state = context.read<ProductDetailCubit>().state as SuccessLoadingProduct;
-    _appState = sl<AppCubit>().state;
     if (!sl.isRegistered<PurchaseCubit>()) {
       sl.registerCachedFactory(
         () => PurchaseCubit(
@@ -48,12 +44,7 @@ class _BuyButtonsState extends State<BuyButtons> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PurchaseCubit>(
-      create: (BuildContext context) => sl<PurchaseCubit>()
-        ..setProductData(
-            buyerId: _appState.user.id,
-            sellerId: _state.product.sellerData.sellerId,
-            productId: _state.product.productId,
-            currentPrice: _state.product.basePrice),
+      create: (BuildContext context) => sl<PurchaseCubit>(),
       child: BlocBuilder<PurchaseCubit, PurchaseState>(
         builder: (BuildContext context, PurchaseState state) {
           return Padding(
@@ -77,20 +68,23 @@ class _BuyButtonsState extends State<BuyButtons> {
                         flex: 2,
                         child: BuyButtonTile(
                           onTap: () => context.push(
-                              '/product/${state.product.productId}/purchase',
-                              extra: <String, dynamic>{
-                                'product_name': _state.product.productName
-                              }),
+                            Uri(
+                              path:
+                                  '/product/${widget._productId}/financialinformation',
+                            ).toString(),
+                          ),
                           prefixIcon: Icons.shopping_cart_checkout_rounded,
-                          label: 'comprar ahora',
                           backgroundColor: Constants.primaryColor,
+                          label: 'comprar ahora',
                         ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: Constants.mainPadding.top),
+                  padding: EdgeInsets.only(
+                    top: Constants.mainPadding.top,
+                  ),
                   child: BuyButtonTile(
                     onTap: context.read<PurchaseCubit>().addToCart,
                     label: 'agregar al carrito',
@@ -105,3 +99,13 @@ class _BuyButtonsState extends State<BuyButtons> {
     );
   }
 }
+
+/* 
+ ..setProductData(
+          buyerId: _appState.user.id,
+          sellerId: _state.product.sellerData.sellerId,
+          productId: _state.product.productId,
+          currentPrice: _state.product.basePrice,
+        )
+
+ */
