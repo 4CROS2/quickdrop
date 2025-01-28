@@ -27,7 +27,7 @@ dependencies:
   flutter_dotenv: ^5.2.1
   google_sign_in: ^6.2.2
   rxdart: ^0.27.7
-  firebase_storage: ^12.4.0
+  firebase_storage: ^12.4.1
   http: ^1.2.2
   go_router: ^14.6.3
   shimmer: ^3.0.0
