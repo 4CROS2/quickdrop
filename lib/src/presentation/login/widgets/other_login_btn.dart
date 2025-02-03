@@ -21,7 +21,7 @@ class OtherLoginBtn extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.black.withOpacity(.12),
+            color: Colors.black.withValues(alpha: .12),
             blurRadius: 12.1,
             offset: const Offset(5, 5),
           )

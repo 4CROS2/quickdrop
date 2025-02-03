@@ -1,5 +1,5 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 
 class LoadingStatus extends StatelessWidget {
   const LoadingStatus({

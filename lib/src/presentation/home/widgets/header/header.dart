@@ -49,7 +49,7 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                     LocationHeader(
                       opacity: 1 - percent,
                     ),
-                    const HeaderButtons(
+                    HeaderButtons(
                       icon: Icons.shopping_cart_outlined,
                     )
                   ],
