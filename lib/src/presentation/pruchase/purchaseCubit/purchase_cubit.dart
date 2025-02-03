@@ -139,9 +139,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
         );
         emit(
           state.copyWith(
-            purchaseStatus: PurchaseStatus.success,
-            purchaseId: response
-          ),
+              purchaseStatus: PurchaseStatus.success, purchaseId: response),
         );
       }
     } catch (e) {
