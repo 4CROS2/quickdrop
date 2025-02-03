@@ -1,10 +1,10 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/domain/entity/products_entity.dart';
-import 'package:quickdrop/src/presentation/widgets/drop_shadow_widget.dart';
+import 'package:quickdrop/src/presentation/widgets/clipper_radius_images.dart';
 import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
 
 class RelatedProducts extends StatelessWidget {
@@ -40,7 +40,7 @@ class RelatedProducts extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: _relatedProduct.length,
                 itemBuilder: (BuildContext context, int index) => Material(
-                  elevation: 1,
+                  elevation: 3,
                   borderRadius: Constants.mainBorderRadius,
                   clipBehavior: Clip.hardEdge,
                   child: InkWell(
@@ -64,13 +64,10 @@ class RelatedProducts extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            DropShadowWidget(
-                              scale: .95,
-                              borderRadius: BorderRadius.circular(
-                                Constants.mainBorderRadius.topLeft.x / 2,
-                              ),
-                              image: SizedBox(
-                                height: 110,
+                            SizedBox(
+                              height: 110,
+                              child: ClipperRadiusImages(
+                                borderRadius: Constants.mainBorderRadius / 2,
                                 child: ImageLoader(
                                   imageUrl:
                                       _relatedProduct[index].baseImages[0],

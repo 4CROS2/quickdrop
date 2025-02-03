@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:241432358313:android:386b6a71f5260adb2328b8",
+        "mobilesdk_app_id": "1:241432358313:android:abfe7fc7b87346de2328b8",
         "android_client_info": {
-          "package_name": "com.example.quickdrop"
+          "package_name": "com.crossdev.quickdrop"
         }
       },
       "oauth_client": [
@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com",
+              "client_id": "241432358313-8mfdakgoh6bc72ioln3hqmtd5v0dqqhv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.quickdropltda.quickdrop"
+                "bundle_id": "com.crossdev.quickdropSellers"
               }
             }
           ]
@@ -43,17 +43,69 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:241432358313:android:28faa79592439d232328b8",
+        "mobilesdk_app_id": "1:241432358313:android:256b715b2ac755e12328b8",
         "android_client_info": {
-          "package_name": "com.quickdropltda.quickdrop"
+          "package_name": "com.crossdev.quickdrop_sellers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "241432358313-tk06ii33chdnucjiob4k1cahhirj4sus.apps.googleusercontent.com",
+          "client_id": "241432358313-jai1ftsfc3g4482nof5djt5l0e6tt5cp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.quickdropltda.quickdrop",
+            "package_name": "com.crossdev.quickdrop_sellers",
+            "certificate_hash": "8085482f7c1344014387d48a921808f4fb1d4254"
+          }
+        },
+        {
+          "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDFeISPW47NK0Mw1C-iFjiXQFOcfhEI98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241432358313-7tk9vb7pjto80r7isbd20rvbeb1n88b2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "241432358313-8mfdakgoh6bc72ioln3hqmtd5v0dqqhv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.crossdev.quickdropSellers"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241432358313:android:386b6a71f5260adb2328b8",
+        "android_client_info": {
+          "package_name": "com.example.quickdrop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241432358313-1pjm5ldlgc2ohgmqsf0csi20v22g4vd4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quickdrop",
+            "certificate_hash": "8085482f7c1344014387d48a921808f4fb1d4254"
+          }
+        },
+        {
+          "client_id": "241432358313-qet8je9e9p0aif1lsb591l8u8d2uogrv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quickdrop",
             "certificate_hash": "ef824834e57d359790043fdfb085a05d3e5a67a1"
           }
         },
@@ -75,10 +127,10 @@
               "client_type": 3
             },
             {
-              "client_id": "241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com",
+              "client_id": "241432358313-8mfdakgoh6bc72ioln3hqmtd5v0dqqhv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.quickdropltda.quickdrop"
+                "bundle_id": "com.crossdev.quickdropSellers"
               }
             }
           ]
@@ -119,10 +171,10 @@
               "client_type": 3
             },
             {
-              "client_id": "241432358313-jd32b2bh5e4bd6n001q1oeq28l391egj.apps.googleusercontent.com",
+              "client_id": "241432358313-8mfdakgoh6bc72ioln3hqmtd5v0dqqhv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.quickdropltda.quickdrop"
+                "bundle_id": "com.crossdev.quickdropSellers"
               }
             }
           ]
