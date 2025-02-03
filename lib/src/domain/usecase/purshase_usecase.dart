@@ -6,6 +6,6 @@ class PurchaseUsecase {
     required PurchaseRepository repository,
   }) : _repository = repository;
   final PurchaseRepository _repository;
-  Future<void> purchaseProduct({required PurchaseEntity product}) async =>
+  Future<String> purchaseProduct({required PurchaseEntity product}) async =>
       await _repository.purchaseProduct(product: product);
 }

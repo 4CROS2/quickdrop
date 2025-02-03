@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class Constants {
-  static double borderValue = 14.0;
+  static double borderValue = 12.0;
   static double minHeight = 100.0;
   static double mainPaddingValue = 12.0;
 
@@ -33,8 +33,8 @@ class Constants {
   static const Color primaryColor = Color(
     0xFF7C96F4,
   );
-  static const Color secondaryColor =
-      Color(0x71FFFFFF); /*  Color.fromRGBO(56, 56, 56, 0.603) */
+  static const Color secondaryColor = Color.fromARGB(29, 0, 0, 0);
+  //Color(0x71FFFFFF); /*  Color.fromRGBO(56, 56, 56, 0.603) */
 
   static EdgeInsets mainPadding = EdgeInsets.all(mainPaddingValue);
   static EdgeInsets buttonPadding = const EdgeInsets.all(15);

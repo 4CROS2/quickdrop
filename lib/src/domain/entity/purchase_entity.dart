@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
+enum Deliverymethod { delivery, store, nullValue }
+
 class PurchaseEntity extends Equatable {
   const PurchaseEntity({
     required this.productName,
@@ -14,16 +16,20 @@ class PurchaseEntity extends Equatable {
     required this.description,
     required this.createdAt,
     required this.imagePath,
+    required this.address,
+    required this.deliverymethod,
   });
   final String productName;
   final String orderId;
   final String productId;
   final String sellerId;
+  final String address;
   final String description;
   final String buyerId;
   final int quantity;
   final int currentPrice;
   final int totalPaid;
+  final Deliverymethod deliverymethod;
   final FieldValue? createdAt;
   final String imagePath;
 
@@ -38,26 +44,30 @@ class PurchaseEntity extends Equatable {
     int? currentPrice,
     int? totalPaid,
     String? description,
+    String? address,
     FieldValue? createdAt,
+    Deliverymethod? deliverymethod,
   }) =>
       PurchaseEntity(
-        productName: productName ?? this.productName,
-        buyerId: buyerId ?? this.buyerId,
-        orderId: orderId ?? this.orderId,
-        sellerId: sellerId ?? this.sellerId,
-        description: description ?? this.description,
-        productId: productId ?? this.productId,
-        imagePath: imagePath ?? this.imagePath,
-        quantity: quantity ?? this.quantity,
-        currentPrice: currentPrice ?? this.currentPrice,
-        createdAt: createdAt ?? this.createdAt,
-        totalPaid: totalPaid ?? this.totalPaid,
-      );
+          productName: productName ?? this.productName,
+          buyerId: buyerId ?? this.buyerId,
+          orderId: orderId ?? this.orderId,
+          sellerId: sellerId ?? this.sellerId,
+          address: address ?? this.address,
+          description: description ?? this.description,
+          productId: productId ?? this.productId,
+          imagePath: imagePath ?? this.imagePath,
+          quantity: quantity ?? this.quantity,
+          currentPrice: currentPrice ?? this.currentPrice,
+          createdAt: createdAt ?? this.createdAt,
+          totalPaid: totalPaid ?? this.totalPaid,
+          deliverymethod: deliverymethod ?? this.deliverymethod);
 
   const PurchaseEntity.empty()
       : productName = '',
         orderId = '',
         buyerId = '',
+        address = '',
         description = 'sin descripcion',
         productId = '',
         sellerId = '',
@@ -65,6 +75,7 @@ class PurchaseEntity extends Equatable {
         currentPrice = 0,
         quantity = 1,
         createdAt = null,
+        deliverymethod = Deliverymethod.nullValue,
         totalPaid = 0;
 
   @override
@@ -77,6 +88,8 @@ class PurchaseEntity extends Equatable {
         quantity,
         createdAt,
         imagePath,
-        totalPaid
+        totalPaid,
+        deliverymethod,
+        address,
       ];
 }

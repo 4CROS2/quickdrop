@@ -4,23 +4,29 @@ import 'package:quickdrop/src/data/model/purchase_model.dart';
 class PurchaseDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  /// Guarda un pedido en Firestore bajo `sellers/{seller_id}/orders`.
-  Future<void> saveOrder({required PurchaseModel purchase}) async {
+  /// Saves an order to Firestore.
+  ///
+  /// Takes a [PurchaseModel] as a required parameter.
+  /// Returns the document ID of the saved order.
+  /// Throws an exception if there is an error during the save operation.
+  Future<String> saveOrder({required PurchaseModel purchase}) async {
     try {
-      // Referencia a la colección de órdenes del vendedor.
+      // Reference to the seller's orders collection
       final DocumentReference<Map<String, dynamic>> sellerRef = _firestore
           .collection('sellers')
           .doc(purchase.sellerId)
           .collection('orders')
           .doc();
 
-      // Datos del pedido a guardar.
+      // Convert purchase model to JSON
       final Map<String, dynamic> orderData = purchase.toJson();
 
-      // Guardar el pedido en Firestore.
+      // Save the order data to Firestore
       await sellerRef.set(orderData);
+
+      return sellerRef.id;
     } catch (e) {
-      throw Exception('Error al guardar el pedido: $e');
+      throw Exception('Error saving the order: $e');
     }
   }
 }

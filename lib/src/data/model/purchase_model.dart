@@ -15,10 +15,13 @@ class PurchaseModel extends PurchaseEntity {
     required super.productName,
     required super.imagePath,
     required super.totalPaid,
+    required super.address,
+    required super.deliverymethod,
   });
 
   static PurchaseModel fromJson({required Map<String, dynamic> json}) {
     return PurchaseModel(
+      address: json['address'],
       productName: json['product_name'],
       buyerId: json['buyer_id'],
       productId: json['product_id'],
@@ -30,6 +33,7 @@ class PurchaseModel extends PurchaseEntity {
       description: json['description'],
       createdAt: json['created_at'],
       totalPaid: json['total_paid'],
+      deliverymethod: Deliverymethod.values[json['delivery_method']],
     );
   }
 
@@ -54,13 +58,15 @@ class PurchaseModel extends PurchaseEntity {
         'buyer_id': buyerId,
         'order_id': _orderId,
         'product_id': productId,
+        'address': address,
         'seller_id': sellerId,
         'quantity': quantity,
         'image': imagePath,
         'sell_price': currentPrice,
         'description': description,
         'created_at': _currentTime,
-        'total_paid': _total
+        'total_paid': _total,
+        'delivery_method': deliverymethod.index,
       };
 
   factory PurchaseModel.fromEntity({required PurchaseEntity entity}) {
@@ -76,6 +82,8 @@ class PurchaseModel extends PurchaseEntity {
       description: entity.description,
       createdAt: entity.createdAt,
       totalPaid: entity.totalPaid,
+      address: entity.address,
+      deliverymethod: entity.deliverymethod,
     );
   }
 }

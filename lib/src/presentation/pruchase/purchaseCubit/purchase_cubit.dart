@@ -31,8 +31,6 @@ class PurchaseCubit extends Cubit<PurchaseState> {
         ),
       ),
     );
-
-    await buyProduct();
   }
 
   void addQuantity() {
@@ -88,10 +86,79 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     );
   }
 
-  Future<void> buyProduct() async {
-    await _usecase.purchaseProduct(
-      product: state.product,
+  void setDeliveryMethod({required int value}) {
+    if (value != state.product.deliverymethod.index) {
+      emit(
+        state.copyWith(
+          product: state.product.copyWith(
+            deliverymethod: Deliverymethod.values[value],
+          ),
+        ),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          product: state.product.copyWith(
+            deliverymethod: Deliverymethod.nullValue,
+          ),
+        ),
+      );
+    }
+  }
+
+  void setAddress(String address) {
+    emit(
+      state.copyWith(
+        product: state.product.copyWith(
+          address: address,
+        ),
+      ),
     );
+  }
+
+  bool deliveryState() {
+    return state.purchaseStatus == PurchaseStatus.loading ||
+        state.purchaseStatus == PurchaseStatus.success ||
+        state.purchaseStatus == PurchaseStatus.error;
+  }
+
+  Future<void> buyProduct() async {
+    try {
+      if (state.product.address.isEmpty) {
+        throw Exception('Por favor ingresa una dirección de entrega');
+      }
+      if (state.product.deliverymethod != Deliverymethod.nullValue) {
+        emit(
+          state.copyWith(
+            purchaseStatus: PurchaseStatus.loading,
+            message: '',
+          ),
+        );
+        final String response = await _usecase.purchaseProduct(
+          product: state.product,
+        );
+        emit(
+          state.copyWith(
+            purchaseStatus: PurchaseStatus.success,
+            purchaseId: response
+          ),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          purchaseStatus: PurchaseStatus.error,
+          message: e.toString(),
+        ),
+      );
+      Future<void>.delayed(const Duration(seconds: 3), () {
+        emit(
+          state.copyWith(
+            purchaseStatus: PurchaseStatus.initial,
+          ),
+        );
+      });
+    }
   }
 
   void addToCart() {}

@@ -27,13 +27,17 @@ class PruchaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                       icon: Icons.arrow_back_ios_rounded,
                     ),
                     Flexible(
+                      flex: 5,
                       child: Text(
-                        'confirmar datos de compra'.capitalize(),
+                        'Facturación'.capitalize(),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                    ),
+                    Spacer(
+                      flex: 1,
                     )
                   ],
                 ),

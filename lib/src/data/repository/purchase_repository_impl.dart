@@ -10,11 +10,11 @@ class IPurchaseRepository implements PurchaseRepository {
   final PurchaseDatasource _datasource;
 
   @override
-  Future<void> purchaseProduct({
+  Future<String> purchaseProduct({
     required PurchaseEntity product,
   }) async {
     try {
-      await _datasource.saveOrder(
+      return await _datasource.saveOrder(
         purchase: PurchaseModel.fromEntity(
           entity: product,
         ),
