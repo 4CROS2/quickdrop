@@ -4,6 +4,7 @@ import 'package:quickdrop/src/domain/entity/products_entity.dart';
 
 class ProductDetailsModel extends ProductDetailEntity {
   ProductDetailsModel({
+    required super.productId,
     required super.productName,
     required super.basePrice,
     required super.description,
@@ -14,23 +15,29 @@ class ProductDetailsModel extends ProductDetailEntity {
   });
 
   static ProductDetailsModel fromJson({required Map<String, dynamic> json}) {
-    final List<dynamic> jsonImages = json['base_images'] ?? <dynamic>[];
-    final List<dynamic> jsonTags = json['tags'] ?? <dynamic>[];
-    final List<dynamic> jsonProducts = json['related_products'];
+    final List<dynamic> jsonImages = List<String>.from(
+      json['base_images'] ?? <String>[],
+    );
+    final List<String> jsonTags =
+        List<String>.from(json['tags'] ?? <dynamic>[]);
+    final List<Map<String, dynamic>> jsonProducts =
+        List<Map<String, dynamic>>.from(
+      json['related_products'] ?? <dynamic>[],
+    );
 
     final List<String> images = List<String>.from(jsonImages);
     final List<String> tags = List<String>.from(jsonTags);
 
     final List<ProductsEntity> relatedProducts = jsonProducts
-        .map(
-          // ignore: always_specify_types
-          (e) => ProductsModel.fromJson(
-            json: e,
+        .map<ProductsModel>(
+          (Map<String, dynamic> product) => ProductsModel.fromJson(
+            json: product,
           ),
         )
         .toList();
 
     return ProductDetailsModel(
+        productId: json['id'],
         productName: json['name'] ?? '',
         basePrice: json['base_price'] ?? 0,
         description: json['description'] ?? '',
@@ -53,7 +60,7 @@ class SellerModel extends SellerData {
     return SellerModel(
       companyName: json['company_name'] ?? '',
       brand: json['brand'] ?? '',
-      sellerId: json['seller_id'] ?? '',
+      sellerId: json['id'] ?? '',
     );
   }
 }

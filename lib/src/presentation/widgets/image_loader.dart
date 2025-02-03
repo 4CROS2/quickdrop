@@ -25,7 +25,7 @@ class _ImageLoaderState extends State<ImageLoader>
         DownloadProgress progress,
       ) =>
           const CupertinoActivityIndicator(
-        color: Constants.primaryColor,
+        color: Constants.secondaryColor,
         animating: true,
       ),
       errorWidget: (BuildContext context, String url, Object error) =>

@@ -1,10 +1,10 @@
 import 'dart:io';
 
+import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/extensions/string_extensions.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/validators.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
                               .passwordRecovery
                               .capitalize(),
                           style: TextStyle(
-                            color: Colors.white.withOpacity(.80),
+                            color: Colors.white.withValues(alpha: .80),
                             fontFamily: 'RedHat',
                             fontWeight: FontWeight.w700,
                           ),

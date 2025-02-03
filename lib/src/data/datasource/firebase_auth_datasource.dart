@@ -1,33 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:extensions/extensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:quickdrop/src/core/extensions/document_snapshot_stream_extension.dart';
 import 'package:rxdart/rxdart.dart';
 
 class FirebaseLoginDatasource {
   FirebaseLoginDatasource({
-    required FirebaseAuth firebaseAuth,
-    required FirebaseFirestore firestore,
     required GoogleSignIn googleSigin,
-  })  : _firebaseAuth = firebaseAuth,
-        _firestore = firestore,
-        _googleSignIn = googleSigin;
+  }) : _googleSignIn = googleSigin;
 
-  final FirebaseAuth _firebaseAuth;
-  final FirebaseFirestore _firestore;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn;
 
   Stream<Map<String, dynamic>?> userStatus() {
     return _firebaseAuth.userChanges().switchMap((User? user) {
-      if (user != null) {
-        return _firestore
-            .collection('users')
-            .doc(user.uid)
-            .snapshots()
-            .toMapJsonStream();
-      } else {
-        return Stream<Map<String, dynamic>>.value(<String, dynamic>{});
+      if (user == null) {
+        return Stream<Map<String, dynamic>>.value(
+          <String, dynamic>{},
+        );
       }
+
+      return _firestore
+          .collection('users')
+          .doc(user.uid)
+          .snapshots()
+          .toMapJsonStream();
     });
   }
 

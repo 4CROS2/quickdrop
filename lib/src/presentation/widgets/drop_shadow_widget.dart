@@ -4,7 +4,7 @@ import 'package:quickdrop/src/presentation/widgets/clipper_radius_images.dart';
 
 class DropShadowWidget extends StatelessWidget {
   const DropShadowWidget({
-    required this.image,
+    required this.child,
     super.key,
     this.borderRadius = const BorderRadius.all(
       Radius.circular(12),
@@ -16,7 +16,7 @@ class DropShadowWidget extends StatelessWidget {
   final Offset offset;
   final BorderRadius borderRadius;
 
-  final Widget image;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class DropShadowWidget extends StatelessWidget {
             scale: scale,
             child: ClipperRadiusImages(
               borderRadius: Constants.mainBorderRadius,
-              child: image,
+              child: child,
             ),
           ),
         ),
@@ -46,7 +46,7 @@ class DropShadowWidget extends StatelessWidget {
         ),
         ClipperRadiusImages(
           borderRadius: borderRadius,
-          child: image,
+          child: child,
         )
       ],
     );
