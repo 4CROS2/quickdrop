@@ -30,7 +30,7 @@ class PurchaseEntity extends Equatable {
   final int currentPrice;
   final int totalPaid;
   final Deliverymethod deliverymethod;
-  final FieldValue? createdAt;
+  final Timestamp? createdAt;
   final String imagePath;
 
   PurchaseEntity copyWith({
@@ -45,7 +45,7 @@ class PurchaseEntity extends Equatable {
     int? totalPaid,
     String? description,
     String? address,
-    FieldValue? createdAt,
+    Timestamp? createdAt,
     Deliverymethod? deliverymethod,
   }) =>
       PurchaseEntity(

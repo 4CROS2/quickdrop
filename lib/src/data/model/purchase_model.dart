@@ -20,6 +20,7 @@ class PurchaseModel extends PurchaseEntity {
   });
 
   static PurchaseModel fromJson({required Map<String, dynamic> json}) {
+    final Timestamp time = json['created_at'];
     return PurchaseModel(
       address: json['address'],
       productName: json['product_name'],
@@ -31,8 +32,8 @@ class PurchaseModel extends PurchaseEntity {
       currentPrice: json['sell_price'],
       orderId: json['order_id'],
       description: json['description'],
-      createdAt: json['created_at'],
-      totalPaid: json['total_paid'],
+      createdAt: time,
+      totalPaid: json['total_paid'] as int,
       deliverymethod: Deliverymethod.values[json['delivery_method']],
     );
   }
@@ -54,11 +55,11 @@ class PurchaseModel extends PurchaseEntity {
   int get _total => _setTotalPaid();
 
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'address': address,
         'product_name': productName,
         'buyer_id': buyerId,
         'order_id': _orderId,
         'product_id': productId,
-        'address': address,
         'seller_id': sellerId,
         'quantity': quantity,
         'image': imagePath,

@@ -61,9 +61,9 @@
         </activity>
 
         <!-- Meta-data de Flutter -->
-        <meta-data
+        <!-- <meta-data
             android:name= "io.flutter.embedding.android.EnableImpeller"
-            android:value= "false" />
+            android:value= "false" /> -->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />

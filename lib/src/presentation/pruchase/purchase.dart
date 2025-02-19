@@ -35,7 +35,7 @@ class _PurchaseState extends State<Purchase> {
             );
           }
           if (state.purchaseStatus == PurchaseStatus.success) {
-            context.pushReplacement('/myPurchases/${state.purchaseId}');
+            context.pushReplacement('/purchaseDetail/${state.purchaseId}');
           }
         },
         builder: (BuildContext context, PurchaseState state) {
