@@ -8,6 +8,7 @@ import 'package:quickdrop/src/presentation/financial_information/financial_infor
 import 'package:quickdrop/src/presentation/home/home.dart';
 import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/presentation/login/login.dart';
+import 'package:quickdrop/src/presentation/my_purchases/mypurchases.dart';
 import 'package:quickdrop/src/presentation/product/product.dart';
 import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
@@ -124,7 +125,15 @@ class AppRouter {
             ),
           );
         },
-      )
+      ),
+      GoRoute(
+        path: '/myPurchases',
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CupertinoPage<MyPurchases>(
+            child: MyPurchases(),
+          );
+        },
+      ),
     ],
   );
 }

@@ -1,0 +1,2 @@
+D:/Mis programas/tesis_user_app/quickdrop/android/app/.cxx/RelWithDebInfo/x6rl6so2/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Mis programas/tesis_user_app/quickdrop/android/app/.cxx/RelWithDebInfo/x6rl6so2/armeabi-v7a/CMakeFiles/rebuild_cache.dir

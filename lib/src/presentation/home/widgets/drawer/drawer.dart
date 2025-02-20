@@ -37,6 +37,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
             SectionTile(
               icon: Icons.shopping_bag_outlined,
               label: 'mis compras',
+              page: '/myPurchases',
             ),
             SectionTile(
               icon: Icons.schedule_rounded,
