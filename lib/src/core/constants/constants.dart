@@ -33,7 +33,7 @@ class Constants {
   static const Color primaryColor = Color(
     0xFF7C96F4,
   );
-  static const Color secondaryColor = Color.fromARGB(29, 0, 0, 0);
+  static const Color secondaryColor = Color.fromARGB(59, 0, 204, 255);
   //Color(0x71FFFFFF); /*  Color.fromRGBO(56, 56, 56, 0.603) */
 
   static EdgeInsets mainPadding = EdgeInsets.all(mainPaddingValue);

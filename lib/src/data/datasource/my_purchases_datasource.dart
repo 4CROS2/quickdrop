@@ -8,15 +8,16 @@ class MyPurchasesDatasource {
 
   String get _uid => _auth.currentUser!.uid;
 
-  Future<List<Map<String, dynamic>>> getMyPurchases() async {
+  Stream<List<Map<String, dynamic>>> getMyPurchases() {
     try {
-      final QuerySnapshot<Map<String, dynamic>> querySnapshot = await _firestore
+      final Stream<List<Map<String, dynamic>>> querySnapshot = _firestore
           .collectionGroup('orders')
           .where('buyer_id', isEqualTo: _uid)
           .orderBy('created_at', descending: true)
-          .get();
+          .snapshots()
+          .toMapJsonListStream();
 
-      return querySnapshot.toListMapJson();
+      return querySnapshot;
     } catch (e) {
       throw Exception(e);
     }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:quickdrop/src/data/model/status_time_line_model.dart';
 import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
 import 'package:uuid/uuid.dart';
 
@@ -17,11 +18,16 @@ class PurchaseModel extends PurchaseEntity {
     required super.totalPaid,
     required super.address,
     required super.deliverymethod,
+    required super.statusTimeline,
   });
 
   static PurchaseModel fromJson({required Map<String, dynamic> json}) {
     final Timestamp time = json['created_at'];
+    final List<dynamic> timelineJson = json['status_timeline'] as List<dynamic>;
+    final List<StatusTimelineModel> statusTimelineModels =
+        StatusTimelineModel.fromJsonList(jsonList: timelineJson);
     return PurchaseModel(
+      statusTimeline: statusTimelineModels,
       address: json['address'],
       productName: json['product_name'],
       buyerId: json['buyer_id'],
@@ -54,24 +60,9 @@ class PurchaseModel extends PurchaseEntity {
 
   int get _total => _setTotalPaid();
 
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'address': address,
-        'product_name': productName,
-        'buyer_id': buyerId,
-        'order_id': _orderId,
-        'product_id': productId,
-        'seller_id': sellerId,
-        'quantity': quantity,
-        'image': imagePath,
-        'sell_price': currentPrice,
-        'description': description,
-        'created_at': _currentTime,
-        'total_paid': _total,
-        'delivery_method': deliverymethod.index,
-      };
-
   factory PurchaseModel.fromEntity({required PurchaseEntity entity}) {
     return PurchaseModel(
+      statusTimeline: entity.statusTimeline,
       productName: entity.productName,
       buyerId: entity.buyerId,
       currentPrice: entity.currentPrice,
@@ -86,5 +77,26 @@ class PurchaseModel extends PurchaseEntity {
       address: entity.address,
       deliverymethod: entity.deliverymethod,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'address': address,
+      'product_name': productName,
+      'buyer_id': buyerId,
+      'order_id': _orderId,
+      'product_id': productId,
+      'seller_id': sellerId,
+      'quantity': quantity,
+      'image': imagePath,
+      'sell_price': currentPrice,
+      'description': description,
+      'created_at': _currentTime,
+      'total_paid': _total,
+      'delivery_method': deliverymethod.index,
+      'status_timeline': StatusTimelineModel.toJsonList(
+        statusTimelineEntities: statusTimeline,
+      ),
+    };
   }
 }

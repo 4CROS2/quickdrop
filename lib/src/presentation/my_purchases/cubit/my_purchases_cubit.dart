@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/domain/entity/my_purchases_entity.dart';
@@ -13,24 +15,41 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
 
   final MyPurchasesUsecase _usecase;
 
-  Future<void> getMyPurchases() async {
-    emit(Loading());
-    try {
-      final List<MyPurchasesEntity> purchases = await _usecase.getMyPurchases();
+  late StreamSubscription<List<MyPurchasesEntity>> _purchasesStream;
 
-      if (!isClosed) {
-        emit(
-          Success(
-            purchases: purchases,
-          ),
-        );
-      }
-    } catch (e) {
+  Future<void> getMyPurchases() async {
+    _onLoading();
+    _purchasesStream = _usecase.getMyPurchases.listen(
+      _onSuccess,
+      onError: _onError,
+    );
+  }
+
+  void _onSuccess(List<MyPurchasesEntity> purchases) {
+    if (!isClosed) {
       emit(
-        Error(
-          message: e.toString(),
+        Success(
+          purchases: purchases,
         ),
       );
     }
+  }
+
+  void _onError(Object message) {
+    emit(
+      Error(
+        message: message.toString(),
+      ),
+    );
+  }
+
+  void _onLoading() {
+    emit(Loading());
+  }
+
+  @override
+  Future<void> close() {
+    _purchasesStream.cancel();
+    return super.close();
   }
 }

@@ -7,7 +7,6 @@ class MyPurchasesUsecase {
   }) : _repository = repository;
   final MyPurchasesRepository _repository;
 
-  Future<List<MyPurchasesEntity>> getMyPurchases() async {
-    return await _repository.getMyPurchases();
-  }
+  Stream<List<MyPurchasesEntity>> get getMyPurchases =>
+      _repository.getMyPurchases();
 }

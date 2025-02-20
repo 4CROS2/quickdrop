@@ -1,7 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:quickdrop/src/domain/entity/status_timeline_entity.dart';
 
 enum Deliverymethod { delivery, store, nullValue }
+
+enum OrderStatus {
+  pending,
+  accepted,
+  onTheWay,
+  completed,
+  canceled,
+}
 
 class PurchaseEntity extends Equatable {
   const PurchaseEntity({
@@ -18,6 +27,7 @@ class PurchaseEntity extends Equatable {
     required this.imagePath,
     required this.address,
     required this.deliverymethod,
+    required this.statusTimeline,
   });
   final String productName;
   final String orderId;
@@ -32,6 +42,7 @@ class PurchaseEntity extends Equatable {
   final Deliverymethod deliverymethod;
   final Timestamp? createdAt;
   final String imagePath;
+  final List<StatusTimelineEntity> statusTimeline;
 
   PurchaseEntity copyWith({
     String? productName,
@@ -47,36 +58,41 @@ class PurchaseEntity extends Equatable {
     String? address,
     Timestamp? createdAt,
     Deliverymethod? deliverymethod,
+    List<StatusTimelineEntity>? status,
   }) =>
       PurchaseEntity(
-          productName: productName ?? this.productName,
-          buyerId: buyerId ?? this.buyerId,
-          orderId: orderId ?? this.orderId,
-          sellerId: sellerId ?? this.sellerId,
-          address: address ?? this.address,
-          description: description ?? this.description,
-          productId: productId ?? this.productId,
-          imagePath: imagePath ?? this.imagePath,
-          quantity: quantity ?? this.quantity,
-          currentPrice: currentPrice ?? this.currentPrice,
-          createdAt: createdAt ?? this.createdAt,
-          totalPaid: totalPaid ?? this.totalPaid,
-          deliverymethod: deliverymethod ?? this.deliverymethod);
+        productName: productName ?? this.productName,
+        statusTimeline: status ?? statusTimeline,
+        buyerId: buyerId ?? this.buyerId,
+        orderId: orderId ?? this.orderId,
+        sellerId: sellerId ?? this.sellerId,
+        address: address ?? this.address,
+        description: description ?? this.description,
+        productId: productId ?? this.productId,
+        imagePath: imagePath ?? this.imagePath,
+        quantity: quantity ?? this.quantity,
+        currentPrice: currentPrice ?? this.currentPrice,
+        createdAt: createdAt ?? this.createdAt,
+        totalPaid: totalPaid ?? this.totalPaid,
+        deliverymethod: deliverymethod ?? this.deliverymethod,
+      );
 
-  const PurchaseEntity.empty()
-      : productName = '',
-        orderId = '',
-        buyerId = '',
-        address = '',
-        description = 'sin descripcion',
-        productId = '',
-        sellerId = '',
-        imagePath = '',
-        currentPrice = 0,
-        quantity = 1,
-        createdAt = null,
-        deliverymethod = Deliverymethod.nullValue,
-        totalPaid = 0;
+  static const PurchaseEntity empty = PurchaseEntity(
+    productName: '',
+    orderId: '',
+    statusTimeline: <StatusTimelineEntity>[],
+    buyerId: '',
+    address: '',
+    description: 'sin descripcion',
+    productId: '',
+    sellerId: '',
+    imagePath: '',
+    currentPrice: 0,
+    quantity: 1,
+    createdAt: null,
+    deliverymethod: Deliverymethod.nullValue,
+    totalPaid: 0,
+  );
 
   @override
   List<Object?> get props => <Object?>[
@@ -91,5 +107,6 @@ class PurchaseEntity extends Equatable {
         totalPaid,
         deliverymethod,
         address,
+        statusTimeline
       ];
 }

@@ -21,7 +21,8 @@ class _MyPurchasesState extends State<MyPurchases> {
         title: Text(
           'Mis compras',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
@@ -40,9 +41,17 @@ class _MyPurchasesState extends State<MyPurchases> {
               },
               duration: Constants.animationTransition,
               child: switch (state) {
-                Error _ => Center(child: Text(state.message)),
-                Success _ => MyPurchasesBody(purchases: state.purchases),
-                Loading _ => Center(child: CircularProgressIndicator()),
+                Error _ => Center(
+                    child: Text(
+                      state.message,
+                    ),
+                  ),
+                Success _ => MyPurchasesBody(
+                    purchases: state.purchases,
+                  ),
+                Loading _ => Center(
+                    child: CircularProgressIndicator(),
+                  ),
               },
             );
           },
