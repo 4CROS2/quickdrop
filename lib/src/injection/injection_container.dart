@@ -1,5 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:quickdrop/src/data/datasource/my_purchases_datasource.dart';
+import 'package:quickdrop/src/data/repository/my_purchases_repository_impl.dart';
+import 'package:quickdrop/src/domain/repository/my_purchases_repository.dart';
+import 'package:quickdrop/src/domain/usecase/my_purchases_usecase.dart';
 import 'package:quickdrop/src/data/datasource/favorite_datasource.dart';
 import 'package:quickdrop/src/data/datasource/financial_information_datasource.dart';
 import 'package:quickdrop/src/data/datasource/firebase_auth_datasource.dart';
@@ -30,6 +34,7 @@ import 'package:quickdrop/src/presentation/financial_information/cubit/financial
 import 'package:quickdrop/src/presentation/home/cubit/home_cubit.dart';
 import 'package:quickdrop/src/presentation/home/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
 import 'package:quickdrop/src/presentation/login/cubit/login_cubit.dart';
+import 'package:quickdrop/src/presentation/my_purchases/cubit/my_purchases_cubit.dart';
 import 'package:quickdrop/src/presentation/product/productCubit/product_cubit.dart';
 import 'package:quickdrop/src/presentation/signup/cubit/signup_cubit.dart';
 
@@ -65,6 +70,9 @@ Future<void> init() async {
   sl.registerLazySingleton<FinancialInformationDatasource>(
     () => FinancialInformationDatasource(),
   );
+  sl.registerLazySingleton<MyPurchasesDatasource>(
+    () => MyPurchasesDatasource(),
+  );
   // Repositories
   sl.registerLazySingleton<AuthRepository>(
     () => IAuthRepository(
@@ -92,6 +100,11 @@ Future<void> init() async {
   sl.registerLazySingleton<FinancialInformationRepository>(
     () => IFinancialInformationRepository(
       datasource: sl<FinancialInformationDatasource>(),
+    ),
+  );
+  sl.registerLazySingleton<MyPurchasesRepository>(
+    () => IMyPurchasesRepository(
+      datasource: sl<MyPurchasesDatasource>(),
     ),
   );
   //use case
@@ -125,6 +138,9 @@ Future<void> init() async {
       repository: sl<FinancialInformationRepository>(),
     ),
   );
+  sl.registerLazySingleton<MyPurchasesUsecase>(() => MyPurchasesUsecase(
+        repository: sl<MyPurchasesRepository>(),
+      ));
 
   //cubits
   sl.registerLazySingleton<AppCubit>(
@@ -167,4 +183,7 @@ Future<void> init() async {
       usecase: sl<FinancialInformationUsecase>(),
     ),
   );
+  sl.registerFactory(() => MyPurchasesCubit(
+        usecase: sl<MyPurchasesUsecase>(),
+      ));
 }

@@ -6,7 +6,7 @@ class PurchaseState extends Equatable {
   const PurchaseState({
     this.message = '',
     this.purchaseId = '',
-    this.product = const PurchaseEntity.empty(),
+    this.product = PurchaseEntity.empty,
     this.purchaseStatus = PurchaseStatus.initial,
   });
   final PurchaseEntity product;
