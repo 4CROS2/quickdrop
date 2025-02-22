@@ -45,9 +45,15 @@
         "description": "Étiquette pour demander si l'utilisateur a déjà un compte."
     },
     "invalidCredential": "Identifiants invalides.",
+    "@invalidCredential": {},
     "invalidEmail": "L'adresse e-mail est invalide.",
+    "@invalidEmail": {},
     "userDisabled": "L'utilisateur a été désactivé.",
+    "@userDisabled": {},
     "userNotFound": "Aucun utilisateur trouvé avec cette adresse e-mail.",
+    "@userNotFound": {},
     "wrongPassword": "Le mot de passe est incorrect.",
-    "unknownError": "Une erreur inconnue s'est produite."
+    "@wrongPassword": {},
+    "unknownError": "Une erreur inconnue s'est produite.",
+    "@unknownError": {}
 }

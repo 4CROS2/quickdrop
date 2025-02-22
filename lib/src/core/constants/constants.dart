@@ -45,8 +45,8 @@ class Constants {
     top: Constants.mainPadding.top,
   );
 
-  static ImageFilter iamgeFilterBlur = ImageFilter.blur(
-    sigmaX: 20,
-    sigmaY: 20,
+  static ImageFilter imageFilterBlur = ImageFilter.blur(
+    sigmaX: 30,
+    sigmaY: 30,
   );
 }

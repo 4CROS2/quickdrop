@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 
-class HeaderButtons extends StatelessWidget {
-  const HeaderButtons({
+class HeaderButton extends StatelessWidget {
+  const HeaderButton({
     required IconData icon,
     VoidCallback? onTap,
     Color backgroundColor = Constants.secondaryColor,
@@ -22,13 +22,13 @@ class HeaderButtons extends StatelessWidget {
     return Material(
       borderRadius: Constants.mainBorderRadius,
       color: Colors.transparent,
-      clipBehavior: Clip.hardEdge,
+      clipBehavior: Clip.antiAlias,
       child: Stack(
         children: <Widget>[
           Positioned.fill(
             child: ClipRRect(
               child: BackdropFilter(
-                filter: Constants.iamgeFilterBlur,
+                filter: Constants.imageFilterBlur,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: _backgroundColor,
@@ -39,6 +39,7 @@ class HeaderButtons extends StatelessWidget {
           ),
           InkWell(
             onTap: _onTap,
+            borderRadius: Constants.mainBorderRadius,
             child: Padding(
               padding: Constants.buttonPadding,
               child: Icon(

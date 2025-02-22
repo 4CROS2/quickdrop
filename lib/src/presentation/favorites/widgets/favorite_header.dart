@@ -18,7 +18,7 @@ class FavoriteHeader extends SliverPersistentHeaderDelegate {
           Positioned.fill(
             child: ClipRRect(
               child: BackdropFilter(
-                filter: Constants.iamgeFilterBlur,
+                filter: Constants.imageFilterBlur,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: Constants.secondaryColor,
@@ -35,7 +35,7 @@ class FavoriteHeader extends SliverPersistentHeaderDelegate {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  HeaderButtons(
+                  HeaderButton(
                     onTap: () => context.pop(),
                     icon: Icons.arrow_back_ios_rounded,
                     iconColor: Colors.white,

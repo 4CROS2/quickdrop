@@ -53,7 +53,7 @@ jobs:
             ${{ runner.os }}-pub-
 
       - name: Get dependencies
-        run: flutter pub get && flutter gen-l10n
+        run: flutter pub get
 
       - name: Check for unused code
         run: dart run dart_code_metrics:metrics check-unused-code lib

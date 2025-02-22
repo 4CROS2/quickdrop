@@ -12,6 +12,7 @@ import 'package:quickdrop/src/presentation/my_purchases/mypurchases.dart';
 import 'package:quickdrop/src/presentation/product/product.dart';
 import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
+import 'package:quickdrop/src/presentation/purchase_detail/purchase_detail.dart';
 import 'package:quickdrop/src/router/go_router_refresh_stream.dart';
 
 class AppRouter {
@@ -46,63 +47,45 @@ class AppRouter {
     routes: <RouteBase>[
       GoRoute(
         path: '/',
-        pageBuilder: (BuildContext context, GoRouterState state) =>
-            MaterialPage<LoadingPage>(
-          child: LoadingPage(),
-        ),
+        builder: (BuildContext context, GoRouterState state) => LoadingPage(),
       ),
       GoRoute(
         path: '/login',
-        pageBuilder: (BuildContext context, GoRouterState state) =>
-            MaterialPage<Login>(
-          child: Login(),
-        ),
+        builder: (BuildContext context, GoRouterState state) => Login(),
       ),
       GoRoute(
         path: '/home',
         name: 'home',
-        pageBuilder: (BuildContext context, GoRouterState state) =>
-            MaterialPage<Home>(
-          child: Home(),
-        ),
+        builder: (BuildContext context, GoRouterState state) => Home(),
       ),
       GoRoute(
-          path: '/favorites',
-          name: 'favorites',
-          pageBuilder: (BuildContext context, GoRouterState state) {
-            return CupertinoPage<Favorites>(
-              child: Favorites(),
-            );
-          }),
+        path: '/favorites',
+        name: 'favorites',
+        builder: (BuildContext context, GoRouterState state) => Favorites(),
+      ),
       GoRoute(
         path: '/product/:productId',
         name: 'product',
-        pageBuilder: (BuildContext context, GoRouterState state) {
-          return CupertinoPage<Product>(
-            child: Product(
-              productId: state.pathParameters['productId']!,
-              previewImage: state.uri.queryParameters['previewImage'] ?? '',
-            ),
+        builder: (BuildContext context, GoRouterState state) {
+          return Product(
+            productId: state.pathParameters['productId']!,
+            previewImage: state.uri.queryParameters['previewImage'] ?? '',
           );
         },
         routes: <RouteBase>[
           GoRoute(
             path: 'financialInformation',
-            pageBuilder: (BuildContext context, GoRouterState state) {
-              return CupertinoPage<FinancialInformation>(
-                child: FinancialInformation(
-                  productId: state.pathParameters['productId']!,
-                ),
+            builder: (BuildContext context, GoRouterState state) {
+              return FinancialInformation(
+                productId: state.pathParameters['productId']!,
               );
             },
           ),
           GoRoute(
             path: 'purchase',
             name: 'purchase',
-            pageBuilder: (BuildContext context, GoRouterState state) {
-              return CupertinoPage<Purchase>(
-                child: Purchase(),
-              );
+            builder: (BuildContext context, GoRouterState state) {
+              return Purchase();
             },
           ),
         ],
@@ -110,27 +93,27 @@ class AppRouter {
       GoRoute(
         path: '/fullScrenImage',
         name: 'fullScrenImage',
-        pageBuilder: (BuildContext context, GoRouterState state) {
+        builder: (BuildContext context, GoRouterState state) {
           final Map<String, dynamic> extra =
               state.extra as Map<String, dynamic>;
-
           final List<String> images =
               extra['images'] as List<String>? ?? <String>[];
           final int currentPage = extra['currentPage'] as int? ?? 0;
-          return MaterialPage<FullScreenImage>(
-            fullscreenDialog: true,
-            child: FullScreenImage(
-              images: images,
-              currentPage: currentPage,
-            ),
+          return FullScreenImage(
+            images: images,
+            currentPage: currentPage,
           );
         },
       ),
       GoRoute(
         path: '/myPurchases',
-        pageBuilder: (BuildContext context, GoRouterState state) {
-          return CupertinoPage<MyPurchases>(
-            child: MyPurchases(),
+        builder: (BuildContext context, GoRouterState state) => MyPurchases(),
+      ),
+      GoRoute(
+        path: '/purchaseDetail/:purchaseId',
+        builder: (BuildContext context, GoRouterState state) {
+          return PurchaseDetail(
+            purchaseId: state.pathParameters['purchaseId']!,
           );
         },
       ),
