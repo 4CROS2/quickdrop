@@ -51,7 +51,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get userDisabled => 'L\'utente è stato disabilitato.';
 
   @override
-  String get userNotFound => 'Nessun utente trovato con questo indirizzo email.';
+  String get userNotFound =>
+      'Nessun utente trovato con questo indirizzo email.';
 
   @override
   String get wrongPassword => 'La password è errata.';

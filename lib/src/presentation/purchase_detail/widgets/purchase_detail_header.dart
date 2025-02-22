@@ -61,7 +61,8 @@ class PurchaseDetailAppbar extends SliverPersistentHeaderDelegate {
                                   width: 140,
                                   height: 140,
                                   child: PrettyQrView.data(
-                                    data: 'https://www.xvideos.com/profiles/locxooo44',
+                                    data:
+                                        'https://www.xvideos.com/profiles/locxooo44',
                                     decoration: const PrettyQrDecoration(
                                       shape: PrettyQrSmoothSymbol(
                                         color: Constants.primaryColor,
