@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
 
@@ -54,7 +55,23 @@ class PurchaseDetailAppbar extends SliverPersistentHeaderDelegate {
                           context: context,
                           useNestedNavigation: true,
                           pageBuilder: (BuildContext context) {
-                            return Scaffold();
+                            return Scaffold(
+                              body: Center(
+                                child: SizedBox(
+                                  width: 140,
+                                  height: 140,
+                                  child: PrettyQrView.data(
+                                    data: 'https://www.xvideos.com/profiles/locxooo44',
+                                    decoration: const PrettyQrDecoration(
+                                      shape: PrettyQrSmoothSymbol(
+                                        color: Constants.primaryColor,
+                                        roundFactor: 1,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
                           },
                         );
                       },
