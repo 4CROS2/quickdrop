@@ -1,2 +1,0 @@
-D:/Mis programas/tesis_user_app/quickdrop/android/app/.cxx/RelWithDebInfo/x6rl6so2/x86_64/CMakeFiles/edit_cache.dir
-D:/Mis programas/tesis_user_app/quickdrop/android/app/.cxx/RelWithDebInfo/x6rl6so2/x86_64/CMakeFiles/rebuild_cache.dir

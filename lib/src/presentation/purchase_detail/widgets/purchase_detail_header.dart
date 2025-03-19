@@ -62,7 +62,7 @@ class PurchaseDetailAppbar extends SliverPersistentHeaderDelegate {
                                   height: 140,
                                   child: PrettyQrView.data(
                                     data:
-                                        'https://www.xvideos.com/profiles/locxooo44',
+                                        'el codigo qr primigenio de la vida en la tierra',
                                     decoration: const PrettyQrDecoration(
                                       shape: PrettyQrSmoothSymbol(
                                         color: Constants.primaryColor,

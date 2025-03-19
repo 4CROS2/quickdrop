@@ -51,8 +51,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get userDisabled => 'Der Benutzer wurde deaktiviert.';
 
   @override
-  String get userNotFound =>
-      'Kein Benutzer mit dieser E-Mail-Adresse gefunden.';
+  String get userNotFound => 'Kein Benutzer mit dieser E-Mail-Adresse gefunden.';
 
   @override
   String get wrongPassword => 'Das Passwort ist falsch.';
