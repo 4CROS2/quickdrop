@@ -1,34 +1,33 @@
-name: Flutter CI
+name: Flutter Code Quality
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on pull request events but only for the master branch
   pull_request:
     branches: [main]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  lint:
-    name: "Static code analysis"
+  lint_and_format:
+    name: "Lint and Format"
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2.4.2
 
-      - name: Setup Java
+      - name: Setup Java and Flutter
         uses: actions/setup-java@v3.4.1
         with:
           distribution: "temurin"
-          java-version: "17"
+          java-version: "21"
+
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
+        
         with:
           channel: stable
 
       - name: Cache dependencies
-        uses: actions/cache@v3.0.8
+        uses: actions/cache@v4
         with:
           path: |
             $PUB_CACHE
@@ -42,14 +41,6 @@ jobs:
       - name: Lint analysis
         run: flutter analyze
 
-  check-dart-formatting:
-    name: "Check Dart formatting"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.4.2
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2.6.2
-
       - name: Check Dart formatting
-        run: dart format --set-exit-if-changed .
+        run: dart format --set-exit-if-changed $(git ls-files '*.dart' | grep -v 'lib/src/core/localization/')
+

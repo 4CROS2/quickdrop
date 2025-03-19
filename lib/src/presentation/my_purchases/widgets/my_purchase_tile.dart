@@ -35,7 +35,7 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
       case 'accepted':
         return 'Aceptado';
       default:
-        return 'Pendienteee';
+        return 'Pendiente';
     }
   }
 
@@ -120,8 +120,12 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
                       ],
                     ),
                   ),
-                  Text('Cantidad: ${widget._purchase.quantity}'),
-                  Text('Dirección: ${widget._purchase.address}'),
+                  Text(
+                    'Cantidad: ${widget._purchase.quantity}',
+                  ),
+                  Text(
+                    'Dirección: ${widget._purchase.address.locationDescription}',
+                  ),
                 ],
               ),
             ),

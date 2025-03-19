@@ -57,10 +57,10 @@ class _MyPurchasesBodyState extends State<MyPurchasesBody> {
             borderRadius: Constants.mainBorderRadius,
             color: Constants.secondaryColor,
             child: Padding(
-              padding: Constants.mainPadding,
+              padding: Constants.mainPadding / 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: Constants.mainPaddingValue,
+                spacing: Constants.mainPaddingValue / 2,
                 children: <Widget>[
                   Text(
                     date,
