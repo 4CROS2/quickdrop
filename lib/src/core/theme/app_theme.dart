@@ -25,21 +25,24 @@ class AppTheme {
 
   static ThemeData _createLightTheme(BuildContext context) {
     return ThemeData(
-        pageTransitionsTheme: _pageTransition,
-        colorSchemeSeed: Constants.primaryColor,
-        fontFamily: 'Questrial',
-        progressIndicatorTheme: ProgressIndicatorThemeData(
-            // ignore: deprecated_member_use
-            year2023: false,
-            color: Constants.primaryColor,
-            linearTrackColor: Constants.secondaryColor));
+      pageTransitionsTheme: _pageTransition,
+      colorSchemeSeed: Constants.primaryColor,
+      fontFamily: 'Questrial',
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        // ignore: deprecated_member_use
+        year2023: false,
+        color: Constants.primaryColor,
+        linearTrackColor: Constants.secondaryColor,
+      ),
+    );
   }
 
   static ThemeData _createDarkTheme(BuildContext context) {
     return ThemeData(
-        pageTransitionsTheme: _pageTransition,
-        colorSchemeSeed: Constants.primaryColor,
-        fontFamily: 'Questrial',
-        brightness: Brightness.dark);
+      pageTransitionsTheme: _pageTransition,
+      colorSchemeSeed: Constants.primaryColor,
+      fontFamily: 'Questrial',
+      brightness: Brightness.dark,
+    );
   }
 }

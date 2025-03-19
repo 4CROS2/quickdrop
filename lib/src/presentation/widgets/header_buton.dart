@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 
 class HeaderButton extends StatelessWidget {
   const HeaderButton({
     required IconData icon,
-    VoidCallback? onTap,
+    this.onTap,
+    this.backgroundColor = Constants.secondaryColor,
+    this.iconColor,
+    super.key,
+  }) : _iconData = icon;
+
+  HeaderButton.back(
+    BuildContext context, {
     Color backgroundColor = Constants.secondaryColor,
     Color? iconColor,
-    super.key,
-  })  : _iconData = icon,
-        _iconColor = iconColor,
-        _onTap = onTap,
-        _backgroundColor = backgroundColor;
+    Key? key,
+  }) : this(
+          icon: Icons.arrow_back_ios_rounded,
+          onTap: () => context.pop(),
+          backgroundColor: backgroundColor,
+          iconColor: iconColor,
+          key: key,
+        );
+
   final IconData _iconData;
-  final VoidCallback? _onTap;
-  final Color _backgroundColor;
-  final Color? _iconColor;
+  final VoidCallback? onTap;
+  final Color backgroundColor;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +39,25 @@ class HeaderButton extends StatelessWidget {
         children: <Widget>[
           Positioned.fill(
             child: ClipRRect(
+              borderRadius: Constants.mainBorderRadius,
               child: BackdropFilter(
                 filter: Constants.imageFilterBlur,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: _backgroundColor,
+                    color: backgroundColor,
                   ),
                 ),
               ),
             ),
           ),
           InkWell(
-            onTap: _onTap,
+            onTap: onTap,
             borderRadius: Constants.mainBorderRadius,
             child: Padding(
               padding: Constants.buttonPadding,
               child: Icon(
                 _iconData,
-                color: _iconColor,
+                color: iconColor,
               ),
             ),
           ),

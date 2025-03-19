@@ -46,7 +46,7 @@ class Constants {
   );
 
   static ImageFilter imageFilterBlur = ImageFilter.blur(
-    sigmaX: 30,
-    sigmaY: 30,
+    sigmaX: 20,
+    sigmaY: 20,
   );
 }
