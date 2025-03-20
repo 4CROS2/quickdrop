@@ -36,35 +36,28 @@ class _HomeState extends State<Home> {
                     delegate: HomeHeader(),
                     pinned: true,
                   ),
-                  SliverToBoxAdapter(
-                    child: AnimatedSwitcher(
-                      duration: Constants.animationTransition,
-                      transitionBuilder: (
-                        Widget child,
-                        Animation<double> animation,
-                      ) =>
-                          FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      ),
-                      child: switch (state) {
-                        SuccessHomeData _ => Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              PromotionsAndDiscounts(),
-                              Products(
-                                products: state.products,
-                              ),
-                            ],
-                          ),
-                        ErrorGettingHomeData _ => Center(
-                            child: Text(state.message),
-                          ),
-                        LoadingHomeData _ => const LoadingStatus(),
-                        _ => const SizedBox.shrink()
-                      },
+                  if (state is LoadingHomeData)
+                    SliverFillRemaining(
+                      child: const LoadingStatus(),
                     ),
-                  ),
+                  if (state is ErrorGettingHomeData)
+                    SliverFillRemaining(
+                      child: Center(
+                        child: Text(state.message),
+                      ),
+                    ),
+                  if (state is SuccessHomeData)
+                    SliverToBoxAdapter(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          PromotionsAndDiscounts(),
+                          Products(
+                            products: state.products,
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             );

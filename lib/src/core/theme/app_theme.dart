@@ -34,6 +34,20 @@ class AppTheme {
         color: Constants.primaryColor,
         linearTrackColor: Constants.secondaryColor,
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        fillColor: Constants.primaryColor.withValues(
+          alpha: .2,
+        ),
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: Constants.mainBorderRadius,
+          gapPadding: Constants.mainPaddingValue * 2,
+          borderSide: BorderSide(
+            width: 0,
+            style: BorderStyle.none,
+          ),
+        ),
+      ),
     );
   }
 
