@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
@@ -106,11 +107,14 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     }
   }
 
-  void setAddress(String address) {
+  void setAddress(GeoPoint address) {
     emit(
       state.copyWith(
         product: state.product.copyWith(
-          address: address,
+          address: OrderAddressEntity(
+            location: address,
+            locationDescription: '',
+          ),
         ),
       ),
     );
@@ -124,7 +128,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
 
   Future<void> buyProduct() async {
     try {
-      if (state.product.address.isEmpty) {
+      if (state.product.description.isEmpty) {
         throw Exception('Por favor ingresa una dirección de entrega');
       }
       if (state.product.deliverymethod != Deliverymethod.nullValue) {

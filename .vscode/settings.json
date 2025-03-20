@@ -10,5 +10,6 @@
     "[dart]": {
         "editor.defaultFormatter": "Dart-Code.dart-code",
         "editor.formatOnSave": true
-    }
+    },
+    "java.jdt.ls.java.home": "d:\\Programar\\Java"
 }

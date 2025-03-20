@@ -45,9 +45,15 @@
         "description": "Etiqueta para perguntar se o usuário já tem uma conta."
     },
     "invalidCredential": "Credenciais inválidas.",
+    "@invalidCredential": {},
     "invalidEmail": "O endereço de e-mail é inválido.",
+    "@invalidEmail": {},
     "userDisabled": "O usuário foi desativado.",
+    "@userDisabled": {},
     "userNotFound": "Nenhum usuário encontrado com este endereço de e-mail.",
+    "@userNotFound": {},
     "wrongPassword": "A senha está incorreta.",
-    "unknownError": "Ocorreu um erro desconhecido."
+    "@wrongPassword": {},
+    "unknownError": "Ocorreu um erro desconhecido.",
+    "@unknownError": {}
 }

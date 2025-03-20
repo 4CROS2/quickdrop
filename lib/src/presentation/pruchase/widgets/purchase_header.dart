@@ -21,7 +21,7 @@ class PruchaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Row(
                   spacing: Constants.mainPadding.left,
                   children: <Widget>[
-                    HeaderButtons(
+                    HeaderButton(
                       onTap: () => context.pop(),
                       backgroundColor: Colors.black12,
                       icon: Icons.arrow_back_ios_rounded,

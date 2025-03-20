@@ -37,7 +37,7 @@ class DropShadowWidget extends StatelessWidget {
         Positioned.fill(
           child: Center(
             child: BackdropFilter(
-              filter: Constants.iamgeFilterBlur,
+              filter: Constants.imageFilterBlur,
               child: Container(
                 color: Colors.transparent,
               ),

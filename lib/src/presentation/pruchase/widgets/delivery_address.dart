@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
@@ -67,7 +68,11 @@ class _DeliveryAddressState extends State<DeliveryAddress>
         child: TextField(
           controller: _controller,
           showCursor: true,
-          onChanged: context.read<PurchaseCubit>().setAddress,
+          onChanged: (String value) {
+            context.read<PurchaseCubit>().setAddress(
+                  GeoPoint(0, 0),
+                );
+          },
           cursorOpacityAnimates: true,
           decoration: InputDecoration(
             filled: true,

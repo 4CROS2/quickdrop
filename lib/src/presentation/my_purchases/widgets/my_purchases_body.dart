@@ -21,29 +21,15 @@ class MyPurchasesBody extends StatefulWidget {
 class _MyPurchasesBodyState extends State<MyPurchasesBody> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: Constants.animationTransition,
-      transitionBuilder: (
-        Widget child,
-        Animation<double> animation,
-      ) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
-      },
-      child: switch (widget._purchases.isEmpty) {
-        true => EmptyPurchases(),
-        false => _buildList(),
-      },
-    );
+    return switch (widget._purchases.isEmpty) {
+      true => EmptyPurchases(),
+      false => _buildList(),
+    };
   }
 
   Widget _buildList() {
-    return ListView.builder(
-      physics: Constants.bouncingScrollPhysics,
+    return SliverList.builder(
       itemCount: widget._purchases.length,
-      padding: Constants.mainPadding,
       itemBuilder: (BuildContext context, int index) {
         final MyPurchasesEntity product = widget._purchases[index];
         final String year = product.time.year.toString();
@@ -57,10 +43,10 @@ class _MyPurchasesBodyState extends State<MyPurchasesBody> {
             borderRadius: Constants.mainBorderRadius,
             color: Constants.secondaryColor,
             child: Padding(
-              padding: Constants.mainPadding,
+              padding: Constants.mainPadding / 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: Constants.mainPaddingValue,
+                spacing: Constants.mainPaddingValue / 2,
                 children: <Widget>[
                   Text(
                     date,

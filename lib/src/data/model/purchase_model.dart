@@ -28,7 +28,9 @@ class PurchaseModel extends PurchaseEntity {
         StatusTimelineModel.fromJsonList(jsonList: timelineJson);
     return PurchaseModel(
       statusTimeline: statusTimelineModels,
-      address: json['address'],
+      address: OrderAddressModel.fromJson(
+        json: json['address'],
+      ),
       productName: json['product_name'],
       buyerId: json['buyer_id'],
       productId: json['product_id'],
@@ -98,5 +100,21 @@ class PurchaseModel extends PurchaseEntity {
         statusTimelineEntities: statusTimeline,
       ),
     };
+  }
+}
+
+class OrderAddressModel extends OrderAddressEntity {
+  const OrderAddressModel({
+    required super.location,
+    required super.locationDescription,
+  });
+
+  static OrderAddressModel fromJson({required Map<String, dynamic> json}) {
+    final GeoPoint location = json['position'] as GeoPoint;
+    final String locationDescription = json['description'];
+    return OrderAddressModel(
+      location: location,
+      locationDescription: locationDescription,
+    );
   }
 }
