@@ -8,3 +8,23 @@ sealed class PurchaseDetailState extends Equatable {
 }
 
 final class PurchaseDetailInitial extends PurchaseDetailState {}
+
+final class Loading extends PurchaseDetailState {}
+
+final class Error extends PurchaseDetailState {
+  const Error({required this.message});
+
+  final String message;
+
+  @override
+  List<Object> get props => <Object>[message];
+}
+
+class Success extends PurchaseDetailState {
+  const Success({required this.purchaseDetail});
+
+  final PurchaseEntity purchaseDetail;
+
+  @override
+  List<Object> get props => <Object>[purchaseDetail];
+}

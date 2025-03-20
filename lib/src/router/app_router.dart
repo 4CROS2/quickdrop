@@ -113,7 +113,8 @@ class AppRouter {
         path: '/purchaseDetail/:purchaseId',
         builder: (BuildContext context, GoRouterState state) {
           return PurchaseDetail(
-            purchaseId: state.pathParameters['purchaseId']!,
+            orderId: state.pathParameters['purchaseId']!,
+            sellerId: state.uri.queryParameters['sellerId']!,
           );
         },
       ),

@@ -65,8 +65,14 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
       borderRadius: Constants.mainBorderRadius / 2,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () =>
-            context.push('/purchaseDetail/${widget._purchase.sellerId}'),
+        onTap: () => context.push(
+          Uri(
+            path: '/purchaseDetail/${widget._purchase.orderId}',
+            queryParameters: <String, dynamic>{
+              'sellerId': widget._purchase.sellerId,
+            },
+          ).toString(),
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: Constants.mainPaddingValue / 2,

@@ -7,12 +7,14 @@ import 'package:quickdrop/src/data/datasource/home_datasource.dart';
 import 'package:quickdrop/src/data/datasource/my_purchases_datasource.dart';
 import 'package:quickdrop/src/data/datasource/produt_datasource.dart';
 import 'package:quickdrop/src/data/datasource/purchase_datasource.dart';
+import 'package:quickdrop/src/data/datasource/purchase_detail_datasource.dart';
 import 'package:quickdrop/src/data/repository/auth_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/favorite_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/financial_information_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/home_data_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/my_purchases_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/product_detail_repository_impl.dart';
+import 'package:quickdrop/src/data/repository/purchase_detail_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/purchase_repository_impl.dart';
 import 'package:quickdrop/src/domain/repository/auth_repository.dart';
 import 'package:quickdrop/src/domain/repository/favorite_repository.dart';
@@ -20,6 +22,7 @@ import 'package:quickdrop/src/domain/repository/financial_information_repository
 import 'package:quickdrop/src/domain/repository/home_data_repository.dart';
 import 'package:quickdrop/src/domain/repository/my_purchases_repository.dart';
 import 'package:quickdrop/src/domain/repository/product_detail_repository.dart';
+import 'package:quickdrop/src/domain/repository/purchase_detail_repository.dart';
 import 'package:quickdrop/src/domain/repository/purchase_repository.dart';
 import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/favorite_usecase.dart';
@@ -109,6 +112,14 @@ Future<void> init() async {
       datasource: sl<MyPurchasesDatasource>(),
     ),
   );
+  sl.registerLazySingleton<PurchaseDetailRepository>(
+    () => IPurchaseDetailRepository(
+      datasource: sl<PurchaseDetailDatasource>(),
+    ),
+  );
+  sl.registerLazySingleton<PurchaseDetailDatasource>(
+    () => PurchaseDetailDatasource(),
+  );
   //use case
   sl.registerLazySingleton<AuthUseCase>(
     () => AuthUseCase(
@@ -147,7 +158,9 @@ Future<void> init() async {
   );
 
   sl.registerLazySingleton<PurchaseDetailUsecase>(
-    () => PurchaseDetailUsecase(),
+    () => PurchaseDetailUsecase(
+      repository: sl<PurchaseDetailRepository>(),
+    ),
   );
 
   //cubits
@@ -199,7 +212,7 @@ Future<void> init() async {
 
   sl.registerFactory(
     () => PurchaseDetailCubit(
-      usecase: sl<PurchaseUsecase>(),
+      usecase: sl<PurchaseDetailUsecase>(),
     ),
   );
 }

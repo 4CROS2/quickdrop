@@ -51,22 +51,26 @@ class PurchaseDetailAppbar extends SliverPersistentHeaderDelegate {
                     ),
                     HeaderButton(
                       onTap: () {
-                        showCupertinoSheet(
+                        showCupertinoDialog(
                           context: context,
-                          useNestedNavigation: true,
-                          pageBuilder: (BuildContext context) {
-                            return Scaffold(
-                              body: Center(
-                                child: SizedBox(
-                                  width: 140,
-                                  height: 140,
-                                  child: PrettyQrView.data(
-                                    data:
-                                        'el codigo qr primigenio de la vida en la tierra',
-                                    decoration: const PrettyQrDecoration(
-                                      shape: PrettyQrSmoothSymbol(
-                                        color: Constants.primaryColor,
-                                        roundFactor: 1,
+                          barrierDismissible: true,
+                          builder: (BuildContext context) {
+                            return Center(
+                              child: SizedBox(
+                                width: 140,
+                                height: 140,
+                                child: Material(
+                                  borderRadius: Constants.mainBorderRadius,
+                                  child: Padding(
+                                    padding: Constants.mainPadding,
+                                    child: PrettyQrView.data(
+                                      data:
+                                          'el codigo qr primigenio de la vida en la tierra',
+                                      decoration: const PrettyQrDecoration(
+                                        shape: PrettyQrSmoothSymbol(
+                                          color: Colors.black,
+                                          roundFactor: 1,
+                                        ),
                                       ),
                                     ),
                                   ),
