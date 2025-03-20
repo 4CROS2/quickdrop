@@ -37,6 +37,7 @@ dependencies:
       ref: main
   toastification: ^2.3.0
   uuid: ^4.5.1
+  pretty_qr_code: ^3.3.0
 
 dev_dependencies:
   flutter_test:

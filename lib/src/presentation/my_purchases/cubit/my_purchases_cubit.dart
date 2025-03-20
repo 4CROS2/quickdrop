@@ -18,6 +18,7 @@ class MyPurchasesCubit extends Cubit<MyPurchasesState> {
   late StreamSubscription<List<MyPurchasesEntity>> _purchasesStream;
 
   Future<void> getMyPurchases() async {
+    await Future<void>.delayed(const Duration(seconds: 1));
     _onLoading();
     _purchasesStream = _usecase.getMyPurchases.listen(
       _onSuccess,

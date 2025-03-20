@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
-import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
 import 'package:quickdrop/src/presentation/home/widgets/header/widgets/location_header.dart';
 import 'package:quickdrop/src/presentation/home/widgets/header/widgets/search_input.dart';
 import 'package:quickdrop/src/presentation/search/search.dart';
+import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
 
 class HomeHeader extends SliverPersistentHeaderDelegate {
   HomeHeader();
@@ -40,7 +40,7 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    HeaderButtons(
+                    HeaderButton(
                       onTap: () {
                         Scaffold.of(context).openDrawer();
                       },
@@ -49,7 +49,7 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                     LocationHeader(
                       opacity: 1 - percent,
                     ),
-                    HeaderButtons(
+                    HeaderButton(
                       icon: Icons.shopping_cart_outlined,
                     )
                   ],

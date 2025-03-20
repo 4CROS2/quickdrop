@@ -53,7 +53,7 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                 height: minExtent,
                 child: ClipRRect(
                   child: BackdropFilter(
-                    filter: Constants.iamgeFilterBlur,
+                    filter: Constants.imageFilterBlur,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: Constants.secondaryColor,
@@ -79,7 +79,7 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        HeaderButtons(
+                        HeaderButton(
                           onTap: () => context.pop(),
                           icon: Icons.arrow_back_ios_new_rounded,
                           backgroundColor: Colors.black45,
@@ -93,7 +93,7 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                         ),
                       ],
                     ),
-                    const HeaderButtons(
+                    const HeaderButton(
                       icon: Icons.shopping_cart_outlined,
                       backgroundColor: Colors.black45,
                       iconColor: Colors.white,

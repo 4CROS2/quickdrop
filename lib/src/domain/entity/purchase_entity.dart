@@ -33,7 +33,7 @@ class PurchaseEntity extends Equatable {
   final String orderId;
   final String productId;
   final String sellerId;
-  final String address;
+  final OrderAddressEntity address;
   final String description;
   final String buyerId;
   final int quantity;
@@ -55,7 +55,7 @@ class PurchaseEntity extends Equatable {
     int? currentPrice,
     int? totalPaid,
     String? description,
-    String? address,
+    OrderAddressEntity? address,
     Timestamp? createdAt,
     Deliverymethod? deliverymethod,
     List<StatusTimelineEntity>? status,
@@ -82,7 +82,7 @@ class PurchaseEntity extends Equatable {
     orderId: '',
     statusTimeline: <StatusTimelineEntity>[],
     buyerId: '',
-    address: '',
+    address: OrderAddressEntity.empty,
     description: 'sin descripcion',
     productId: '',
     sellerId: '',
@@ -109,4 +109,30 @@ class PurchaseEntity extends Equatable {
         address,
         statusTimeline
       ];
+}
+
+class OrderAddressEntity extends Equatable {
+  const OrderAddressEntity({
+    required this.location,
+    required this.locationDescription,
+  });
+  final GeoPoint location;
+  final String locationDescription;
+
+  OrderAddressEntity copyWith({
+    GeoPoint? location,
+    String? locationDescription,
+  }) =>
+      OrderAddressEntity(
+        location: location ?? this.location,
+        locationDescription: locationDescription ?? this.locationDescription,
+      );
+
+  static const OrderAddressEntity empty = OrderAddressEntity(
+    location: GeoPoint(0, 0),
+    locationDescription: '',
+  );
+
+  @override
+  List<Object?> get props => <Object?>[location, locationDescription];
 }

@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 
 class ImageLoader extends StatefulWidget {
-  const ImageLoader({required String imageUrl, super.key})
-      : _imageUrl = imageUrl;
+  const ImageLoader({
+    required String imageUrl,
+    super.key,
+  }) : _imageUrl = imageUrl;
+
   final String _imageUrl;
 
   @override
@@ -28,10 +31,17 @@ class _ImageLoaderState extends State<ImageLoader>
         color: Constants.secondaryColor,
         animating: true,
       ),
-      errorWidget: (BuildContext context, String url, Object error) =>
-          const Center(
-        child: Icon(
-          Icons.error_outline,
+      errorWidget: (BuildContext context, String url, Object error) => Center(
+        child: Material(
+          color: Constants.secondaryColor,
+          borderRadius: Constants.mainBorderRadius / 2,
+          child: SizedBox(
+            width: 50,
+            height: 50,
+            child: Icon(
+              Icons.error_outline,
+            ),
+          ),
         ),
       ),
       width: double.infinity,

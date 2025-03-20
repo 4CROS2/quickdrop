@@ -63,7 +63,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
         Positioned.fill(
           child: ClipRRect(
             child: BackdropFilter(
-              filter: Constants.iamgeFilterBlur,
+              filter: Constants.imageFilterBlur,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: Colors.black45,
@@ -99,7 +99,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
         Positioned(
           top: MediaQuery.of(context).padding.top + 8,
           left: 12,
-          child: HeaderButtons(
+          child: HeaderButton(
             onTap: () {
               context.pop();
             },

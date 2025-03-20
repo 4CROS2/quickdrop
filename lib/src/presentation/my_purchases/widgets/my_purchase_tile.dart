@@ -35,7 +35,7 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
       case 'accepted':
         return 'Aceptado';
       default:
-        return 'Pendienteee';
+        return 'Pendiente';
     }
   }
 
@@ -65,8 +65,14 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
       borderRadius: Constants.mainBorderRadius / 2,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () =>
-            context.push('/purchaseDetail/${widget._purchase.sellerId}'),
+        onTap: () => context.push(
+          Uri(
+            path: '/purchaseDetail/${widget._purchase.orderId}',
+            queryParameters: <String, dynamic>{
+              'sellerId': widget._purchase.sellerId,
+            },
+          ).toString(),
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: Constants.mainPaddingValue / 2,
@@ -120,8 +126,12 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
                       ],
                     ),
                   ),
-                  Text('Cantidad: ${widget._purchase.quantity}'),
-                  Text('Dirección: ${widget._purchase.address}'),
+                  Text(
+                    'Cantidad: ${widget._purchase.quantity}',
+                  ),
+                  Text(
+                    'Dirección: ${widget._purchase.address.locationDescription}',
+                  ),
                 ],
               ),
             ),
