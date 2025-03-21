@@ -7,6 +7,7 @@ import 'package:quickdrop/src/presentation/home/widgets/drawer/drawer.dart';
 import 'package:quickdrop/src/presentation/home/widgets/header/header.dart';
 import 'package:quickdrop/src/presentation/home/widgets/products/products.dart';
 import 'package:quickdrop/src/presentation/home/widgets/promotions/promotions.dart';
+import 'package:quickdrop/src/presentation/home/widgets/sellers/sellers.dart';
 import 'package:quickdrop/src/presentation/widgets/loading_status.dart';
 
 class Home extends StatefulWidget {
@@ -49,9 +50,11 @@ class _HomeState extends State<Home> {
                   if (state is SuccessHomeData)
                     SliverToBoxAdapter(
                       child: Column(
+                        spacing: Constants.mainPaddingValue,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           PromotionsAndDiscounts(),
+                          SellersList(),
                           Products(
                             products: state.products,
                           ),

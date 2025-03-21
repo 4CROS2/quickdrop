@@ -1,5 +1,5 @@
 import 'package:extensions/extensions.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class LoadingStatus extends StatelessWidget {
   const LoadingStatus({
@@ -13,13 +13,14 @@ class LoadingStatus extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          const CupertinoActivityIndicator(),
+          CircularProgressIndicator.adaptive(),
           Text(
             'loading...'.capitalize(),
             style: const TextStyle(
-                fontFamily: 'RedHat',
-                fontWeight: FontWeight.w400,
-                fontSize: 16),
+              fontFamily: 'RedHat',
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+            ),
           ),
         ],
       ),
