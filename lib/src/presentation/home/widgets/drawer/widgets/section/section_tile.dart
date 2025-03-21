@@ -28,7 +28,9 @@ class SectionTile extends StatelessWidget {
       child: Material(
         borderRadius: Constants.mainBorderRadius,
         clipBehavior: Clip.hardEdge,
-        elevation: 5,
+        elevation: 10,
+        surfaceTintColor: Constants.primaryColor,
+        shadowColor: Colors.transparent,
         child: InkWell(
           onTap: () {
             context.pop();
@@ -37,29 +39,36 @@ class SectionTile extends StatelessWidget {
             }
           },
           child: Padding(
-            padding: Constants.mainPadding,
+            padding: Constants.mainPadding * 1.5,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Flexible(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Icon(
-                        _iconData,
-                        size: 25,
-                        color: Constants.primaryColor,
-                      ),
                       Flexible(
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            left: Constants.mainPadding.left,
-                          ),
-                          child: Text(
-                            _label.toTitleCase(),
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              _iconData,
+                              size: 25,
+                              color: Constants.primaryColor,
                             ),
-                          ),
+                            Flexible(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: Constants.mainPadding.left,
+                                ),
+                                child: Text(
+                                  _label.toTitleCase(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Icon(Icons.arrow_forward_ios_rounded)

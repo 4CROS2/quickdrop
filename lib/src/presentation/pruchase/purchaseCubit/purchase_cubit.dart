@@ -107,7 +107,8 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     }
   }
 
-  void setAddress(GeoPoint address) {
+  void setAddress({required GeoPoint address, required String description}) {
+    print('geopoint: $address');
     emit(
       state.copyWith(
         product: state.product.copyWith(

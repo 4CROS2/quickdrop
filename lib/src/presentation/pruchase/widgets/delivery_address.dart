@@ -69,9 +69,9 @@ class _DeliveryAddressState extends State<DeliveryAddress>
           controller: _controller,
           showCursor: true,
           onChanged: (String value) {
-            context.read<PurchaseCubit>().setAddress(
-                  GeoPoint(0, 0),
-                );
+            context
+                .read<PurchaseCubit>()
+                .setAddress(address: GeoPoint(0, 0), description: value);
           },
           cursorOpacityAnimates: true,
           decoration: InputDecoration(

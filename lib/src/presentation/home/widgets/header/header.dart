@@ -28,125 +28,107 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
     final double percent = shrinkOffset / (maxExtentHeader - minExtentHeader);
     final double opacity = 1 - percent;
     return Material(
-      color: Colors.transparent,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: SizedBox.expand(
-        child: Stack(
-          children: <Widget>[
-            Positioned.fill(
-              child: ClipRect(
-                child: BackdropFilter(
-                  filter: Constants.imageFilterBlur,
-                  child: SizedBox.expand(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context)
-                              .scaffoldBackgroundColor
-                              .withValues(
-                                alpha: .6,
-                              )),
+        child: SafeArea(
+          child: Padding(
+            padding: Constants.mainPadding,
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  bottom: 60,
+                  left: 0,
+                  child: Opacity(
+                    opacity: opacity.clamp(0, 1),
+                    child: Text.rich(
+                      TextSpan(
+                        text: 'bienvenido'.capitalize(),
+                        children: <InlineSpan>[
+                          TextSpan(
+                            text: '\n$_name.'.toTitleCase(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              color: Constants.primaryColor,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '\n$_welcomeMessage',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              height: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 40,
+                        height: .9,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-            SafeArea(
-              child: Padding(
-                padding: Constants.mainPadding,
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      bottom: 60,
-                      left: 0,
-                      child: Opacity(
-                        opacity: opacity.clamp(0, 1),
-                        child: Text.rich(
-                          TextSpan(
-                            text: 'bienvenido'.capitalize(),
-                            children: <InlineSpan>[
-                              TextSpan(
-                                text: '\n$_name.'.toTitleCase(),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  color: Constants.primaryColor,
-                                ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: InkWell(
+                    onTap: () {
+                      context.push('/searchpage');
+                    },
+                    child: Hero(
+                      tag: 'search',
+                      child: Material(
+                        color: Colors.transparent,
+                        child: TextFormField(
+                          ignorePointers: true,
+                          decoration: InputDecoration(
+                            hintText: 'Buscar productos',
+                            prefixIcon: const Icon(Icons.search_rounded),
+                            border: OutlineInputBorder(
+                              borderRadius: Constants.mainBorderRadius,
+                              gapPadding: Constants.mainPaddingValue * 2,
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
                               ),
-                              TextSpan(
-                                text: '\n$_welcomeMessage',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 16,
-                                  height: 2,
-                                ),
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 40,
-                            height: .9,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      child: InkWell(
-                        onTap: () {
-                          context.push('/searchpage');
-                        },
-                        child: Material(
-                          color: Colors.transparent,
-                          child: TextFormField(
-                            ignorePointers: true,
-                            decoration: InputDecoration(
-                              hintText: 'Buscar productos',
-                              prefixIcon: const Icon(Icons.search_rounded),
-                              border: OutlineInputBorder(
-                                borderRadius: Constants.mainBorderRadius,
-                                gapPadding: Constants.mainPaddingValue * 2,
-                                borderSide: BorderSide(
-                                  width: 0,
-                                  style: BorderStyle.none,
-                                ),
-                              ),
-                              fillColor: Constants.secondaryColor,
-                              filled: true,
                             ),
+                            fillColor: Constants.secondaryColor,
+                            filled: true,
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      child: Row(
-                        spacing: Constants.mainPaddingValue,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          HeaderButton(
-                            onTap: () {
-                              Scaffold.of(context).openDrawer();
-                            },
-                            icon: Icons.menu_rounded,
-                          ),
-                          Flexible(
-                            child: LocationHeader(),
-                          ),
-                          HeaderButton(
-                            icon: Icons.shopping_cart_outlined,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    spacing: Constants.mainPaddingValue,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      HeaderButton(
+                        onTap: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                        icon: Icons.menu_rounded,
+                      ),
+                      Flexible(
+                        child: LocationHeader(),
+                      ),
+                      HeaderButton(
+                        icon: Icons.shopping_cart_outlined,
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

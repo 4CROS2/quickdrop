@@ -76,14 +76,18 @@ class PurchaseModel extends PurchaseEntity {
       description: entity.description,
       createdAt: entity.createdAt,
       totalPaid: entity.totalPaid,
-      address: entity.address,
+      address: OrderAddressModel.fromEntity(
+        entity: entity.address,
+      ),
       deliverymethod: entity.deliverymethod,
     );
   }
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'address': address,
+      'address': OrderAddressModel.fromEntity(
+        entity: address,
+      ).tojson(),
       'product_name': productName,
       'buyer_id': buyerId,
       'order_id': _orderId,
@@ -116,5 +120,19 @@ class OrderAddressModel extends OrderAddressEntity {
       location: location,
       locationDescription: locationDescription,
     );
+  }
+
+  factory OrderAddressModel.fromEntity({required OrderAddressEntity entity}) {
+    return OrderAddressModel(
+      location: entity.location,
+      locationDescription: entity.locationDescription,
+    );
+  }
+
+  Map<String, dynamic> tojson() {
+    return <String, dynamic>{
+      'position': location,
+      'description': locationDescription,
+    };
   }
 }

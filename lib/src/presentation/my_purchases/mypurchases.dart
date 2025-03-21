@@ -23,7 +23,6 @@ class _MyPurchasesState extends State<MyPurchases> {
         child: BlocBuilder<MyPurchasesCubit, MyPurchasesState>(
           builder: (BuildContext context, MyPurchasesState state) {
             return CustomScrollView(
-              shrinkWrap: true,
               physics: state is Success
                   ? Constants.bouncingScrollPhysics
                   : const NeverScrollableScrollPhysics(),

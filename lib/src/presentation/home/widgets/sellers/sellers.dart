@@ -18,12 +18,23 @@ class _SellersListState extends State<SellersList> {
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
-          return Material(
-            borderRadius: Constants.mainBorderRadius*10,
-            color: Colors.black26,
-            child: SizedBox(
-              width: 80,
-              height: 80,
+          return Padding(
+            padding: EdgeInsets.only(
+              left: Constants.mainPaddingValue,
+            ),
+            child: Material(
+              borderRadius: Constants.mainBorderRadius * 10,
+              color: Colors.black26,
+              child: SizedBox(
+                width: 80,
+                height: 80,
+                child: const Center(
+                  child: Icon(
+                    Icons.store_mall_directory_outlined,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
           );
         },
