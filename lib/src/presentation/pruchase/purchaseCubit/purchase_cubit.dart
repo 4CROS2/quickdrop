@@ -108,13 +108,12 @@ class PurchaseCubit extends Cubit<PurchaseState> {
   }
 
   void setAddress({required GeoPoint address, required String description}) {
-    print('geopoint: $address');
     emit(
       state.copyWith(
         product: state.product.copyWith(
           address: OrderAddressEntity(
             location: address,
-            locationDescription: '',
+            locationDescription: description,
           ),
         ),
       ),
