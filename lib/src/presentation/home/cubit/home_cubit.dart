@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/domain/entity/home_entity.dart';
 import 'package:quickdrop/src/domain/usecase/home_data_usecase.dart';
 
 part 'home_state.dart';
@@ -17,9 +17,9 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> getHomeData() async {
     emit(LoadingHomeData());
     try {
-      final List<ProductsEntity> response = await _usecase.products();
+      final HomeEntity response = await _usecase.products();
       emit(
-        SuccessHomeData(products: response),
+        SuccessHomeData(home: response),
       );
     } catch (e) {
       emit(

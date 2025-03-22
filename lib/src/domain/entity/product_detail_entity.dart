@@ -1,4 +1,5 @@
 import 'package:quickdrop/src/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/domain/entity/sellers_entity.dart';
 
 class ProductDetailEntity {
   const ProductDetailEntity({
@@ -18,17 +19,6 @@ class ProductDetailEntity {
   final String description;
   final List<String> baseImages;
   final List<String> tags;
-  final SellerData sellerData;
+  final SellersEntity sellerData;
   final List<ProductsEntity> relatedProducts;
-}
-
-class SellerData {
-  SellerData({
-    required this.companyName,
-    required this.brand,
-    required this.sellerId,
-  });
-  final String companyName;
-  final String brand;
-  final String sellerId;
 }

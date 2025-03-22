@@ -18,7 +18,13 @@ class HeaderButton extends StatelessWidget {
     Key? key,
   }) : this(
           icon: Icons.arrow_back_ios_rounded,
-          onTap: () => context.pop(),
+          onTap: () {
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go('/home');
+            }
+          },
           backgroundColor: backgroundColor,
           iconColor: iconColor,
           key: key,

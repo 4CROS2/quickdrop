@@ -13,6 +13,7 @@ import 'package:quickdrop/src/presentation/product/product.dart';
 import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
 import 'package:quickdrop/src/presentation/purchase_detail/purchase_detail.dart';
+import 'package:quickdrop/src/presentation/search/search.dart';
 import 'package:quickdrop/src/router/go_router_refresh_stream.dart';
 
 class AppRouter {
@@ -117,6 +118,10 @@ class AppRouter {
             sellerId: state.uri.queryParameters['sellerId']!,
           );
         },
+      ),
+      GoRoute(
+        path: '/searchpage',
+        builder: (BuildContext context, GoRouterState state) => Search(),
       ),
     ],
   );

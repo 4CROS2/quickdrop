@@ -12,6 +12,7 @@ class MyPurchasesBody extends StatefulWidget {
     required List<MyPurchasesEntity> purchases,
     super.key,
   }) : _purchases = purchases;
+
   final List<MyPurchasesEntity> _purchases;
 
   @override
@@ -21,10 +22,9 @@ class MyPurchasesBody extends StatefulWidget {
 class _MyPurchasesBodyState extends State<MyPurchasesBody> {
   @override
   Widget build(BuildContext context) {
-    return switch (widget._purchases.isEmpty) {
-      true => EmptyPurchases(),
-      false => _buildList(),
-    };
+    return widget._purchases.isEmpty
+        ? SliverToBoxAdapter(child: EmptyPurchases())
+        : _buildList();
   }
 
   Widget _buildList() {
@@ -50,7 +50,7 @@ class _MyPurchasesBodyState extends State<MyPurchasesBody> {
                 children: <Widget>[
                   Text(
                     date,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

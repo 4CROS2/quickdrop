@@ -35,7 +35,14 @@ class _PurchaseState extends State<Purchase> {
             );
           }
           if (state.purchaseStatus == PurchaseStatus.success) {
-            context.pushReplacement('/purchaseDetail/${state.purchaseId}');
+            context.pushReplacement(
+              Uri(
+                path: '/purchaseDetail/${state.purchaseId}',
+                queryParameters: <String, dynamic>{
+                  'sellerId': state.product.sellerId,
+                },
+              ).toString(),
+            );
           }
         },
         builder: (BuildContext context, PurchaseState state) {

@@ -7,6 +7,7 @@ import 'package:quickdrop/src/presentation/home/widgets/drawer/drawer.dart';
 import 'package:quickdrop/src/presentation/home/widgets/header/header.dart';
 import 'package:quickdrop/src/presentation/home/widgets/products/products.dart';
 import 'package:quickdrop/src/presentation/home/widgets/promotions/promotions.dart';
+import 'package:quickdrop/src/presentation/home/widgets/sellers/sellers.dart';
 import 'package:quickdrop/src/presentation/widgets/loading_status.dart';
 
 class Home extends StatefulWidget {
@@ -36,35 +37,32 @@ class _HomeState extends State<Home> {
                     delegate: HomeHeader(),
                     pinned: true,
                   ),
-                  SliverToBoxAdapter(
-                    child: AnimatedSwitcher(
-                      duration: Constants.animationTransition,
-                      transitionBuilder: (
-                        Widget child,
-                        Animation<double> animation,
-                      ) =>
-                          FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      ),
-                      child: switch (state) {
-                        SuccessHomeData _ => Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              PromotionsAndDiscounts(),
-                              Products(
-                                products: state.products,
-                              ),
-                            ],
-                          ),
-                        ErrorGettingHomeData _ => Center(
-                            child: Text(state.message),
-                          ),
-                        LoadingHomeData _ => const LoadingStatus(),
-                        _ => const SizedBox.shrink()
-                      },
+                  if (state is LoadingHomeData)
+                    SliverFillRemaining(
+                      child: const LoadingStatus(),
                     ),
-                  ),
+                  if (state is ErrorGettingHomeData)
+                    SliverFillRemaining(
+                      child: Center(
+                        child: Text(state.message),
+                      ),
+                    ),
+                  if (state is SuccessHomeData)
+                    SliverToBoxAdapter(
+                      child: Column(
+                        spacing: Constants.mainPaddingValue,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          PromotionsAndDiscounts(),
+                          SellersList(
+                            sellers: state.home.sellers,
+                          ),
+                          Products(
+                            products: state.home.products,
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             );
