@@ -38,6 +38,7 @@ dependencies:
   toastification: ^3.0.2
   uuid: ^4.5.1
   pretty_qr_code: ^3.3.0
+  custom_rating_bar: ^3.0.0
 
 dev_dependencies:
   flutter_test:
