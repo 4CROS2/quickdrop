@@ -106,7 +106,7 @@ class _ProductBodyState extends State<ProductBody> {
           ),
           //vendor data
           Seller(
-            sellerData: widget._product.sellerData,
+            seller: widget._product.sellerData,
           ),
           //related products
           if (widget._product.relatedProducts.isNotEmpty)

@@ -2,13 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
+import 'package:quickdrop/src/domain/entity/sellers_entity.dart';
 import 'package:quickdrop/src/presentation/product/widgets/vendor/widgets/vendor_sheet.dart';
 
 class Seller extends StatelessWidget {
-  const Seller({required SellerData sellerData, super.key})
-      : _sellerData = sellerData;
-  final SellerData _sellerData;
+  const Seller({required SellersEntity seller, super.key}) : _seller = seller;
+  final SellersEntity _seller;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class Seller extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: Constants.mainBorderRadius / 2,
                     child: CachedNetworkImage(
-                      imageUrl: _sellerData.brand,
+                      imageUrl: _seller.image,
                       fit: BoxFit.cover,
                       errorWidget: (
                         BuildContext context,
@@ -79,7 +78,7 @@ class Seller extends StatelessWidget {
                       left: Constants.mainPadding.left,
                     ),
                     child: Text(
-                      _sellerData.companyName.capitalize(),
+                      _seller.name.capitalize(),
                       style: const TextStyle(
                         fontWeight: FontWeight.w800,
                       ),

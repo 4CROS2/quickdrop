@@ -18,7 +18,7 @@ class ErrorGettingHomeData extends HomeState {
 
 class SuccessHomeData extends HomeState {
   const SuccessHomeData({
-    required this.products,
+    required this.home,
   });
-  final List<ProductsEntity> products;
+  final HomeEntity home;
 }

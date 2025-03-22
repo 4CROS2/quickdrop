@@ -1,4 +1,5 @@
 import 'package:quickdrop/src/data/model/products_model.dart';
+import 'package:quickdrop/src/data/model/sellers_model.dart';
 import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
 import 'package:quickdrop/src/domain/entity/products_entity.dart';
 
@@ -37,30 +38,16 @@ class ProductDetailsModel extends ProductDetailEntity {
         .toList();
 
     return ProductDetailsModel(
-        productId: json['id'],
-        productName: json['name'] ?? '',
-        basePrice: json['base_price'] ?? 0,
-        description: json['description'] ?? '',
-        baseImages: images,
-        tags: tags,
-        sellerData: SellerModel.fromJson(
-          json: json['seller_data'],
-        ),
-        relatedProducts: relatedProducts);
-  }
-}
-
-class SellerModel extends SellerData {
-  SellerModel({
-    required super.companyName,
-    required super.brand,
-    required super.sellerId,
-  });
-  static SellerModel fromJson({required Map<String, dynamic> json}) {
-    return SellerModel(
-      companyName: json['company_name'] ?? '',
-      brand: json['brand'] ?? '',
-      sellerId: json['id'] ?? '',
+      productId: json['id'],
+      productName: json['name'] ?? '',
+      basePrice: json['base_price'] ?? 0,
+      description: json['description'] ?? '',
+      baseImages: images,
+      tags: tags,
+      sellerData: SellersModel.fromJson(
+        json: json['seller_data'],
+      ),
+      relatedProducts: relatedProducts,
     );
   }
 }

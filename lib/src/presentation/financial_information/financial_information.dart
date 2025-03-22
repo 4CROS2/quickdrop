@@ -55,7 +55,7 @@ class _FinancialInformationState extends State<FinancialInformation> {
                 if (state is Success) {
                   context.read<PurchaseCubit>().setProductData(
                         productName: state.product.productName,
-                        sellerId: state.product.sellerData.sellerId,
+                        sellerId: state.product.sellerData.id,
                         productId: state.product.productId,
                         buyerId: _appState.user.id,
                         imagePath: state.product.baseImages.first,

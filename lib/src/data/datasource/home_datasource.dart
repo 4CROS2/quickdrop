@@ -2,84 +2,70 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extensions/extensions.dart';
 
 class HomeDatasource {
-  HomeDatasource();
-
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<Map<String, dynamic>> getHomeData() async {
+    final DateTime now = DateTime.now();
+    final String currentDay = _getDayString(now.weekday);
+    final String currentTime = _getFormattedTime(now);
+
     try {
-      CollectionReference<Object?> sellersCollection =
-          _firestore.collection('sellers');
+      // Consulta para obtener vendedores disponibles según el horario actual
+      final QuerySnapshot<Map<String, dynamic>> sellersSnapshot =
+          await _firestore
+              .collection('sellers')
+              .where('schedule.$currentDay.open_hour',
+                  isLessThanOrEqualTo: currentTime)
+              .where('schedule.$currentDay.close_hour',
+                  isGreaterThanOrEqualTo: currentTime)
+              .get();
 
-      final DateTime now = DateTime.now();
-      final String currentDay = getDayString(now.weekday);
-      final String currentTime = getFormattedTime(now);
-      try {
-        // Consulta para obtener los vendedores disponibles con base en el horario de hoy
-        QuerySnapshot<Object?> sellersSnapshot = await sellersCollection
-            .where(
-              'schedule.$currentDay.open_hour',
-              isLessThanOrEqualTo: currentTime,
-            )
-            .where(
-              'schedule.$currentDay.close_hour',
-              isGreaterThanOrEqualTo: currentTime,
-            )
-            .get();
+      final List<String> availableSellerIds = sellersSnapshot.toListString();
 
-        List<String> availableSellerIds = sellersSnapshot.toListString();
+      if (availableSellerIds.isEmpty) {
+        return <String, dynamic>{
+          'products': <dynamic>[],
+          'sellers': <dynamic>[],
+        };
+      }
 
-        if (availableSellerIds.isNotEmpty) {
-          QuerySnapshot<Object?> productsQuery = await _firestore
+      final QuerySnapshot<Map<String, dynamic>> productsSnapshot =
+          await _firestore
               .collection('products')
               .where('seller_id', whereIn: availableSellerIds)
               .get();
 
-          List<Map<String, dynamic>> products = productsQuery.toListMapJson();
-          return <String, dynamic>{'products': products};
-        } else {
-          return <String, dynamic>{'products': <dynamic>[]};
-        }
-      } catch (e) {
-        return <String, dynamic>{'products': <dynamic>[]};
-      }
+      final QuerySnapshot<Map<String, dynamic>> sellers =
+          await _firestore.collection('sellers').get();
+
+      return <String, dynamic>{
+        'products': productsSnapshot.toListMapJson(),
+        'sellers': sellers.toListMapJson()
+      };
     } catch (e) {
-      throw Exception(e);
+      // Se puede registrar el error aquí según convenga
+      return <String, dynamic>{
+        'products': <dynamic>[],
+        'sellers': <dynamic>[],
+      };
     }
   }
 
-  // Función para obtener el día de la semana como string
-  String getDayString(int weekday) {
-    switch (weekday) {
-      case DateTime.monday:
-        return 'monday';
-      case DateTime.tuesday:
-        return 'tuesday';
-      case DateTime.wednesday:
-        return 'wednesday';
-      case DateTime.thursday:
-        return 'thursday';
-      case DateTime.friday:
-        return 'friday';
-      case DateTime.saturday:
-        return 'saturday';
-      case DateTime.sunday:
-        return 'sunday';
-      default:
-        return '';
-    }
+  // Función privada para obtener el nombre del día a partir del número del día
+  String _getDayString(int weekday) {
+    const Map<int, String> days = <int, String>{
+      DateTime.monday: 'monday',
+      DateTime.tuesday: 'tuesday',
+      DateTime.wednesday: 'wednesday',
+      DateTime.thursday: 'thursday',
+      DateTime.friday: 'friday',
+      DateTime.saturday: 'saturday',
+      DateTime.sunday: 'sunday',
+    };
+    return days[weekday] ?? '';
   }
 
-  // Función para formatear la hora
-  String getFormattedTime(DateTime time) {
-    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
-  }
+  // Función privada para formatear la hora en 'HH:mm'
+  String _getFormattedTime(DateTime time) =>
+      '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
 }
-//DateFormat.jm().format(yourTime)
-
-//Record with named fields
-//({String name, String lastName}) getName() => (name: 'John', lastName: 'Doe');
-//final data = getName();
-//
-//  print(data.name);
-//  print(data.lastName);

@@ -54,9 +54,11 @@ class _HomeState extends State<Home> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           PromotionsAndDiscounts(),
-                          SellersList(),
+                          SellersList(
+                            sellers: state.home.sellers,
+                          ),
                           Products(
-                            products: state.products,
+                            products: state.home.products,
                           ),
                         ],
                       ),

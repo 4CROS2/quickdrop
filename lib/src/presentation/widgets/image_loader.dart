@@ -32,15 +32,11 @@ class _ImageLoaderState extends State<ImageLoader>
         animating: true,
       ),
       errorWidget: (BuildContext context, String url, Object error) => Center(
-        child: Material(
-          color: Constants.secondaryColor,
-          borderRadius: Constants.mainBorderRadius / 2,
-          child: SizedBox(
-            width: 50,
-            height: 50,
-            child: Icon(
-              Icons.error_outline,
-            ),
+        child: SizedBox(
+          width: 50,
+          height: 50,
+          child: Icon(
+            Icons.error_outline,
           ),
         ),
       ),

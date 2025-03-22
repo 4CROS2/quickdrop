@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/domain/entity/home_entity.dart';
 import 'package:quickdrop/src/domain/repository/home_data_repository.dart';
 
 class HomeDataUsecase {
@@ -7,6 +7,5 @@ class HomeDataUsecase {
   }) : _repository = repository;
   final HomeDataRepository _repository;
 
-  Future<List<ProductsEntity>> products() async =>
-      await _repository.getHomeData();
+  Future<HomeEntity> products() async => await _repository.getHomeData();
 }
