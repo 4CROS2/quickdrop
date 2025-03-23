@@ -1,4 +1,7 @@
-class ProductsEntity {
+import 'package:equatable/equatable.dart';
+import 'package:quickdrop/src/domain/entity/rating_product.dart';
+
+class ProductsEntity extends Equatable {
   const ProductsEntity({
     required this.id,
     required this.name,
@@ -6,6 +9,7 @@ class ProductsEntity {
     required this.basePrice,
     required this.sellerId,
     required this.baseImages,
+    required this.ratings,
     //required this.tags,
   });
   final String id;
@@ -14,18 +18,16 @@ class ProductsEntity {
   final int basePrice;
   final String sellerId;
   final List<String> baseImages;
-  //final List<String> tags;
-  //final ProductVariants productVariants;
+  final List<ProductRatingEntity> ratings;
+
+  @override
+  List<Object?> get props => <Object?>[
+        id,
+        name,
+        description,
+        basePrice,
+        sellerId,
+        baseImages,
+        ratings,
+      ];
 }
-/* 
-class ProductVariants {
-  ProductVariants({
-    required this.description,
-    required this.price,
-    required this.images,
-  });
-  final String description;
-  final int price;
-  final List<String> images;
-}
- */

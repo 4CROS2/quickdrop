@@ -41,9 +41,9 @@ class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
 
         if (!isClosed) {
           emit(state.copyWith(
-            message: response.message,
-            favorite: response.favoriteState,
-          ));
+              message: response.message,
+              favorite: response.favoriteState,
+              isUserAction: true));
         }
       } else {
         final FavoriteEntity response =
@@ -54,6 +54,7 @@ class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
             state.copyWith(
               message: response.message,
               favorite: response.favoriteState,
+              isUserAction: true,
             ),
           );
         }
@@ -62,9 +63,9 @@ class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
       if (!isClosed) {
         emit(
           state.copyWith(
-            message: e.toString(),
-            favorite: state.favorite,
-          ),
+              message: e.toString(),
+              favorite: state.favorite,
+              isUserAction: true),
         );
       }
     }

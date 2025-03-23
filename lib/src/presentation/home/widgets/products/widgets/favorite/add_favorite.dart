@@ -1,15 +1,10 @@
-import 'dart:ui';
-
-import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/core/functions/custom_snack_bar.dart';
-import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/presentation/favorites/favorites.dart';
 import 'package:quickdrop/src/presentation/home/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
+import 'package:quickdrop/src/presentation/widgets/app_toastification.dart';
 
 class AddToFavoriteButton extends StatelessWidget {
   const AddToFavoriteButton({required String productId, super.key})
@@ -34,10 +29,7 @@ class AddToFavoriteButton extends StatelessWidget {
               bottom: 0,
               child: ClipRRect(
                 child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 2,
-                    sigmaY: 2,
-                  ),
+                  filter: Constants.imageFilterBlur,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: Constants.secondaryColor,
@@ -48,19 +40,20 @@ class AddToFavoriteButton extends StatelessWidget {
             ),
             BlocConsumer<AddToFavoriteCubit, AddFavoriteState>(
               listener: (BuildContext context, AddFavoriteState state) {
-                if (state.message != '') {
-                  showCustomSnackbar(
-                    context,
-                    message: state.message,
-                    snackBarAction: SnackBarAction(
-                      onPressed: () => PageNavigation.pushNavigator(
-                        context,
-                        page: Favorites(),
-                      ),
-                      label: 'favoritos'.capitalize(),
-                      textColor: Constants.primaryColor,
-                      backgroundColor: Colors.white,
-                    ),
+                final bool isUserAction = state.isUserAction;
+                final bool hasAdded = state.favorite == Favorite.added;
+                final bool hasRemoved = state.favorite == Favorite.removed;
+
+                if (hasAdded && isUserAction) {
+                  AppToastification.showSuccess(
+                    context: context,
+                    message: 'agregado a favoritos',
+                  );
+                }
+                if (hasRemoved && isUserAction) {
+                  AppToastification.showSuccess(
+                    context: context,
+                    message: 'removido de tus favoritos',
                   );
                 }
               },
