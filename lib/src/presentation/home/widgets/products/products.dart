@@ -28,6 +28,7 @@ class _ProductsState extends State<Products> {
       ),
       itemBuilder: (BuildContext context, int index) {
         return ProductTile(
+          index: index,
           product: widget._products[index],
         );
       },

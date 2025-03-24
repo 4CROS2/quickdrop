@@ -1,4 +1,0 @@
-<resources>
-    <color name="light_splash_background">#028b46</color> <!-- Fondo blanco para Light Mode -->
-    <color name="night_splash_background">#028b46</color> <!-- Fondo negro para Night Mode -->
-</resources>
