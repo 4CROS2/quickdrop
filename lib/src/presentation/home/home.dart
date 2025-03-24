@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/domain/entity/products_entity.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/presentation/home/cubit/home_cubit.dart';
 import 'package:quickdrop/src/presentation/home/widgets/drawer/drawer.dart';
 import 'package:quickdrop/src/presentation/home/widgets/header/header.dart';
+import 'package:quickdrop/src/presentation/home/widgets/lastseen/lastseen.dart';
 import 'package:quickdrop/src/presentation/home/widgets/products/products.dart';
 import 'package:quickdrop/src/presentation/home/widgets/promotions/promotions.dart';
 import 'package:quickdrop/src/presentation/home/widgets/sellers/sellers.dart';
@@ -27,9 +29,8 @@ class _HomeState extends State<Home> {
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (BuildContext context, HomeState state) {
             return RefreshIndicator(
-              onRefresh: () async {
-                await context.read<HomeCubit>().getHomeData();
-              },
+              onRefresh: () async =>
+                  await context.read<HomeCubit>().getHomeData(),
               child: CustomScrollView(
                 physics: Constants.bouncingScrollPhysics,
                 slivers: <Widget>[
@@ -48,14 +49,18 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   if (state is SuccessHomeData)
-                    SliverToBoxAdapter(
-                      child: Column(
-                        spacing: Constants.mainPaddingValue,
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
+                    SliverList(
+                      delegate: SliverChildListDelegate.fixed(
+                        <Widget>[
                           PromotionsAndDiscounts(),
+                          SizedBox(
+                            height: Constants.mainPaddingValue,
+                          ),
                           SellersList(
                             sellers: state.home.sellers,
+                          ),
+                          LastSeen(
+                            lastSeenProducts: <ProductsEntity>[],
                           ),
                           Products(
                             products: state.home.products,
