@@ -4,4 +4,8 @@ abstract class ProductDetailRepository {
   Future<ProductDetailEntity> getProductData({
     required String productId,
   });
+
+  Future<void> addToLastSeen({
+    required String productId,
+  });
 }

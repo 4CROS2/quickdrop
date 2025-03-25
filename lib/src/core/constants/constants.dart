@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class Constants {
-  static double borderValue = 12.0;
+  static double borderValue = 14.0;
   static double minHeight = 100.0;
   static double mainPaddingValue = 12.0;
 
@@ -48,5 +48,9 @@ class Constants {
   static ImageFilter imageFilterBlur = ImageFilter.blur(
     sigmaX: 20,
     sigmaY: 20,
+  );
+
+  static BorderRadius insetBorderRadius = BorderRadius.circular(
+    borderValue - mainPaddingValue
   );
 }

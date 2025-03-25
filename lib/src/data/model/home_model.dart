@@ -6,6 +6,7 @@ class HomeModel extends HomeEntity {
   const HomeModel({
     required super.products,
     required super.sellers,
+    required super.lastSeen,
   });
 
   static HomeModel fromJson({required Map<String, dynamic> json}) {
@@ -15,6 +16,9 @@ class HomeModel extends HomeEntity {
     final List<Map<String, dynamic>> sellers =
         List<Map<String, dynamic>>.from(json['sellers']);
 
+    final List<Map<String, dynamic>> lastSeen =
+        List<Map<String, dynamic>>.from(json['last_seen']);
+
     return HomeModel(
       products: products
           .map((Map<String, dynamic> product) =>
@@ -23,6 +27,10 @@ class HomeModel extends HomeEntity {
       sellers: sellers
           .map((Map<String, dynamic> seller) =>
               SellersModel.fromJson(json: seller))
+          .toList(),
+      lastSeen: lastSeen
+          .map((Map<String, dynamic> product) =>
+              ProductsModel.fromJson(json: product))
           .toList(),
     );
   }

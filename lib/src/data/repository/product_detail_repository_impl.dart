@@ -17,4 +17,9 @@ class IProductDetailRepository implements ProductDetailRepository {
     );
     return ProductDetailsModel.fromJson(json: response);
   }
+
+  @override
+  Future<void> addToLastSeen({required String productId}) async {
+    await _datasource.addToLastSeen(productId: productId);
+  }
 }

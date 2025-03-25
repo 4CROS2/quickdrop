@@ -28,6 +28,7 @@ class AppTheme {
       pageTransitionsTheme: _pageTransition,
       colorSchemeSeed: Constants.primaryColor,
       fontFamily: 'Questrial',
+      scaffoldBackgroundColor: Colors.white,
       progressIndicatorTheme: ProgressIndicatorThemeData(
         // ignore: deprecated_member_use
         year2023: false,

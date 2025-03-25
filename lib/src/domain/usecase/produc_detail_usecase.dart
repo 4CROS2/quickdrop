@@ -11,4 +11,8 @@ class ProducDetailUsecase {
       _repository.getProductData(
         productId: productId,
       );
+
+  Future<void> addToLastSeen({required String productId}) async {
+    await _repository.addToLastSeen(productId: productId);
+  }
 }
