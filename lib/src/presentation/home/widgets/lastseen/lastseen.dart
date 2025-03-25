@@ -53,7 +53,6 @@ class LastSeen extends StatelessWidget {
                 ),
                 itemCount: lastSeenProducts.length,
                 itemBuilder: (BuildContext context, int index) {
-                  print(lastSeenProducts[index].baseImages);
                   return Material(
                     color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: Constants.mainBorderRadius / 2,
