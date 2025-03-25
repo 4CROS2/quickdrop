@@ -10,7 +10,7 @@ import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/favorites/favorites.dart';
 import 'package:quickdrop/src/presentation/financial_information/financial_information.dart';
 import 'package:quickdrop/src/presentation/loading/loading.dart';
-import 'package:quickdrop/src/presentation/login/login.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/my_purchases/mypurchases.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
 import 'package:quickdrop/src/presentation/purchase_detail/purchase_detail.dart';

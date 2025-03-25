@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/domain/entity/user_entity.dart';
+import 'package:quickdrop/src/feature/auth/domain/entity/user_entity.dart';
 
 abstract class AuthRepository {
   Stream<UserEntity> userStatus();

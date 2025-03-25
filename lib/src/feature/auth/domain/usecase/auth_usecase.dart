@@ -1,5 +1,5 @@
-import 'package:quickdrop/src/domain/entity/user_entity.dart';
-import 'package:quickdrop/src/domain/repository/auth_repository.dart';
+import 'package:quickdrop/src/feature/auth/domain/entity/user_entity.dart';
+import 'package:quickdrop/src/feature/auth/domain/repository/auth_repository.dart';
 
 class AuthUseCase {
   AuthUseCase({
