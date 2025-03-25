@@ -14,7 +14,7 @@ import 'package:quickdrop/src/feature/auth/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/my_purchases/mypurchases.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
 import 'package:quickdrop/src/presentation/purchase_detail/purchase_detail.dart';
-import 'package:quickdrop/src/presentation/search/search.dart';
+import 'package:quickdrop/src/feature/search/search.dart';
 
 class AppRouter {
   final AppCubit _appCubit = sl<AppCubit>();
