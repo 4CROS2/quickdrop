@@ -1,5 +1,5 @@
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
-import 'package:quickdrop/src/domain/entity/sellers_entity.dart';
+import 'package:quickdrop/src/feature/home/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/feature/home/domain/entity/sellers_entity.dart';
 
 class ProductDetailEntity {
   const ProductDetailEntity({
