@@ -5,7 +5,7 @@ import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/favorites/favorites.dart';
 import 'package:quickdrop/src/presentation/financial_information/financial_information.dart';
-import 'package:quickdrop/src/presentation/home/home.dart';
+import 'package:quickdrop/src/feature/home/presentation/home.dart';
 import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/my_purchases/mypurchases.dart';
