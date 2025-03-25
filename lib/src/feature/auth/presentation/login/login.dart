@@ -8,13 +8,13 @@ import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/validators.dart';
 import 'package:quickdrop/src/core/localization/app_localizations.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/presentation/login/cubit/login_cubit.dart';
-import 'package:quickdrop/src/presentation/login/widgets/auth_btn.dart';
-import 'package:quickdrop/src/presentation/login/widgets/divider.dart';
-import 'package:quickdrop/src/presentation/login/widgets/inputs.dart';
-import 'package:quickdrop/src/presentation/login/widgets/other_login_btn.dart';
-import 'package:quickdrop/src/presentation/login/widgets/title.dart';
-import 'package:quickdrop/src/presentation/signup/signup.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/cubit/login_cubit.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/auth_btn.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/divider.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/inputs.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/other_login_btn.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/title.dart';
+import 'package:quickdrop/src/feature/auth/presentation/signup/signup.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

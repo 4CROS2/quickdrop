@@ -1,6 +1,6 @@
-import 'package:quickdrop/src/data/datasource/firebase_auth_datasource.dart';
-import 'package:quickdrop/src/data/model/user_model.dart';
-import 'package:quickdrop/src/domain/repository/auth_repository.dart';
+import 'package:quickdrop/src/feature/auth/data/datasource/auth_datasource.dart';
+import 'package:quickdrop/src/feature/auth/data/model/user_model.dart';
+import 'package:quickdrop/src/feature/auth/domain/repository/auth_repository.dart';
 
 class IAuthRepository implements AuthRepository {
   IAuthRepository({

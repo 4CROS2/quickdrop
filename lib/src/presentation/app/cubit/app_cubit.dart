@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/user_entity.dart';
-import 'package:quickdrop/src/domain/usecase/auth_usecase.dart';
+import 'package:quickdrop/src/feature/auth/domain/entity/user_entity.dart';
+import 'package:quickdrop/src/feature/auth/domain/usecase/auth_usecase.dart';
 
 part 'app_state.dart';
 

@@ -7,12 +7,12 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/localization/app_localizations.dart';
 import 'package:quickdrop/src/injection/injection_container.dart' as di;
-import 'package:quickdrop/src/presentation/login/widgets/auth_btn.dart';
-import 'package:quickdrop/src/presentation/login/widgets/divider.dart';
-import 'package:quickdrop/src/presentation/login/widgets/inputs.dart';
-import 'package:quickdrop/src/presentation/login/widgets/other_login_btn.dart';
-import 'package:quickdrop/src/presentation/login/widgets/title.dart';
-import 'package:quickdrop/src/presentation/signup/cubit/signup_cubit.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/auth_btn.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/divider.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/inputs.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/other_login_btn.dart';
+import 'package:quickdrop/src/feature/auth/presentation/login/widgets/title.dart';
+import 'package:quickdrop/src/feature/auth/presentation/signup/cubit/signup_cubit.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
