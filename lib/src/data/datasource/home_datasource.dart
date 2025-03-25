@@ -3,10 +3,12 @@ import 'package:extensions/extensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 
+// Interfaz sellada para HomeDatasource
 sealed class HomeDatasource {
   Future<Map<String, dynamic>> getHomeData();
 }
 
+// Implementación concreta de HomeDatasource
 class IHomeDatasource implements HomeDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -44,8 +46,8 @@ class IHomeDatasource implements HomeDatasource {
                 whereIn: availableSellerIds,
               )
               .get();
-      final QuerySnapshot<Map<String, dynamic>> allSellersFuture =
-          await _firestore.collection('sellers').get();
+      final Future<QuerySnapshot<Map<String, dynamic>>> allSellersFuture =
+          _firestore.collection('sellers').get();
 
       // Consultar últimos productos vistos
       final QuerySnapshot<Map<String, dynamic>> lastSeen = await _firestore
@@ -70,14 +72,15 @@ class IHomeDatasource implements HomeDatasource {
       // Esperar resultados de consultas paralelas
       final QuerySnapshot<Map<String, dynamic>> productsSnapshot =
           await productsFuture;
-      final QuerySnapshot<Map<String, dynamic>> allSellers = allSellersFuture;
+      final QuerySnapshot<Map<String, dynamic>> allSellers =
+          await allSellersFuture;
 
       // Crear mapa de productos disponibles
       final Map<String, QueryDocumentSnapshot<Map<String, dynamic>>>
           productMap = <String, QueryDocumentSnapshot<Map<String, dynamic>>>{
         for (QueryDocumentSnapshot<Map<String, dynamic>> doc
             in productsSnapshot.docs)
-          doc.id: doc
+          doc.id: doc,
       };
 
       // Procesar productos vistos recientemente
@@ -113,16 +116,36 @@ class IHomeDatasource implements HomeDatasource {
           await Future.wait(remainingProducts);
       final List<Object> lastSeenProducts = await Future.wait(lastSeenFutures);
 
+      // Combinar productos y eliminar duplicados
+      final Map<String, Map<String, dynamic>> combinedProducts =
+          <String, Map<String, dynamic>>{};
+      for (final Map<String, dynamic> product in productsWithRatings) {
+        combinedProducts[product['id']] = product;
+      }
+      for (final Map<String, dynamic> product
+          in lastSeenProducts.whereType<Map<String, dynamic>>()) {
+        combinedProducts[product['id']] = product;
+      }
+
+      // Convertir a lista
+      final List<Map<String, dynamic>> allProducts =
+          combinedProducts.values.toList();
+
+      // Verificar si hay menos de 4 productos
+      final bool hasFewProducts = allProducts.length < 4;
+
       return <String, dynamic>{
-        'products': productsWithRatings,
+        'products': allProducts.take(10).toList(), // Limitar a 10 productos
         'sellers': allSellers.toListMapJson(),
-        'last_seen': lastSeenProducts,
+        'last_seen':
+            hasFewProducts ? <Map<String, dynamic>>[] : lastSeenProducts,
       };
     } catch (e) {
       return <String, dynamic>{
         'products': <dynamic>[],
         'sellers': <dynamic>[],
         'last_seen': <dynamic>[],
+        'error': e.toString(),
       };
     }
   }

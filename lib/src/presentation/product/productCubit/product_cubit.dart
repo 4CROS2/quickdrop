@@ -69,7 +69,14 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   /// Errors are silently ignored.
   Future<void> _addToLastSeen({required String productId}) async {
     try {
-      await _usecase.addToLastSeen(productId: productId);
+      await Future<void>.delayed(
+        Duration(
+          seconds: 3,
+        ),
+      );
+      if (!isClosed) {
+        await _usecase.addToLastSeen(productId: productId);
+      }
     } catch (e) {
       null;
     }
