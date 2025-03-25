@@ -1,6 +1,6 @@
-import 'package:quickdrop/src/data/datasource/produt_datasource.dart';
-import 'package:quickdrop/src/data/model/product_details_model.dart';
-import 'package:quickdrop/src/domain/repository/product_detail_repository.dart';
+import 'package:quickdrop/src/feature/productDetail/data/datasource/produt_datasource.dart';
+import 'package:quickdrop/src/feature/productDetail/data/model/product_details_model.dart';
+import 'package:quickdrop/src/feature/productDetail/domain/repository/product_detail_repository.dart';
 
 class IProductDetailRepository implements ProductDetailRepository {
   IProductDetailRepository({

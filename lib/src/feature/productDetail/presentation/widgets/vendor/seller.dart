@@ -3,7 +3,7 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/feature/home/domain/entity/sellers_entity.dart';
-import 'package:quickdrop/src/presentation/product/widgets/vendor/widgets/vendor_sheet.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/vendor/widgets/vendor_sheet.dart';
 
 class Seller extends StatelessWidget {
   const Seller({required SellersEntity seller, super.key}) : _seller = seller;

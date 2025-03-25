@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/carrousell_indicator.dart';
-import 'package:quickdrop/src/presentation/product/widgets/productHeader/widgets/carrousell_tile.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/productHeader/widgets/carrousell_indicator.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/productHeader/widgets/carrousell_tile.dart';
 
 class Carousel extends StatefulWidget {
   const Carousel({

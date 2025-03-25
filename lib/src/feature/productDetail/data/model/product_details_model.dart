@@ -1,6 +1,6 @@
 import 'package:quickdrop/src/feature/home/data/model/products_model.dart';
 import 'package:quickdrop/src/feature/home/data/model/sellers_model.dart';
-import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
+import 'package:quickdrop/src/feature/productDetail/domain/entity/product_detail_entity.dart';
 import 'package:quickdrop/src/feature/home/domain/entity/products_entity.dart';
 
 class ProductDetailsModel extends ProductDetailEntity {

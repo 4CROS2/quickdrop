@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/cubit/product_cubit.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/body/product_body.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/loading/loading_product_shimmer.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/productHeader/product_header.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/presentation/product/productCubit/product_cubit.dart';
-import 'package:quickdrop/src/presentation/product/widgets/body/product_body.dart';
-import 'package:quickdrop/src/presentation/product/widgets/loading/loading_product_shimmer.dart';
-import 'package:quickdrop/src/presentation/product/widgets/productHeader/product_header.dart';
 
-class Product extends StatefulWidget {
-  const Product({
+class ProductDetail extends StatefulWidget {
+  const ProductDetail({
     required String productId,
     required String previewImage,
     super.key,
@@ -18,10 +18,10 @@ class Product extends StatefulWidget {
   final String _previewImage;
   final String _productId;
   @override
-  State<Product> createState() => _ProductState();
+  State<ProductDetail> createState() => _ProductDetailState();
 }
 
-class _ProductState extends State<Product> {
+class _ProductDetailState extends State<ProductDetail> {
   late final ScrollController _scrollController;
   @override
   void initState() {
