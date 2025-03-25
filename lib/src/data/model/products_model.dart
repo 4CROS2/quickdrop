@@ -13,9 +13,12 @@ class ProductsModel extends ProductsEntity {
   });
 
   static ProductsModel fromJson({required Map<String, dynamic> json}) {
-    List<String> jsonImages = List<String>.from(json['base_images']);
-    List<Map<String, dynamic>> jsonRatings =
-        List<Map<String, dynamic>>.from(json['ratings']);
+    List<String> jsonImages = List<String>.from(
+      json['base_images'] ?? <String>[],
+    );
+    List<Map<String, dynamic>> jsonRatings = List<Map<String, dynamic>>.from(
+      json['ratings'] ?? <dynamic>[],
+    );
 
     final List<ProductRatingModel> ratings = jsonRatings.map(
       (Map<String, dynamic> rating) {
@@ -30,7 +33,7 @@ class ProductsModel extends ProductsEntity {
       name: json['name'] ?? 'Unknown',
       description: json['description'] ?? '',
       basePrice: json['base_price'] ?? 0,
-      sellerId: json['seller_id'],
+      sellerId: json['seller_id'] ?? '',
       baseImages: jsonImages,
       ratings: ratings,
     );

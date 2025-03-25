@@ -14,9 +14,5 @@ class HomeEntity extends Equatable {
   final List<ProductsEntity> lastSeen;
 
   @override
-  List<Object> get props => <Object>[
-        products,
-        sellers,
-        lastSeen
-      ];
+  List<Object> get props => <Object>[products, sellers, lastSeen];
 }

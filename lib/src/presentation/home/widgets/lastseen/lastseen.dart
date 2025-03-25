@@ -53,6 +53,7 @@ class LastSeen extends StatelessWidget {
                 ),
                 itemCount: lastSeenProducts.length,
                 itemBuilder: (BuildContext context, int index) {
+                  print(lastSeenProducts[index].baseImages);
                   return Material(
                     color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: Constants.mainBorderRadius / 2,
@@ -62,7 +63,8 @@ class LastSeen extends StatelessWidget {
                           Uri(
                             path: '/product/${lastSeenProducts[index].id}',
                             queryParameters: <String, dynamic>{
-                              'previewImage':lastSeenProducts[index].baseImages.first
+                              'previewImage':
+                                  lastSeenProducts[index].baseImages.first
                             },
                           ).toString(),
                         );
@@ -79,8 +81,9 @@ class LastSeen extends StatelessWidget {
                                 child: Hero(
                                   tag: lastSeenProducts[index].baseImages.first,
                                   child: ImageLoader(
-                                    imageUrl:
-                                        lastSeenProducts[index].baseImages.first,
+                                    imageUrl: lastSeenProducts[index]
+                                        .baseImages
+                                        .first,
                                   ),
                                 ),
                               ),
@@ -120,9 +123,8 @@ class LastSeen extends StatelessWidget {
                               child: Text(
                                 formatPrice(lastSeenProducts[index].basePrice),
                                 style: TextStyle(
-                                  color: Constants.primaryColor,
-                                  fontWeight: FontWeight.w700
-                                ),
+                                    color: Constants.primaryColor,
+                                    fontWeight: FontWeight.w700),
                               ),
                             ),
                           ],

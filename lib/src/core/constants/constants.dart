@@ -50,7 +50,6 @@ class Constants {
     sigmaY: 20,
   );
 
-  static BorderRadius insetBorderRadius = BorderRadius.circular(
-    borderValue - mainPaddingValue
-  );
+  static BorderRadius insetBorderRadius =
+      BorderRadius.circular(borderValue - mainPaddingValue);
 }
