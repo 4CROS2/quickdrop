@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/domain/usecase/purshase_usecase.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/presentation/product/widgets/buttons/buy_buttons_tile.dart.dart';
-import 'package:quickdrop/src/presentation/product/widgets/quantity/quantity.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/buttons/buy_buttons_tile.dart.dart';
+import 'package:quickdrop/src/feature/productDetail/presentation/widgets/quantity/quantity.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
 
 class BuyButtons extends StatefulWidget {

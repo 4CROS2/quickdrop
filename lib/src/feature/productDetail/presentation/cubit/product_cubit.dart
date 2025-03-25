@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/product_detail_entity.dart';
-import 'package:quickdrop/src/domain/usecase/produc_detail_usecase.dart';
+import 'package:quickdrop/src/feature/productDetail/domain/entity/product_detail_entity.dart';
+import 'package:quickdrop/src/feature/productDetail/domain/usecase/produc_detail_usecase.dart';
 
 part 'product_state.dart';
 
