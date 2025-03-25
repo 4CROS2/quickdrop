@@ -141,12 +141,7 @@ class IHomeDatasource implements HomeDatasource {
             hasFewProducts ? <Map<String, dynamic>>[] : lastSeenProducts,
       };
     } catch (e) {
-      return <String, dynamic>{
-        'products': <dynamic>[],
-        'sellers': <dynamic>[],
-        'last_seen': <dynamic>[],
-        'error': e.toString(),
-      };
+      rethrow;
     }
   }
 
