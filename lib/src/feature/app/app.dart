@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:quickdrop/src/core/localization/app_localizations.dart';
 import 'package:quickdrop/src/core/theme/app_theme.dart';
 import 'package:quickdrop/src/injection/injection_container.dart' as di;
-import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
+import 'package:quickdrop/src/feature/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/core/router/app_router.dart';
 
 class App extends StatefulWidget {

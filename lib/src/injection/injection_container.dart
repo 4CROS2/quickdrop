@@ -32,7 +32,7 @@ import 'package:quickdrop/src/domain/usecase/my_purchases_usecase.dart';
 import 'package:quickdrop/src/feature/productDetail/domain/usecase/produc_detail_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/purchase_detail_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/purshase_usecase.dart';
-import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
+import 'package:quickdrop/src/feature/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/favorites/cubit/favorites_cubit.dart';
 import 'package:quickdrop/src/presentation/financial_information/cubit/financial_information_cubit.dart';
 import 'package:quickdrop/src/feature/home/presentation/cubit/home_cubit.dart';
