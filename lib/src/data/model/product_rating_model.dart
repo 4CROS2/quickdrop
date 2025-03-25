@@ -10,14 +10,14 @@ class ProductRatingModel extends ProductRatingEntity {
   });
 
   static ProductRatingModel fromJson({required Map<String, dynamic> json}) {
-    final Timestamp timestamp = json['created_at'];
+    final Timestamp timestamp = json['created_at'] ?? Timestamp.now();
     final DateTime createdAt = timestamp.toDate();
 
     return ProductRatingModel(
-      clientId: json['client_id'],
-      comment: json['comment'],
+      clientId: json['client_id'] ?? '',
+      comment: json['comment'] ?? '',
       createdAt: createdAt,
-      rating: json['rating'],
+      rating: json['rating'] ?? '',
     );
   }
 }

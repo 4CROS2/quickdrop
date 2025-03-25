@@ -47,7 +47,7 @@ class _ProductState extends State<Product> {
           builder: (BuildContext context, ProductDetailState state) {
             return RefreshIndicator.adaptive(
               onRefresh: () async {
-                context.read<ProductDetailCubit>().getProductData(
+                await context.read<ProductDetailCubit>().refresh(
                       productId: widget._productId,
                     );
               },

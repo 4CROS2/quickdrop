@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extensions/extensions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProductDetailDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  String get _uid => _auth.currentUser!.uid;
 
   Future<Map<String, dynamic>> getProductData(
       {required String productId}) async {
@@ -49,6 +53,26 @@ class ProductDetailDatasource {
       return productData;
     } catch (e) {
       throw Exception('Error obteniendo datos del producto y vendedor: $e');
+    }
+  }
+
+  Future<void> addToLastSeen({required String productId}) async {
+    try {
+      final DateTime dateTime = DateTime.now();
+
+      final Map<String, dynamic> data = <String, dynamic>{
+        'created_at': dateTime,
+        'product_id': productId,
+      };
+
+      await _firestore
+          .collection('users')
+          .doc(_uid)
+          .collection('lastseen')
+          .doc()
+          .set(data);
+    } catch (e) {
+      throw Exception(e);
     }
   }
 }

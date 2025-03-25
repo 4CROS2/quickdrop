@@ -6,14 +6,13 @@ class HomeEntity extends Equatable {
   const HomeEntity({
     required this.products,
     required this.sellers,
+    required this.lastSeen,
   });
 
   final List<ProductsEntity> products;
   final List<SellersEntity> sellers;
+  final List<ProductsEntity> lastSeen;
 
   @override
-  List<Object> get props => <Object>[
-        products,
-        sellers,
-      ];
+  List<Object> get props => <Object>[products, sellers, lastSeen];
 }

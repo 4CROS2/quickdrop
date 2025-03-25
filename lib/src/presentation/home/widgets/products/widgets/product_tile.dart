@@ -6,9 +6,9 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/core/functions/average.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/domain/entity/products_entity.dart';
-import 'package:quickdrop/src/domain/entity/rating_product.dart';
 import 'package:quickdrop/src/presentation/home/widgets/products/widgets/favorite/add_favorite.dart';
 import 'package:quickdrop/src/presentation/widgets/clipper_radius_images.dart';
 import 'package:shimmer/shimmer.dart';
@@ -74,19 +74,6 @@ class _ProductTileState extends State<ProductTile>
       }
     });
     height = 100 + Random().nextDouble() * (160 - 100);
-  }
-
-  double _average({required List<ProductRatingEntity> ratings}) {
-    final int ratingsLength = ratings.length;
-    if (ratingsLength == 0) {
-      return 0;
-    }
-
-    final double total = ratings.fold(
-        0.0,
-        (double sum, ProductRatingEntity rating) =>
-            sum + rating.rating.toDouble());
-    return total / ratingsLength;
   }
 
   @override
@@ -185,14 +172,14 @@ class _ProductTileState extends State<ProductTile>
                           RatingBar.readOnly(
                             filledIcon: Icons.star,
                             emptyIcon: Icons.star_border,
-                            initialRating: _average(
+                            initialRating: average(
                               ratings: widget._product.ratings,
                             ),
                             maxRating: 5,
                             size: 18,
                           ),
                           Text(
-                            '(${widget._product.ratings.length.toString()})',
+                            '( ${widget._product.ratings.length.toString()} )',
                             style: const TextStyle(
                               fontWeight: FontWeight.w900,
                               fontSize: 12,
@@ -206,9 +193,9 @@ class _ProductTileState extends State<ProductTile>
                         widget._product.name.capitalize(),
                         softWrap: true,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                        ),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            height: .8),
                       ),
                       //product price
                       Text(

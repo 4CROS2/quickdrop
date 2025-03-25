@@ -18,6 +18,14 @@ class Products extends StatefulWidget {
 class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
+    if (widget._products.isEmpty) {
+      return Center(
+        child: Text(
+          'no hay productos disponibles',
+        ),
+      );
+    }
+
     return MasonryGridView.builder(
       padding: Constants.mainPadding / 2,
       physics: const NeverScrollableScrollPhysics(),

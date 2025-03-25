@@ -60,8 +60,8 @@ Future<void> init() async {
       googleSigin: sl<GoogleSignIn>(),
     ),
   );
-  sl.registerLazySingleton<HomeDatasource>(
-    () => HomeDatasource(),
+  sl.registerLazySingleton<IHomeDatasource>(
+    () => IHomeDatasource(),
   );
   sl.registerLazySingleton<AddToFavoriteDatasource>(
     () => AddToFavoriteDatasource(),
@@ -86,7 +86,7 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<HomeDataRepository>(
     () => IHomeDataRepository(
-      datasource: sl<HomeDatasource>(),
+      datasource: sl<IHomeDatasource>(),
     ),
   );
   sl.registerLazySingleton<FavoriteRepository>(

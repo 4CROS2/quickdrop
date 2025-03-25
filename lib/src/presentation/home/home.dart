@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/domain/entity/products_entity.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/presentation/home/cubit/home_cubit.dart';
 import 'package:quickdrop/src/presentation/home/widgets/drawer/drawer.dart';
@@ -60,7 +59,7 @@ class _HomeState extends State<Home> {
                             sellers: state.home.sellers,
                           ),
                           LastSeen(
-                            lastSeenProducts: <ProductsEntity>[],
+                            lastSeenProducts: state.home.lastSeen,
                           ),
                           Products(
                             products: state.home.products,
