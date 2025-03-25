@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/presentation/app/cubit/app_cubit.dart';
+import 'package:quickdrop/src/feature/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/feature/home/presentation/widgets/header/widgets/location_header.dart';
 import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
 
