@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/features/productDetail/domain/entity/product_detail_entity.dart';
-import 'package:quickdrop/src/domain/usecase/financial_information_usecase.dart';
+import 'package:quickdrop/src/features/financial_information/domain/usecase/financial_information_usecase.dart';
 
 part 'financial_information_state.dart';
 

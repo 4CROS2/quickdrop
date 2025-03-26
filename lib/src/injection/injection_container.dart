@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:quickdrop/src/features/favorites/data/datasource/favorite_datasource.dart';
-import 'package:quickdrop/src/data/datasource/financial_information_datasource.dart';
+import 'package:quickdrop/src/features/financial_information/data/datasource/financial_information_datasource.dart';
 import 'package:quickdrop/src/features/auth/data/datasource/auth_datasource.dart';
 import 'package:quickdrop/src/features/home/data/datasource/home_datasource.dart';
 import 'package:quickdrop/src/data/datasource/my_purchases_datasource.dart';
@@ -10,7 +10,7 @@ import 'package:quickdrop/src/features/pruchase/data/datasource/purchase_datasou
 import 'package:quickdrop/src/data/datasource/purchase_detail_datasource.dart';
 import 'package:quickdrop/src/features/auth/data/repository/auth_repository_impl.dart';
 import 'package:quickdrop/src/features/favorites/data/repository/favorite_repository_impl.dart';
-import 'package:quickdrop/src/data/repository/financial_information_repository_impl.dart';
+import 'package:quickdrop/src/features/financial_information/data/repository/financial_information_repository_impl.dart';
 import 'package:quickdrop/src/features/home/data/repository/home_data_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/my_purchases_repository_impl.dart';
 import 'package:quickdrop/src/features/productDetail/data/repository/product_detail_repository_impl.dart';
@@ -18,7 +18,7 @@ import 'package:quickdrop/src/data/repository/purchase_detail_repository_impl.da
 import 'package:quickdrop/src/features/pruchase/data/repository/purchase_repository_impl.dart';
 import 'package:quickdrop/src/features/auth/domain/repository/auth_repository.dart';
 import 'package:quickdrop/src/features/favorites/domain/repository/favorite_repository.dart';
-import 'package:quickdrop/src/domain/repository/financial_information_repository.dart';
+import 'package:quickdrop/src/features/financial_information/domain/repository/financial_information_repository.dart';
 import 'package:quickdrop/src/features/home/domain/repository/home_data_repository.dart';
 import 'package:quickdrop/src/domain/repository/my_purchases_repository.dart';
 import 'package:quickdrop/src/features/productDetail/domain/repository/product_detail_repository.dart';
@@ -26,7 +26,7 @@ import 'package:quickdrop/src/domain/repository/purchase_detail_repository.dart'
 import 'package:quickdrop/src/features/pruchase/domain/repository/purchase_repository.dart';
 import 'package:quickdrop/src/features/auth/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/features/favorites/domain/usecase/favorite_usecase.dart';
-import 'package:quickdrop/src/domain/usecase/financial_information_usecase.dart';
+import 'package:quickdrop/src/features/financial_information/domain/usecase/financial_information_usecase.dart';
 import 'package:quickdrop/src/features/home/domain/usecase/home_data_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/my_purchases_usecase.dart';
 import 'package:quickdrop/src/features/productDetail/domain/usecase/produc_detail_usecase.dart';
@@ -34,7 +34,7 @@ import 'package:quickdrop/src/domain/usecase/purchase_detail_usecase.dart';
 import 'package:quickdrop/src/features/pruchase/domain/usecase/purshase_usecase.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/favorites/presentation/cubit/favorites_cubit.dart';
-import 'package:quickdrop/src/presentation/financial_information/cubit/financial_information_cubit.dart';
+import 'package:quickdrop/src/features/financial_information/presentation/cubit/financial_information_cubit.dart';
 import 'package:quickdrop/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/cubit/login_cubit.dart';
