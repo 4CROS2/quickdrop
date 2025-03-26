@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:quickdrop/src/data/model/purchase_model.dart';
+import 'package:quickdrop/src/features/my_purchases/data/model/purchase_model.dart';
 
 class PurchaseDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

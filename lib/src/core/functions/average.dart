@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/domain/entity/rating_product.dart';
+import 'package:quickdrop/src/features/home/domain/entity/rating_product.dart';
 
 double average({required List<ProductRatingEntity> ratings}) {
   final int ratingsLength = ratings.length;

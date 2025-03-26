@@ -6,7 +6,7 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/average.dart' show average;
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
-import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
+import 'package:quickdrop/src/features/widgets/image_loader.dart';
 
 class LastSeen extends StatelessWidget {
   const LastSeen({

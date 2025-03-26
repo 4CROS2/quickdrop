@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
+import 'package:quickdrop/src/features/my_purchases/domain/entity/purchase_entity.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/cubit/purchase_cubit.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/widgets/payment_section.dart';
 

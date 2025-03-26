@@ -2,8 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
-import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
+import 'package:quickdrop/src/features/widgets/header_buton.dart';
+import 'package:quickdrop/src/features/widgets/image_loader.dart';
 
 class FullScreenImage extends StatefulWidget {
   const FullScreenImage({

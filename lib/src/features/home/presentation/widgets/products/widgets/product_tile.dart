@@ -10,7 +10,7 @@ import 'package:quickdrop/src/core/functions/average.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/products/widgets/favorite/add_favorite.dart';
-import 'package:quickdrop/src/presentation/widgets/clipper_radius_images.dart';
+import 'package:quickdrop/src/features/widgets/clipper_radius_images.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProductTile extends StatefulWidget {

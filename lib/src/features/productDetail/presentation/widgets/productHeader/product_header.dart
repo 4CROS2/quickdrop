@@ -4,9 +4,9 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/cubit/product_cubit.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/widgets/carrousell.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/widgets/title_header.dart';
-import 'package:quickdrop/src/presentation/widgets/clipper_radius_images.dart';
-import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
-import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
+import 'package:quickdrop/src/features/widgets/clipper_radius_images.dart';
+import 'package:quickdrop/src/features/widgets/header_buton.dart';
+import 'package:quickdrop/src/features/widgets/image_loader.dart';
 
 class ProductHeader extends SliverPersistentHeaderDelegate {
   ProductHeader({

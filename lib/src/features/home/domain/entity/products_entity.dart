@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:quickdrop/src/domain/entity/rating_product.dart';
+import 'package:quickdrop/src/features/home/domain/entity/rating_product.dart';
 
 class ProductsEntity extends Equatable {
   const ProductsEntity({

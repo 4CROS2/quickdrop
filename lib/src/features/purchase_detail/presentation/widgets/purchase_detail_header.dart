@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/presentation/widgets/header_buton.dart';
+import 'package:quickdrop/src/features/widgets/header_buton.dart';
 
 class PurchaseDetailAppbar extends SliverPersistentHeaderDelegate {
   @override

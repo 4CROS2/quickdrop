@@ -1,6 +1,6 @@
-import 'package:quickdrop/src/data/model/purchase_model.dart';
-import 'package:quickdrop/src/features/purchase_detail/domain/entity/my_purchases_entity.dart';
-import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
+import 'package:quickdrop/src/features/my_purchases/data/model/purchase_model.dart';
+import 'package:quickdrop/src/features/my_purchases/domain/entity/my_purchases_entity.dart';
+import 'package:quickdrop/src/features/my_purchases/domain/entity/purchase_entity.dart';
 
 class MyPurchasesModel extends MyPurchasesEntity {
   MyPurchasesModel({

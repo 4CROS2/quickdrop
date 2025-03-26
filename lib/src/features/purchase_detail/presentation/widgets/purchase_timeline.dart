@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/domain/entity/status_timeline_entity.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/entity/status_timeline_entity.dart';
 import 'package:quickdrop/src/features/purchase_detail/presentation/widgets/purchase_detail_tail.dart';
 import 'package:quickdrop/src/features/purchase_detail/presentation/widgets/timeline_painter.dart';
 

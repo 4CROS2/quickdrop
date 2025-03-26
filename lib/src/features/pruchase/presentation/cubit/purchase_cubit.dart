@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
+import 'package:quickdrop/src/features/my_purchases/domain/entity/purchase_entity.dart';
 import 'package:quickdrop/src/features/pruchase/domain/usecase/purshase_usecase.dart';
 
 part 'purchase_state.dart';

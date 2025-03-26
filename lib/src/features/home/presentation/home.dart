@@ -9,7 +9,7 @@ import 'package:quickdrop/src/features/home/presentation/widgets/lastseen/lastse
 import 'package:quickdrop/src/features/home/presentation/widgets/products/products.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/promotions/promotions.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/sellers/sellers.dart';
-import 'package:quickdrop/src/presentation/widgets/loading_status.dart';
+import 'package:quickdrop/src/features/widgets/loading_status.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

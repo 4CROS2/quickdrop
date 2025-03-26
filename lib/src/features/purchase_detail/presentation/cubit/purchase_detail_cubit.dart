@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
-import 'package:quickdrop/src/domain/usecase/purchase_detail_usecase.dart';
+import 'package:quickdrop/src/features/my_purchases/domain/entity/purchase_entity.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/usecase/purchase_detail_usecase.dart';
 
 part 'purchase_detail_state.dart';
 

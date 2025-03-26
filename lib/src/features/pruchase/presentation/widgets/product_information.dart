@@ -2,9 +2,9 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
-import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
+import 'package:quickdrop/src/features/my_purchases/domain/entity/purchase_entity.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/widgets/payment_section.dart';
-import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
+import 'package:quickdrop/src/features/widgets/image_loader.dart';
 
 class ProductInformation extends StatelessWidget {
   const ProductInformation({

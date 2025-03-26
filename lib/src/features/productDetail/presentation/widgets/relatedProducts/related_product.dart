@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
-import 'package:quickdrop/src/presentation/widgets/clipper_radius_images.dart';
-import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
+import 'package:quickdrop/src/features/widgets/clipper_radius_images.dart';
+import 'package:quickdrop/src/features/widgets/image_loader.dart';
 
 class RelatedProducts extends StatelessWidget {
   const RelatedProducts({

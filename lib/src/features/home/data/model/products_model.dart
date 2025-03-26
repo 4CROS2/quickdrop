@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/data/model/product_rating_model.dart';
+import 'package:quickdrop/src/features/home/data/model/product_rating_model.dart';
 import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
 
 class ProductsModel extends ProductsEntity {
