@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static double borderValue = 14.0;
-  static double minHeight = 100.0;
+  static double minHeight = 110.0;
   static double mainPaddingValue = 12.0;
 
   ///main border radius
@@ -52,4 +52,8 @@ class Constants {
 
   static BorderRadius insetBorderRadius =
       BorderRadius.circular(borderValue - mainPaddingValue);
+
+  static EdgeInsets mainPaddingSymetricHorizontal = EdgeInsets.symmetric(
+    horizontal: mainPaddingValue,
+  );
 }

@@ -4,10 +4,10 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/header/widgets/location_header.dart';
 import 'package:quickdrop/src/features/widgets/header_buton.dart';
+import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class HomeHeader extends SliverPersistentHeaderDelegate {
   HomeHeader();

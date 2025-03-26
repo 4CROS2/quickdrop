@@ -6,13 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/localization/app_localizations.dart';
-import 'package:quickdrop/src/injection/injection_container.dart' as di;
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/auth_btn.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/divider.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/inputs.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/other_login_btn.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/title.dart';
 import 'package:quickdrop/src/features/auth/presentation/signup/cubit/signup_cubit.dart';
+import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -51,7 +51,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SignupCubit>(
-      create: (BuildContext context) => di.sl<SignupCubit>(),
+      create: (BuildContext context) => sl<SignupCubit>(),
       child: Scaffold(
         body: DecoratedBox(
           decoration: BoxDecoration(

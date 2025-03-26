@@ -20,6 +20,7 @@ class HeaderButton extends StatelessWidget {
           icon: Icons.arrow_back_ios_rounded,
           onTap: () {
             if (context.canPop()) {
+              FocusNode().unfocus();
               context.pop();
             } else {
               context.go('/home');
