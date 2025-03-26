@@ -2,19 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/router/go_router_refresh_stream.dart';
-import 'package:quickdrop/src/feature/home/presentation/home.dart';
-import 'package:quickdrop/src/feature/productDetail/presentation/product.dart';
-import 'package:quickdrop/src/feature/productDetail/presentation/widgets/productHeader/widgets/full_screen_image.dart';
+import 'package:quickdrop/src/features/home/presentation/home.dart';
+import 'package:quickdrop/src/features/productDetail/presentation/product.dart';
+import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/feature/app/cubit/app_cubit.dart';
+import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/favorites/favorites.dart';
 import 'package:quickdrop/src/presentation/financial_information/financial_information.dart';
 import 'package:quickdrop/src/presentation/loading/loading.dart';
-import 'package:quickdrop/src/feature/auth/presentation/login/login.dart';
+import 'package:quickdrop/src/features/auth/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/my_purchases/mypurchases.dart';
 import 'package:quickdrop/src/presentation/pruchase/purchase.dart';
 import 'package:quickdrop/src/presentation/purchase_detail/purchase_detail.dart';
-import 'package:quickdrop/src/feature/search/search.dart';
+import 'package:quickdrop/src/features/search/search.dart';
 
 class AppRouter {
   final AppCubit _appCubit = sl<AppCubit>();

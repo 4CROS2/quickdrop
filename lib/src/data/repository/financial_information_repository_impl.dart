@@ -1,5 +1,5 @@
 import 'package:quickdrop/src/data/datasource/financial_information_datasource.dart';
-import 'package:quickdrop/src/feature/productDetail/data/model/product_details_model.dart';
+import 'package:quickdrop/src/features/productDetail/data/model/product_details_model.dart';
 import 'package:quickdrop/src/domain/repository/financial_information_repository.dart';
 
 class IFinancialInformationRepository

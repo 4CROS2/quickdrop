@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:quickdrop/firebase_options.dart';
 import 'package:quickdrop/src/injection/injection_container.dart' as di;
-import 'package:quickdrop/src/feature/app/app.dart';
+import 'package:quickdrop/src/features/app/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

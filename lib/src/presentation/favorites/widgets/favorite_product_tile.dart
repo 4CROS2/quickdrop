@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
-import 'package:quickdrop/src/feature/home/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
 
 class FavoriteProductTile extends StatelessWidget {
   const FavoriteProductTile({

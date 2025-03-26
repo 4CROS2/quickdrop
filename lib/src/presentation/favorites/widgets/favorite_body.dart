@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/feature/home/domain/entity/products_entity.dart';
+import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
 import 'package:quickdrop/src/presentation/favorites/widgets/favorite_product_tile.dart';
 
 class FavoritesBody extends StatelessWidget {
