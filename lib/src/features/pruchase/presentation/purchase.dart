@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
-import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/confirm_button/confrim_button.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/delivery_address.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/delivery_option.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/payment_method.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/product_information.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/purchase_header.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/cubit/purchase_cubit.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/confirm_button/confrim_button.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/delivery_address.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/delivery_option.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/payment_method.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/product_information.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/purchase_header.dart';
 import 'package:quickdrop/src/presentation/widgets/app_toastification.dart';
 
 class Purchase extends StatefulWidget {

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
-import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/confirm_button/widgets/information_tile.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/cubit/purchase_cubit.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/confirm_button/widgets/information_tile.dart';
 
 class ConfirmButton extends StatefulWidget {
   const ConfirmButton({super.key});

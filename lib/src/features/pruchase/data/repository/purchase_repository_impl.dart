@@ -1,7 +1,7 @@
-import 'package:quickdrop/src/data/datasource/purchase_datasource.dart';
+import 'package:quickdrop/src/features/pruchase/data/datasource/purchase_datasource.dart';
 import 'package:quickdrop/src/data/model/purchase_model.dart';
 import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
-import 'package:quickdrop/src/domain/repository/purchase_repository.dart';
+import 'package:quickdrop/src/features/pruchase/domain/repository/purchase_repository.dart';
 
 class IPurchaseRepository implements PurchaseRepository {
   IPurchaseRepository({

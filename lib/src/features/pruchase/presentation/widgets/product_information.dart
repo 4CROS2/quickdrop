@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
 import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/payment_section.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/payment_section.dart';
 import 'package:quickdrop/src/presentation/widgets/image_loader.dart';
 
 class ProductInformation extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/price_formatter.dart';
-import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
-import 'package:quickdrop/src/presentation/pruchase/widgets/payment_section.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/cubit/purchase_cubit.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/widgets/payment_section.dart';
 
 class DeliveryOption extends StatefulWidget {
   const DeliveryOption({super.key});

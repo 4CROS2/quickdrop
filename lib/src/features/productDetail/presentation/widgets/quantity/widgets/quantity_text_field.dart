@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/cubit/purchase_cubit.dart';
 
 class QuantityTextField extends StatefulWidget {
   const QuantityTextField({

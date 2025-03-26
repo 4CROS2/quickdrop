@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/domain/usecase/purshase_usecase.dart';
+import 'package:quickdrop/src/features/pruchase/domain/usecase/purshase_usecase.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/buttons/buy_buttons_tile.dart.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/quantity/quantity.dart';
-import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/cubit/purchase_cubit.dart';
 
 class BuyButtons extends StatefulWidget {
   const BuyButtons({
