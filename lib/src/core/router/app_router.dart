@@ -7,7 +7,7 @@ import 'package:quickdrop/src/features/productDetail/presentation/product.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
-import 'package:quickdrop/src/presentation/favorites/favorites.dart';
+import 'package:quickdrop/src/features/favorites/presentation/favorites.dart';
 import 'package:quickdrop/src/presentation/financial_information/financial_information.dart';
 import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/login.dart';

@@ -1,6 +1,6 @@
-import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
+import 'package:quickdrop/src/features/favorites/domain/entity/favorite_entity.dart';
 import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
-import 'package:quickdrop/src/domain/repository/favorite_repository.dart';
+import 'package:quickdrop/src/features/favorites/domain/repository/favorite_repository.dart';
 
 class FavoritesUsecase {
   FavoritesUsecase({

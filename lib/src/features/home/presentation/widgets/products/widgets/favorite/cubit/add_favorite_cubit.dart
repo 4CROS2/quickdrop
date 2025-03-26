@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
-import 'package:quickdrop/src/domain/usecase/favorite_usecase.dart';
+import 'package:quickdrop/src/features/favorites/domain/entity/favorite_entity.dart';
+import 'package:quickdrop/src/features/favorites/domain/usecase/favorite_usecase.dart';
 
 part 'add_favorite_state.dart';
 

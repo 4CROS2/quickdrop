@@ -1,4 +1,4 @@
-import 'package:quickdrop/src/domain/entity/favorite_entity.dart';
+import 'package:quickdrop/src/features/favorites/domain/entity/favorite_entity.dart';
 import 'package:quickdrop/src/features/home/domain/entity/products_entity.dart';
 
 abstract class FavoriteRepository {

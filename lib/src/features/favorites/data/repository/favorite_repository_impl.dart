@@ -1,7 +1,7 @@
-import 'package:quickdrop/src/data/datasource/favorite_datasource.dart';
-import 'package:quickdrop/src/data/model/add_favorite_model.dart';
+import 'package:quickdrop/src/features/favorites/data/datasource/favorite_datasource.dart';
+import 'package:quickdrop/src/features/favorites/data/model/add_favorite_model.dart';
 import 'package:quickdrop/src/features/home/data/model/products_model.dart';
-import 'package:quickdrop/src/domain/repository/favorite_repository.dart';
+import 'package:quickdrop/src/features/favorites/domain/repository/favorite_repository.dart';
 
 class IFavoriteRepository implements FavoriteRepository {
   IFavoriteRepository({
