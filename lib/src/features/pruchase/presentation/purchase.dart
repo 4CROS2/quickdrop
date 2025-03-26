@@ -12,7 +12,6 @@ import 'package:quickdrop/src/features/pruchase/presentation/widgets/payment_met
 import 'package:quickdrop/src/features/pruchase/presentation/widgets/product_information.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/widgets/purchase_header.dart';
 
-
 class Purchase extends StatefulWidget {
   const Purchase({
     super.key,
