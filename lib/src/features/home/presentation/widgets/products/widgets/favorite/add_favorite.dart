@@ -1,10 +1,10 @@
+import 'package:apptoastification/apptoastification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/features/favorites/domain/entity/favorite_entity.dart';
-import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
-import 'package:quickdrop/src/presentation/widgets/app_toastification.dart';
+import 'package:quickdrop/src/injection/injection_container.dart';
 
 class AddToFavoriteButton extends StatelessWidget {
   const AddToFavoriteButton({required String productId, super.key})
