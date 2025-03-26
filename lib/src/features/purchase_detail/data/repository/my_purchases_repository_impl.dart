@@ -1,8 +1,8 @@
-import 'package:quickdrop/src/data/datasource/my_purchases_datasource.dart';
-import 'package:quickdrop/src/data/model/my_purchases_model.dart';
+import 'package:quickdrop/src/features/purchase_detail/data/datasource/my_purchases_datasource.dart';
+import 'package:quickdrop/src/features/purchase_detail/data/model/my_purchases_model.dart';
 import 'package:quickdrop/src/data/model/purchase_model.dart';
 import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
-import 'package:quickdrop/src/domain/repository/my_purchases_repository.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/repository/my_purchases_repository.dart';
 
 class IMyPurchasesRepository implements MyPurchasesRepository {
   IMyPurchasesRepository({

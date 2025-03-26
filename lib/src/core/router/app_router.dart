@@ -13,7 +13,7 @@ import 'package:quickdrop/src/presentation/loading/loading.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/login.dart';
 import 'package:quickdrop/src/presentation/my_purchases/mypurchases.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/purchase.dart';
-import 'package:quickdrop/src/presentation/purchase_detail/purchase_detail.dart';
+import 'package:quickdrop/src/features/purchase_detail/presentation/purchase_detail.dart';
 import 'package:quickdrop/src/features/search/search.dart';
 
 class AppRouter {

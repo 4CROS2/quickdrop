@@ -2,7 +2,7 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/domain/entity/my_purchases_entity.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/entity/my_purchases_entity.dart';
 import 'package:quickdrop/src/domain/entity/purchase_entity.dart';
 import 'package:quickdrop/src/presentation/my_purchases/widgets/empty_purchases.dart';
 import 'package:quickdrop/src/presentation/my_purchases/widgets/my_purchase_tile.dart';
