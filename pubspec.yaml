@@ -2,7 +2,9 @@ name: quickdrop
 description: "Tesis project"
 
 publish_to: "none"
-version: 1.1.2+1
+version: "1.2.3-beta.1"
+repository: https://github.com/4CROS2/quickdrop.git
+
 
 environment:
   sdk: ">=3.4.1 <4.0.0"
