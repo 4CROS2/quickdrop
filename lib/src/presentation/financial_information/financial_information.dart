@@ -5,7 +5,7 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/presentation/financial_information/cubit/financial_information_cubit.dart';
-import 'package:quickdrop/src/presentation/pruchase/purchaseCubit/purchase_cubit.dart';
+import 'package:quickdrop/src/features/pruchase/presentation/cubit/purchase_cubit.dart';
 import 'package:quickdrop/src/presentation/widgets/app_toastification.dart';
 
 class FinancialInformation extends StatefulWidget {
