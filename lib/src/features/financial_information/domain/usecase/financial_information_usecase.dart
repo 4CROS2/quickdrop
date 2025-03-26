@@ -1,5 +1,5 @@
 import 'package:quickdrop/src/features/productDetail/domain/entity/product_detail_entity.dart';
-import 'package:quickdrop/src/domain/repository/financial_information_repository.dart';
+import 'package:quickdrop/src/features/financial_information/domain/repository/financial_information_repository.dart';
 
 class FinancialInformationUsecase {
   FinancialInformationUsecase({
