@@ -1,5 +1,5 @@
-import 'package:quickdrop/src/domain/entity/my_purchases_entity.dart';
-import 'package:quickdrop/src/domain/repository/my_purchases_repository.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/entity/my_purchases_entity.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/repository/my_purchases_repository.dart';
 
 class MyPurchasesUsecase {
   MyPurchasesUsecase({

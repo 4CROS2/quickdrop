@@ -4,7 +4,7 @@ import 'package:quickdrop/src/features/favorites/data/datasource/favorite_dataso
 import 'package:quickdrop/src/features/financial_information/data/datasource/financial_information_datasource.dart';
 import 'package:quickdrop/src/features/auth/data/datasource/auth_datasource.dart';
 import 'package:quickdrop/src/features/home/data/datasource/home_datasource.dart';
-import 'package:quickdrop/src/data/datasource/my_purchases_datasource.dart';
+import 'package:quickdrop/src/features/purchase_detail/data/datasource/my_purchases_datasource.dart';
 import 'package:quickdrop/src/features/productDetail/data/datasource/produt_datasource.dart';
 import 'package:quickdrop/src/features/pruchase/data/datasource/purchase_datasource.dart';
 import 'package:quickdrop/src/data/datasource/purchase_detail_datasource.dart';
@@ -12,7 +12,7 @@ import 'package:quickdrop/src/features/auth/data/repository/auth_repository_impl
 import 'package:quickdrop/src/features/favorites/data/repository/favorite_repository_impl.dart';
 import 'package:quickdrop/src/features/financial_information/data/repository/financial_information_repository_impl.dart';
 import 'package:quickdrop/src/features/home/data/repository/home_data_repository_impl.dart';
-import 'package:quickdrop/src/data/repository/my_purchases_repository_impl.dart';
+import 'package:quickdrop/src/features/purchase_detail/data/repository/my_purchases_repository_impl.dart';
 import 'package:quickdrop/src/features/productDetail/data/repository/product_detail_repository_impl.dart';
 import 'package:quickdrop/src/data/repository/purchase_detail_repository_impl.dart';
 import 'package:quickdrop/src/features/pruchase/data/repository/purchase_repository_impl.dart';
@@ -20,7 +20,7 @@ import 'package:quickdrop/src/features/auth/domain/repository/auth_repository.da
 import 'package:quickdrop/src/features/favorites/domain/repository/favorite_repository.dart';
 import 'package:quickdrop/src/features/financial_information/domain/repository/financial_information_repository.dart';
 import 'package:quickdrop/src/features/home/domain/repository/home_data_repository.dart';
-import 'package:quickdrop/src/domain/repository/my_purchases_repository.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/repository/my_purchases_repository.dart';
 import 'package:quickdrop/src/features/productDetail/domain/repository/product_detail_repository.dart';
 import 'package:quickdrop/src/domain/repository/purchase_detail_repository.dart';
 import 'package:quickdrop/src/features/pruchase/domain/repository/purchase_repository.dart';
@@ -28,7 +28,7 @@ import 'package:quickdrop/src/features/auth/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/features/favorites/domain/usecase/favorite_usecase.dart';
 import 'package:quickdrop/src/features/financial_information/domain/usecase/financial_information_usecase.dart';
 import 'package:quickdrop/src/features/home/domain/usecase/home_data_usecase.dart';
-import 'package:quickdrop/src/domain/usecase/my_purchases_usecase.dart';
+import 'package:quickdrop/src/features/purchase_detail/domain/usecase/my_purchases_usecase.dart';
 import 'package:quickdrop/src/features/productDetail/domain/usecase/produc_detail_usecase.dart';
 import 'package:quickdrop/src/domain/usecase/purchase_detail_usecase.dart';
 import 'package:quickdrop/src/features/pruchase/domain/usecase/purshase_usecase.dart';
@@ -40,7 +40,7 @@ import 'package:quickdrop/src/features/home/presentation/widgets/products/widget
 import 'package:quickdrop/src/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:quickdrop/src/presentation/my_purchases/cubit/my_purchases_cubit.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/cubit/product_cubit.dart';
-import 'package:quickdrop/src/presentation/purchase_detail/cubit/purchase_detail_cubit.dart';
+import 'package:quickdrop/src/features/purchase_detail/presentation/cubit/purchase_detail_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/signup/cubit/signup_cubit.dart';
 
 final GetIt sl = GetIt.instance;
