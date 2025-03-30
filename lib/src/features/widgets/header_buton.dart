@@ -14,7 +14,7 @@ class HeaderButton extends StatelessWidget {
   HeaderButton.back(
     BuildContext context, {
     Color backgroundColor = Constants.secondaryColor,
-    Color? iconColor,
+    Color? iconColor = Constants.primaryColor,
     Key? key,
   }) : this(
           icon: Icons.arrow_back_ios_rounded,

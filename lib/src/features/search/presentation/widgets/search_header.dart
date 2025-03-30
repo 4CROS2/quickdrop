@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/features/search/presentation/cubit/search_cubit.dart';
 import 'package:quickdrop/src/features/widgets/header_buton.dart';
 
 class SearchHeader extends SliverPersistentHeaderDelegate {
+  SearchHeader({
+    required TextEditingController controller,
+  }) : _controller = controller;
+  final TextEditingController _controller;
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -23,11 +29,25 @@ class SearchHeader extends SliverPersistentHeaderDelegate {
                     child: Material(
                       color: Colors.transparent,
                       child: TextFormField(
-                        ignorePointers: true,
+                        controller: _controller,
                         autofocus: true,
+                        cursorOpacityAnimates: true,
+                        cursorRadius: Radius.circular(Constants.borderValue),
+                        cursorColor: Constants.primaryColor,
+                        onChanged: (String value) =>
+                            context.read<SearchCubit>().search(
+                                  query: value,
+                                ),
+                        style: TextStyle(
+                          color: Constants.primaryColor,
+                        ),
                         decoration: InputDecoration(
                           hintText: 'Buscar productos',
+                          hintStyle: TextStyle(
+                            color: Constants.primaryColor,
+                          ),
                           prefixIcon: const Icon(Icons.search_rounded),
+                          prefixIconColor: Constants.primaryColor,
                           border: OutlineInputBorder(
                             borderRadius: Constants.mainBorderRadius,
                             gapPadding: Constants.mainPaddingValue * 2,

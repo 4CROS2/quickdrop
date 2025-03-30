@@ -30,10 +30,10 @@ class Constants {
     fontWeight: FontWeight.w300,
     fontSize: 12,
   );
-  static const Color primaryColor = Color(
-    0xFF7C96F4,
+  static const Color secondaryColor = Color(
+    0xFFbc955b,
   );
-  static const Color secondaryColor = Color.fromARGB(255, 147, 178, 185);
+  static const Color primaryColor = Color(0xff171717);
   //Color(0x71FFFFFF); /*  Color.fromRGBO(56, 56, 56, 0.603) */
 
   static EdgeInsets mainPadding = EdgeInsets.all(mainPaddingValue);
