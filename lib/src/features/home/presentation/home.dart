@@ -61,11 +61,12 @@ class _HomeState extends State<Home> {
                           LastSeen(
                             lastSeenProducts: state.home.lastSeen,
                           ),
-                          Products(
-                            products: state.home.products,
-                          ),
                         ],
                       ),
+                    ),
+                  if (state is SuccessHomeData)
+                    Products(
+                      products: state.home.products,
                     ),
                 ],
               ),

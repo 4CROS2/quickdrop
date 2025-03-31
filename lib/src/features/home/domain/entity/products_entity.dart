@@ -30,4 +30,7 @@ class ProductsEntity extends Equatable {
         baseImages,
         ratings,
       ];
+
+  @override
+  bool? get stringify => true;
 }

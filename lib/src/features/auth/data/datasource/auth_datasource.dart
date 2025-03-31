@@ -13,6 +13,7 @@ class FirebaseLoginDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn;
 
+
   Stream<Map<String, dynamic>?> userStatus() {
     return _firebaseAuth.userChanges().switchMap((User? user) {
       if (user == null) {
