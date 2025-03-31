@@ -84,7 +84,6 @@ class _ProductTileState extends State<ProductTile>
 
   @override
   Widget build(BuildContext context) {
-    print(widget._product);
     return AnimatedBuilder(
       animation: _animation,
       builder: (BuildContext context, Widget? child) {

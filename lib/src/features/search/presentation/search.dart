@@ -1,7 +1,9 @@
 import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/core/functions/highlight_occurrences.dart';
 import 'package:quickdrop/src/features/search/presentation/cubit/search_cubit.dart';
 import 'package:quickdrop/src/features/search/presentation/widgets/search_header.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
@@ -35,6 +37,7 @@ class _SearchPageState extends State<SearchPage> {
         child: BlocBuilder<SearchCubit, SearchState>(
           builder: (BuildContext context, SearchState state) {
             return CustomScrollView(
+              physics: Constants.bouncingScrollPhysics,
               slivers: <Widget>[
                 SliverPersistentHeader(
                   delegate: SearchHeader(
@@ -56,7 +59,8 @@ class _SearchPageState extends State<SearchPage> {
                 if (state is Success)
                   SearchStringResults(
                     type: ResultsType.search,
-                    results: <String>['asd'],
+                    results: state.results,
+                    query: _textEditingController.text,
                   )
               ],
             );
@@ -73,10 +77,13 @@ class SearchStringResults extends StatefulWidget {
   const SearchStringResults({
     required this.results,
     required ResultsType type,
+    String query = '',
     super.key,
-  }) : _type = type;
+  })  : _type = type,
+        _query = query;
   final List<String> results;
   final ResultsType _type;
+  final String _query;
 
   @override
   State<SearchStringResults> createState() => _SearchStringResultsState();
@@ -89,6 +96,9 @@ class _SearchStringResultsState extends State<SearchStringResults> {
       return SliverFillRemaining(
         child: Center(
           child: Material(
+            surfaceTintColor: Constants.secondaryColor,
+            elevation: 5,
+            shadowColor: Colors.transparent,
             borderRadius: Constants.mainBorderRadius,
             child: Padding(
               padding: Constants.mainPadding,
@@ -98,17 +108,21 @@ class _SearchStringResultsState extends State<SearchStringResults> {
                 children: <Widget>[
                   Icon(
                     widget._type == ResultsType.search
-                        ? Icons.history_rounded
-                        : Icons.inbox_rounded,
+                        ? Icons.inbox_rounded
+                        : Icons.history_rounded,
                     size: 50,
-                    color: Constants.primaryColor,
+                    color: Constants.secondaryColor,
                   ),
                   Text(
                     (widget._type == ResultsType.search
                             ? 'no se encontraron coincidencias'
                             : 'no tienes historial de busqueda')
                         .capitalize(),
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      color: Constants.secondaryColor,
+                    ),
                   ),
                 ],
               ),
@@ -121,19 +135,30 @@ class _SearchStringResultsState extends State<SearchStringResults> {
       itemCount: widget.results.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: Constants.mainPadding,
+          padding: Constants.mainPadding.copyWith(bottom: 0),
           child: Material(
             borderRadius: Constants.mainBorderRadius,
+            clipBehavior: Clip.antiAlias,
+            elevation: 5,
+            surfaceTintColor: Constants.secondaryColor,
+            shadowColor: Colors.transparent,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                context.push('/searchquery/${widget.results[index]}');
+              },
               child: Padding(
                 padding: Constants.mainPadding,
                 child: Row(
                   spacing: Constants.mainPaddingValue,
                   children: <Widget>[
                     Icon(Icons.search_rounded),
-                    Text(
-                      widget.results[index].toString(),
+                    Text.rich(
+                      TextSpan(
+                        children: highlightOccurrences(
+                          widget.results[index],
+                          widget._query,
+                        ),
+                      ),
                     ),
                   ],
                 ),

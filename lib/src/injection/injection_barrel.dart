@@ -42,6 +42,11 @@ import 'package:quickdrop/src/features/purchase_detail/data/repository/my_purcha
 import 'package:quickdrop/src/features/purchase_detail/domain/repository/purchase_detail_repository.dart';
 import 'package:quickdrop/src/features/purchase_detail/domain/usecase/purchase_detail_usecase.dart';
 import 'package:quickdrop/src/features/purchase_detail/presentation/cubit/purchase_detail_cubit.dart';
+import 'package:quickdrop/src/features/search/data/datasource/search_datasource.dart';
+import 'package:quickdrop/src/features/search/data/repository/search_repository_impl.dart';
+import 'package:quickdrop/src/features/search/domain/repository/search_datasource.dart';
+import 'package:quickdrop/src/features/search/domain/repository/search_repository.dart';
+import 'package:quickdrop/src/features/search/domain/usecase/search_usecase.dart';
 import 'package:quickdrop/src/features/search/presentation/cubit/search_cubit.dart';
 
 part 'injection_container.dart';

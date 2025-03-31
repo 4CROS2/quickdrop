@@ -35,6 +35,8 @@ Future<void> init() async {
   sl.registerLazySingleton<MyPurchasesDatasource>(
     () => MyPurchasesDatasource(),
   );
+  sl.registerLazySingleton<SearchDatasourceRepository>(
+      () => ISearchDatasource());
   // Repositories
   sl.registerLazySingleton<AuthRepository>(
     () => IAuthRepository(
@@ -77,6 +79,13 @@ Future<void> init() async {
   sl.registerLazySingleton<PurchaseDetailDatasource>(
     () => PurchaseDetailDatasource(),
   );
+
+  sl.registerLazySingleton<SearchRepository>(
+    () => ISearchRepository(
+      datasource: sl<SearchDatasourceRepository>(),
+    ),
+  );
+
   //use case
   sl.registerLazySingleton<AuthUseCase>(
     () => AuthUseCase(
@@ -117,6 +126,12 @@ Future<void> init() async {
   sl.registerLazySingleton<PurchaseDetailUsecase>(
     () => PurchaseDetailUsecase(
       repository: sl<PurchaseDetailRepository>(),
+    ),
+  );
+
+  sl.registerLazySingleton<SearchUsecase>(
+    () => SearchUsecase(
+      repository: sl<SearchRepository>(),
     ),
   );
 
@@ -173,6 +188,8 @@ Future<void> init() async {
     ),
   );
   sl.registerFactory<SearchCubit>(
-    () => SearchCubit(),
+    () => SearchCubit(
+      usecase: sl<SearchUsecase>(),
+    ),
   );
 }

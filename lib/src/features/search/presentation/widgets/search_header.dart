@@ -13,6 +13,9 @@ class SearchHeader extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Material(
+      surfaceTintColor: Constants.secondaryColor,
+      elevation: 5,
+      shadowColor: Colors.transparent,
       child: SizedBox(
         width: double.infinity,
         height: double.infinity,
