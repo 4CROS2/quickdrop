@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/header/widgets/location_header.dart';
@@ -11,8 +10,8 @@ import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class HomeHeader extends SliverPersistentHeaderDelegate {
   HomeHeader();
-  final double maxExtentHeader = 280.0;
-  final double minExtentHeader = 174.0;
+  final double maxExtentHeader = 220.0;
+  final double minExtentHeader = 110.0;
   final AppCubit _appCubit = sl<AppCubit>();
 
   String get _name => _appCubit.state.user.name.split(' ')[0];
@@ -35,7 +34,7 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
           child: Stack(
             children: <Widget>[
               Positioned(
-                bottom: 60,
+                bottom: 0,
                 left: 0,
                 child: Opacity(
                   opacity: opacity.clamp(0, 1),
@@ -70,39 +69,6 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                 ),
               ),
               Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: InkWell(
-                  onTap: () {
-                    context.push('/searchpage');
-                  },
-                  child: Hero(
-                    tag: 'search',
-                    child: Material(
-                      color: Colors.transparent,
-                      child: TextFormField(
-                        ignorePointers: true,
-                        decoration: InputDecoration(
-                          hintText: 'Buscar productos',
-                          prefixIcon: const Icon(Icons.search_rounded),
-                          border: OutlineInputBorder(
-                            borderRadius: Constants.mainBorderRadius,
-                            gapPadding: Constants.mainPaddingValue * 2,
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            ),
-                          ),
-                          fillColor: Constants.secondaryColor,
-                          filled: true,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
                 top: 0,
                 left: 0,
                 right: 0,
@@ -122,7 +88,7 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                       ),
                       HeaderButton(
                         icon: Icons.shopping_cart_outlined,
-                      )
+                      ),
                     ],
                   ),
                 ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/drawer/drawer.dart';
@@ -19,6 +21,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int page = 0;
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
@@ -72,6 +75,35 @@ class _HomeState extends State<Home> {
               ),
             );
           },
+        ),
+        bottomNavigationBar: NavigationBar(
+          indicatorColor: Constants.secondaryColor,
+          surfaceTintColor: Constants.secondaryColor,
+          selectedIndex: page,
+          onDestinationSelected: (int value) {
+            setState(() {
+              page = value;
+              if (value == 1) {
+                context.push('/searchpage');
+              }
+            });
+          },
+          destinations: <Widget>[
+            NavigationDestination(
+              icon: HugeIcon(
+                icon: HugeIcons.strokeRoundedHome10,
+                color: Theme.of(context).iconTheme.color!,
+              ),
+              label: 'inicio',
+            ),
+            NavigationDestination(
+              icon: HugeIcon(
+                icon: HugeIcons.strokeRoundedSearch02,
+                color: Theme.of(context).iconTheme.color!,
+              ),
+              label: 'buscar',
+            )
+          ],
         ),
       ),
     );
