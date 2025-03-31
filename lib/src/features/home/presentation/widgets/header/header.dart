@@ -46,7 +46,7 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                           text: '\n$_name.'.toTitleCase(),
                           style: const TextStyle(
                             fontWeight: FontWeight.w800,
-                            color: Constants.primaryColor,
+                            color: Constants.secondaryColor,
                           ),
                         ),
                         TextSpan(

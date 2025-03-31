@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/router/go_router_refresh_stream.dart';
@@ -9,13 +8,13 @@ import 'package:quickdrop/src/features/financial_information/presentation/financ
 import 'package:quickdrop/src/features/home/presentation/home.dart';
 import 'package:quickdrop/src/features/loading/loading.dart';
 import 'package:quickdrop/src/features/my_purchases/presentation/mypurchases.dart';
+import 'package:quickdrop/src/features/navigationbar/app_navigation_bar.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/product.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/purchase.dart';
 import 'package:quickdrop/src/features/purchase_detail/presentation/purchase_detail.dart';
 import 'package:quickdrop/src/features/search/presentation/search.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
-
 
 class AppRouter {
   final AppCubit _appCubit = sl<AppCubit>();
@@ -35,7 +34,6 @@ class AppRouter {
           state.matchedLocation == '/login') {
         return '/home';
       }
-
       if (appStatus == AppStatus.unauthenticated &&
           state.matchedLocation != '/login') {
         return '/login';
@@ -43,10 +41,10 @@ class AppRouter {
       if (appStatus == AppStatus.loading && state.matchedLocation == '/') {
         return '/';
       }
-
       return null;
     },
     routes: <RouteBase>[
+      // Rutas sin NavigationBar
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) => LoadingPage(),
@@ -55,16 +53,55 @@ class AppRouter {
         path: '/login',
         builder: (BuildContext context, GoRouterState state) => Login(),
       ),
-      GoRoute(
-        path: '/home',
-        name: 'home',
-        builder: (BuildContext context, GoRouterState state) => Home(),
+     
+      //Cambiar por statefullshellroute
+      ShellRoute(
+        builder: (BuildContext context, GoRouterState state, Widget child) {
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: AppNavigationBar(
+              currentLocation: state.matchedLocation,
+            ),
+          );
+        },
+        routes: <RouteBase>[
+          GoRoute(
+            path: '/home',
+            name: 'home',
+            builder: (BuildContext context, GoRouterState state) => Home(),
+          ),
+          GoRoute(
+            path: '/favorites',
+            name: 'favorites',
+            builder: (BuildContext context, GoRouterState state) => Favorites(),
+          ),
+          GoRoute(
+            path: '/myPurchases',
+            builder: (BuildContext context, GoRouterState state) =>
+                MyPurchases(),
+          ),
+          GoRoute(
+            path: '/searchpage',
+            builder: (BuildContext context, GoRouterState state) =>
+                SearchPage(),
+          ),
+          // Puedes agregar más rutas aquí que compartan el mismo NavigationBar,
+          // por ejemplo, una ruta con PageView.
+          GoRoute(
+            path: '/pageview',
+            builder: (BuildContext context, GoRouterState state) {
+              // Aquí puedes integrar tu PageView
+              return PageView(
+                children: const <Widget>[
+                  Center(child: Text('Vista 1')),
+                  Center(child: Text('Vista 2')),
+                ],
+              );
+            },
+          ),
+        ],
       ),
-      GoRoute(
-        path: '/favorites',
-        name: 'favorites',
-        builder: (BuildContext context, GoRouterState state) => Favorites(),
-      ),
+      // Rutas anidadas, por ejemplo dentro de product, las cuales puedes decidir si van dentro o fuera del ShellRoute
       GoRoute(
         path: '/product/:productId',
         name: 'product',
@@ -108,10 +145,6 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: '/myPurchases',
-        builder: (BuildContext context, GoRouterState state) => MyPurchases(),
-      ),
-      GoRoute(
         path: '/purchaseDetail/:purchaseId',
         builder: (BuildContext context, GoRouterState state) {
           return PurchaseDetail(
@@ -119,10 +152,6 @@ class AppRouter {
             sellerId: state.uri.queryParameters['sellerId']!,
           );
         },
-      ),
-      GoRoute(
-        path: '/searchpage',
-        builder: (BuildContext context, GoRouterState state) => SearchPage(),
       ),
     ],
   );
