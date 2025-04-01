@@ -7,7 +7,6 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/page_navigation.dart';
 import 'package:quickdrop/src/core/functions/validators.dart';
 import 'package:quickdrop/src/core/localization/app_localizations.dart';
-import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/auth_btn.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/divider.dart';
@@ -15,6 +14,7 @@ import 'package:quickdrop/src/features/auth/presentation/login/widgets/inputs.da
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/other_login_btn.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/widgets/title.dart';
 import 'package:quickdrop/src/features/auth/presentation/signup/signup.dart';
+import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

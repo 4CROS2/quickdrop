@@ -11,5 +11,14 @@
         "editor.defaultFormatter": "Dart-Code.dart-code",
         "editor.formatOnSave": true
     },
-    "java.jdt.ls.java.home": "d:\\Programar\\Java"
+    "java.jdt.ls.java.home": "d:\\Programar\\Java",
+    // Enable the experiment
+    "dart.experimentalSidebarDevTools": true,
+    "dart.experimentalInlineValuesProperties": true,
+    "dart.devToolsLocation": {
+        "inspector": "sidebar", // Embed the inspector in sidebar
+        "cpu-profiler": "external", // Open the CPU profiler in external browser
+        "default": "beside",
+    },
+    // Customise which sections are shown in the sidebar, in an editor tab, or external browser.
 }

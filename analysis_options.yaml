@@ -48,3 +48,7 @@ linter:
     unawaited_futures: true
     # This rule enforces the use of super when overriding members.
     use_super_parameters: true
+
+analyzer:
+  exclude:
+    - lib/src/core/localization/*.dart

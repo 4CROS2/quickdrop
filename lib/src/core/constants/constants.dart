@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static double borderValue = 14.0;
-  static double minHeight = 100.0;
+  static double minHeight = 110.0;
   static double mainPaddingValue = 12.0;
 
   ///main border radius
@@ -30,10 +30,8 @@ class Constants {
     fontWeight: FontWeight.w300,
     fontSize: 12,
   );
-  static const Color primaryColor = Color(
-    0xFF7C96F4,
-  );
-  static const Color secondaryColor = Color.fromARGB(255, 147, 178, 185);
+  static const Color primaryColor = Color(0xFF0052CC);
+  static const Color secondaryColor = Colors.redAccent;
   //Color(0x71FFFFFF); /*  Color.fromRGBO(56, 56, 56, 0.603) */
 
   static EdgeInsets mainPadding = EdgeInsets.all(mainPaddingValue);
@@ -52,4 +50,8 @@ class Constants {
 
   static BorderRadius insetBorderRadius =
       BorderRadius.circular(borderValue - mainPaddingValue);
+
+  static EdgeInsets mainPaddingSymetricHorizontal = EdgeInsets.symmetric(
+    horizontal: mainPaddingValue,
+  );
 }

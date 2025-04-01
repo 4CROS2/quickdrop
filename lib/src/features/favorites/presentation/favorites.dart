@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/core/functions/custom_snack_bar.dart';
-import 'package:quickdrop/src/injection/injection_container.dart';
 import 'package:quickdrop/src/features/favorites/presentation/cubit/favorites_cubit.dart';
 import 'package:quickdrop/src/features/favorites/presentation/widgets/favorite_body.dart';
 import 'package:quickdrop/src/features/favorites/presentation/widgets/favorite_header.dart';
 import 'package:quickdrop/src/features/widgets/loading_status.dart';
 import 'package:quickdrop/src/features/widgets/swich_transition.dart';
+import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class Favorites extends StatefulWidget {
   const Favorites({super.key});
