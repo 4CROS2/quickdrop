@@ -16,7 +16,9 @@ class _LocationHeaderState extends State<LocationHeader> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Constants.secondaryColor,
+      surfaceTintColor: Constants.secondaryColor,
+      elevation: 10,
+      shadowColor: Colors.transparent,
       borderRadius: Constants.mainBorderRadius * 2,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -28,14 +30,16 @@ class _LocationHeaderState extends State<LocationHeader> {
             spacing: Constants.mainPaddingValue / 2,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              HugeIcon(
-                icon: HugeIcons.strokeRoundedLocation05,
-                color: Theme.of(context).iconTheme.color!,
+              Icon(
+                HugeIcons.strokeRoundedLocation05,
               ),
               Flexible(
                 child: Text(
                   'cr 4 #76-22'.capitalize(),
                   maxLines: 1,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ],
