@@ -2,7 +2,7 @@ name: quickdrop
 description: "Tesis project"
 
 publish_to: "none"
-version: "1.2.3-beta.1"
+version: "1.2.5-beta.2"
 repository: https://github.com/4CROS2/quickdrop.git
 
 
@@ -44,6 +44,7 @@ dependencies:
   uuid: ^4.5.1
   pretty_qr_code: ^3.3.0
   custom_rating_bar: ^3.0.0
+  hugeicons: ^0.0.10
 
 dev_dependencies:
   flutter_test:
@@ -67,4 +68,24 @@ flutter:
         - asset: assets/fonts/redhat_semi.ttf
           weight: 500
         - asset: assets/fonts/redhat_regular.ttf
+    - family: AlbertSans
+      fonts:
+        - asset: assets/fonts/albert_sans/AlbertSans-Black.ttf
+          weight: 900
+        - asset: assets/fonts/albert_sans/AlbertSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/albert_sans/AlbertSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/albert_sans/AlbertSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/albert_sans/AlbertSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/albert_sans/AlbertSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/albert_sans/AlbertSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/albert_sans/AlbertSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/albert_sans/AlbertSans-Thin.ttf
+          weight: 100
 

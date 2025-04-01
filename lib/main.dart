@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:quickdrop/firebase_options.dart';
-import 'package:quickdrop/src/injection/injection_container.dart' as di;
+
 import 'package:quickdrop/src/features/app/app.dart';
+import 'package:quickdrop/src/injection/injection_barrel.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,5 +19,10 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+    ),
+  );
   runApp(App());
 }

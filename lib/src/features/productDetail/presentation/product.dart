@@ -5,7 +5,7 @@ import 'package:quickdrop/src/features/productDetail/presentation/cubit/product_
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/body/product_body.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/loading/loading_product_shimmer.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/product_header.dart';
-import 'package:quickdrop/src/injection/injection_container.dart';
+import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({

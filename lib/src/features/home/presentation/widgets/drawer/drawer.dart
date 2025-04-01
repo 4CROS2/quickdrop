@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/features/auth/domain/usecase/auth_usecase.dart';
-import 'package:quickdrop/src/injection/injection_container.dart';
+import 'package:quickdrop/src/injection/injection_barrel.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/drawer/widgets/custom_drawer_header/custom_drawer_header.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/drawer/widgets/section/section_tile.dart';
 
