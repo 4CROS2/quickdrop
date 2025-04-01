@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/header/widgets/location_header.dart';
@@ -11,7 +12,7 @@ import 'package:quickdrop/src/injection/injection_barrel.dart';
 class HomeHeader extends SliverPersistentHeaderDelegate {
   HomeHeader();
   final double maxExtentHeader = 220.0;
-  final double minExtentHeader = 110.0;
+  final double minExtentHeader = 115.0;
   final AppCubit _appCubit = sl<AppCubit>();
 
   String get _name => _appCubit.state.user.name.split(' ')[0];
@@ -78,16 +79,16 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       HeaderButton(
-                        onTap: () {
-                          Scaffold.of(context).openDrawer();
-                        },
+                        onTap: () => Scaffold.of(context).openDrawer(),
                         icon: Icons.menu_rounded,
                       ),
                       Flexible(
                         child: LocationHeader(),
                       ),
                       HeaderButton(
-                        icon: Icons.shopping_cart_outlined,
+                        icon: HugeIcons.strokeRoundedNotification01,
+                        iconColor: Colors.white,
+                        badgeVisible: true,
                       ),
                     ],
                   ),

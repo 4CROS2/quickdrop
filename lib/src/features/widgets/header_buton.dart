@@ -5,11 +5,13 @@ import 'package:quickdrop/src/core/constants/constants.dart';
 class HeaderButton extends StatelessWidget {
   const HeaderButton({
     required IconData icon,
+    bool badgeVisible = false,
     this.onTap,
     this.backgroundColor = Constants.secondaryColor,
     this.iconColor,
     super.key,
-  }) : _iconData = icon;
+  })  : _iconData = icon,
+        _badgeVisible = badgeVisible;
 
   HeaderButton.back(
     BuildContext context, {
@@ -35,6 +37,7 @@ class HeaderButton extends StatelessWidget {
   final VoidCallback? onTap;
   final Color backgroundColor;
   final Color? iconColor;
+  final bool _badgeVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +65,21 @@ class HeaderButton extends StatelessWidget {
             borderRadius: Constants.mainBorderRadius,
             child: Padding(
               padding: Constants.buttonPadding,
-              child: Icon(
-                _iconData,
-                color: iconColor,
+              child: Badge(
+                backgroundColor: Colors.black,
+                label: Text(
+                  '1',
+                  style: TextStyle(
+                    fontSize: 9,
+                    fontFamily: 'AlbertSans',
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                isLabelVisible: _badgeVisible,
+                child: Icon(
+                  _iconData,
+                  color: iconColor,
+                ),
               ),
             ),
           ),

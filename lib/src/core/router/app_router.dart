@@ -8,7 +8,7 @@ import 'package:quickdrop/src/features/financial_information/presentation/financ
 import 'package:quickdrop/src/features/home/presentation/home.dart';
 import 'package:quickdrop/src/features/loading/loading.dart';
 import 'package:quickdrop/src/features/my_purchases/presentation/mypurchases.dart';
-import 'package:quickdrop/src/features/navigationbar/app_navigation_bar.dart';
+import 'package:quickdrop/src/features/navigationbar/presentation/app_navigation_bar.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/product.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/widgets/full_screen_image.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/purchase.dart';
@@ -53,15 +53,13 @@ class AppRouter {
         path: '/login',
         builder: (BuildContext context, GoRouterState state) => Login(),
       ),
-     
+
       //Cambiar por statefullshellroute
       ShellRoute(
         builder: (BuildContext context, GoRouterState state, Widget child) {
           return Scaffold(
             body: child,
-            bottomNavigationBar: AppNavigationBar(
-              currentLocation: state.matchedLocation,
-            ),
+            bottomNavigationBar: AppNavigationBar(),
           );
         },
         routes: <RouteBase>[
@@ -84,20 +82,6 @@ class AppRouter {
             path: '/searchpage',
             builder: (BuildContext context, GoRouterState state) =>
                 SearchPage(),
-          ),
-          // Puedes agregar más rutas aquí que compartan el mismo NavigationBar,
-          // por ejemplo, una ruta con PageView.
-          GoRoute(
-            path: '/pageview',
-            builder: (BuildContext context, GoRouterState state) {
-              // Aquí puedes integrar tu PageView
-              return PageView(
-                children: const <Widget>[
-                  Center(child: Text('Vista 1')),
-                  Center(child: Text('Vista 2')),
-                ],
-              );
-            },
           ),
         ],
       ),
