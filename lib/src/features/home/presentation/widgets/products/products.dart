@@ -37,7 +37,6 @@ class _ProductsState extends State<Products> {
                     Icons.inbox,
                     color: Constants.secondaryColor,
                     size: 60,
-                        
                   ),
                   Text(
                     'no hay productos disponibles'.capitalize(),

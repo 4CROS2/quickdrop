@@ -7,7 +7,6 @@ import 'package:quickdrop/src/features/productDetail/presentation/widgets/loadin
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/product_header.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
 
-
 class ProductDetail extends StatefulWidget {
   const ProductDetail({
     required String productId,

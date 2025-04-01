@@ -17,7 +17,7 @@ class ISearchRepository implements SearchRepository {
           (Map<String, dynamic> product) => product['name'],
         )
         .toList();
- 
+
     return List<String>.from(data);
   }
 }

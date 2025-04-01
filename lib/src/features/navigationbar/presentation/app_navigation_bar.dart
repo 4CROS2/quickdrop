@@ -102,7 +102,6 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
               spreadRadius: 10,
             )
           ],
-          
           fontWeight: states.contains(WidgetState.selected)
               ? FontWeight.w900
               : FontWeight.w300,
