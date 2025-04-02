@@ -35,6 +35,10 @@ class AppTheme {
         color: Constants.primaryColor,
         linearTrackColor: Constants.secondaryColor,
       ),
+      cardTheme: CardTheme(
+        surfaceTintColor: Constants.secondaryColor,
+        margin: Constants.paddingTop,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         fillColor: Constants.primaryColor.withValues(
           alpha: .2,

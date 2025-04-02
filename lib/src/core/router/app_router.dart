@@ -14,6 +14,7 @@ import 'package:quickdrop/src/features/productDetail/presentation/widgets/produc
 import 'package:quickdrop/src/features/pruchase/presentation/purchase.dart';
 import 'package:quickdrop/src/features/purchase_detail/presentation/purchase_detail.dart';
 import 'package:quickdrop/src/features/search/presentation/search.dart';
+import 'package:quickdrop/src/features/user_menu/user_menu.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class AppRouter {
@@ -74,15 +75,14 @@ class AppRouter {
             builder: (BuildContext context, GoRouterState state) => Favorites(),
           ),
           GoRoute(
-            path: '/myPurchases',
-            builder: (BuildContext context, GoRouterState state) =>
-                MyPurchases(),
-          ),
-          GoRoute(
             path: '/searchpage',
             builder: (BuildContext context, GoRouterState state) =>
                 SearchPage(),
           ),
+          GoRoute(
+            path: '/usermenu',
+            builder: (BuildContext context, GoRouterState state) => UserMenu(),
+          )
         ],
       ),
       // Rutas anidadas, por ejemplo dentro de product, las cuales puedes decidir si van dentro o fuera del ShellRoute
@@ -112,6 +112,10 @@ class AppRouter {
             },
           ),
         ],
+      ),
+      GoRoute(
+        path: '/mypurchases',
+        builder: (BuildContext context, GoRouterState state) => MyPurchases(),
       ),
       GoRoute(
         path: '/fullScrenImage',
