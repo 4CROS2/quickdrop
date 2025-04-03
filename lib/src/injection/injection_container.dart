@@ -216,4 +216,7 @@ Future<void> init() async {
       usecase: sl<LocationUsecase>(),
     ),
   );
+  sl.registerFactory<MyLocationsCubit>(
+    () => MyLocationsCubit(),
+  );
 }
