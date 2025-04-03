@@ -23,6 +23,14 @@ import 'package:quickdrop/src/features/home/domain/repository/home_data_reposito
 import 'package:quickdrop/src/features/home/domain/usecase/home_data_usecase.dart';
 import 'package:quickdrop/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:quickdrop/src/features/home/presentation/widgets/products/widgets/favorite/cubit/add_favorite_cubit.dart';
+import 'package:quickdrop/src/features/location/data/datasource/address_location_datasource.dart';
+import 'package:quickdrop/src/features/location/data/datasource/location_datasource.dart';
+import 'package:quickdrop/src/features/location/data/repository/location_respository_impl.dart';
+import 'package:quickdrop/src/features/location/domain/repository/address_location_datasource_repository.dart';
+import 'package:quickdrop/src/features/location/domain/repository/location_datasource_repository.dart';
+import 'package:quickdrop/src/features/location/domain/repository/location_repository.dart';
+import 'package:quickdrop/src/features/location/domain/usecase/location_usecase.dart';
+import 'package:quickdrop/src/features/location/presentation/cubit/location_cubit.dart';
 import 'package:quickdrop/src/features/my_purchases/data/datasource/my_purchases_datasource.dart';
 import 'package:quickdrop/src/features/my_purchases/data/repository/purchase_detail_repository_impl.dart';
 import 'package:quickdrop/src/features/my_purchases/domain/repository/my_purchases_repository.dart';
