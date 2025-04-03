@@ -33,10 +33,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               child: CustomScrollView(
                 physics: Constants.bouncingScrollPhysics,
                 slivers: <Widget>[
-                  /* SliverPersistentHeader(
-                    delegate: HomeHeader(),
-                    pinned: true,
-                  ), */
                   HomeSliverAppBar(),
                   WellcomeMessage(),
                   if (state is LoadingHomeData)
