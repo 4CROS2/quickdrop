@@ -54,4 +54,8 @@ class Constants {
   static EdgeInsets mainPaddingSymetricHorizontal = EdgeInsets.symmetric(
     horizontal: mainPaddingValue,
   );
+
+  static EdgeInsets mainPaddingSymetricVertical = EdgeInsets.symmetric(
+    vertical: mainPaddingValue,
+  );
 }
