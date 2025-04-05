@@ -7,6 +7,7 @@ import 'package:quickdrop/src/features/favorites/presentation/favorites.dart';
 import 'package:quickdrop/src/features/financial_information/presentation/financial_information.dart';
 import 'package:quickdrop/src/features/home/presentation/home.dart';
 import 'package:quickdrop/src/features/loading/loading.dart';
+import 'package:quickdrop/src/features/my_locations/presentation/my_locations.dart';
 import 'package:quickdrop/src/features/my_purchases/presentation/mypurchases.dart';
 import 'package:quickdrop/src/features/navigationbar/presentation/app_navigation_bar.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/product.dart';
@@ -85,7 +86,6 @@ class AppRouter {
           )
         ],
       ),
-      // Rutas anidadas, por ejemplo dentro de product, las cuales puedes decidir si van dentro o fuera del ShellRoute
       GoRoute(
         path: '/product/:productId',
         name: 'product',
@@ -141,6 +141,10 @@ class AppRouter {
           );
         },
       ),
+      GoRoute(
+        path: '/mylocations',
+        builder: (BuildContext context, GoRouterState state) => MyLocations(),
+      )
     ],
   );
 }

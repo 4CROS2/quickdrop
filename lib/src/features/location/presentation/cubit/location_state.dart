@@ -18,7 +18,7 @@ class Error extends LocationState {
 class Success extends LocationState {
   const Success({required this.location});
 
-  final LatLng location;
+  final LocationEntity location;
 
   @override
   List<Object> get props => <Object>[location];

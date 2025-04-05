@@ -31,6 +31,12 @@ import 'package:quickdrop/src/features/location/domain/repository/location_datas
 import 'package:quickdrop/src/features/location/domain/repository/location_repository.dart';
 import 'package:quickdrop/src/features/location/domain/usecase/location_usecase.dart';
 import 'package:quickdrop/src/features/location/presentation/cubit/location_cubit.dart';
+import 'package:quickdrop/src/features/my_locations/data/datasource/my_locations_datasource.dart';
+import 'package:quickdrop/src/features/my_locations/data/repository/my_location_repository_impl.dart';
+import 'package:quickdrop/src/features/my_locations/domain/repository/my_location_datasource_repository.dart';
+import 'package:quickdrop/src/features/my_locations/domain/repository/my_locations_repository.dart';
+import 'package:quickdrop/src/features/my_locations/domain/usecase/my_locations_usecase.dart';
+import 'package:quickdrop/src/features/my_locations/presentation/cubit/my_locations_cubit.dart';
 import 'package:quickdrop/src/features/my_purchases/data/datasource/my_purchases_datasource.dart';
 import 'package:quickdrop/src/features/my_purchases/data/repository/purchase_detail_repository_impl.dart';
 import 'package:quickdrop/src/features/my_purchases/domain/repository/my_purchases_repository.dart';
