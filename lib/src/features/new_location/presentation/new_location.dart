@@ -111,7 +111,6 @@ class _NewLocationState extends State<NewLocation>
                                   urlTemplate:
                                       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
                                   subdomains: const <String>['a', 'b', 'c'],
-                                  
                                   userAgentPackageName:
                                       'com.crossdev.quickdrop',
                                   minZoom: 1,
