@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/features/my_locations/domain/entity/my_locations_entity.dart';
 import 'package:quickdrop/src/features/my_locations/presentation/cubit/my_locations_cubit.dart';
 import 'package:quickdrop/src/features/my_locations/presentation/widgets/add_location.dart';
 import 'package:quickdrop/src/features/my_locations/presentation/widgets/empty_locations.dart';
@@ -68,7 +69,7 @@ class _MyLocationsState extends State<MyLocations> {
 
 class _LocationsBody extends StatelessWidget {
   const _LocationsBody({required this.locations});
-  final List<dynamic> locations;
+  final List<MyLocationsEntity> locations;
   @override
   Widget build(BuildContext context) {
     if (locations.isEmpty) {
@@ -92,7 +93,7 @@ class _LocationsBody extends StatelessWidget {
               ),
             ),
             ...locations.map(
-              (e) => LocationTile(),
+              (MyLocationsEntity location) => LocationTile(),
             ),
             Padding(
               padding: Constants.paddingTop,
