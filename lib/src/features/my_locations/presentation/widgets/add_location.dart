@@ -2,6 +2,7 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/features/new_location/presentation/new_location.dart';
 
 class AddLocation extends StatelessWidget {
   const AddLocation({super.key});
@@ -17,18 +18,14 @@ class AddLocation extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             showDragHandle: true,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             sheetAnimationStyle: AnimationStyle(
               curve: Curves.easeIn,
               reverseCurve: Curves.easeOut,
               duration: Constants.animationTransition,
             ),
             builder: (BuildContext context) {
-              return BottomSheet(
-                onClosing: () {},
-                builder: (BuildContext context) => Material(
-                  child: Text('uno dos tres'),
-                ),
-              );
+              return NewLocation();
             },
           );
         },
