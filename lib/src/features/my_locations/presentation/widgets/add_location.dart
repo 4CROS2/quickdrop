@@ -18,6 +18,10 @@ class AddLocation extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             showDragHandle: true,
+            isScrollControlled: true,
+            useSafeArea: true,
+            scrollControlDisabledMaxHeightRatio: .5,
+            elevation: 5,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             sheetAnimationStyle: AnimationStyle(
               curve: Curves.easeIn,

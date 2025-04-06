@@ -1,5 +1,6 @@
+import 'package:geocoding/geocoding.dart';
 import 'package:latlong2/latlong.dart';
 
-abstract class AddressLocationRepository {
-  Future<String> getCurrentAddress({required LatLng location});
+abstract class AddressLocationDatasourceRepository {
+  Future<Placemark> getCurrentAddress({required LatLng location});
 }

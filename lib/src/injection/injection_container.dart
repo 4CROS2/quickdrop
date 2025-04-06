@@ -41,7 +41,7 @@ Future<void> init() async {
   sl.registerLazySingleton<LocationDatasourceRepository>(
     () => ILocationDatasource(),
   );
-  sl.registerLazySingleton<AddressLocationRepository>(
+  sl.registerLazySingleton<AddressLocationDatasourceRepository>(
     () => IAddressLocationDatasource(),
   );
   sl.registerLazySingleton<MyLocationsDataSourceRepository>(
@@ -99,7 +99,7 @@ Future<void> init() async {
   sl.registerLazySingleton<LocationRepository>(
     () => ILocationRespository(
       locationDatasource: sl<LocationDatasourceRepository>(),
-      addressDatasource: sl<AddressLocationRepository>(),
+      addressDatasource: sl<AddressLocationDatasourceRepository>(),
     ),
   );
   sl.registerLazySingleton<MyLocationsRepository>(
