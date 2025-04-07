@@ -54,6 +54,14 @@ class _MyLocationsState extends State<MyLocations> {
                       child: CircularProgressIndicator.adaptive(),
                     ),
                   ),
+                if (state is Error)
+                  SliverFillRemaining(
+                    child: Center(
+                      child: Text(
+                        state.message,
+                      ),
+                    ),
+                  ),
                 if (state is Success)
                   _LocationsBody(
                     locations: state.locations,
@@ -93,7 +101,9 @@ class _LocationsBody extends StatelessWidget {
               ),
             ),
             ...locations.map(
-              (MyLocationsEntity location) => LocationTile(),
+              (MyLocationsEntity location) => LocationTile(
+                location: location,
+              ),
             ),
             Padding(
               padding: Constants.paddingTop,

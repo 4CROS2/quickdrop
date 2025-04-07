@@ -2,24 +2,12 @@ import 'package:quickdrop/src/features/my_locations/domain/entity/my_locations_e
 import 'package:quickdrop/src/features/my_locations/domain/repository/my_locations_repository.dart';
 
 class MyLocationsUsecase {
-  MyLocationsUsecase({required MyLocationsRepository repository})
+  MyLocationsUsecase({required MyLocationRepository repository})
       : _repository = repository;
-  final MyLocationsRepository _repository;
+  final MyLocationRepository _repository;
 
   Stream<List<MyLocationsEntity>> getLocations() {
     return _repository.getLocations();
-  }
-
-  Future<void> addLocation({required MyLocationsEntity location}) {
-    return _repository.addLocation(
-      location: location,
-    );
-  }
-
-  Future<void> updateLocation({required MyLocationsEntity location}) {
-    return _repository.updateLocation(
-      location: location,
-    );
   }
 
   Future<void> deleteLocation({required String id}) {

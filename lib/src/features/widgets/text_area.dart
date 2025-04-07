@@ -60,7 +60,6 @@ class _TextAreaState extends State<TextArea> {
           labelText: widget._label?.capitalize(),
           labelStyle: TextStyle(
             fontWeight: FontWeight.w600,
-            fontFamily: 'Questrial',
           ),
           alignLabelWithHint: true,
         ),

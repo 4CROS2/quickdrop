@@ -3,7 +3,7 @@ import 'package:quickdrop/src/features/my_locations/domain/entity/my_locations_e
 import 'package:quickdrop/src/features/my_locations/domain/repository/my_location_datasource_repository.dart';
 import 'package:quickdrop/src/features/my_locations/domain/repository/my_locations_repository.dart';
 
-class IMyLocationsRepository implements MyLocationsRepository {
+class IMyLocationsRepository implements MyLocationRepository {
   IMyLocationsRepository({
     required MyLocationsDataSourceRepository datasource,
   }) : _datasource = datasource;
