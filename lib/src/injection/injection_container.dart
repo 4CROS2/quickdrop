@@ -50,6 +50,9 @@ Future<void> init() async {
   sl.registerLazySingleton<SetDefaultLocationDatasourceRepositoy>(
     () => ISetDefaultLocationDatasouce(),
   );
+  sl.registerLazySingleton<NewLocationDatasourceRepository>(
+    () => INewLocationDatasource(),
+  );
   // Repositories
   sl.registerLazySingleton<AuthRepository>(
     () => IAuthRepository(
@@ -116,6 +119,11 @@ Future<void> init() async {
       datasource: sl<SetDefaultLocationDatasourceRepositoy>(),
     ),
   );
+  sl.registerLazySingleton<NewLocationRepository>(
+    () => INewLocationRepository(
+      datasource: sl<NewLocationDatasourceRepository>(),
+    ),
+  );
   //use case
   sl.registerLazySingleton<AuthUseCase>(
     () => AuthUseCase(
@@ -176,7 +184,7 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<NewLocationUsecase>(
     () => NewLocationUsecase(
-      repository: sl<MyLocationRepository>(),
+      repository: sl<NewLocationRepository>(),
     ),
   );
   sl.registerLazySingleton<SetDefaultLocationUsecase>(

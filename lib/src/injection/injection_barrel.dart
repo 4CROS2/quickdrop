@@ -42,6 +42,10 @@ import 'package:quickdrop/src/features/my_purchases/data/repository/purchase_det
 import 'package:quickdrop/src/features/my_purchases/domain/repository/my_purchases_repository.dart';
 import 'package:quickdrop/src/features/my_purchases/domain/usecase/my_purchases_usecase.dart';
 import 'package:quickdrop/src/features/my_purchases/presentation/cubit/my_purchases_cubit.dart';
+import 'package:quickdrop/src/features/new_location/data/datasource/new_location_datasource_impl.dart';
+import 'package:quickdrop/src/features/new_location/data/repository/new_location_repository_impl.dart';
+import 'package:quickdrop/src/features/new_location/domain/repository/new_location_datasource_repository.dart';
+import 'package:quickdrop/src/features/new_location/domain/repository/new_location_repository.dart';
 import 'package:quickdrop/src/features/new_location/domain/usecase/new_location_usecase.dart';
 import 'package:quickdrop/src/features/new_location/presentation/cubit/new_location_cubit.dart';
 import 'package:quickdrop/src/features/productDetail/data/datasource/produt_datasource.dart';

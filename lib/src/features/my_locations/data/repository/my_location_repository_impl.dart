@@ -10,15 +10,6 @@ class IMyLocationsRepository implements MyLocationRepository {
   final MyLocationsDataSourceRepository _datasource;
 
   @override
-  Future<void> addLocation({required MyLocationsEntity location}) async {
-    final MyLocationsModel locationModel = MyLocationsModel.fromEntity(
-      entity: location,
-    );
-
-    await _datasource.addLocation(location: locationModel);
-  }
-
-  @override
   Future<void> clearDefaultLocation() async {
     await _datasource.clearDefaultLocation();
   }
