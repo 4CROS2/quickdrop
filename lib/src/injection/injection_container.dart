@@ -171,6 +171,11 @@ Future<void> init() async {
       repository: sl<MyLocationRepository>(),
     ),
   );
+  sl.registerLazySingleton<SetDefaultLocationUsecase>(
+    () => SetDefaultLocationUsecase(
+      repository: sl<MyLocationRepository>(),
+    ),
+  );
 
   //cubits
   sl.registerLazySingleton<AppCubit>(
@@ -242,6 +247,11 @@ Future<void> init() async {
   sl.registerFactory<NewLocationCubit>(
     () => NewLocationCubit(
       usecase: sl<NewLocationUsecase>(),
+    ),
+  );
+  sl.registerFactory<SetDefaultLocationCubit>(
+    () => SetDefaultLocationCubit(
+      usecase: sl<SetDefaultLocationUsecase>(),
     ),
   );
 }

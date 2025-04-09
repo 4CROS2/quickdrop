@@ -64,5 +64,7 @@ import 'package:quickdrop/src/features/search/domain/repository/search_datasourc
 import 'package:quickdrop/src/features/search/domain/repository/search_repository.dart';
 import 'package:quickdrop/src/features/search/domain/usecase/search_usecase.dart';
 import 'package:quickdrop/src/features/search/presentation/cubit/search_cubit.dart';
+import 'package:quickdrop/src/features/set_default_location/domain/usecase/set_default_location_usecase.dart';
+import 'package:quickdrop/src/features/set_default_location/presentation/cubit/set_default_location_cubit.dart';
 
 part 'injection_container.dart';

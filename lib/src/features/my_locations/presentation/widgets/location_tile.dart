@@ -2,6 +2,7 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/features/my_locations/domain/entity/my_locations_entity.dart';
+import 'package:quickdrop/src/features/set_default_location/presentation/set_default_location.dart';
 
 class LocationTile extends StatefulWidget {
   const LocationTile({required this.location, super.key});
@@ -32,6 +33,11 @@ class _LocationTileState extends State<LocationTile>
         curve: Curves.easeInOut,
       ),
     );
+    if (widget.location.isDefault) {
+      _controller.value = 1.0;
+    } else {
+      _controller.value = 0.0;
+    }
   }
 
   @override
@@ -113,9 +119,8 @@ class _LocationTileState extends State<LocationTile>
                 Positioned(
                   right: 0,
                   top: 0,
-                  child: Checkbox.adaptive(
-                    value: widget.location.isDefault,
-                    onChanged: (bool? value) {},
+                  child: SetDefaultLocation(
+                    location: widget.location,
                   ),
                 )
               ],

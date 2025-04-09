@@ -19,11 +19,8 @@ class IMyLocationsDatasource implements MyLocationsDataSourceRepository {
   Future<void> addLocation({required MyLocationsModel location}) async {
     try {
       final Map<String, dynamic> locationMap = location.toJson();
-      final DocumentReference<Map<String, dynamic>> data = await _firestore
-          .collection('users')
-          .doc(_userId)
-          .collection('locations')
-          .add(locationMap);
+      final CollectionReference<Map<String, dynamic>> data =
+          _firestore.collection('users').doc(_userId).collection('locations');
 
       final Uint8List imageUInt8 = await convertToWebP(location.mapImage);
 
@@ -34,6 +31,7 @@ class IMyLocationsDatasource implements MyLocationsDataSourceRepository {
         imageUInt8,
         SettableMetadata(contentType: 'image/webp'),
       );
+      await data.add(locationMap);
     } catch (e) {
       throw 'error al guardar ubicacion: $e';
     }
@@ -71,7 +69,6 @@ class IMyLocationsDatasource implements MyLocationsDataSourceRepository {
           .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) async {
         final Map<String, dynamic> data = doc.data();
         data['id'] = doc.id;
-
         try {
           final Reference imageRef = FirebaseStorage.instance
               .ref()
@@ -92,8 +89,42 @@ class IMyLocationsDatasource implements MyLocationsDataSourceRepository {
   }
 
   @override
-  Future<void> setDefaultLocation({required String id}) {
-    throw UnimplementedError();
+  Future<void> setDefaultLocation({required String id}) async {
+    try {
+      final CollectionReference<Map<String, dynamic>> locationsCollection =
+          _firestore.collection('users').doc(_userId).collection('locations');
+
+      // Consulta de ubicación por defecto usando el nombre correcto del campo
+      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await locationsCollection.where('isDefault', isEqualTo: true).get();
+
+      // Verificar si existe alguna ubicación marcada como default
+      if (querySnapshot.docs.isNotEmpty) {
+        final QueryDocumentSnapshot<Map<String, dynamic>> oldDefaultDoc =
+            querySnapshot.docs.first;
+        final String oldId = oldDefaultDoc.id;
+
+        // Si la ubicación a marcar como default ya es la default, la desmarcamos y terminamos
+        if (id == oldId) {
+          await locationsCollection
+              .doc(oldId)
+              .update(<Object, Object?>{'isDefault': false});
+          return;
+        }
+
+        // Si existe una ubicación default, la desmarcamos
+        await locationsCollection
+            .doc(oldId)
+            .update(<Object, Object?>{'isDefault': false});
+      }
+
+      // Actualizamos la ubicación seleccionada como default
+      await locationsCollection
+          .doc(id)
+          .update(<Object, Object?>{'isDefault': true});
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
