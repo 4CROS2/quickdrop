@@ -15,9 +15,21 @@ class AddLocation extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {
+          /*  showCupertinoSheet(
+            context: context,
+            useNestedNavigation: true,
+            pageBuilder: (BuildContext context) => NewLocation(),
+          ); */
           showModalBottomSheet(
             context: context,
             showDragHandle: true,
+            isScrollControlled: true,
+            isDismissible: true,
+            enableDrag: true,
+            useSafeArea: true,
+            useRootNavigator: true,
+            scrollControlDisabledMaxHeightRatio: .5,
+            elevation: 5,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             sheetAnimationStyle: AnimationStyle(
               curve: Curves.easeIn,

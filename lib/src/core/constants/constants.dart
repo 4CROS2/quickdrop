@@ -35,7 +35,10 @@ class Constants {
   //Color(0x71FFFFFF); /*  Color.fromRGBO(56, 56, 56, 0.603) */
 
   static EdgeInsets mainPadding = EdgeInsets.all(mainPaddingValue);
-  static EdgeInsets buttonPadding = const EdgeInsets.all(13);
+  static EdgeInsets buttonPadding = EdgeInsets.symmetric(
+    horizontal: mainPaddingValue * 2,
+    vertical: mainPaddingValue,
+  );
 
   static Duration animationTransition = const Duration(milliseconds: 400);
 

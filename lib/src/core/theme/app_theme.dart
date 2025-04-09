@@ -32,6 +32,7 @@ class AppTheme {
         // ignore: deprecated_member_use
         year2023: false,
         color: Constants.primaryColor,
+
         linearTrackColor: Constants.secondaryColor,
       ),
       cardTheme: CardTheme(

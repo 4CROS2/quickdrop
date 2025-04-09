@@ -41,7 +41,7 @@ Future<void> init() async {
   sl.registerLazySingleton<LocationDatasourceRepository>(
     () => ILocationDatasource(),
   );
-  sl.registerLazySingleton<AddressLocationRepository>(
+  sl.registerLazySingleton<AddressLocationDatasourceRepository>(
     () => IAddressLocationDatasource(),
   );
   sl.registerLazySingleton<MyLocationsDataSourceRepository>(
@@ -99,10 +99,10 @@ Future<void> init() async {
   sl.registerLazySingleton<LocationRepository>(
     () => ILocationRespository(
       locationDatasource: sl<LocationDatasourceRepository>(),
-      addressDatasource: sl<AddressLocationRepository>(),
+      addressDatasource: sl<AddressLocationDatasourceRepository>(),
     ),
   );
-  sl.registerLazySingleton<MyLocationsRepository>(
+  sl.registerLazySingleton<MyLocationRepository>(
     () => IMyLocationsRepository(
       datasource: sl<MyLocationsDataSourceRepository>(),
     ),
@@ -163,7 +163,12 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<MyLocationsUsecase>(
     () => MyLocationsUsecase(
-      repository: sl<MyLocationsRepository>(),
+      repository: sl<MyLocationRepository>(),
+    ),
+  );
+  sl.registerLazySingleton<NewLocationUsecase>(
+    () => NewLocationUsecase(
+      repository: sl<MyLocationRepository>(),
     ),
   );
 
@@ -232,6 +237,11 @@ Future<void> init() async {
   sl.registerFactory<MyLocationsCubit>(
     () => MyLocationsCubit(
       usecase: sl<MyLocationsUsecase>(),
+    ),
+  );
+  sl.registerFactory<NewLocationCubit>(
+    () => NewLocationCubit(
+      usecase: sl<NewLocationUsecase>(),
     ),
   );
 }
