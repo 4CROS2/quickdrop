@@ -8,6 +8,7 @@ import 'package:quickdrop/src/features/new_location/presentation/widgets/new_loc
 
 class NewLocationMap extends StatefulWidget {
   const NewLocationMap({
+    required this.captureKey,
     required this.locationState,
     required this.controller,
     this.getCurrentLocation,
@@ -15,7 +16,7 @@ class NewLocationMap extends StatefulWidget {
     this.onTap,
     super.key,
   });
-
+  final GlobalKey captureKey;
   final LocationState locationState;
   final MapController controller;
   final List<Marker> marks;
@@ -35,6 +36,11 @@ class _NewLocationMapState extends State<NewLocationMap>
   final List<Marker> marks = <Marker>[];
   bool isEnabled = false;
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void _toggleStatusMap() {
     setState(() {
       isEnabled = !isEnabled;
@@ -48,30 +54,34 @@ class _NewLocationMapState extends State<NewLocationMap>
         children: <Widget>[
           IgnorePointer(
             ignoring: !isEnabled,
-            child: FlutterMap(
-              options: MapOptions(
-                initialZoom: 15,
-                initialCenter: LatLng(4.277866, -73.520570),
-                interactionOptions: InteractionOptions(
-                  flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+            child: RepaintBoundary(
+              key: widget.captureKey,
+              child: FlutterMap(
+                options: MapOptions(
+                  initialZoom: 15,
+                  initialCenter: LatLng(4.277866, -73.520570),
+                  interactionOptions: InteractionOptions(
+                    flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                  ),
+                  onTap: widget.onTap,
                 ),
-                onTap: widget.onTap,
+                mapController: widget.controller,
+                children: <Widget>[
+                  TileLayer(
+                    urlTemplate:
+                        Theme.of(context).brightness == Brightness.light
+                            ? _mapLightUrl
+                            : _mapDarkUrl,
+                    subdomains: const <String>['a', 'b', 'c'],
+                    userAgentPackageName: 'com.crossdev.quickdrop',
+                    minZoom: 1,
+                    retinaMode: RetinaMode.isHighDensity(context),
+                  ),
+                  MarkerLayer(
+                    markers: widget.marks,
+                  ),
+                ],
               ),
-              mapController: widget.controller,
-              children: <Widget>[
-                TileLayer(
-                  urlTemplate: Theme.of(context).brightness == Brightness.light
-                      ? _mapLightUrl
-                      : _mapDarkUrl,
-                  subdomains: const <String>['a', 'b', 'c'],
-                  userAgentPackageName: 'com.crossdev.quickdrop',
-                  minZoom: 1,
-                  retinaMode: RetinaMode.isHighDensity(context),
-                ),
-                MarkerLayer(
-                  markers: widget.marks,
-                ),
-              ],
             ),
           ),
           Positioned(

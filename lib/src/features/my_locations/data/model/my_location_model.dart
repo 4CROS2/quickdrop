@@ -11,6 +11,7 @@ class MyLocationsModel extends MyLocationsEntity {
     required super.description,
     required super.position,
     required super.isDefault,
+    required super.mapImage,
     required super.createAt,
     required super.modifiedAt,
   });
@@ -27,6 +28,7 @@ class MyLocationsModel extends MyLocationsEntity {
         jsonPosition.latitude,
         jsonPosition.longitude,
       ),
+      mapImage: json['mapImage'],
       isDefault: json['isDefault'] as bool,
       createAt: (json['createdAt'] as Timestamp).toDate(),
       modifiedAt: (json['modifiedAt'] as Timestamp).toDate(),
@@ -42,6 +44,7 @@ class MyLocationsModel extends MyLocationsEntity {
       address: entity.address,
       position: entity.position,
       isDefault: entity.isDefault,
+      mapImage: entity.mapImage,
       createAt: entity.createAt,
       modifiedAt: entity.modifiedAt,
     );

@@ -2,7 +2,6 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 import 'package:quickdrop/src/features/my_locations/domain/entity/my_locations_entity.dart';
-import 'package:quickdrop/src/features/widgets/image_loader.dart';
 
 class LocationTile extends StatefulWidget {
   const LocationTile({required this.location, super.key});
@@ -31,6 +30,7 @@ class _LocationTileState extends State<LocationTile> {
         ),
         child: GestureDetector(
           onTap: () {},
+          onLongPress: () {},
           child: Padding(
             padding: Constants.mainPadding / 2,
             child: Column(
@@ -43,18 +43,22 @@ class _LocationTileState extends State<LocationTile> {
                   height: 120,
                   child: Stack(
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: Constants.mainBorderRadius / 2,
-                        child: ImageLoader(
-                          imageUrl:
-                              'https://st3.depositphotos.com/1105977/16920/i/450/depositphotos_169209040-stock-photo-beautiful-autumn-scenery-in-park.jpg',
+                      SizedBox(
+                        width: double.infinity,
+                        height: 120,
+                        child: ClipRRect(
+                          borderRadius: Constants.mainBorderRadius / 2,
+                          child: Image.memory(
+                            widget.location.mapImage,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       Positioned(
                         right: 0,
                         top: 0,
                         child: Checkbox.adaptive(
-                          value: true,
+                          value: widget.location.isDefault,
                           onChanged: (bool? value) {},
                         ),
                       )

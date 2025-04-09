@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:apptoastification/apptoastification.dart';
 import 'package:extensions/extensions.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,11 +9,15 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/core/functions/validators.dart';
+import 'package:quickdrop/src/core/functions/widget_capture_image.dart';
 import 'package:quickdrop/src/features/location/presentation/cubit/location_cubit.dart';
 import 'package:quickdrop/src/features/my_locations/domain/entity/my_locations_entity.dart';
 import 'package:quickdrop/src/features/new_location/presentation/cubit/new_location_cubit.dart';
+import 'package:quickdrop/src/features/new_location/presentation/widgets/new_location_button.dart';
 import 'package:quickdrop/src/features/new_location/presentation/widgets/new_location_input.dart';
 import 'package:quickdrop/src/features/new_location/presentation/widgets/new_location_map.dart';
+import 'package:quickdrop/src/features/widgets/pop_up_loading_status.dart';
 import 'package:quickdrop/src/features/widgets/text_area.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
 
@@ -25,6 +31,8 @@ class NewLocation extends StatefulWidget {
 class _NewLocationState extends State<NewLocation>
     with SingleTickerProviderStateMixin {
   late GlobalKey<FormState> _formKey;
+  late final GlobalKey _captureKey;
+
   late MapController _mapController;
   late final LocationCubit _locationCubit;
   late final TextEditingController _locationNameController;
@@ -38,9 +46,10 @@ class _NewLocationState extends State<NewLocation>
   @override
   void initState() {
     super.initState();
+    _formKey = GlobalKey<FormState>();
+    _captureKey = GlobalKey();
     _mapController = MapController();
     _locationCubit = sl<LocationCubit>();
-    _formKey = GlobalKey<FormState>();
     _locationNameController = TextEditingController();
     _directionController = TextEditingController();
     _districController = TextEditingController();
@@ -63,6 +72,7 @@ class _NewLocationState extends State<NewLocation>
             ),
           ),
         );
+      _location = _location.copyWith(position: position);
     });
     final String address = await _locationCubit.getAddress(position: position);
     _directionController.text = address;
@@ -72,7 +82,7 @@ class _NewLocationState extends State<NewLocation>
     await _locationCubit.getCurrentLocation();
     if (_locationCubit.state is Error) {
       final Error state = (_locationCubit.state as Error);
-      _showToast(message: state.message);
+      _showErrorToast(message: state.message);
     }
     if (_locationCubit.state is Success) {
       final Success state = (_locationCubit.state as Success);
@@ -81,7 +91,19 @@ class _NewLocationState extends State<NewLocation>
     }
   }
 
-  void _showToast({required String message}) {
+  Future<Uint8List?> _captureMap() async {
+    try {
+      final Uint8List? bytes = await captureWidget(
+        globalKey: _captureKey,
+      );
+      return bytes;
+    } catch (e) {
+      _showErrorToast(message: e.toString());
+    }
+    return null;
+  }
+
+  void _showErrorToast({required String message}) {
     AppToastification.showError(
       context: context,
       title: 'Error',
@@ -89,11 +111,17 @@ class _NewLocationState extends State<NewLocation>
     );
   }
 
-  String? _validator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'campo requerido'.capitalize();
-    }
-    return null;
+  Future<void> _setInformation() async {
+    final Uint8List? image = await _captureMap();
+    setState(() {
+      _location = _location.copyWith(
+        name: _locationNameController.text,
+        address: _directionController.text,
+        distric: _districController.text,
+        mapImage: image,
+        description: _descriptionController.text,
+      );
+    });
   }
 
   @override
@@ -115,16 +143,15 @@ class _NewLocationState extends State<NewLocation>
           if (state is Saving) {
             showCupertinoModalPopup(
               context: context,
-              builder: (BuildContext context) => Center(
-                child: Material(
-                  borderRadius: Constants.mainBorderRadius,
-                  child: Padding(
-                    padding: Constants.mainPadding,
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-              ),
+              barrierDismissible: false,
+              builder: (BuildContext context) => PopUpLoadingStatus(),
             );
+          }
+          if (state is ErrorSaving) {
+            _showErrorToast(message: state.message);
+            context.pop();
+          }
+          if (state is SuccessSaving) {
             context.pop();
             context.pop();
           }
@@ -146,6 +173,7 @@ class _NewLocationState extends State<NewLocation>
                         child: ClipRRect(
                           borderRadius: Constants.mainBorderRadius,
                           child: NewLocationMap(
+                            captureKey: _captureKey,
                             controller: _mapController,
                             locationState: _locationCubit.state,
                             marks: _currentPosition,
@@ -158,65 +186,31 @@ class _NewLocationState extends State<NewLocation>
                       ),
                       NewLocationInput(
                         controller: _locationNameController,
-                        validator: _validator,
-                        onChanged: (String value) {
-                          setState(() {
-                            _location = _location.copyWith(name: value);
-                          });
-                        },
+                        validator: emptyValidator,
                         label: 'nombre (eje: casa, trabajo, etc..)',
                       ),
                       NewLocationInput(
                         controller: _directionController,
                         label: 'direccion',
-                        validator: _validator,
-                        onChanged: (String value) {
-                          setState(() {
-                            _location = _location.copyWith(address: value);
-                          });
-                        },
+                        validator: emptyValidator,
                       ),
                       NewLocationInput(
                         controller: _districController,
-                        validator: _validator,
-                        onChanged: (String value) {
-                          setState(() {
-                            _location = _location.copyWith(distric: value);
-                          });
-                        },
+                        validator: emptyValidator,
                         label: 'barrio',
                       ),
                       TextArea(
                         controller: _descriptionController,
-                        onChange: (String value) {
-                          _location = _location.copyWith(description: value);
-                        },
-                        validator: _validator,
+                        validator: emptyValidator,
                         label: 'descripcion breve de tu ubicacion'.capitalize(),
                       ),
-                      Material(
-                        borderRadius: Constants.mainBorderRadius,
-                        color: Constants.primaryColor,
-                        clipBehavior: Clip.antiAlias,
-                        child: InkWell(
-                          onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              cubit.addNewLocation(location: _location);
-                            }
-                          },
-                          child: Center(
-                            child: Padding(
-                              padding: Constants.mainPadding,
-                              child: Text(
-                                'guardar ubicacion'.capitalize(),
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                      NewLocationButton(
+                        onTap: () async {
+                          if (_formKey.currentState!.validate()) {
+                            await _setInformation();
+                            cubit.addNewLocation(location: _location);
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 10,

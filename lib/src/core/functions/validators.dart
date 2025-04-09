@@ -23,3 +23,10 @@ String? passwordValidator(String? value) {
   }
   return null;
 }
+
+String? emptyValidator(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'campo requerido'.capitalize();
+  }
+  return null;
+}

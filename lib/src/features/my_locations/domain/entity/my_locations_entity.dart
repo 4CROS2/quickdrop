@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:equatable/equatable.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -12,6 +14,7 @@ class MyLocationsEntity extends Equatable {
     required this.isDefault,
     required this.createAt,
     required this.modifiedAt,
+    required this.mapImage,
   });
 
   final String id;
@@ -23,6 +26,7 @@ class MyLocationsEntity extends Equatable {
   final bool isDefault;
   final DateTime createAt;
   final DateTime modifiedAt;
+  final Uint8List mapImage;
 
   MyLocationsEntity copyWith({
     String? id,
@@ -32,6 +36,7 @@ class MyLocationsEntity extends Equatable {
     String? description,
     LatLng? position,
     bool? isDefault,
+    Uint8List? mapImage,
     DateTime? createAt,
     DateTime? modifiedAt,
   }) {
@@ -43,6 +48,7 @@ class MyLocationsEntity extends Equatable {
       description: description ?? this.description,
       position: position ?? this.position,
       isDefault: isDefault ?? this.isDefault,
+      mapImage: mapImage ?? this.mapImage,
       createAt: createAt ?? this.createAt,
       modifiedAt: modifiedAt ?? this.modifiedAt,
     );
@@ -55,6 +61,7 @@ class MyLocationsEntity extends Equatable {
     description: '',
     position: LatLng(0, 0),
     distric: '',
+    mapImage: Uint8List.fromList(<int>[]),
     isDefault: false,
     createAt: DateTime.now(),
     modifiedAt: DateTime.now(),
@@ -66,6 +73,7 @@ class MyLocationsEntity extends Equatable {
         name,
         address,
         position,
+        mapImage,
         distric,
         description,
         isDefault,
