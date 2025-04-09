@@ -39,11 +39,6 @@ class IMyLocationsRepository implements MyLocationRepository {
   }
 
   @override
-  Future<void> setDefaultLocation({required String id}) async {
-    await _datasource.setDefaultLocation(id: id);
-  }
-
-  @override
   Future<void> updateLocation({required MyLocationsEntity location}) async {
     final MyLocationsModel locationModel = MyLocationsModel.fromEntity(
       entity: location,
