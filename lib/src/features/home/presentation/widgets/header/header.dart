@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:quickdrop/src/features/home/presentation/widgets/header/widgets/location_header.dart';
+import 'package:quickdrop/src/features/current_location_button/presentation/current_location_button.dart';
 import 'package:quickdrop/src/features/widgets/header_buton.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
@@ -23,7 +23,7 @@ class HomeSliverAppBar extends StatelessWidget {
           ),
         ),
       ],
-      title: const LocationHeader(),
+      title: const CurrentLocationButton(),
     );
   }
 }

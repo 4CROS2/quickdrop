@@ -53,6 +53,9 @@ Future<void> init() async {
   sl.registerLazySingleton<NewLocationDatasourceRepository>(
     () => INewLocationDatasource(),
   );
+  sl.registerLazySingleton<CurrentLocatioDatasourceRepository>(
+    () => ICurrentLocationDatasource(),
+  );
   // Repositories
   sl.registerLazySingleton<AuthRepository>(
     () => IAuthRepository(
@@ -124,6 +127,11 @@ Future<void> init() async {
       datasource: sl<NewLocationDatasourceRepository>(),
     ),
   );
+  sl.registerLazySingleton<CurrentLocationRepository>(
+    () => ICurrentLocationRepository(
+      datasource: sl<CurrentLocatioDatasourceRepository>(),
+    ),
+  );
   //use case
   sl.registerLazySingleton<AuthUseCase>(
     () => AuthUseCase(
@@ -193,6 +201,11 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerLazySingleton<CurrentLocationUsecase>(
+    () => CurrentLocationUsecase(
+      repository: sl<CurrentLocationRepository>(),
+    ),
+  );
   //cubits
   sl.registerLazySingleton<AppCubit>(
     () => AppCubit(
@@ -268,6 +281,11 @@ Future<void> init() async {
   sl.registerFactory<SetDefaultLocationCubit>(
     () => SetDefaultLocationCubit(
       usecase: sl<SetDefaultLocationUsecase>(),
+    ),
+  );
+  sl.registerFactory<CurrentLocationButtonCubit>(
+    () => CurrentLocationButtonCubit(
+      usecase: sl<CurrentLocationUsecase>(),
     ),
   );
 }
