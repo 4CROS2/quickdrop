@@ -5,6 +5,5 @@ abstract class MyLocationRepository {
   Future<void> addLocation({required MyLocationsEntity location});
   Future<void> updateLocation({required MyLocationsEntity location});
   Future<void> deleteLocation({required String id});
-  Future<void> setDefaultLocation({required String id});
   Future<void> clearDefaultLocation();
 }

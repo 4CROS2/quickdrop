@@ -16,12 +16,6 @@ class MyLocationsUsecase {
     );
   }
 
-  Future<void> setDefaultLocation({required String id}) {
-    return _repository.setDefaultLocation(
-      id: id,
-    );
-  }
-
   Future<void> clearDefaultLocation() {
     return _repository.clearDefaultLocation();
   }

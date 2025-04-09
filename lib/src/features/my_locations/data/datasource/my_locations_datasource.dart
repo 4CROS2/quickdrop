@@ -89,45 +89,6 @@ class IMyLocationsDatasource implements MyLocationsDataSourceRepository {
   }
 
   @override
-  Future<void> setDefaultLocation({required String id}) async {
-    try {
-      final CollectionReference<Map<String, dynamic>> locationsCollection =
-          _firestore.collection('users').doc(_userId).collection('locations');
-
-      // Consulta de ubicación por defecto usando el nombre correcto del campo
-      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-          await locationsCollection.where('isDefault', isEqualTo: true).get();
-
-      // Verificar si existe alguna ubicación marcada como default
-      if (querySnapshot.docs.isNotEmpty) {
-        final QueryDocumentSnapshot<Map<String, dynamic>> oldDefaultDoc =
-            querySnapshot.docs.first;
-        final String oldId = oldDefaultDoc.id;
-
-        // Si la ubicación a marcar como default ya es la default, la desmarcamos y terminamos
-        if (id == oldId) {
-          await locationsCollection
-              .doc(oldId)
-              .update(<Object, Object?>{'isDefault': false});
-          return;
-        }
-
-        // Si existe una ubicación default, la desmarcamos
-        await locationsCollection
-            .doc(oldId)
-            .update(<Object, Object?>{'isDefault': false});
-      }
-
-      // Actualizamos la ubicación seleccionada como default
-      await locationsCollection
-          .doc(id)
-          .update(<Object, Object?>{'isDefault': true});
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  @override
   Future<void> updateLocation({required MyLocationsEntity location}) {
     throw UnimplementedError();
   }

@@ -64,6 +64,10 @@ import 'package:quickdrop/src/features/search/domain/repository/search_datasourc
 import 'package:quickdrop/src/features/search/domain/repository/search_repository.dart';
 import 'package:quickdrop/src/features/search/domain/usecase/search_usecase.dart';
 import 'package:quickdrop/src/features/search/presentation/cubit/search_cubit.dart';
+import 'package:quickdrop/src/features/set_default_location/data/datasource/set_default_location_datasouce.dart';
+import 'package:quickdrop/src/features/set_default_location/data/repository/set_default_location_repository_impl.dart';
+import 'package:quickdrop/src/features/set_default_location/domain/repository/set_default_location_datasource_repositoy.dart';
+import 'package:quickdrop/src/features/set_default_location/domain/repository/set_default_location_repository.dart';
 import 'package:quickdrop/src/features/set_default_location/domain/usecase/set_default_location_usecase.dart';
 import 'package:quickdrop/src/features/set_default_location/presentation/cubit/set_default_location_cubit.dart';
 
