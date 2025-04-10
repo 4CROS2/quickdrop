@@ -7,6 +7,12 @@ import 'package:quickdrop/src/features/auth/domain/repository/auth_repository.da
 import 'package:quickdrop/src/features/auth/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/signup/cubit/signup_cubit.dart';
+import 'package:quickdrop/src/features/current_location_button/data/datasource/current_location_datasource_impl.dart';
+import 'package:quickdrop/src/features/current_location_button/data/repository/current_location_repository_impl.dart';
+import 'package:quickdrop/src/features/current_location_button/domain/repository/current_locatio_datasource_repository.dart';
+import 'package:quickdrop/src/features/current_location_button/domain/repository/current_location_repository.dart';
+import 'package:quickdrop/src/features/current_location_button/domain/usecase/current_location_usecase.dart';
+import 'package:quickdrop/src/features/current_location_button/presentation/cubit/current_location_button_cubit.dart';
 import 'package:quickdrop/src/features/favorites/data/datasource/favorite_datasource.dart';
 import 'package:quickdrop/src/features/favorites/data/repository/favorite_repository_impl.dart';
 import 'package:quickdrop/src/features/favorites/domain/repository/favorite_repository.dart';
