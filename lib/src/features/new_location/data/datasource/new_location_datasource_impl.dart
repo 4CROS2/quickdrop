@@ -18,11 +18,13 @@ class INewLocationDatasource implements NewLocationDatasourceRepository {
   Future<void> addLocation({required MyLocationsModel location}) async {
     try {
       final Map<String, dynamic> locationMap = location.toJson();
-      final CollectionReference<Map<String, dynamic>> data =
-          _firestore.collection('users').doc(_userId).collection('locations');
+      final DocumentReference<Map<String, dynamic>> data = _firestore
+          .collection('users')
+          .doc(_userId)
+          .collection('locations')
+          .doc();
 
       final Uint8List imageUInt8 = await convertToWebP(location.mapImage);
-
       final Reference imagePath =
           _storage.ref().child('users/$_userId/locations/${data.id}.webp');
 
@@ -30,7 +32,7 @@ class INewLocationDatasource implements NewLocationDatasourceRepository {
         imageUInt8,
         SettableMetadata(contentType: 'image/webp'),
       );
-      await data.add(locationMap);
+      await data.set(locationMap);
     } catch (e) {
       throw 'error al guardar ubicacion: $e';
     }
