@@ -36,7 +36,7 @@ class Constants {
 
   static EdgeInsets mainPadding = EdgeInsets.all(mainPaddingValue);
   static EdgeInsets buttonPadding = EdgeInsets.symmetric(
-    horizontal: mainPaddingValue * 2,
+    horizontal: mainPaddingValue,
     vertical: mainPaddingValue,
   );
 
