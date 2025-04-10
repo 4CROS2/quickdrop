@@ -24,8 +24,6 @@ class INewLocationDatasource implements NewLocationDatasourceRepository {
           .collection('locations')
           .doc();
 
-      print(data.id);
-
       final Uint8List imageUInt8 = await convertToWebP(location.mapImage);
       final Reference imagePath =
           _storage.ref().child('users/$_userId/locations/${data.id}.webp');
