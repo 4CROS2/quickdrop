@@ -22,52 +22,49 @@ class _FavoritesState extends State<Favorites> {
     return BlocProvider<FavoritesCubit>(
       create: (BuildContext context) =>
           sl<FavoritesCubit>()..getUserFavorites(),
-      child: Scaffold(
-        body: BlocConsumer<FavoritesCubit, FavoritesState>(
-          listener: (BuildContext context, FavoritesState state) {
-            if (state.message != '') {
-              showCustomSnackbar(
-                context,
-                message: state.message,
-              );
-            }
-          },
-          builder: (BuildContext context, FavoritesState state) {
-            return RefreshIndicator(
-              color: Constants.secondaryColor,
-              onRefresh: () =>
-                  context.read<FavoritesCubit>().getUserFavorites(),
-              child: CustomScrollView(
-                physics: Constants.bouncingScrollPhysics,
-                slivers: <Widget>[
-                  SliverPersistentHeader(
-                    delegate: FavoriteHeader(),
-                    pinned: true,
-                  ),
-                  SliverToBoxAdapter(
-                    child: SwitchTransition(
-                      child: switch (state.favoriteStatus) {
-                        FavoriteStatus.loading => LoadingStatus(),
-                        FavoriteStatus.error => Center(
-                            child: Text(state.message),
-                          ),
-                        FavoriteStatus.success => FavoritesBody(
-                            favorites: state.favorites,
-                            onDismissed: (String productId) {
-                              context
-                                  .read<FavoritesCubit>()
-                                  .deleteFavoriteProduct(productId: productId);
-                            },
-                          ),
-                        FavoriteStatus.waiting => SizedBox.shrink(),
-                      },
-                    ),
-                  ),
-                ],
-              ),
+      child: BlocConsumer<FavoritesCubit, FavoritesState>(
+        listener: (BuildContext context, FavoritesState state) {
+          if (state.message != '') {
+            showCustomSnackbar(
+              context,
+              message: state.message,
             );
-          },
-        ),
+          }
+        },
+        builder: (BuildContext context, FavoritesState state) {
+          return RefreshIndicator(
+            color: Constants.secondaryColor,
+            onRefresh: () => context.read<FavoritesCubit>().getUserFavorites(),
+            child: CustomScrollView(
+              physics: Constants.bouncingScrollPhysics,
+              slivers: <Widget>[
+                SliverPersistentHeader(
+                  delegate: FavoriteHeader(),
+                  pinned: true,
+                ),
+                SliverToBoxAdapter(
+                  child: SwitchTransition(
+                    child: switch (state.favoriteStatus) {
+                      FavoriteStatus.loading => LoadingStatus(),
+                      FavoriteStatus.error => Center(
+                          child: Text(state.message),
+                        ),
+                      FavoriteStatus.success => FavoritesBody(
+                          favorites: state.favorites,
+                          onDismissed: (String productId) {
+                            context
+                                .read<FavoritesCubit>()
+                                .deleteFavoriteProduct(productId: productId);
+                          },
+                        ),
+                      FavoriteStatus.waiting => SizedBox.shrink(),
+                    },
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
