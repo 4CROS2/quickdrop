@@ -31,41 +31,39 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocProvider<SearchCubit>(
-        create: (BuildContext context) => sl<SearchCubit>(),
-        child: BlocBuilder<SearchCubit, SearchState>(
-          builder: (BuildContext context, SearchState state) {
-            return CustomScrollView(
-              physics: Constants.bouncingScrollPhysics,
-              slivers: <Widget>[
-                SliverPersistentHeader(
-                  delegate: SearchHeader(
-                    controller: _textEditingController,
-                  ),
-                  pinned: true,
+    return BlocProvider<SearchCubit>(
+      create: (BuildContext context) => sl<SearchCubit>(),
+      child: BlocBuilder<SearchCubit, SearchState>(
+        builder: (BuildContext context, SearchState state) {
+          return CustomScrollView(
+            physics: Constants.bouncingScrollPhysics,
+            slivers: <Widget>[
+              SliverPersistentHeader(
+                delegate: SearchHeader(
+                  controller: _textEditingController,
                 ),
-                if (state is Loading)
-                  SliverFillRemaining(
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
+                pinned: true,
+              ),
+              if (state is Loading)
+                SliverFillRemaining(
+                  child: Center(
+                    child: CircularProgressIndicator(),
                   ),
-                if (state is SearchInitial)
-                  SearchStringResults(
-                    type: ResultsType.history,
-                    results: state.searchHistory,
-                  ),
-                if (state is Success)
-                  SearchStringResults(
-                    type: ResultsType.search,
-                    results: state.results,
-                    query: _textEditingController.text,
-                  )
-              ],
-            );
-          },
-        ),
+                ),
+              if (state is SearchInitial)
+                SearchStringResults(
+                  type: ResultsType.history,
+                  results: state.searchHistory,
+                ),
+              if (state is Success)
+                SearchStringResults(
+                  type: ResultsType.search,
+                  results: state.results,
+                  query: _textEditingController.text,
+                )
+            ],
+          );
+        },
       ),
     );
   }

@@ -24,53 +24,51 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     super.build(context);
     return BlocProvider<HomeCubit>(
       create: (BuildContext context) => sl<HomeCubit>()..getHomeData(),
-      child: Scaffold(
-        body: BlocBuilder<HomeCubit, HomeState>(
-          builder: (BuildContext context, HomeState state) {
-            return RefreshIndicator(
-              onRefresh: () async =>
-                  await context.read<HomeCubit>().getHomeData(),
-              child: CustomScrollView(
-                physics: Constants.bouncingScrollPhysics,
-                slivers: <Widget>[
-                  HomeSliverAppBar(),
-                  WellcomeMessage(),
-                  if (state is LoadingHomeData)
-                    SliverFillRemaining(
-                      child: const LoadingStatus(),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (BuildContext context, HomeState state) {
+          return RefreshIndicator(
+            onRefresh: () async =>
+                await context.read<HomeCubit>().getHomeData(),
+            child: CustomScrollView(
+              physics: Constants.bouncingScrollPhysics,
+              slivers: <Widget>[
+                HomeSliverAppBar(),
+                WellcomeMessage(),
+                if (state is LoadingHomeData)
+                  SliverFillRemaining(
+                    child: const LoadingStatus(),
+                  ),
+                if (state is ErrorGettingHomeData)
+                  SliverFillRemaining(
+                    child: Center(
+                      child: Text(state.message),
                     ),
-                  if (state is ErrorGettingHomeData)
-                    SliverFillRemaining(
-                      child: Center(
-                        child: Text(state.message),
-                      ),
+                  ),
+                if (state is SuccessHomeData)
+                  SliverList(
+                    delegate: SliverChildListDelegate.fixed(
+                      <Widget>[
+                        PromotionsAndDiscounts(),
+                        SizedBox(
+                          height: Constants.mainPaddingValue,
+                        ),
+                        SellersList(
+                          sellers: state.home.sellers,
+                        ),
+                        LastSeen(
+                          lastSeenProducts: state.home.lastSeen,
+                        ),
+                      ],
                     ),
-                  if (state is SuccessHomeData)
-                    SliverList(
-                      delegate: SliverChildListDelegate.fixed(
-                        <Widget>[
-                          PromotionsAndDiscounts(),
-                          SizedBox(
-                            height: Constants.mainPaddingValue,
-                          ),
-                          SellersList(
-                            sellers: state.home.sellers,
-                          ),
-                          LastSeen(
-                            lastSeenProducts: state.home.lastSeen,
-                          ),
-                        ],
-                      ),
-                    ),
-                  if (state is SuccessHomeData)
-                    Products(
-                      products: state.home.products,
-                    ),
-                ],
-              ),
-            );
-          },
-        ),
+                  ),
+                if (state is SuccessHomeData)
+                  Products(
+                    products: state.home.products,
+                  ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

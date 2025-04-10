@@ -14,17 +14,15 @@ class UserMenu extends StatefulWidget {
 class _UserMenuState extends State<UserMenu> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: ListView(
-          physics: Constants.bouncingScrollPhysics,
-          padding: Constants.mainPadding,
-          children: <Widget>[
-            UserPhoto(),
-            UserCredits(),
-            MenuOptions(),
-          ],
-        ),
+    return SafeArea(
+      child: ListView(
+        physics: Constants.bouncingScrollPhysics,
+        padding: Constants.mainPadding,
+        children: <Widget>[
+          UserPhoto(),
+          UserCredits(),
+          MenuOptions(),
+        ],
       ),
     );
   }
