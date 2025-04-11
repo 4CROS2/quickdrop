@@ -30,8 +30,8 @@ class Constants {
     fontWeight: FontWeight.w300,
     fontSize: 12,
   );
-  static const Color primaryColor = Color(0xFFE53935);
-  static const Color secondaryColor = Color(0xFFFFB300);
+  static const Color primaryColor = Color(0xFF8d45d5);
+  static const Color secondaryColor = Color(0xFFe6f1cc);
   //Color(0x71FFFFFF); /*  Color.fromRGBO(56, 56, 56, 0.603) */
 
   static EdgeInsets mainPadding = EdgeInsets.all(mainPaddingValue);
@@ -60,5 +60,15 @@ class Constants {
 
   static EdgeInsets mainPaddingSymetricVertical = EdgeInsets.symmetric(
     vertical: mainPaddingValue,
+  );
+  static TextStyle titleStyle = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 16,
+  );
+  static PageTransitionsTheme pageTransition = PageTransitionsTheme(
+    builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
+      TargetPlatform.values,
+      value: (_) => FadeForwardsPageTransitionsBuilder(),
+    ),
   );
 }

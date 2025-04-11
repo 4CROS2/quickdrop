@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:quickdrop/src/core/localization/app_localizations.dart';
-import 'package:quickdrop/src/core/theme/app_theme.dart';
-
-import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/core/router/app_router.dart';
+import 'package:quickdrop/src/core/theme/app_dark_theme.dart';
+import 'package:quickdrop/src/core/theme/app_light_theme.dart';
+import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart' as di;
 
 class App extends StatefulWidget {
@@ -22,10 +22,8 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
     _appRouter = AppRouter();
-    AppTheme.initialize(
-      context,
-      isDarkMode: false,
-    );
+    AppLightTheme.initialize(context);
+    AppDarkTheme.initialize(context);
   }
 
   @override
@@ -40,7 +38,9 @@ class _AppState extends State<App> {
             ),
             child: MaterialApp.router(
               title: 'Quickdrop',
-              theme: AppTheme.instance,
+              theme: AppLightTheme.instance,
+              darkTheme: AppDarkTheme.instance,
+              themeMode: state.themeMode,
               locale: Locale(
                 View.of(context).platformDispatcher.locale.languageCode,
               ),
