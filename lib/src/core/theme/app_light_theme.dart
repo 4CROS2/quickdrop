@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
 
-class AppTheme {
+class AppLightTheme {
   static ThemeData? _instance;
 
   static ThemeData get instance {
@@ -11,21 +11,13 @@ class AppTheme {
     return _instance!;
   }
 
-  static void initialize(BuildContext context, {bool isDarkMode = false}) {
-    _instance =
-        isDarkMode ? _createDarkTheme(context) : _createLightTheme(context);
+  static void initialize(BuildContext context) {
+    _instance = _createLightTheme(context);
   }
-
-  static PageTransitionsTheme get _pageTransition => PageTransitionsTheme(
-        builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
-          TargetPlatform.values,
-          value: (_) => FadeForwardsPageTransitionsBuilder(),
-        ),
-      );
 
   static ThemeData _createLightTheme(BuildContext context) {
     return ThemeData(
-      pageTransitionsTheme: _pageTransition,
+      pageTransitionsTheme: Constants.pageTransition,
       colorSchemeSeed: Constants.primaryColor,
       fontFamily: 'Questrial',
       progressIndicatorTheme: ProgressIndicatorThemeData(
@@ -35,9 +27,29 @@ class AppTheme {
 
         linearTrackColor: Constants.secondaryColor,
       ),
-      cardTheme: CardTheme(
-        surfaceTintColor: Constants.secondaryColor,
-        margin: Constants.paddingTop,
+      cardColor: Colors.black.withValues(alpha: .1),
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        foregroundColor: Constants.primaryColor,
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
+          (Set<WidgetState> states) => TextStyle(
+            fontSize: 12,
+            fontFamily: 'Albertsans',
+            shadows: <Shadow>[
+              BoxShadow(
+                color: Colors.black.withValues(alpha: .2),
+                blurRadius: 12,
+                blurStyle: BlurStyle.inner,
+                spreadRadius: 10,
+              )
+            ],
+            fontWeight: states.contains(WidgetState.selected)
+                ? FontWeight.w900
+                : FontWeight.w300,
+          ),
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         fillColor: Constants.primaryColor.withValues(
@@ -53,15 +65,6 @@ class AppTheme {
           ),
         ),
       ),
-    );
-  }
-
-  static ThemeData _createDarkTheme(BuildContext context) {
-    return ThemeData(
-      pageTransitionsTheme: _pageTransition,
-      colorSchemeSeed: Constants.primaryColor,
-      fontFamily: 'Questrial',
-      brightness: Brightness.dark,
     );
   }
 }

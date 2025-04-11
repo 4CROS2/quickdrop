@@ -40,14 +40,8 @@ class FavoriteHeader extends SliverPersistentHeaderDelegate {
                     icon: Icons.arrow_back_ios_rounded,
                     iconColor: Colors.white,
                   ),
-                  Text(
-                    'tus favoritos'.capitalize(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                    ),
-                  ),
+                  Text('tus favoritos'.capitalize(),
+                      style: Constants.titleStyle),
                   SizedBox(
                     width: 50,
                   )

@@ -15,6 +15,7 @@ import 'package:quickdrop/src/features/productDetail/presentation/widgets/produc
 import 'package:quickdrop/src/features/pruchase/presentation/purchase.dart';
 import 'package:quickdrop/src/features/purchase_detail/presentation/purchase_detail.dart';
 import 'package:quickdrop/src/features/search/presentation/search.dart';
+import 'package:quickdrop/src/features/settings/presentation/settings.dart';
 import 'package:quickdrop/src/features/user_menu/user_menu.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
 
@@ -144,7 +145,11 @@ class AppRouter {
       GoRoute(
         path: '/mylocations',
         builder: (BuildContext context, GoRouterState state) => MyLocations(),
-      )
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (BuildContext context, GoRouterState state) => Settings(),
+      ),
     ],
   );
 }
