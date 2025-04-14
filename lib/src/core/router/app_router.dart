@@ -6,6 +6,7 @@ import 'package:quickdrop/src/features/auth/presentation/login/login.dart';
 import 'package:quickdrop/src/features/favorites/presentation/favorites.dart';
 import 'package:quickdrop/src/features/financial_information/presentation/financial_information.dart';
 import 'package:quickdrop/src/features/home/presentation/home.dart';
+import 'package:quickdrop/src/features/language_page/language_page.dart';
 import 'package:quickdrop/src/features/loading/loading.dart';
 import 'package:quickdrop/src/features/my_locations/presentation/my_locations.dart';
 import 'package:quickdrop/src/features/my_purchases/presentation/mypurchases.dart';
@@ -149,6 +150,14 @@ class AppRouter {
       GoRoute(
         path: '/settings',
         builder: (BuildContext context, GoRouterState state) => Settings(),
+        routes: <RouteBase>[
+          GoRoute(
+            path: 'languages',
+            builder: (BuildContext context, GoRouterState state) {
+              return LanguagePage();
+            },
+          )
+        ],
       ),
     ],
   );

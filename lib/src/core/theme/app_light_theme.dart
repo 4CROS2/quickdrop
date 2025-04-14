@@ -31,6 +31,10 @@ class AppLightTheme {
       appBarTheme: AppBarTheme(
         centerTitle: true,
         foregroundColor: Constants.primaryColor,
+        titleTextStyle: Constants.titleStyle.copyWith(
+          color: Constants.primaryColor,
+        ),
+        color: Theme.of(context).scaffoldBackgroundColor,
       ),
       navigationBarTheme: NavigationBarThemeData(
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(

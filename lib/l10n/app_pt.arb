@@ -1,59 +1,71 @@
 {
-    "@@locale": "pt",
-    "slogan": "encontrar, comprar, receber",
-    "@slogan": {
-        "description": "Slogan do aplicativo."
-    },
-    "emailLabel": "e-mail",
-    "@emailLabel": {
-        "description": "Etiqueta para o campo de e-mail."
-    },
-    "passwordLabel": "senha",
-    "@passwordLabel": {
-        "description": "Etiqueta para o campo de senha."
-    },
-    "passwordRecovery": "esqueceu sua senha?",
-    "@passwordRecovery": {
-        "description": "Etiqueta para a opção de recuperação de senha."
-    },
-    "nameLabel": "nome",
-    "@nameLabel": {
-        "description": "Etiqueta para o campo de nome."
-    },
-    "lastNameLabel": "sobrenome",
-    "@lastNameLabel": {
-        "description": "Etiqueta para o campo de sobrenome."
-    },
-    "phoneLabel": "telefone",
-    "@phoneLabel": {
-        "description": "Etiqueta para o campo de telefone."
-    },
-    "loginButton": "entrar",
-    "@loginButton": {
-        "description": "Etiqueta para o botão de entrada."
-    },
-    "signInButton": "inscrever-se",
-    "@signInButton": {
-        "description": "Etiqueta para o botão de inscrição."
-    },
-    "newUser": "não tem uma conta?",
-    "@newUser": {
-        "description": "Etiqueta para perguntar se o usuário não tem uma conta."
-    },
-    "haveAccount": "já tem uma conta",
-    "@haveAccount": {
-        "description": "Etiqueta para perguntar se o usuário já tem uma conta."
-    },
-    "invalidCredential": "Credenciais inválidas.",
-    "@invalidCredential": {},
-    "invalidEmail": "O endereço de e-mail é inválido.",
-    "@invalidEmail": {},
-    "userDisabled": "O usuário foi desativado.",
-    "@userDisabled": {},
-    "userNotFound": "Nenhum usuário encontrado com este endereço de e-mail.",
-    "@userNotFound": {},
-    "wrongPassword": "A senha está incorreta.",
-    "@wrongPassword": {},
-    "unknownError": "Ocorreu um erro desconhecido.",
-    "@unknownError": {}
+  "@@locale": "pt",
+  "slogan": "encontrar, comprar, receber",
+  "@slogan": {
+    "description": "Slogan do aplicativo."
+  },
+  "emailLabel": "e-mail",
+  "@emailLabel": {
+    "description": "Etiqueta para o campo de e-mail."
+  },
+  "passwordLabel": "senha",
+  "@passwordLabel": {
+    "description": "Etiqueta para o campo de senha."
+  },
+  "passwordRecovery": "esqueceu sua senha?",
+  "@passwordRecovery": {
+    "description": "Etiqueta para a opção de recuperação de senha."
+  },
+  "nameLabel": "nome",
+  "@nameLabel": {
+    "description": "Etiqueta para o campo de nome."
+  },
+  "lastNameLabel": "sobrenome",
+  "@lastNameLabel": {
+    "description": "Etiqueta para o campo de sobrenome."
+  },
+  "phoneLabel": "telefone",
+  "@phoneLabel": {
+    "description": "Etiqueta para o campo de telefone."
+  },
+  "loginButton": "entrar",
+  "@loginButton": {
+    "description": "Etiqueta para o botão de entrada."
+  },
+  "signInButton": "inscrever-se",
+  "@signInButton": {
+    "description": "Etiqueta para o botão de inscrição."
+  },
+  "newUser": "não tem uma conta?",
+  "@newUser": {
+    "description": "Etiqueta para perguntar se o usuário não tem uma conta."
+  },
+  "haveAccount": "já tem uma conta",
+  "@haveAccount": {
+    "description": "Etiqueta para perguntar se o usuário já tem uma conta."
+  },
+  "invalidCredential": "Credenciais inválidas.",
+  "@invalidCredential": {
+    "description": "Mensagem de erro quando as credenciais fornecidas são inválidas."
+  },
+  "invalidEmail": "O endereço de e-mail é inválido.",
+  "@invalidEmail": {
+    "description": "Mensagem de erro para endereço de e-mail inválido."
+  },
+  "userDisabled": "O usuário foi desativado.",
+  "@userDisabled": {
+    "description": "Mensagem de erro quando o usuário foi desativado."
+  },
+  "userNotFound": "Nenhum usuário encontrado com este endereço de e-mail.",
+  "@userNotFound": {
+    "description": "Mensagem de erro quando nenhum usuário é encontrado com o e-mail informado."
+  },
+  "wrongPassword": "A senha está incorreta.",
+  "@wrongPassword": {
+    "description": "Mensagem de erro quando a senha está incorreta."
+  },
+  "unknownError": "Ocorreu um erro desconhecido.",
+  "@unknownError": {
+    "description": "Mensagem de erro genérica para erros desconhecidos."
+  }
 }

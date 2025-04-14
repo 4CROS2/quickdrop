@@ -1,53 +1,76 @@
 {
-    "@@locale": "en",
-    "slogan": "find, buy, receive",
-    "@slogan": {
-        "description": "App slogan."
-    },
-    "emailLabel": "email",
-    "@emailLabel": {
-        "description": "Label for the email field."
-    },
-    "passwordLabel": "password",
-    "@passwordLabel": {
-        "description": "Label for the password field."
-    },
-    "passwordRecovery": "forgot your password?",
-    "@passwordRecovery": {
-        "description": "Label for the password recovery option."
-    },
-    "nameLabel": "name",
-    "@nameLabel": {
-        "description": "Label for the name field."
-    },
-    "lastNameLabel": "last name",
-    "@lastNameLabel": {
-        "description": "Label for the last name field."
-    },
-    "phoneLabel": "phone",
-    "@phoneLabel": {
-        "description": "Label for the phone field."
-    },
-    "loginButton": "log in",
-    "@loginButton": {
-        "description": "Label for the log in button."
-    },
-    "signInButton": "sign up",
-    "@signInButton": {
-        "description": "Label for the sign-up button."
-    },
-    "newUser": "dont have an account?",
-    "@newUser": {
-        "description": "Label to ask if the user doesn't have an account."
-    },
-    "haveAccount": "already have an account",
-    "@haveAccount": {
-        "description": "Label to ask if the user already has an account."
-    },
-    "invalidCredential": "Invalid credentials.",
-    "invalidEmail": "The email address is invalid.",
-    "userDisabled": "The user has been disabled.",
-    "userNotFound": "No user found with this email address.",
-    "wrongPassword": "The password is incorrect.",
-    "unknownError": "An unknown error occurred."
+  "@@locale": "en",
+  "@@context": "",
+  "countryCode": "US",
+  "@countryCode": {
+    "description": "Default country code for the locale."
+  },
+  "slogan": "find, buy, receive",
+  "@slogan": {
+    "description": "App slogan."
+  },
+  "emailLabel": "email",
+  "@emailLabel": {
+    "description": "Label for the email field."
+  },
+  "passwordLabel": "password",
+  "@passwordLabel": {
+    "description": "Label for the password field."
+  },
+  "passwordRecovery": "forgot your password?",
+  "@passwordRecovery": {
+    "description": "Label for the password recovery option."
+  },
+  "nameLabel": "name",
+  "@nameLabel": {
+    "description": "Label for the name field."
+  },
+  "lastNameLabel": "last name",
+  "@lastNameLabel": {
+    "description": "Label for the last name field."
+  },
+  "phoneLabel": "phone",
+  "@phoneLabel": {
+    "description": "Label for the phone field."
+  },
+  "loginButton": "log in",
+  "@loginButton": {
+    "description": "Label for the log in button."
+  },
+  "signInButton": "sign up",
+  "@signInButton": {
+    "description": "Label for the sign-up button."
+  },
+  "newUser": "dont have an account?",
+  "@newUser": {
+    "description": "Label to ask if the user doesn't have an account."
+  },
+  "haveAccount": "already have an account",
+  "@haveAccount": {
+    "description": "Label to ask if the user already has an account."
+  },
+  "invalidCredential": "Invalid credentials.",
+  "@invalidCredential": {
+    "description": "Error message displayed when provided credentials are invalid."
+  },
+  "invalidEmail": "The email address is invalid.",
+  "@invalidEmail": {
+    "description": "Error message for an invalid email address."
+  },
+  "userDisabled": "The user has been disabled.",
+  "@userDisabled": {
+    "description": "Error message displayed when the user account is disabled."
+  },
+  "userNotFound": "No user found with this email address.",
+  "@userNotFound": {
+    "description": "Error message shown when no user is found with the provided email."
+  },
+  "wrongPassword": "The password is incorrect.",
+  "@wrongPassword": {
+    "description": "Error message displayed when the password is incorrect."
+  },
+  "unknownError": "An unknown error occurred.",
+  "@unknownError": {
+    "description": "Generic error message for unspecified errors."
+  }
 }

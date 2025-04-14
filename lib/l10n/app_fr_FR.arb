@@ -1,0 +1,20 @@
+{
+  "@@locale": "fr_FR",
+  "slogan": "trouver, acheter, recevoir",
+  "emailLabel": "courriel",
+  "passwordLabel": "mot de passe",
+  "passwordRecovery": "mot de passe oublié?",
+  "nameLabel": "nom",
+  "lastNameLabel": "prénom",
+  "phoneLabel": "téléphone",
+  "loginButton": "se connecter",
+  "signInButton": "s'inscrire",
+  "newUser": "vous n'avez pas de compte?",
+  "haveAccount": "vous avez déjà un compte",
+  "invalidCredential": "Identifiants invalides.",
+  "invalidEmail": "L'adresse e-mail est invalide.",
+  "userDisabled": "L'utilisateur a été désactivé.",
+  "userNotFound": "Aucun utilisateur trouvé avec cette adresse e-mail.",
+  "wrongPassword": "Le mot de passe est incorrect.",
+  "unknownError": "Une erreur inconnue s'est produite."
+}

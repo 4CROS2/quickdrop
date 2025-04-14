@@ -1,59 +1,71 @@
 {
-    "@@locale": "fr",
-    "slogan": "trouver, acheter, recevoir",
-    "@slogan": {
-        "description": "Slogan de l'application."
-    },
-    "emailLabel": "courriel",
-    "@emailLabel": {
-        "description": "Étiquette pour le champ de courriel."
-    },
-    "passwordLabel": "mot de passe",
-    "@passwordLabel": {
-        "description": "Étiquette pour le champ de mot de passe."
-    },
-    "passwordRecovery": "mot de passe oublié?",
-    "@passwordRecovery": {
-        "description": "Étiquette pour l'option de récupération de mot de passe."
-    },
-    "nameLabel": "nom",
-    "@nameLabel": {
-        "description": "Étiquette pour le champ de nom."
-    },
-    "lastNameLabel": "prénom",
-    "@lastNameLabel": {
-        "description": "Étiquette pour le champ de prénom."
-    },
-    "phoneLabel": "téléphone",
-    "@phoneLabel": {
-        "description": "Étiquette pour le champ de téléphone."
-    },
-    "loginButton": "se connecter",
-    "@loginButton": {
-        "description": "Étiquette pour le bouton de connexion."
-    },
-    "signInButton": "s inscrire",
-    "@signInButton": {
-        "description": "Étiquette pour le bouton d'inscription."
-    },
-    "newUser": "vous n avez pas de compte?",
-    "@newUser": {
-        "description": "Étiquette pour demander si l'utilisateur n'a pas de compte."
-    },
-    "haveAccount": "vous avez déjà un compte",
-    "@haveAccount": {
-        "description": "Étiquette pour demander si l'utilisateur a déjà un compte."
-    },
-    "invalidCredential": "Identifiants invalides.",
-    "@invalidCredential": {},
-    "invalidEmail": "L'adresse e-mail est invalide.",
-    "@invalidEmail": {},
-    "userDisabled": "L'utilisateur a été désactivé.",
-    "@userDisabled": {},
-    "userNotFound": "Aucun utilisateur trouvé avec cette adresse e-mail.",
-    "@userNotFound": {},
-    "wrongPassword": "Le mot de passe est incorrect.",
-    "@wrongPassword": {},
-    "unknownError": "Une erreur inconnue s'est produite.",
-    "@unknownError": {}
+  "@@locale": "fr",
+  "slogan": "trouver, acheter, recevoir",
+  "@slogan": {
+    "description": "Slogan de l'application."
+  },
+  "emailLabel": "courriel",
+  "@emailLabel": {
+    "description": "Étiquette pour le champ de courriel."
+  },
+  "passwordLabel": "mot de passe",
+  "@passwordLabel": {
+    "description": "Étiquette pour le champ de mot de passe."
+  },
+  "passwordRecovery": "mot de passe oublié?",
+  "@passwordRecovery": {
+    "description": "Étiquette pour l'option de récupération de mot de passe."
+  },
+  "nameLabel": "nom",
+  "@nameLabel": {
+    "description": "Étiquette pour le champ de nom."
+  },
+  "lastNameLabel": "prénom",
+  "@lastNameLabel": {
+    "description": "Étiquette pour le champ de prénom."
+  },
+  "phoneLabel": "téléphone",
+  "@phoneLabel": {
+    "description": "Étiquette pour le champ de téléphone."
+  },
+  "loginButton": "se connecter",
+  "@loginButton": {
+    "description": "Étiquette pour le bouton de connexion."
+  },
+  "signInButton": "s inscrire",
+  "@signInButton": {
+    "description": "Étiquette pour le bouton d'inscription."
+  },
+  "newUser": "vous n avez pas de compte?",
+  "@newUser": {
+    "description": "Étiquette pour demander si l'utilisateur n'a pas de compte."
+  },
+  "haveAccount": "vous avez déjà un compte",
+  "@haveAccount": {
+    "description": "Étiquette pour demander si l'utilisateur a déjà un compte."
+  },
+  "invalidCredential": "Identifiants invalides.",
+  "@invalidCredential": {
+    "description": "Message d'erreur lorsque les identifiants fournis sont invalides."
+  },
+  "invalidEmail": "L'adresse e-mail est invalide.",
+  "@invalidEmail": {
+    "description": "Message d'erreur pour une adresse e-mail invalide."
+  },
+  "userDisabled": "L'utilisateur a été désactivé.",
+  "@userDisabled": {
+    "description": "Message d'erreur lorsque l'utilisateur est désactivé."
+  },
+  "userNotFound": "Aucun utilisateur trouvé avec cette adresse e-mail.",
+  "@userNotFound": {
+    "description": "Message d'erreur lorsque aucun utilisateur n'est trouvé avec cette adresse e-mail."
+  },
+  "wrongPassword": "Le mot de passe est incorrect.",
+  "@wrongPassword": {
+    "description": "Message d'erreur lorsque le mot de passe est incorrect."
+  },
+  "unknownError": "Une erreur inconnue s'est produite.",
+  "@unknownError": {
+    "description": "Message d'erreur générique pour une erreur inconnue."
+  }
 }

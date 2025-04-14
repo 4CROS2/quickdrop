@@ -1,6 +1,6 @@
 import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/core/constants/constants.dart';
+import 'package:quickdrop/src/features/language_page/widgets/languaje_button.dart';
 import 'package:quickdrop/src/features/settings/presentation/widgets/setting_tile.dart';
 import 'package:quickdrop/src/features/theme_mode_selector/presentation/theme_mode_selector.dart';
 
@@ -20,7 +20,6 @@ class _SettingsState extends State<Settings> {
           SliverAppBar(
             title: Text(
               'ajustes'.capitalize(),
-              style: Constants.titleStyle,
             ),
             pinned: true,
           ),
@@ -28,6 +27,7 @@ class _SettingsState extends State<Settings> {
             children: <Widget>[
               SettingTile(
                 sectionTitle: 'idioma',
+                child: LanguageButton(),
               ),
               SettingTile(
                 sectionTitle: 'tema',

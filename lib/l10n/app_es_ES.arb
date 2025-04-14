@@ -1,0 +1,20 @@
+{
+  "@@locale": "es_ES",
+  "slogan": "encuentra, compra, recibe",
+  "emailLabel": "correo",
+  "passwordLabel": "contraseña",
+  "passwordRecovery": "¿olvidaste la contraseña?",
+  "nameLabel": "nombre",
+  "lastNameLabel": "apellido",
+  "phoneLabel": "teléfono",
+  "loginButton": "iniciar sesión",
+  "signInButton": "registrarse",
+  "newUser": "¿aún no tienes cuenta?",
+  "haveAccount": "¿ya tienes una cuenta?",
+  "invalidCredential": "Las credenciales son inválidas.",
+  "invalidEmail": "El correo electrónico no es válido.",
+  "userDisabled": "El usuario ha sido deshabilitado.",
+  "userNotFound": "No se encontró ningún usuario con ese correo electrónico.",
+  "wrongPassword": "La contraseña es incorrecta.",
+  "unknownError": "Ocurrió un error desconocido."
+}

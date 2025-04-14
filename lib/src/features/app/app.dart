@@ -6,7 +6,7 @@ import 'package:quickdrop/src/core/router/app_router.dart';
 import 'package:quickdrop/src/core/theme/app_dark_theme.dart';
 import 'package:quickdrop/src/core/theme/app_light_theme.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
-import 'package:quickdrop/src/injection/injection_barrel.dart' as di;
+import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -29,7 +29,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
-      create: (BuildContext context) => di.sl<AppCubit>(),
+      create: (BuildContext context) => sl<AppCubit>(),
       child: BlocBuilder<AppCubit, AppState>(
         builder: (BuildContext context, AppState state) {
           return MediaQuery(
@@ -41,9 +41,7 @@ class _AppState extends State<App> {
               theme: AppLightTheme.instance,
               darkTheme: AppDarkTheme.instance,
               themeMode: state.themeMode,
-              locale: Locale(
-                View.of(context).platformDispatcher.locale.languageCode,
-              ),
+              locale: state.locale,
               supportedLocales: AppLocalizations.supportedLocales,
               localizationsDelegates: const <LocalizationsDelegate<Object>>[
                 AppLocalizations.delegate,

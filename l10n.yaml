@@ -4,5 +4,7 @@
  template-arb-file: app_es.arb
  output-dir: lib/src/core/localization
  output-localization-file: app_localizations.dart
- untranslated-messages-file: untranslated_messages.txt
+ untranslated-messages-file: lib/src/core/localization/untranslated_messages.txt
  output-class: AppLocalizations
+ # Habilita el soporte para metadatos adicionales
+ suppress-meta-data: false
