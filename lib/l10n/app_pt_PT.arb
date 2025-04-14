@@ -1,0 +1,20 @@
+{
+  "@@locale": "pt_PT",
+  "slogan": "encontrar, comprar, receber",
+  "emailLabel": "e-mail",
+  "passwordLabel": "senha",
+  "passwordRecovery": "esqueceu sua senha?",
+  "nameLabel": "nome",
+  "lastNameLabel": "sobrenome",
+  "phoneLabel": "telefone",
+  "loginButton": "entrar",
+  "signInButton": "inscrever-se",
+  "newUser": "não tem uma conta?",
+  "haveAccount": "já tem uma conta",
+  "invalidCredential": "Credenciais inválidas.",
+  "invalidEmail": "O endereço de e-mail é inválido.",
+  "userDisabled": "O usuário foi desativado.",
+  "userNotFound": "Nenhum usuário encontrado com este endereço de e-mail.",
+  "wrongPassword": "A senha está incorreta.",
+  "unknownError": "Ocorreu um erro desconhecido."
+}

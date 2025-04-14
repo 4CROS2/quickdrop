@@ -63,7 +63,19 @@ class AppCubit extends HydratedCubit<AppState> {
   }
 
   void chageTheme({required ThemeMode themeMode}) {
-    emit(state.copyWith(themeMode: themeMode));
+    emit(
+      state.copyWith(
+        themeMode: themeMode,
+      ),
+    );
+  }
+
+  void changeLanguaje({required Locale locale}) {
+    emit(
+      state.copyWith(
+        locale: locale,
+      ),
+    );
   }
 
   @override
@@ -75,14 +87,15 @@ class AppCubit extends HydratedCubit<AppState> {
   @override
   AppState? fromJson(Map<String, dynamic> json) {
     return AppState(
-      themeMode: ThemeMode.values[json['themeMode']],
-    );
+        themeMode: ThemeMode.values[json['themeMode']],
+        locale: Locale(json['locale']));
   }
 
   @override
   Map<String, dynamic>? toJson(AppState state) {
     return <String, dynamic>{
       'themeMode': state.themeMode.index,
+      'locale': state.locale.countryCode
     };
   }
 }

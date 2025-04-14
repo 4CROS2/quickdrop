@@ -1,15 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quickdrop/src/core/constants/constants.dart';
 
 class ImageLoader extends StatefulWidget {
   const ImageLoader({
     required String imageUrl,
+    BoxFit boxFit = BoxFit.cover,
     super.key,
-  }) : _imageUrl = imageUrl;
+  })  : _imageUrl = imageUrl,
+        _boxFit = boxFit;
 
   final String _imageUrl;
+  final BoxFit _boxFit;
 
   @override
   State<ImageLoader> createState() => _ImageLoaderState();
@@ -27,9 +28,8 @@ class _ImageLoaderState extends State<ImageLoader>
         String url,
         DownloadProgress progress,
       ) =>
-          const CupertinoActivityIndicator(
-        color: Constants.secondaryColor,
-        animating: true,
+          Center(
+        child: const CircularProgressIndicator.adaptive(),
       ),
       errorWidget: (BuildContext context, String url, Object error) => Center(
         child: SizedBox(
@@ -41,7 +41,7 @@ class _ImageLoaderState extends State<ImageLoader>
         ),
       ),
       width: double.infinity,
-      fit: BoxFit.cover,
+      fit: widget._boxFit,
     );
   }
 

@@ -23,6 +23,10 @@ class AppDarkTheme {
       brightness: Brightness.dark,
       appBarTheme: AppBarTheme(
         centerTitle: true,
+        foregroundColor: Constants.primaryColor,
+        titleTextStyle: Constants.titleStyle,
+        backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
+        surfaceTintColor: ThemeData.dark().scaffoldBackgroundColor,
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         // ignore: deprecated_member_use
