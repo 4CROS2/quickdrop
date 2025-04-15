@@ -42,7 +42,7 @@ dependencies:
       url: https://github.com/4CROS2/apptoastification.git
       ref: main
   uuid: ^4.5.1
-  pretty_qr_code: ^3.3.0
+  pretty_qr_code: ^3.4.0
   custom_rating_bar: ^3.0.0
   hugeicons: ^0.0.10
   location: ^8.0.0
