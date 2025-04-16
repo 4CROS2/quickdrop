@@ -18,59 +18,80 @@ class UserPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => context.push('/profile'),
-      child: Stack(
-        children: <Widget>[
-          Material(
-            borderRadius: Constants.mainBorderRadius,
-            elevation: 10,
-            type: MaterialType.card,
-            shadowColor: Colors.transparent,
-            child: SizedBox(
-              width: double.infinity,
-              height: 180,
-            ),
-          ),
-          Positioned(
-            bottom: _paddingPosition,
-            left: _paddingPosition,
-            right: _paddingPosition,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              spacing: Constants.mainPaddingValue,
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: Constants.mainBorderRadius / 2,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
+    return Stack(
+      children: <Widget>[
+        ClipRRect(
+          borderRadius: Constants.mainBorderRadius,
+          child: Stack(
+            children: <Widget>[
+              SizedBox(
+                height: 180,
+                child: _imageLoader(),
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 180,
+                child: BackdropFilter(
+                  filter: Constants.imageFilterBlur,
+                  child: const SizedBox.shrink(),
+                ),
+              ),
+              Positioned(
+                bottom: _paddingPosition,
+                left: _paddingPosition,
+                right: _paddingPosition,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  spacing: Constants.mainPaddingValue,
+                  children: <Widget>[
+                    ClipRRect(
                       borderRadius: Constants.mainBorderRadius / 2,
-                    ),
-                    child: SizedBox(
-                      width: 80,
-                      height: 80,
-                      child: ImageLoader(
-                        imageUrl: _user.photo,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: Constants.mainBorderRadius / 2,
+                        ),
+                        child: SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: _imageLoader(),
+                        ),
                       ),
                     ),
-                  ),
+                    Flexible(
+                      child: Text(
+                        _user.name.toTitleCase(),
+                        style: const TextStyle(
+                          fontSize: 22,
+                          height: 1,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                Flexible(
-                  child: Text(
-                    _user.name.toTitleCase(),
-                    style: TextStyle(
-                      fontSize: 22,
-                      height: 1,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                )
-              ],
+              ),
+            ],
+          ),
+        ),
+        // InkWell al frente
+        Positioned.fill(
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: Constants.mainBorderRadius,
+            child: InkWell(
+              borderRadius: Constants.mainBorderRadius,
+              onTap: () => context.push('/profile'),
             ),
-          )
-        ],
-      ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  ImageLoader _imageLoader() {
+    return ImageLoader(
+      imageUrl: _user.photo,
     );
   }
 }
