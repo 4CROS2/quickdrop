@@ -1,9 +1,9 @@
 import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:quickdrop/src/features/account/presentation/widgets/account_button.dart';
-import 'package:quickdrop/src/features/account/presentation/widgets/account_section.dart';
-import 'package:quickdrop/src/features/account/presentation/widgets/close_sesion_button.dart';
+import 'package:quickdrop/src/features/profile/presentation/widgets/account_button.dart';
+import 'package:quickdrop/src/features/profile/presentation/widgets/account_section.dart';
+import 'package:quickdrop/src/features/profile/presentation/widgets/close_sesion_button.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/auth/domain/entity/user_entity.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
@@ -32,7 +32,7 @@ class _ProfileState extends State<Profile> {
         slivers: <Widget>[
           SliverAppBar(
             title: Text(
-              'cuenta'.capitalize(),
+              'perfil'.capitalize(),
             ),
             pinned: true,
           ),

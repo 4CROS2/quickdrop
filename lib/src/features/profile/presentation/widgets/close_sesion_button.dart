@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/features/account/presentation/widgets/account_button.dart';
+import 'package:quickdrop/src/features/profile/presentation/widgets/account_button.dart';
 import 'package:quickdrop/src/features/auth/domain/usecase/auth_usecase.dart';
 import 'package:quickdrop/src/injection/injection_barrel.dart';
 

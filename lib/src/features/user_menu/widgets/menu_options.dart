@@ -35,7 +35,7 @@ class MenuOptions extends StatelessWidget {
           ),
           _OptionTile(
             icon: HugeIcons.strokeRoundedUser03,
-            routePath: '/settings/profile',
+            routePath: '/profile',
             label: 'cuenta',
           ),
           _OptionTile(

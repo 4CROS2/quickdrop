@@ -1,7 +1,7 @@
 import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quickdrop/src/core/constants/constants.dart';
-import 'package:quickdrop/src/features/account/presentation/widgets/account_button.dart';
+import 'package:quickdrop/src/features/profile/presentation/widgets/account_button.dart';
 
 class AccountSection extends StatelessWidget {
   const AccountSection({
