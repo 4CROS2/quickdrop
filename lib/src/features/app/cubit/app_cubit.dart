@@ -86,10 +86,9 @@ class AppCubit extends HydratedCubit<AppState> {
 
   @override
   AppState? fromJson(Map<String, dynamic> json) {
-    final int themeInt = json['themeMode'] as int;
     return AppState(
-      themeMode: ThemeMode.values[themeInt],
-      locale: Locale(json['locale']),
+      themeMode: ThemeMode.values[json['themeMode'] as int],
+      locale: Locale(json['locale'] as String),
     );
   }
 
@@ -97,7 +96,7 @@ class AppCubit extends HydratedCubit<AppState> {
   Map<String, dynamic>? toJson(AppState state) {
     return <String, dynamic>{
       'themeMode': state.themeMode.index,
-      'locale': state.locale.countryCode
+      'locale': state.locale.languageCode
     };
   }
 }
