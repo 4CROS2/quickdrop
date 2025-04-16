@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/router/go_router_refresh_stream.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/login.dart';
+import 'package:quickdrop/src/features/cart/presentation/cart.dart';
 import 'package:quickdrop/src/features/favorites/presentation/favorites.dart';
 import 'package:quickdrop/src/features/financial_information/presentation/financial_information.dart';
 import 'package:quickdrop/src/features/home/presentation/home.dart';
@@ -30,74 +31,98 @@ class AppRouter {
       stream: _appCubit.stream,
     ),
     redirect: (BuildContext context, GoRouterState state) {
-      final AppStatus appStatus = _appCubit.state.appStatus;
-      if (appStatus == AppStatus.authenticated &&
-          state.matchedLocation == '/') {
-        return '/home';
+      final String path = state.uri.path;
+      final AppStatus status = _appCubit.state.appStatus;
+
+      if (status == AppStatus.loading) {
+        return null;
       }
-      if (appStatus == AppStatus.authenticated &&
-          state.matchedLocation == '/login') {
-        return '/home';
-      }
-      if (appStatus == AppStatus.unauthenticated &&
-          state.matchedLocation != '/login') {
+
+      final List<String> publicRoutes = <String>['/login', '/'];
+
+      if (status == AppStatus.unauthenticated && !publicRoutes.contains(path)) {
         return '/login';
       }
-      if (appStatus == AppStatus.loading && state.matchedLocation == '/') {
-        return '/';
+
+      if (status == AppStatus.authenticated) {
+        if (path == '/' || path == '/login') {
+          return '/home';
+        }
       }
+
       return null;
     },
     routes: <RouteBase>[
       // Rutas sin NavigationBar
       GoRoute(
         path: '/',
-        builder: (BuildContext context, GoRouterState state) =>
-            const LoadingPage(),
+        builder: (_, __) => const LoadingPage(),
       ),
       GoRoute(
         path: '/login',
-        builder: (BuildContext context, GoRouterState state) => const Login(),
+        builder: (_, __) => const Login(),
       ),
 
-      //Cambiar por statefullshellroute
-      ShellRoute(
-        builder: (BuildContext context, GoRouterState state, Widget child) {
+      StatefulShellRoute.indexedStack(
+        builder: (_, GoRouterState state, Widget child) {
           return Scaffold(
             body: child,
             bottomNavigationBar: const AppNavigationBar(),
           );
         },
-        routes: <RouteBase>[
-          GoRoute(
-            path: '/home',
-            name: 'home',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<Home>(
-              child: Home(),
-            ),
+        branches: <StatefulShellBranch>[
+          StatefulShellBranch(
+            routes: <GoRoute>[
+              GoRoute(
+                path: '/home',
+                name: 'home',
+                pageBuilder: (_, __) => const NoTransitionPage<Home>(
+                  child: Home(),
+                ),
+              ),
+            ],
           ),
-          GoRoute(
-            path: '/favorites',
-            name: 'favorites',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<Favorites>(
-              child: Favorites(),
-            ),
+          StatefulShellBranch(
+            routes: <GoRoute>[
+              GoRoute(
+                path: '/favorites',
+                name: 'favorites',
+                pageBuilder: (_, __) => const NoTransitionPage<Favorites>(
+                  child: Favorites(),
+                ),
+              ),
+            ],
           ),
-          GoRoute(
-            path: '/searchpage',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<SearchPage>(
-              child: SearchPage(),
-            ),
+          StatefulShellBranch(
+            routes: <GoRoute>[
+              GoRoute(
+                path: '/searchpage',
+                pageBuilder: (_, __) => const NoTransitionPage<SearchPage>(
+                  child: SearchPage(),
+                ),
+              ),
+            ],
           ),
-          GoRoute(
-            path: '/usermenu',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<UserMenu>(
-              child: UserMenu(),
-            ),
+          StatefulShellBranch(
+            routes: <GoRoute>[
+              GoRoute(
+                path: '/usermenu',
+                pageBuilder: (_, __) => const NoTransitionPage<UserMenu>(
+                  child: UserMenu(),
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <GoRoute>[
+              GoRoute(
+                path: '/cart',
+                name: 'cart',
+                pageBuilder: (_, __) => const NoTransitionPage<Cart>(
+                  child: Cart(),
+                ),
+              ),
+            ],
           )
         ],
       ),
