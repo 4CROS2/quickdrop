@@ -22,7 +22,7 @@ class NewLocationButton extends StatelessWidget {
             padding: Constants.mainPadding,
             child: Text(
               'guardar ubicacion'.capitalize(),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w800,
               ),

@@ -71,7 +71,7 @@ class _FinancialInformationState extends State<FinancialInformation> {
                   child: Column(
                     spacing: Constants.mainPaddingValue,
                     mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
+                    children: const <Widget>[
                       Text(
                         'Obteniendo datos de compra',
                         style: TextStyle(

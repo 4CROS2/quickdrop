@@ -30,7 +30,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
           spacing: Constants.mainPaddingValue,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: const <Widget>[
             CartTile(
               cardNumber: '**** **** **** 1234',
             ),

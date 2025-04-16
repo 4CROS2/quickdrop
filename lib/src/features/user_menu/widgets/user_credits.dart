@@ -26,14 +26,15 @@ class UserCredits extends StatelessWidget {
                     children: <InlineSpan>[
                       TextSpan(
                         text: formatPrice(_credits),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Constants.secondaryColor,
                           fontFamily: 'AlbertSans',
                         ),
                       )
                     ],
                   ),
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w800),
                 ),
               ],
             ),

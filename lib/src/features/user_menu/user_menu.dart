@@ -18,7 +18,7 @@ class _UserMenuState extends State<UserMenu> {
       child: ListView(
         physics: Constants.bouncingScrollPhysics,
         padding: Constants.mainPadding,
-        children: <Widget>[
+        children: const <Widget>[
           UserPhoto(),
           UserCredits(),
           MenuOptions(),

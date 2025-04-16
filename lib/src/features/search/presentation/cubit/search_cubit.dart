@@ -10,7 +10,7 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit({required SearchUsecase usecase})
       : _usecase = usecase,
-        super(SearchInitial());
+        super(const SearchInitial());
   final SearchUsecase _usecase;
 
   Timer? _debounceTimer;
@@ -20,10 +20,10 @@ class SearchCubit extends Cubit<SearchState> {
     _debounceTimer?.cancel();
     emit(Loading());
     _debounceTimer = Timer(
-      Duration(milliseconds: 500),
+      const Duration(milliseconds: 500),
       () async {
         if (query.isEmpty) {
-          emit(SearchInitial());
+          emit(const SearchInitial());
         } else {
           try {
             final List<String> ngrams = generateNgrams(query, 3);

@@ -74,7 +74,7 @@ class _ConfirmButtonState extends State<ConfirmButton>
               spacing: Constants.mainPaddingValue / 3,
               children: <Widget>[
                 if (state.product.deliverymethod == Deliverymethod.delivery)
-                  InformationTile(
+                  const InformationTile(
                     label: 'Domicilio',
                     data: deliveryPrice,
                     fontSize: 14,
@@ -128,7 +128,7 @@ class _ConfirmButtonState extends State<ConfirmButton>
                                     ),
                                   PurchaseStatus.initial => Text(
                                       'confirmar compra'.toTitleCase(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16,

@@ -81,10 +81,10 @@ class _LoginState extends State<Login> {
         builder: (BuildContext context, LoginState state) {
           return Scaffold(
             body: DecoratedBox(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
-                  stops: const <double>[.54, 1],
+                  stops: <double>[.54, 1],
                   end: Alignment.bottomCenter,
                   colors: <Color>[
                     Constants.primaryColor,
@@ -202,7 +202,7 @@ class _LoginState extends State<Login> {
                                 AppLocalizations.of(context)!
                                     .newUser
                                     .capitalize(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'RedHat',
                                   color: Constants.primaryColor,
                                   fontSize: 16,

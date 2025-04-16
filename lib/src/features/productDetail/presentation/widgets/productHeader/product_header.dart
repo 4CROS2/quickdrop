@@ -54,7 +54,7 @@ class ProductHeader extends SliverPersistentHeaderDelegate {
                 child: ClipRRect(
                   child: BackdropFilter(
                     filter: Constants.imageFilterBlur,
-                    child: DecoratedBox(
+                    child: const DecoratedBox(
                       decoration: BoxDecoration(
                         color: Constants.secondaryColor,
                       ),

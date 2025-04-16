@@ -49,6 +49,9 @@ linter:
     # This rule enforces the use of super when overriding members.
     use_super_parameters: true
 
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+
 analyzer:
   exclude:
     - lib/src/core/localization/*.dart

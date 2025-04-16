@@ -8,7 +8,7 @@ class SetDefaultLocationCubit extends Cubit<SetDefaultLocationState> {
   SetDefaultLocationCubit({
     required SetDefaultLocationUsecase usecase,
   })  : _usecase = usecase,
-        super(SetDefaultLocationState());
+        super(const SetDefaultLocationState());
   final SetDefaultLocationUsecase _usecase;
 
   void setDefaultLocation({required String locationId}) async {

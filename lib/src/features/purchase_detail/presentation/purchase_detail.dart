@@ -61,7 +61,7 @@ class _PurchaseDetailState extends State<PurchaseDetail>
                 ),
                 SliverPadding(
                   padding: Constants.mainPadding,
-                  sliver: ProductData(),
+                  sliver: const ProductData(),
                 ),
                 if (state is Success)
                   SliverPadding(

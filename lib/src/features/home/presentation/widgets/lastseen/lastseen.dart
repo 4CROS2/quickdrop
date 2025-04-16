@@ -18,7 +18,7 @@ class LastSeen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (lastSeenProducts.isEmpty) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
     return Padding(
       padding: Constants.mainPadding,
@@ -35,7 +35,7 @@ class LastSeen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(
+              const Text(
                 'Visto anteriormente',
                 style: TextStyle(
                   fontSize: 18,
@@ -45,7 +45,7 @@ class LastSeen extends StatelessWidget {
               GridView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.only(top: Constants.mainPaddingValue / 2),
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: Constants.mainPaddingValue,
@@ -113,7 +113,7 @@ class LastSeen extends StatelessWidget {
                             ),
                             Text(
                               lastSeenProducts[index].name.capitalize(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w800,
                                   fontSize: 15,
                                   height: 1),
@@ -121,7 +121,7 @@ class LastSeen extends StatelessWidget {
                             Flexible(
                               child: Text(
                                 formatPrice(lastSeenProducts[index].basePrice),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Constants.primaryColor,
                                     fontWeight: FontWeight.w700),
                               ),

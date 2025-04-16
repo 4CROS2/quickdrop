@@ -51,7 +51,7 @@ class AuthBtn extends StatelessWidget {
                     true => const CupertinoActivityIndicator(),
                     false => Text(
                         _label.capitalize(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Constants.primaryColor,
                           fontFamily: 'RedHat',
                           fontWeight: FontWeight.bold,

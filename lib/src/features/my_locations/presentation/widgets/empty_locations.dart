@@ -11,7 +11,7 @@ class EmptyLocations extends StatelessWidget {
     return SliverFillRemaining(
       hasScrollBody: false,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 50),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Center(
           child: Material(
             borderRadius: Constants.mainBorderRadius,
@@ -27,12 +27,12 @@ class EmptyLocations extends StatelessWidget {
                   Text(
                     'aun no tienes ubicaciones registradas'.capitalize(),
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 16,
                     ),
                   ),
-                  AddLocation()
+                  const AddLocation()
                 ],
               ),
             ),

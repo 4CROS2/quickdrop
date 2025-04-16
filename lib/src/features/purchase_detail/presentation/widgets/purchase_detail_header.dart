@@ -27,7 +27,7 @@ class PurchaseDetailAppbar extends SliverPersistentHeaderDelegate {
                   sigmaX: 20 * percent,
                   sigmaY: 20 * percent,
                 ),
-                child: Material(
+                child: const Material(
                   color: Colors.transparent,
                 ),
               ),

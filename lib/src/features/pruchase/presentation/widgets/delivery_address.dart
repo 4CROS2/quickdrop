@@ -71,7 +71,7 @@ class _DeliveryAddressState extends State<DeliveryAddress>
           onChanged: (String value) {
             context
                 .read<PurchaseCubit>()
-                .setAddress(address: GeoPoint(0, 0), description: value);
+                .setAddress(address: const GeoPoint(0, 0), description: value);
           },
           cursorOpacityAnimates: true,
           decoration: InputDecoration(

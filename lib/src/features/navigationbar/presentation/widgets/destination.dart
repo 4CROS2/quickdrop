@@ -37,7 +37,7 @@ class Destination extends StatelessWidget {
     return Badge.count(
       count: 1,
       isLabelVisible: _showBadge,
-      offset: Offset(5, -5),
+      offset: const Offset(5, -5),
       child: HugeIcon(
         icon: _icon,
         color: color,

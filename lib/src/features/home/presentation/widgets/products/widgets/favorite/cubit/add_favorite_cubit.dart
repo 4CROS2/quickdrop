@@ -9,7 +9,7 @@ class AddToFavoriteCubit extends Cubit<AddFavoriteState> {
   AddToFavoriteCubit({
     required FavoritesUsecase usecase,
   })  : _usecase = usecase,
-        super(AddFavoriteState());
+        super(const AddFavoriteState());
 
   final FavoritesUsecase _usecase;
 

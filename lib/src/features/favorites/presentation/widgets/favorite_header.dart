@@ -19,7 +19,7 @@ class FavoriteHeader extends SliverPersistentHeaderDelegate {
             child: ClipRRect(
               child: BackdropFilter(
                 filter: Constants.imageFilterBlur,
-                child: DecoratedBox(
+                child: const DecoratedBox(
                   decoration: BoxDecoration(
                     color: Constants.secondaryColor,
                   ),
@@ -42,7 +42,7 @@ class FavoriteHeader extends SliverPersistentHeaderDelegate {
                   ),
                   Text('tus favoritos'.capitalize(),
                       style: Constants.titleStyle),
-                  SizedBox(
+                  const SizedBox(
                     width: 50,
                   )
                 ],

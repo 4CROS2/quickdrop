@@ -58,7 +58,7 @@ class _TextAreaState extends State<TextArea> {
         textAlign: TextAlign.start,
         decoration: InputDecoration(
           labelText: widget._label?.capitalize(),
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
           alignLabelWithHint: true,
@@ -66,7 +66,7 @@ class _TextAreaState extends State<TextArea> {
         inputFormatters: <TextInputFormatter>[
           CapitalizeAfterDotFormatter(),
         ],
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Questrial',
           fontWeight: FontWeight.w700,
         ),

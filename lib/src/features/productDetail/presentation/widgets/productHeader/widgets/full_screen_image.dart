@@ -64,7 +64,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
           child: ClipRRect(
             child: BackdropFilter(
               filter: Constants.imageFilterBlur,
-              child: DecoratedBox(
+              child: const DecoratedBox(
                 decoration: BoxDecoration(
                   color: Colors.black45,
                 ),

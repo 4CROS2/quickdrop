@@ -32,11 +32,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
             child: CustomScrollView(
               physics: Constants.bouncingScrollPhysics,
               slivers: <Widget>[
-                HomeSliverAppBar(),
+                const HomeSliverAppBar(),
                 WellcomeMessage(),
                 if (state is LoadingHomeData)
-                  SliverFillRemaining(
-                    child: const LoadingStatus(),
+                  const SliverFillRemaining(
+                    child: LoadingStatus(),
                   ),
                 if (state is ErrorGettingHomeData)
                   SliverFillRemaining(
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   SliverList(
                     delegate: SliverChildListDelegate.fixed(
                       <Widget>[
-                        PromotionsAndDiscounts(),
+                        const PromotionsAndDiscounts(),
                         SizedBox(
                           height: Constants.mainPaddingValue,
                         ),

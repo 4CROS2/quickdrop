@@ -13,7 +13,7 @@ void showCustomSnackbar(
       SnackBar(
         content: Text(
           message.capitalize(),
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w700,
           ),
         ),

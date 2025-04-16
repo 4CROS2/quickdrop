@@ -13,7 +13,7 @@ class LoadingStatus extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          CircularProgressIndicator.adaptive(),
+          const CircularProgressIndicator.adaptive(),
           Text(
             'loading...'.capitalize(),
             style: const TextStyle(

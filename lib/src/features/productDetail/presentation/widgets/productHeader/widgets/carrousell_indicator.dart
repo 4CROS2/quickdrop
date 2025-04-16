@@ -28,7 +28,7 @@ class _CarrousellIndicatorState extends State<CarrousellIndicator> {
               child: ClipRRect(
                 child: BackdropFilter(
                   filter: Constants.imageFilterBlur,
-                  child: DecoratedBox(
+                  child: const DecoratedBox(
                     decoration: BoxDecoration(
                       color: Colors.black45,
                     ),

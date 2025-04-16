@@ -32,12 +32,12 @@ class _ThemeModeSelectorState extends State<ThemeModeSelector> {
                 height: 24,
                 child: ClipRRect(
                   borderRadius: Constants.mainBorderRadius,
-                  child: VerticalDivider(
+                  child: const VerticalDivider(
                     width: 2,
                   ),
                 ),
               ),
-              children: <Widget>[
+              children: const <Widget>[
                 ThemeModeTile(
                   themeMode: ThemeMode.system,
                   icon: HugeIcons.strokeRoundedSmartPhone01,

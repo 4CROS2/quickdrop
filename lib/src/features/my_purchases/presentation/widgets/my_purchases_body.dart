@@ -23,7 +23,7 @@ class _MyPurchasesBodyState extends State<MyPurchasesBody> {
   @override
   Widget build(BuildContext context) {
     return widget._purchases.isEmpty
-        ? SliverToBoxAdapter(child: EmptyPurchases())
+        ? const SliverToBoxAdapter(child: EmptyPurchases())
         : _buildList();
   }
 

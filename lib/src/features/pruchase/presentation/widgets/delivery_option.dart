@@ -19,7 +19,7 @@ class _DeliveryOptionState extends State<DeliveryOption> {
       title: 'Método de entrega',
       child: Column(
         spacing: Constants.mainPaddingValue,
-        children: <Widget>[
+        children: const <Widget>[
           _DeliveryOption(
             index: 0,
             title: 'Envio a domicilio',
@@ -90,7 +90,7 @@ class __DeliveryOptionState extends State<_DeliveryOption> {
                 Text.rich(
                   TextSpan(
                     text: widget.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),
@@ -99,7 +99,7 @@ class __DeliveryOptionState extends State<_DeliveryOption> {
                         text: widget.index == 0
                             ? ' (${formatPrice(4000)})'
                             : ' (Gratis)',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Constants.primaryColor,
                           fontSize: 14,
                         ),
@@ -107,7 +107,7 @@ class __DeliveryOptionState extends State<_DeliveryOption> {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Icon(
                   widget.icon,
                   color: Constants.primaryColor,

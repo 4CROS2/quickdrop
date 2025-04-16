@@ -2,7 +2,7 @@ import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 class NewLocationInput extends StatelessWidget {
-  NewLocationInput({
+  const NewLocationInput({
     required this.controller,
     required this.label,
     this.validator,
@@ -15,7 +15,7 @@ class NewLocationInput extends StatelessWidget {
   final String? Function(String? value)? validator;
   final void Function(String value)? onChanged;
 
-  final TextStyle _textStyle = TextStyle(
+  final TextStyle _textStyle = const TextStyle(
     fontWeight: FontWeight.w600,
   );
 

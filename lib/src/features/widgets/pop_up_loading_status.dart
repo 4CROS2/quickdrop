@@ -11,7 +11,7 @@ class PopUpLoadingStatus extends StatelessWidget {
         borderRadius: Constants.mainBorderRadius,
         child: Padding(
           padding: Constants.mainPadding,
-          child: CircularProgressIndicator(),
+          child: const CircularProgressIndicator(),
         ),
       ),
     );

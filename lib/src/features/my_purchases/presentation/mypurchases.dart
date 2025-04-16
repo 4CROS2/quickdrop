@@ -32,7 +32,7 @@ class _MyPurchasesState extends State<MyPurchases> {
                   pinned: true,
                 ),
                 if (state is Loading)
-                  SliverFillRemaining(
+                  const SliverFillRemaining(
                     child: Center(
                       child: CircularProgressIndicator(),
                     ),

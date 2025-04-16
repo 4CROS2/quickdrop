@@ -31,7 +31,7 @@ class Tags extends StatelessWidget {
                     ),
                     child: Text(
                       '#${tag.capitalize()}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Constants.primaryColor,
                         fontWeight: FontWeight.w600,
                       ),

@@ -18,7 +18,7 @@ class FinancialInformationCubit extends Cubit<FinancialInformationState> {
       );
       emit(Success(product: response));
     } catch (e) {
-      emit(Error());
+      emit(const Error());
     }
   }
 }

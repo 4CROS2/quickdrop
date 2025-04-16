@@ -52,11 +52,12 @@ class AppRouter {
       // Rutas sin NavigationBar
       GoRoute(
         path: '/',
-        builder: (BuildContext context, GoRouterState state) => LoadingPage(),
+        builder: (BuildContext context, GoRouterState state) =>
+            const LoadingPage(),
       ),
       GoRoute(
         path: '/login',
-        builder: (BuildContext context, GoRouterState state) => Login(),
+        builder: (BuildContext context, GoRouterState state) => const Login(),
       ),
 
       //Cambiar por statefullshellroute
@@ -64,7 +65,7 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state, Widget child) {
           return Scaffold(
             body: child,
-            bottomNavigationBar: AppNavigationBar(),
+            bottomNavigationBar: const AppNavigationBar(),
           );
         },
         routes: <RouteBase>[
@@ -72,7 +73,7 @@ class AppRouter {
             path: '/home',
             name: 'home',
             pageBuilder: (BuildContext context, GoRouterState state) =>
-                NoTransitionPage<Home>(
+                const NoTransitionPage<Home>(
               child: Home(),
             ),
           ),
@@ -80,21 +81,21 @@ class AppRouter {
             path: '/favorites',
             name: 'favorites',
             pageBuilder: (BuildContext context, GoRouterState state) =>
-                NoTransitionPage<Favorites>(
+                const NoTransitionPage<Favorites>(
               child: Favorites(),
             ),
           ),
           GoRoute(
             path: '/searchpage',
             pageBuilder: (BuildContext context, GoRouterState state) =>
-                NoTransitionPage<SearchPage>(
+                const NoTransitionPage<SearchPage>(
               child: SearchPage(),
             ),
           ),
           GoRoute(
             path: '/usermenu',
             pageBuilder: (BuildContext context, GoRouterState state) =>
-                NoTransitionPage<UserMenu>(
+                const NoTransitionPage<UserMenu>(
               child: UserMenu(),
             ),
           )
@@ -122,14 +123,15 @@ class AppRouter {
             path: 'purchase',
             name: 'purchase',
             builder: (BuildContext context, GoRouterState state) {
-              return Purchase();
+              return const Purchase();
             },
           ),
         ],
       ),
       GoRoute(
         path: '/mypurchases',
-        builder: (BuildContext context, GoRouterState state) => MyPurchases(),
+        builder: (BuildContext context, GoRouterState state) =>
+            const MyPurchases(),
       ),
       GoRoute(
         path: '/fullScrenImage',
@@ -157,18 +159,20 @@ class AppRouter {
       ),
       GoRoute(
         path: '/mylocations',
-        builder: (BuildContext context, GoRouterState state) => MyLocations(),
+        builder: (BuildContext context, GoRouterState state) =>
+            const MyLocations(),
       ),
       GoRoute(
         path: '/settings',
         name: 'settings',
-        builder: (BuildContext context, GoRouterState state) => Settings(),
+        builder: (BuildContext context, GoRouterState state) =>
+            const Settings(),
         routes: <RouteBase>[
           GoRoute(
             path: 'languages',
             name: 'language page',
             builder: (BuildContext context, GoRouterState state) {
-              return LanguagePage();
+              return const LanguagePage();
             },
           ),
         ],
@@ -176,7 +180,7 @@ class AppRouter {
       GoRoute(
         path: '/profile',
         name: 'user account',
-        builder: (BuildContext context, GoRouterState state) => Profile(),
+        builder: (BuildContext context, GoRouterState state) => const Profile(),
       )
     ],
   );

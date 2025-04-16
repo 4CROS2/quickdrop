@@ -22,15 +22,15 @@ class EmptyPurchases extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Icon(
+                const Icon(
                   Icons.shopping_cart_outlined,
                   size: 60,
-                  color: const Color.fromARGB(155, 0, 204, 255),
+                  color: Color.fromARGB(155, 0, 204, 255),
                 ),
                 Text(
                   'wow, aún no has realizado ninguna compra'.capitalize(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),

@@ -69,7 +69,7 @@ class Constants {
   static PageTransitionsTheme pageTransition = PageTransitionsTheme(
     builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
       TargetPlatform.values,
-      value: (_) => FadeForwardsPageTransitionsBuilder(),
+      value: (_) => const FadeForwardsPageTransitionsBuilder(),
     ),
   );
 }

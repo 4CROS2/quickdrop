@@ -29,7 +29,7 @@ class CloseSesion extends StatelessWidget implements AccountButton {
             ),
             Text(
               label.capitalize(),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.redAccent,
                 fontWeight: FontWeight.w700,
               ),

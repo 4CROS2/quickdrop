@@ -37,17 +37,17 @@ class _MyLocationsState extends State<MyLocations> {
                   centerTitle: true,
                   leading: InkWell(
                     onTap: () => context.pop(),
-                    child: Icon(Icons.arrow_back_ios_new_rounded),
+                    child: const Icon(Icons.arrow_back_ios_new_rounded),
                   ),
                   title: Text(
                     'ubicaciones'.capitalize(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
                 ),
                 if (state is Loading)
-                  SliverFillRemaining(
+                  const SliverFillRemaining(
                     fillOverscroll: true,
                     hasScrollBody: false,
                     child: Center(
@@ -81,7 +81,7 @@ class _LocationsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (locations.isEmpty) {
-      return EmptyLocations();
+      return const EmptyLocations();
     }
 
     return SliverPadding(
@@ -91,7 +91,7 @@ class _LocationsBody extends StatelessWidget {
           <Widget>[
             Padding(
               padding: Constants.mainPaddingSymetricVertical,
-              child: Text(
+              child: const Text(
                 'Selecciona la ubicacion de entrega de tus pedidos',
                 style: TextStyle(
                   fontSize: 16,
@@ -107,7 +107,7 @@ class _LocationsBody extends StatelessWidget {
             ),
             Padding(
               padding: Constants.paddingTop,
-              child: AddLocation(),
+              child: const AddLocation(),
             )
           ],
         ),
