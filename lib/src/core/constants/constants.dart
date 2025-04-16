@@ -62,7 +62,10 @@ class Constants {
     vertical: mainPaddingValue,
   );
   static TextStyle titleStyle = const TextStyle(
-      fontWeight: FontWeight.w700, fontSize: 16, fontFamily: 'Questrial');
+    fontWeight: FontWeight.w700,
+    fontSize: 16,
+    fontFamily: 'Questrial',
+  );
   static PageTransitionsTheme pageTransition = PageTransitionsTheme(
     builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
       TargetPlatform.values,

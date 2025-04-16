@@ -45,12 +45,22 @@
 		<true />
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true />
+		<!-- Permisos de ubicación existentes -->
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>La aplicación necesita acceder a tu ubicación mientras está en uso para proporcionar
 			funcionalidades personalizadas.</string>
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>La aplicación necesita acceder a tu ubicación en todo momento para ofrecer un
 			seguimiento continuo.</string>
-
+		<!-- Permiso adicional para ubicación -->
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>La aplicación necesita acceder a tu ubicación en todo momento o mientras está en uso
+			para ofrecer un seguimiento continuo y funcionalidades personalizadas.</string>
+		<!-- Permiso para notificaciones push (si usas FCM u otra solución) -->
+		<key>UIBackgroundModes</key>
+		<array>
+			<string>remote-notification</string>
+			<string>location</string>
+		</array>
 	</dict>
 </plist>

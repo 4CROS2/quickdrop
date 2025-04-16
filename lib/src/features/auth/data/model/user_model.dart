@@ -9,6 +9,7 @@ class UserModel extends UserEntity {
     required super.lastname,
     required super.photo,
     required super.credits,
+    required super.isVerified,
   });
 
   static UserModel fromJson({required Map<String, dynamic> json}) {
@@ -20,6 +21,7 @@ class UserModel extends UserEntity {
       name: json['name'] ?? '',
       photo: json['photoUrl'] ?? '',
       credits: json['credits'] ?? 0,
+      isVerified: json['isVerified'] ?? false,
     );
   }
 }

@@ -17,11 +17,11 @@
     <!-- Permiso para usar la vibración -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    
 
     <application
         android:label="Quickdrop"
         android:name="${applicationName}"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

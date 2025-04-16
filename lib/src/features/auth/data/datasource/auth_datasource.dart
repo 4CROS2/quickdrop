@@ -21,11 +21,19 @@ class FirebaseLoginDatasource {
         );
       }
 
-      return _firestore
+      Stream<Map<String, dynamic>> data = _firestore
           .collection('users')
           .doc(user.uid)
           .snapshots()
-          .toMapJsonStream();
+          .toMapJsonStream()
+          .map((Map<String, dynamic> firestoreData) {
+        return <String, dynamic>{
+          ...firestoreData,
+          'isVerified': user.emailVerified,
+        };
+      });
+
+      return data;
     });
   }
 
