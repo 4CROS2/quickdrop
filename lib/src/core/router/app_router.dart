@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/router/go_router_refresh_stream.dart';
-import 'package:quickdrop/src/features/profile/presentation/profile.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/login.dart';
 import 'package:quickdrop/src/features/favorites/presentation/favorites.dart';
@@ -14,6 +13,7 @@ import 'package:quickdrop/src/features/my_purchases/presentation/mypurchases.dar
 import 'package:quickdrop/src/features/navigationbar/presentation/app_navigation_bar.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/product.dart';
 import 'package:quickdrop/src/features/productDetail/presentation/widgets/productHeader/widgets/full_screen_image.dart';
+import 'package:quickdrop/src/features/profile/presentation/profile.dart';
 import 'package:quickdrop/src/features/pruchase/presentation/purchase.dart';
 import 'package:quickdrop/src/features/purchase_detail/presentation/purchase_detail.dart';
 import 'package:quickdrop/src/features/search/presentation/search.dart';
@@ -71,21 +71,32 @@ class AppRouter {
           GoRoute(
             path: '/home',
             name: 'home',
-            builder: (BuildContext context, GoRouterState state) => Home(),
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                NoTransitionPage<Home>(
+              child: Home(),
+            ),
           ),
           GoRoute(
             path: '/favorites',
             name: 'favorites',
-            builder: (BuildContext context, GoRouterState state) => Favorites(),
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                NoTransitionPage<Favorites>(
+              child: Favorites(),
+            ),
           ),
           GoRoute(
             path: '/searchpage',
-            builder: (BuildContext context, GoRouterState state) =>
-                SearchPage(),
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                NoTransitionPage<SearchPage>(
+              child: SearchPage(),
+            ),
           ),
           GoRoute(
             path: '/usermenu',
-            builder: (BuildContext context, GoRouterState state) => UserMenu(),
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                NoTransitionPage<UserMenu>(
+              child: UserMenu(),
+            ),
           )
         ],
       ),
