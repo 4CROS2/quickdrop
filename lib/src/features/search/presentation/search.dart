@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
                 pinned: true,
               ),
               if (state is Loading)
-                SliverFillRemaining(
+                const SliverFillRemaining(
                   child: Center(
                     child: CircularProgressIndicator(),
                   ),
@@ -116,7 +116,7 @@ class _SearchStringResultsState extends State<SearchStringResults> {
                             ? 'no se encontraron coincidencias'
                             : 'no tienes historial de busqueda')
                         .capitalize(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 16,
                       color: Constants.secondaryColor,
@@ -149,7 +149,7 @@ class _SearchStringResultsState extends State<SearchStringResults> {
                 child: Row(
                   spacing: Constants.mainPaddingValue,
                   children: <Widget>[
-                    Icon(Icons.search_rounded),
+                    const Icon(Icons.search_rounded),
                     Text.rich(
                       TextSpan(
                         children: highlightOccurrences(

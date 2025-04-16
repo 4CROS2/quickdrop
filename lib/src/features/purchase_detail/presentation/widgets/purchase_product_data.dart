@@ -19,7 +19,7 @@ class ProductData extends StatelessWidget {
           padding: Constants.mainPadding / 4,
           child: Row(
             spacing: Constants.mainPaddingValue,
-            children: <Widget>[
+            children: const <Widget>[
               SizedBox(
                 width: 60,
                 height: 60,

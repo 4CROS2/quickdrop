@@ -35,7 +35,7 @@ class AccountSection extends StatelessWidget {
                 ),
                 Text(
                   titleSection.capitalize(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Constants.primaryColor,

@@ -32,15 +32,15 @@ class _LanguageButtonState extends State<LanguageButton> {
             Text(
               'cambiar idioma'.capitalize(),
             ),
-            Spacer(),
+            const Spacer(),
             Text(
               '( ${_appCubit.state.locale.languageCode} )',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.grey,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios_rounded,
               size: 16,
             )

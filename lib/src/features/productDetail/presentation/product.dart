@@ -54,7 +54,7 @@ class _ProductDetailState extends State<ProductDetail> {
               child: CustomScrollView(
                 controller: _scrollController,
                 physics: state is LoadingProduct
-                    ? NeverScrollableScrollPhysics()
+                    ? const NeverScrollableScrollPhysics()
                     : Constants.bouncingScrollPhysics,
                 shrinkWrap: true,
                 slivers: <Widget>[
@@ -75,7 +75,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         ErrorLoadingProduct _ => Center(
                             child: Text(state.message),
                           ),
-                        _ => LoadingProductShimmer()
+                        _ => const LoadingProductShimmer()
                       },
                     ),
                   ),

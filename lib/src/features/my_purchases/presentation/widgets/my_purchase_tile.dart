@@ -96,7 +96,7 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
                 children: <Widget>[
                   Text(
                     widget._purchase.productName.toTitleCase(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -117,7 +117,7 @@ class _MyPurchasetileState extends State<MyPurchasetile> {
                                 widget._purchase.statusTimeline.last.timestamp
                                     .toDate(),
                               )}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.grey,
                               ),
                             ),

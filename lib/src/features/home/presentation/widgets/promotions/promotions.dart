@@ -42,7 +42,7 @@ class _PromotionsAndDiscountsState extends State<PromotionsAndDiscounts> {
         shape: RoundedRectangleBorder(
           borderRadius: Constants.mainBorderRadius,
         ),
-        flexWeights: <int>[1, 10, 1],
+        flexWeights: const <int>[1, 10, 1],
         children: ImageInfo.values.map((ImageInfo image) {
           return HeroLayoutCard(imageInfo: image);
         }).toList(),

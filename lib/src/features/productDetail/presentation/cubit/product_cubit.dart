@@ -23,7 +23,7 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
     required String productId,
   }) async {
     await Future<void>.delayed(
-      Duration(
+      const Duration(
         milliseconds: 300,
       ),
     );
@@ -70,7 +70,7 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   Future<void> _addToLastSeen({required String productId}) async {
     try {
       await Future<void>.delayed(
-        Duration(
+        const Duration(
           seconds: 3,
         ),
       );

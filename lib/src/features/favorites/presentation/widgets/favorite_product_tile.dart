@@ -27,8 +27,8 @@ class FavoriteProductTile extends StatelessWidget {
         background: Container(
           color: Colors.red, // Color de fondo al deslizar
           alignment: Alignment.centerRight,
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Icon(Icons.delete, color: Colors.white),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: const Icon(Icons.delete, color: Colors.white),
         ),
         child: Material(
           color: Colors.transparent,
@@ -78,14 +78,14 @@ class FavoriteProductTile extends StatelessWidget {
                                   _favorite.name.capitalize(),
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),
                               ),
                               Text(
                                 formatPrice(_favorite.basePrice),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 18,
                                     color: Constants.primaryColor,
                                     fontWeight: FontWeight.w900),

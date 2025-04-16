@@ -69,13 +69,13 @@ class ProductInformation extends StatelessWidget {
     return Text.rich(
       TextSpan(
         text: '$label: '.capitalize(),
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
         ),
         children: <InlineSpan>[
           TextSpan(
             text: data.toTitleCase(),
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w100,
             ),
           ),

@@ -14,7 +14,7 @@ class HomeSliverAppBar extends StatelessWidget {
       snap: true,
       elevation: 0,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      actions: <Widget>[
+      actions: const <Widget>[
         SafeArea(
           child: HeaderButton(
             icon: HugeIcons.strokeRoundedNotification01,

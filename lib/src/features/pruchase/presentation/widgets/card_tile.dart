@@ -23,7 +23,7 @@ class CartTile extends StatelessWidget {
               groupValue: true,
               onChanged: (bool? value) {},
             ),
-            SizedBox(
+            const SizedBox(
               width: 40,
               height: 40,
               child: ImageLoader(
@@ -36,7 +36,7 @@ class CartTile extends StatelessWidget {
                 padding: Constants.mainPadding,
                 child: Text(
                   _cardNumber,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),

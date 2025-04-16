@@ -10,7 +10,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   FavoritesCubit({
     required FavoritesUsecase usecase,
   })  : _usecase = usecase,
-        super(FavoritesState());
+        super(const FavoritesState());
   final FavoritesUsecase _usecase;
   Future<void> getUserFavorites() async {
     try {

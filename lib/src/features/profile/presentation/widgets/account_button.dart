@@ -34,13 +34,13 @@ class AccountButton extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     text: '$label \n'.capitalize(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                     ),
                     children: <InlineSpan>[
                       TextSpan(
                         text: information,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.blueGrey,
                         ),
                       ),
@@ -49,7 +49,7 @@ class AccountButton extends StatelessWidget {
                 ),
               ],
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios_rounded,
               size: 14,
             )

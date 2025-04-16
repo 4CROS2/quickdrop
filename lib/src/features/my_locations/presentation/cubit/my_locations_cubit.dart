@@ -11,7 +11,7 @@ class MyLocationsCubit extends Cubit<MyLocationsState> {
   MyLocationsCubit({
     required MyLocationsUsecase usecase,
   })  : _usecase = usecase,
-        super(MyLocationsState()) {
+        super(const MyLocationsState()) {
     getLocations();
   }
 

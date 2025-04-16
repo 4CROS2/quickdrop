@@ -24,7 +24,7 @@ class _SettingsState extends State<Settings> {
             pinned: true,
           ),
           SliverList.list(
-            children: <Widget>[
+            children: const <Widget>[
               SettingTile(
                 sectionTitle: 'idioma',
                 child: LanguageButton(),

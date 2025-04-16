@@ -47,7 +47,7 @@ class _PurchaseState extends State<Purchase> {
         },
         builder: (BuildContext context, PurchaseState state) {
           return Scaffold(
-            appBar: PruchaseAppBar(),
+            appBar: const PruchaseAppBar(),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -59,13 +59,13 @@ class _PurchaseState extends State<Purchase> {
                       ProductInformation(
                         product: state.product,
                       ),
-                      PaymentMethod(),
-                      DeliveryOption(),
-                      DeliveryAddress(),
+                      const PaymentMethod(),
+                      const DeliveryOption(),
+                      const DeliveryAddress(),
                     ],
                   ),
                 ),
-                ConfirmButton()
+                const ConfirmButton()
               ],
             ),
           );

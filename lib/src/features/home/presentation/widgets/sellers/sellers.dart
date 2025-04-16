@@ -66,7 +66,7 @@ class _SellersListState extends State<SellersList> {
                         widget.sellers[index].name,
                         maxLines: 2,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           height: .9,
                           fontWeight: FontWeight.w800,
                           fontSize: 16,

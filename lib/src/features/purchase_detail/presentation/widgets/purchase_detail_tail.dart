@@ -25,7 +25,7 @@ class PurchaseStatusTile extends StatelessWidget {
         children: <Widget>[
           Text(
             state.status.name,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Constants.primaryColor,
@@ -33,7 +33,7 @@ class PurchaseStatusTile extends StatelessWidget {
           ),
           Text(
             'Updated: ${DateFormat('dd/MM/yyyy HH:mm').format(state.timestamp.toDate())}',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12,
               color: Colors.grey,
             ),

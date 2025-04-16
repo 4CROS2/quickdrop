@@ -11,7 +11,7 @@ class CurrentLocationButtonCubit extends Cubit<CurrentLocationButtonState> {
   CurrentLocationButtonCubit({
     required CurrentLocationUsecase usecase,
   })  : _usecase = usecase,
-        super(CurrentLocationButtonState()) {
+        super(const CurrentLocationButtonState()) {
     _getCurrentDefaultLocation();
   }
   final CurrentLocationUsecase _usecase;

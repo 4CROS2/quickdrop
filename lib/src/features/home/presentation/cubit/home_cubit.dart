@@ -9,7 +9,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit({
     required HomeDataUsecase usecase,
   })  : _usecase = usecase,
-        super(HomeState());
+        super(const HomeState());
 
   final HomeDataUsecase _usecase;
 

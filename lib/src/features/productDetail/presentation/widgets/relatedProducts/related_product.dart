@@ -24,7 +24,7 @@ class RelatedProducts extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text(
+          const Text(
             'Productos relacionados',
             style: TextStyle(
               fontSize: 16,
@@ -81,7 +81,7 @@ class RelatedProducts extends StatelessWidget {
                                   _relatedProduct[index].name.capitalize(),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w800,
                                     height: .9,
@@ -94,7 +94,7 @@ class RelatedProducts extends StatelessWidget {
                                 formatPrice(
                                   _relatedProduct[index].basePrice,
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                   color: Constants.primaryColor,
                                   fontWeight: FontWeight.w900,

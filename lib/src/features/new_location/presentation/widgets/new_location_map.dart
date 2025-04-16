@@ -59,8 +59,8 @@ class _NewLocationMapState extends State<NewLocationMap>
               child: FlutterMap(
                 options: MapOptions(
                   initialZoom: 15,
-                  initialCenter: LatLng(4.277866, -73.520570),
-                  interactionOptions: InteractionOptions(
+                  initialCenter: const LatLng(4.277866, -73.520570),
+                  interactionOptions: const InteractionOptions(
                     flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
                   ),
                   onTap: widget.onTap,

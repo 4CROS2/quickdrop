@@ -30,13 +30,13 @@ class PruchaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                       flex: 5,
                       child: Text(
                         'Facturación'.capitalize(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    Spacer(
+                    const Spacer(
                       flex: 1,
                     )
                   ],

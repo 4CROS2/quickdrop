@@ -28,10 +28,11 @@ class _ImageLoaderState extends State<ImageLoader>
         String url,
         DownloadProgress progress,
       ) =>
-          Center(
-        child: const CircularProgressIndicator.adaptive(),
+          const Center(
+        child: CircularProgressIndicator.adaptive(),
       ),
-      errorWidget: (BuildContext context, String url, Object error) => Center(
+      errorWidget: (BuildContext context, String url, Object error) =>
+          const Center(
         child: SizedBox(
           width: 50,
           height: 50,

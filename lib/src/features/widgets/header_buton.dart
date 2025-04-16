@@ -67,7 +67,7 @@ class HeaderButton extends StatelessWidget {
               padding: Constants.buttonPadding,
               child: Badge(
                 backgroundColor: Colors.black,
-                label: Text(
+                label: const Text(
                   '1',
                   style: TextStyle(
                     fontSize: 9,

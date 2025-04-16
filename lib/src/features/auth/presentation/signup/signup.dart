@@ -54,10 +54,10 @@ class _SignUpState extends State<SignUp> {
       create: (BuildContext context) => sl<SignupCubit>(),
       child: Scaffold(
         body: DecoratedBox(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
-              stops: const <double>[.54, 1],
+              stops: <double>[.54, 1],
               end: Alignment.bottomCenter,
               colors: <Color>[
                 Constants.primaryColor,
@@ -207,7 +207,7 @@ class _SignUpState extends State<SignUp> {
                                   AppLocalizations.of(context)!
                                       .haveAccount
                                       .capitalize(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontFamily: 'RedHat',
                                     color: Constants.primaryColor,
                                     fontSize: 16,

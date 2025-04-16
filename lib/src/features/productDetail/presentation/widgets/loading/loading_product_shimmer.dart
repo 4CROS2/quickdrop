@@ -26,18 +26,18 @@ class _LoadingProductShimmerState extends State<LoadingProductShimmer> {
                 Flexible(
                   child: Material(
                     borderRadius: Constants.mainBorderRadius,
-                    child: SizedBox(
+                    child: const SizedBox(
                       width: double.infinity,
                       height: 50,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Material(
                   borderRadius: Constants.mainBorderRadius,
-                  child: SizedBox(
+                  child: const SizedBox(
                     width: 110,
                     height: 50,
                   ),
@@ -48,7 +48,7 @@ class _LoadingProductShimmerState extends State<LoadingProductShimmer> {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Material(
                 borderRadius: Constants.mainBorderRadius,
-                child: SizedBox(
+                child: const SizedBox(
                   width: double.infinity,
                   height: 120,
                 ),
@@ -60,7 +60,7 @@ class _LoadingProductShimmerState extends State<LoadingProductShimmer> {
               children: <Widget>[
                 Material(
                   borderRadius: Constants.mainBorderRadius,
-                  child: SizedBox(
+                  child: const SizedBox(
                     width: 110,
                     height: 90,
                   ),
@@ -71,7 +71,7 @@ class _LoadingProductShimmerState extends State<LoadingProductShimmer> {
                 Flexible(
                   child: Material(
                     borderRadius: Constants.mainBorderRadius,
-                    child: SizedBox(
+                    child: const SizedBox(
                       width: double.infinity,
                       height: 90,
                     ),
@@ -96,7 +96,7 @@ class _LoadingProductShimmerState extends State<LoadingProductShimmer> {
                       ),
                       child: Material(
                         borderRadius: Constants.mainBorderRadius,
-                        child: SizedBox(
+                        child: const SizedBox(
                           width: 90,
                           height: 90,
                         ),
@@ -110,7 +110,7 @@ class _LoadingProductShimmerState extends State<LoadingProductShimmer> {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Material(
                 borderRadius: Constants.mainBorderRadius,
-                child: SizedBox(
+                child: const SizedBox(
                   width: double.infinity,
                   height: 120,
                 ),

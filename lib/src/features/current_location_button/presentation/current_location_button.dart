@@ -38,7 +38,7 @@ class _CurrentLocationButtonState extends State<CurrentLocationButton> {
                       spacing: Constants.mainPaddingValue / 2,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Icon(
+                        const Icon(
                           HugeIcons.strokeRoundedLocation05,
                         ),
                         Flexible(
@@ -48,18 +48,18 @@ class _CurrentLocationButtonState extends State<CurrentLocationButton> {
                                     : '${state.locationEntity.address}(${state.locationEntity.name.trim()})')
                                 .toTitleCase(),
                             maxLines: 1,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
                       ],
                     ),
-                  Loading _ => Center(
+                  Loading _ => const Center(
                       child: CircularProgressIndicator(),
                     ),
                   Error _ => Text(state.message),
-                  _ => SizedBox.shrink()
+                  _ => const SizedBox.shrink()
                 },
               ),
             ),

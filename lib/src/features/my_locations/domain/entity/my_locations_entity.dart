@@ -59,7 +59,7 @@ class MyLocationsEntity extends Equatable {
     address: '',
     name: '',
     description: '',
-    position: LatLng(0, 0),
+    position: const LatLng(0, 0),
     distric: '',
     mapImage: Uint8List.fromList(<int>[]),
     isDefault: false,

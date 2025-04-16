@@ -41,12 +41,12 @@ class SearchHeader extends SliverPersistentHeaderDelegate {
                             context.read<SearchCubit>().search(
                                   query: value,
                                 ),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Constants.primaryColor,
                         ),
                         decoration: InputDecoration(
                           hintText: 'Buscar productos',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Constants.primaryColor,
                           ),
                           prefixIcon: const Icon(Icons.search_rounded),
@@ -54,7 +54,7 @@ class SearchHeader extends SliverPersistentHeaderDelegate {
                           border: OutlineInputBorder(
                             borderRadius: Constants.mainBorderRadius,
                             gapPadding: Constants.mainPaddingValue * 2,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               width: 0,
                               style: BorderStyle.none,
                             ),

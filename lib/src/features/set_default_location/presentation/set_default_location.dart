@@ -36,7 +36,7 @@ class _SetDefaultLocationState extends State<SetDefaultLocation> {
             child: switch (state) {
               Loading _ => Padding(
                   padding: Constants.mainPadding / 2,
-                  child: SizedBox(
+                  child: const SizedBox(
                     width: 30,
                     height: 30,
                     child: CircularProgressIndicator.adaptive(),

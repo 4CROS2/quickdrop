@@ -45,7 +45,7 @@ class _FavoritesState extends State<Favorites> {
                 SliverToBoxAdapter(
                   child: SwitchTransition(
                     child: switch (state.favoriteStatus) {
-                      FavoriteStatus.loading => LoadingStatus(),
+                      FavoriteStatus.loading => const LoadingStatus(),
                       FavoriteStatus.error => Center(
                           child: Text(state.message),
                         ),
@@ -57,7 +57,7 @@ class _FavoritesState extends State<Favorites> {
                                 .deleteFavoriteProduct(productId: productId);
                           },
                         ),
-                      FavoriteStatus.waiting => SizedBox.shrink(),
+                      FavoriteStatus.waiting => const SizedBox.shrink(),
                     },
                   ),
                 ),

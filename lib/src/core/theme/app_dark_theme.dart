@@ -28,7 +28,7 @@ class AppDarkTheme {
         backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
         surfaceTintColor: ThemeData.dark().scaffoldBackgroundColor,
       ),
-      progressIndicatorTheme: ProgressIndicatorThemeData(
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
         // ignore: deprecated_member_use
         year2023: false,
         color: Constants.primaryColor,

@@ -11,7 +11,7 @@ class MenuOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: Constants.paddingTop,
-      child: Column(
+      child: const Column(
         children: <_OptionTile>[
           _OptionTile(
             icon: HugeIcons.strokeRoundedNotification03,
@@ -72,7 +72,7 @@ class _OptionTile extends StatelessWidget {
             Icon(icon),
             Text(
               label.capitalize(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),

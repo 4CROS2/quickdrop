@@ -37,7 +37,7 @@ class AddLocation extends StatelessWidget {
               duration: Constants.animationTransition,
             ),
             builder: (BuildContext context) {
-              return NewLocation();
+              return const NewLocation();
             },
           );
         },
@@ -47,7 +47,7 @@ class AddLocation extends StatelessWidget {
             spacing: 16,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(
+              const Icon(
                 HugeIcons.strokeRoundedLocationAdd02,
               ),
               Text(

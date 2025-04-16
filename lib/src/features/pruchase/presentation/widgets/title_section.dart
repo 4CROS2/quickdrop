@@ -12,7 +12,7 @@ class TitleSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _label.capitalize(),
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w700,
       ),

@@ -33,14 +33,14 @@ class _ProductsState extends State<Products> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: Constants.mainPaddingValue,
                 children: <Widget>[
-                  Icon(
+                  const Icon(
                     Icons.inbox,
                     color: Constants.secondaryColor,
                     size: 60,
                   ),
                   Text(
                     'no hay productos disponibles'.capitalize(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

@@ -65,7 +65,7 @@ class _NewLocationState extends State<NewLocation>
         ..add(
           Marker(
             point: position,
-            child: Icon(
+            child: const Icon(
               Icons.location_on_rounded,
               color: Colors.red,
               size: 25,
@@ -144,7 +144,7 @@ class _NewLocationState extends State<NewLocation>
             showCupertinoModalPopup(
               context: context,
               barrierDismissible: false,
-              builder: (BuildContext context) => PopUpLoadingStatus(),
+              builder: (BuildContext context) => const PopUpLoadingStatus(),
             );
           }
           if (state is ErrorSaving) {
@@ -212,7 +212,7 @@ class _NewLocationState extends State<NewLocation>
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       )
                     ],

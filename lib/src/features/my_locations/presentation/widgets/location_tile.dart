@@ -64,7 +64,7 @@ class _LocationTileState extends State<LocationTile>
         decoration: BoxDecoration(
           color: Colors.grey.shade300,
           borderRadius: Constants.mainBorderRadius,
-          boxShadow: <BoxShadow>[
+          boxShadow: const <BoxShadow>[
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.1),
               offset: Offset(0, 10),
@@ -140,13 +140,13 @@ class _LocationTileState extends State<LocationTile>
       child: Text.rich(
         TextSpan(
           text: '$label: '.capitalize(),
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
           children: <InlineSpan>[
             TextSpan(
               text: data.capitalize(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w300,
               ),
             ),

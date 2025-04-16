@@ -20,7 +20,7 @@ class AppLightTheme {
       pageTransitionsTheme: Constants.pageTransition,
       colorSchemeSeed: Constants.primaryColor,
       fontFamily: 'Questrial',
-      progressIndicatorTheme: ProgressIndicatorThemeData(
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
         // ignore: deprecated_member_use
         year2023: false,
         color: Constants.primaryColor,
@@ -64,7 +64,7 @@ class AppLightTheme {
         border: OutlineInputBorder(
           borderRadius: Constants.mainBorderRadius,
           gapPadding: Constants.mainPaddingValue * 2,
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             width: 0,
             style: BorderStyle.none,
           ),
