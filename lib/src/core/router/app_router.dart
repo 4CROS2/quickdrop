@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/router/go_router_refresh_stream.dart';
+import 'package:quickdrop/src/features/account/presentation/account.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/login.dart';
 import 'package:quickdrop/src/features/favorites/presentation/favorites.dart';
@@ -149,16 +150,23 @@ class AppRouter {
       ),
       GoRoute(
         path: '/settings',
+        name: 'settings',
         builder: (BuildContext context, GoRouterState state) => Settings(),
         routes: <RouteBase>[
           GoRoute(
             path: 'languages',
+            name: 'language page',
             builder: (BuildContext context, GoRouterState state) {
               return LanguagePage();
             },
-          )
+          ),
         ],
       ),
+      GoRoute(
+        path: '/profile',
+        name: 'user account',
+        builder: (BuildContext context, GoRouterState state) => Profile(),
+      )
     ],
   );
 }

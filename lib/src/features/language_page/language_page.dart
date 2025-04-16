@@ -91,7 +91,7 @@ class _LanguagePageState extends State<LanguagePage> {
                                 fontSize: 22,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

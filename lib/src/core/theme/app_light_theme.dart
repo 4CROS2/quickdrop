@@ -34,7 +34,8 @@ class AppLightTheme {
         titleTextStyle: Constants.titleStyle.copyWith(
           color: Constants.primaryColor,
         ),
-        color: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: ThemeData.light().scaffoldBackgroundColor,
+        surfaceTintColor: ThemeData.light().scaffoldBackgroundColor,
       ),
       navigationBarTheme: NavigationBarThemeData(
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(

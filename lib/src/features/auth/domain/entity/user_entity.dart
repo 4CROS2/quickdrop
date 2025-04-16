@@ -7,6 +7,7 @@ class UserEntity {
     required this.lastname,
     required this.photo,
     required this.credits,
+    required this.isVerified,
   });
   final String id;
   final String email;
@@ -15,6 +16,7 @@ class UserEntity {
   final String lastname;
   final String photo;
   final int credits;
+  final bool isVerified;
 
   static const UserEntity empty = UserEntity(
     id: '',
@@ -24,5 +26,6 @@ class UserEntity {
     lastname: '',
     photo: '',
     credits: 0,
+    isVerified: false,
   );
 }

@@ -19,7 +19,7 @@ class UserPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push('/account'),
+      onTap: () => context.push('/profile'),
       child: Stack(
         children: <Widget>[
           Material(
