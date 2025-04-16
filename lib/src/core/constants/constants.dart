@@ -47,8 +47,8 @@ class Constants {
   );
 
   static ImageFilter imageFilterBlur = ImageFilter.blur(
-    sigmaX: 20,
-    sigmaY: 20,
+    sigmaX: 5,
+    sigmaY: 5,
   );
 
   static BorderRadius insetBorderRadius =

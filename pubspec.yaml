@@ -2,7 +2,7 @@ name: quickdrop
 description: "Thesis project"
 
 publish_to: "none"
-version: "1.13.1"
+version: "1.13.2"
 repository: https://github.com/4CROS2/quickdrop.git
 
 
@@ -52,6 +52,7 @@ dependencies:
   image: ^4.5.4
   flutter_image_compress: ^2.4.0
   path_provider: ^2.1.5
+  blur: ^4.0.2
 
 dev_dependencies:
   flutter_test:
