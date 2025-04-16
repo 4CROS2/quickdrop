@@ -26,24 +26,26 @@ class _LanguageButtonState extends State<LanguageButton> {
       onTap: () {
         context.push('/settings/languages');
       },
-      child: Row(
-        children: <Widget>[
-          Text(
-            'cambiar idioma'.capitalize(),
-          ),
-          Spacer(),
-          Text(
-            '( ${_appCubit.state.locale.languageCode} )',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: Colors.grey,
+      child: Material(
+        child: Row(
+          children: <Widget>[
+            Text(
+              'cambiar idioma'.capitalize(),
             ),
-          ),
-          Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 16,
-          )
-        ],
+            Spacer(),
+            Text(
+              '( ${_appCubit.state.locale.languageCode} )',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.grey,
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 16,
+            )
+          ],
+        ),
       ),
     );
   }
