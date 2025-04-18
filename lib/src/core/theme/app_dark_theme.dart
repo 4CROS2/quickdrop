@@ -28,6 +28,17 @@ class AppDarkTheme {
         backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
         surfaceTintColor: ThemeData.dark().scaffoldBackgroundColor,
       ),
+      navigationBarTheme: NavigationBarThemeData(
+        labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
+          (Set<WidgetState> states) => TextStyle(
+            fontSize: 10,
+            fontFamily: 'Albertsans',
+            fontWeight: states.contains(WidgetState.selected)
+                ? FontWeight.w900
+                : FontWeight.w300,
+          ),
+        ),
+      ),
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         // ignore: deprecated_member_use
         year2023: false,

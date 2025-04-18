@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quickdrop/src/core/router/go_router_refresh_stream.dart';
 import 'package:quickdrop/src/features/app/cubit/app_cubit.dart';
 import 'package:quickdrop/src/features/auth/presentation/login/login.dart';
+import 'package:quickdrop/src/features/cart/presentation/cart.dart';
 import 'package:quickdrop/src/features/favorites/presentation/favorites.dart';
 import 'package:quickdrop/src/features/financial_information/presentation/financial_information.dart';
 import 'package:quickdrop/src/features/home/presentation/home.dart';
@@ -25,8 +26,8 @@ class AppRouter {
   final AppCubit _appCubit = sl<AppCubit>();
   final GlobalKey<NavigatorState> _rootNavigatorKey =
       GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> _shellNavigatorKey =
-      GlobalKey<NavigatorState>();
+  final GlobalKey<StatefulNavigationShellState> _shellNavigatorKey =
+      GlobalKey<StatefulNavigationShellState>();
 
   late final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
@@ -58,87 +59,96 @@ class AppRouter {
       // Rutas sin NavigationBar
       GoRoute(
         path: '/',
-        builder: (BuildContext context, GoRouterState state) =>
-            const LoadingPage(),
+        builder: (_, __) => const LoadingPage(),
       ),
       GoRoute(
         path: '/login',
-        builder: (BuildContext context, GoRouterState state) => const Login(),
+        builder: (_, __) => const Login(),
       ),
 
-      //Cambiar por statefullshellroute
-      ShellRoute(
+      StatefulShellRoute.indexedStack(
+        key: _shellNavigatorKey,
         parentNavigatorKey: _rootNavigatorKey,
-        navigatorKey: _shellNavigatorKey,
-        builder: (BuildContext context, GoRouterState state, Widget child) {
+        builder: (_, GoRouterState state, Widget child) {
           return Scaffold(
             body: child,
             bottomNavigationBar: const AppNavigationBar(),
           );
         },
-        routes: <RouteBase>[
-          GoRoute(
-            path: '/home',
-            name: 'home',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<Home>(
-              child: Home(),
-            ),
-          ),
-          GoRoute(
-            path: '/favorites',
-            name: 'favorites',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<Favorites>(
-              child: Favorites(),
-            ),
-          ),
-          GoRoute(
-            path: '/searchpage',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<SearchPage>(
-              child: SearchPage(),
-            ),
-          ),
-          GoRoute(
-            path: '/usermenu',
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const NoTransitionPage<UserMenu>(
-              child: UserMenu(),
-            ),
-            routes: <RouteBase>[
+        branches: <StatefulShellBranch>[
+          StatefulShellBranch(
+            routes: <GoRoute>[
               GoRoute(
-                parentNavigatorKey: _rootNavigatorKey,
-                path: 'mypurchases',
-                builder: (BuildContext context, GoRouterState state) =>
-                    const MyPurchases(),
-              ),
-              GoRoute(
-                parentNavigatorKey: _rootNavigatorKey,
-                path: 'settings',
-                name: 'settings',
-                builder: (BuildContext context, GoRouterState state) =>
-                    const Settings(),
-                routes: <RouteBase>[
-                  GoRoute(
-                    parentNavigatorKey: _rootNavigatorKey,
-                    path: 'languages',
-                    name: 'language page',
-                    builder: (BuildContext context, GoRouterState state) {
-                      return const LanguagePage();
-                    },
-                  ),
-                ],
-              ),
-              GoRoute(
-                parentNavigatorKey: _rootNavigatorKey,
-                path: 'profile',
-                name: 'user account',
-                builder: (BuildContext context, GoRouterState state) =>
-                    const Profile(),
+                path: '/home',
+                name: 'home',
+                pageBuilder: (_, __) => const NoTransitionPage<Home>(
+                  child: Home(),
+                ),
               ),
             ],
           ),
+          StatefulShellBranch(
+            routes: <GoRoute>[
+              GoRoute(
+                path: '/favorites',
+                name: 'favorites',
+                pageBuilder: (_, __) => const NoTransitionPage<Favorites>(
+                  child: Favorites(),
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <GoRoute>[
+              GoRoute(
+                path: '/searchpage',
+                pageBuilder: (_, __) => const NoTransitionPage<SearchPage>(
+                  child: SearchPage(),
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(routes: <RouteBase>[
+            GoRoute(
+              path: '/usermenu',
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  const NoTransitionPage<UserMenu>(
+                child: UserMenu(),
+              ),
+              routes: <RouteBase>[
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'mypurchases',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const MyPurchases(),
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'settings',
+                  name: 'settings',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const Settings(),
+                  routes: <RouteBase>[
+                    GoRoute(
+                      parentNavigatorKey: _rootNavigatorKey,
+                      path: 'languages',
+                      name: 'language page',
+                      builder: (BuildContext context, GoRouterState state) {
+                        return const LanguagePage();
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'profile',
+                  name: 'user account',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const Profile(),
+                ),
+              ],
+            ),
+          ])
         ],
       ),
       GoRoute(
@@ -197,6 +207,11 @@ class AppRouter {
         path: '/mylocations',
         builder: (BuildContext context, GoRouterState state) =>
             const MyLocations(),
+      ),
+      GoRoute(
+        path: '/cart',
+        name: 'cart',
+        builder: (_, __) => const Cart(),
       ),
     ],
   );
