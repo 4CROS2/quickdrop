@@ -24,7 +24,13 @@ import 'package:quickdrop/src/injection/injection_barrel.dart';
 
 class AppRouter {
   final AppCubit _appCubit = sl<AppCubit>();
+  final GlobalKey<NavigatorState> _rootNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<StatefulNavigationShellState> _shellNavigatorKey =
+      GlobalKey<StatefulNavigationShellState>();
+
   late final GoRouter router = GoRouter(
+    navigatorKey: _rootNavigatorKey,
     initialLocation: '/',
     debugLogDiagnostics: true,
     refreshListenable: GoRouterRefreshStream(
@@ -61,6 +67,8 @@ class AppRouter {
       ),
 
       StatefulShellRoute.indexedStack(
+        key: _shellNavigatorKey,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (_, GoRouterState state, Widget child) {
           return Scaffold(
             body: child,
@@ -100,16 +108,47 @@ class AppRouter {
               ),
             ],
           ),
-          StatefulShellBranch(
-            routes: <GoRoute>[
-              GoRoute(
-                path: '/usermenu',
-                pageBuilder: (_, __) => const NoTransitionPage<UserMenu>(
-                  child: UserMenu(),
-                ),
+          StatefulShellBranch(routes: <RouteBase>[
+            GoRoute(
+              path: '/usermenu',
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  const NoTransitionPage<UserMenu>(
+                child: UserMenu(),
               ),
-            ],
-          ),
+              routes: <RouteBase>[
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'mypurchases',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const MyPurchases(),
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'settings',
+                  name: 'settings',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const Settings(),
+                  routes: <RouteBase>[
+                    GoRoute(
+                      parentNavigatorKey: _rootNavigatorKey,
+                      path: 'languages',
+                      name: 'language page',
+                      builder: (BuildContext context, GoRouterState state) {
+                        return const LanguagePage();
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'profile',
+                  name: 'user account',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const Profile(),
+                ),
+              ],
+            ),
+          ])
         ],
       ),
       GoRoute(
@@ -139,11 +178,7 @@ class AppRouter {
           ),
         ],
       ),
-      GoRoute(
-        path: '/mypurchases',
-        builder: (BuildContext context, GoRouterState state) =>
-            const MyPurchases(),
-      ),
+
       GoRoute(
         path: '/fullScrenImage',
         name: 'fullScrenImage',
@@ -172,26 +207,6 @@ class AppRouter {
         path: '/mylocations',
         builder: (BuildContext context, GoRouterState state) =>
             const MyLocations(),
-      ),
-      GoRoute(
-        path: '/settings',
-        name: 'settings',
-        builder: (BuildContext context, GoRouterState state) =>
-            const Settings(),
-        routes: <RouteBase>[
-          GoRoute(
-            path: 'languages',
-            name: 'language page',
-            builder: (BuildContext context, GoRouterState state) {
-              return const LanguagePage();
-            },
-          ),
-        ],
-      ),
-      GoRoute(
-        path: '/profile',
-        name: 'user account',
-        builder: (BuildContext context, GoRouterState state) => const Profile(),
       ),
       GoRoute(
         path: '/cart',
