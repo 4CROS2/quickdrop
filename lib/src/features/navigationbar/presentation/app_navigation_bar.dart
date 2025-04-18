@@ -40,10 +40,10 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
     ),
     DestinationRoute(
       page: 3,
-      path: '/cart',
+      path: '/notifications',
       destinaton: Destination(
-        icon: HugeIcons.strokeRoundedShoppingCart02,
-        label: 'carrito',
+        icon: HugeIcons.strokeRoundedNotification02,
+        label: 'notificaciones',
         showBadge: true,
       ),
     ),

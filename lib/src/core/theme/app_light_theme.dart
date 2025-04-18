@@ -40,7 +40,7 @@ class AppLightTheme {
       navigationBarTheme: NavigationBarThemeData(
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
           (Set<WidgetState> states) => TextStyle(
-            fontSize: 12,
+            fontSize: 10,
             fontFamily: 'Albertsans',
             shadows: <Shadow>[
               BoxShadow(

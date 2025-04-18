@@ -56,6 +56,10 @@ Future<void> init() async {
   sl.registerLazySingleton<CurrentLocatioDatasourceRepository>(
     () => ICurrentLocationDatasource(),
   );
+  sl.registerLazySingleton<CartDatasourceRepository>(
+    () => ICartDatasource(),
+  );
+
   // Repositories
   sl.registerLazySingleton<AuthRepository>(
     () => IAuthRepository(
@@ -132,6 +136,12 @@ Future<void> init() async {
       datasource: sl<CurrentLocatioDatasourceRepository>(),
     ),
   );
+  sl.registerLazySingleton<CartRepository>(
+    () => ICartRepository(
+      datasource: sl<CartDatasourceRepository>(),
+    ),
+  );
+
   //use case
   sl.registerLazySingleton<AuthUseCase>(
     () => AuthUseCase(
@@ -206,6 +216,12 @@ Future<void> init() async {
       repository: sl<CurrentLocationRepository>(),
     ),
   );
+  sl.registerLazySingleton<CartUsecase>(
+    () => CartUsecase(
+      repository: sl<CartRepository>(),
+    ),
+  );
+
   //cubits
   sl.registerLazySingleton<AppCubit>(
     () => AppCubit(
@@ -286,6 +302,11 @@ Future<void> init() async {
   sl.registerFactory<CurrentLocationButtonCubit>(
     () => CurrentLocationButtonCubit(
       usecase: sl<CurrentLocationUsecase>(),
+    ),
+  );
+  sl.registerFactory<CartCubit>(
+    () => CartCubit(
+      usecase: sl<CartUsecase>(),
     ),
   );
 }

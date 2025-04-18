@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:quickdrop/src/features/current_location_button/presentation/current_location_button.dart';
 import 'package:quickdrop/src/features/widgets/header_buton.dart';
@@ -14,10 +15,11 @@ class HomeSliverAppBar extends StatelessWidget {
       snap: true,
       elevation: 0,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      actions: const <Widget>[
+      actions: <Widget>[
         SafeArea(
           child: HeaderButton(
-            icon: HugeIcons.strokeRoundedNotification01,
+            onTap: () => context.push('/cart'),
+            icon: HugeIcons.strokeRoundedShoppingCart02,
             backgroundColor: Colors.transparent,
             badgeVisible: true,
           ),

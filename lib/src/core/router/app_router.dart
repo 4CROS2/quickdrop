@@ -31,25 +31,22 @@ class AppRouter {
       stream: _appCubit.stream,
     ),
     redirect: (BuildContext context, GoRouterState state) {
-      final String path = state.uri.path;
-      final AppStatus status = _appCubit.state.appStatus;
-
-      if (status == AppStatus.loading) {
-        return null;
+      final AppStatus appStatus = _appCubit.state.appStatus;
+      if (appStatus == AppStatus.authenticated &&
+          state.matchedLocation == '/') {
+        return '/home';
       }
-
-      final List<String> publicRoutes = <String>['/login', '/'];
-
-      if (status == AppStatus.unauthenticated && !publicRoutes.contains(path)) {
+      if (appStatus == AppStatus.authenticated &&
+          state.matchedLocation == '/login') {
+        return '/home';
+      }
+      if (appStatus == AppStatus.unauthenticated &&
+          state.matchedLocation != '/login') {
         return '/login';
       }
-
-      if (status == AppStatus.authenticated) {
-        if (path == '/' || path == '/login') {
-          return '/home';
-        }
+      if (appStatus == AppStatus.loading && state.matchedLocation == '/') {
+        return '/';
       }
-
       return null;
     },
     routes: <RouteBase>[
@@ -113,17 +110,6 @@ class AppRouter {
               ),
             ],
           ),
-          StatefulShellBranch(
-            routes: <GoRoute>[
-              GoRoute(
-                path: '/cart',
-                name: 'cart',
-                pageBuilder: (_, __) => const NoTransitionPage<Cart>(
-                  child: Cart(),
-                ),
-              ),
-            ],
-          )
         ],
       ),
       GoRoute(
@@ -206,7 +192,12 @@ class AppRouter {
         path: '/profile',
         name: 'user account',
         builder: (BuildContext context, GoRouterState state) => const Profile(),
-      )
+      ),
+      GoRoute(
+        path: '/cart',
+        name: 'cart',
+        builder: (_, __) => const Cart(),
+      ),
     ],
   );
 }
