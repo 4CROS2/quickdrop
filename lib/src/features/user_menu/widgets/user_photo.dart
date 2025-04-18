@@ -81,7 +81,7 @@ class UserPhoto extends StatelessWidget {
             borderRadius: Constants.mainBorderRadius,
             child: InkWell(
               borderRadius: Constants.mainBorderRadius,
-              onTap: () => context.push('/profile'),
+              onTap: () => context.push('/usermenu/profile'),
             ),
           ),
         ),

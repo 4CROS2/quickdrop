@@ -21,7 +21,7 @@ class MenuOptions extends StatelessWidget {
           _OptionTile(
             icon: HugeIcons.strokeRoundedShoppingCartCheck02,
             label: 'mis compras',
-            routePath: '/mypurchases',
+            routePath: '/usermenu/mypurchases',
           ),
           _OptionTile(
             icon: HugeIcons.strokeRoundedFavourite,
@@ -35,12 +35,12 @@ class MenuOptions extends StatelessWidget {
           ),
           _OptionTile(
             icon: HugeIcons.strokeRoundedUser03,
-            routePath: '/profile',
+            routePath: '/usermenu/profile',
             label: 'cuenta',
           ),
           _OptionTile(
             icon: HugeIcons.strokeRoundedSettings05,
-            routePath: '/settings',
+            routePath: '/usermenu/settings',
             label: 'ajustes',
           ),
         ],

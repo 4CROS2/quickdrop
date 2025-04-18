@@ -12,11 +12,18 @@ class LanguageButton extends StatefulWidget {
 }
 
 class _LanguageButtonState extends State<LanguageButton> {
+  late final GoRouter _router;
+  @override
+  void initState() {
+    super.initState();
+    _router = GoRouter.of(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push('/settings/languages');
+        context.push('${_router.state.matchedLocation}/languages');
       },
       child: BlocSelector<AppCubit, AppState, Locale>(
         selector: (AppState state) {
